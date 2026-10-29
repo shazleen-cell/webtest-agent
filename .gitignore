@@ -11,15 +11,14 @@ __pycache__/
 # Personal Claude Code settings (local permissions)
 .claude/settings.local.json
 
+# Test-account values (test user ID). Tracked files use placeholders like {TEST_USER_ID}.
+website-tests/*/settings.local.md
+# Exploration screenshots stay on this computer only (the LOGGED IN ones also show the player name)
+website-tests/*/explore/
+
 # Browser trace zips written by wdio-mcp on close_session
 .trace/
 
-# Test run evidence (screenshots, replay GIFs, PDFs, trace zips): about 1.8 GB per site.
-# Kept in git: settings.md, site-map.md, testcases.xlsx, explore/ screenshots, and from
-# Results/ only README.md, results.xlsx and json/ (small; the raw result of every test).
-website-tests/*/runs/*
-!website-tests/*/runs/Results/
-website-tests/*/runs/Results/*
-!website-tests/*/runs/Results/README.md
-!website-tests/*/runs/Results/results.xlsx
-!website-tests/*/runs/Results/json/
+# Test runs and results stay on this computer only (about 1 GB per run).
+# Nothing under runs/ goes to git: not the run folders, not Results/ (report, results.xlsx, json/).
+website-tests/*/runs/

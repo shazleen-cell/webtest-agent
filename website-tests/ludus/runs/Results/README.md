@@ -51,7 +51,7 @@ The `json/` folder has the raw result of every test (`TC-xxx.json`), which the r
 ## [LOGGED OUT] and [LOGGED IN]
 
 - **[LOGGED OUT]**: the test runs as a visitor who is not logged in.
-- **[LOGGED IN]**: the test logs in as the approved test user 12580628, by adding `?user-id=12580628` to the page address. Clicks in these tests are real and can change that user's account.
+- **[LOGGED IN]**: the test logs in as the approved test user {TEST_USER_ID}, by adding `?user-id={TEST_USER_ID}` to the page address. Clicks in these tests are real and can change that user's account.
 
 ## Account changes
 

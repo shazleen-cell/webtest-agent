@@ -17,6 +17,7 @@ It takes the newest result of every test (from every run folder and from the exi
 - Results/results.xlsx: sheets "Summary", "Results" and "Steps".
 - Results/json/<TC ID>.json: the raw result of every test.
 It never moves or deletes anything in the run folders.
+Then run: python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE>" — it replaces any real test-account value (from SITE/settings.local.md) in Results/README.md, results.xlsx and json/ with its placeholder. If it scrubbed anything, run the Step 2 command again so results.html is rebuilt from the clean JSON.
 
 ## Step 3: README
 If SITE/runs/Results/README.md does not exist, write one that explains, in plain English for someone new: what the folder is, which file to open first, what every file in a test folder is, what PASSED, FAILED, BLOCKED, SKIPPED (the reward was already claimed or on cooldown, so the action could not be tried) and UNSURE mean, what [LOGGED OUT] and [LOGGED IN] mean, what "Account changes" means, and a table of the tests that are not PASSED under the heading "## Tests that did not pass", with the columns TC, Test, Priority, What happened, Bug or test wording? (Bug, Content bug, Security finding, Accessibility, SEO, or Test wording). If it exists, update only its totals and its table of tests that are not PASSED, keeping that heading and those columns. Then run the Step 2 command again so results.html picks up the new table.

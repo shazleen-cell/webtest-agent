@@ -1,20 +1,21 @@
 # Site map: ludus (https://site.ludus-game.com/)
 
-Explored on 2026-10-28, LOGGED OUT only (settings.md has no "Login (LOGGED IN mode)" section).
+First explored on 2026-10-28. Explored again on 2026-10-29 (LOGGED OUT and LOGGED IN): F-01 to F-41, P-01 to P-13 and N-01 to N-15 were checked again and still hold unless a note says otherwise. New facts from 2026-10-29: F-42 to F-53 and P-14 to P-21.
 Desktop: Chrome 1440x900. Mobile: Chrome mobile emulation 390x844 (iPhone 14 size).
-Screenshots: explore/
+Screenshots (2026-10-29): explore/
 
 ## Pages
 
 | # | Page | URL | Screenshot |
 |---|------|-----|------------|
-| 1 | Home | https://site.ludus-game.com/ | 01-home, 01b-home-middle, 01c-home-footer |
-| 2 | Store (one long page with sections) | https://site.ludus-game.com/store/ | 02 to 10 |
-| 3 | Login popup (on any page) | - | 11-login-popup |
-| 4 | Referral program panel (on any page) | - | 09-referral-popup |
-| 5 | Home in French | https://site.ludus-game.com/fr-FR | 14-home-french |
-| 6 | Unknown page | https://site.ludus-game.com/this-page-does-not-exist | 13-error-page-redirects-home |
-| 7 | Mobile home, burger menu, store | same URLs | 15, 16, 17 |
+| 1 | Home | https://site.ludus-game.com/ | 01-home-cookie-banner, 02-home-middle, 03-home-footer, 06-home-about-carousel |
+| 2 | Store (one long page with sections) | https://site.ludus-game.com/store/ | 07 to 13 |
+| 3 | Login popup (on any page) | - | 04-login-popup |
+| 4 | Referral program panel (on any page) | - | 05-referral-panel |
+| 5 | Store and Home in French | https://site.ludus-game.com/fr-FR/store, https://site.ludus-game.com/fr-FR | 14-store-french, 15-home-french-remembered |
+| 6 | Unknown page | https://site.ludus-game.com/this-page-does-not-exist | 16-error-page-redirects-home |
+| 7 | Mobile home, burger menu, store | same URLs | 17, 18, 19 |
+| 8 | LOGGED IN: Store, Home, Referral panel, German Store, mobile | same URLs + ?user-id={TEST_USER_ID} | loggedin-01 to loggedin-09 |
 
 The site has only two real pages (Home and Store). "Reward chain", "Clan reward" and "Loyalty shop" are not separate pages: they are sections of the Store page.
 
@@ -69,27 +70,54 @@ The site has only two real pages (Home and Store). "Reward chain", "Clan reward"
 - F-40: Mobile Store: the tab bar scrolls sideways (first visible: "Free wares", "Battle Passes", "Licenses", "Might Pass..."), cards are 2 per row. The Store burger menu has no "Clan reward" (same as F-20).
 - F-41: On mobile the floating "Referral program" button shows only its icon.
 
-## Facts (LOGGED IN as user 12580628)
+## Facts (LOGGED IN as user {TEST_USER_ID})
 
-Explored on 2026-10-28 with https://site.ludus-game.com/store/?user-id=12580628 in a new session. Screenshots: explore/loggedin-*.
+Explored on 2026-10-28 with https://site.ludus-game.com/store/?user-id={TEST_USER_ID} in a new session. Screenshots: explore/loggedin-*.
 
-- P-01: Opening a page with "?user-id=12580628" logs in. The address then changes to the page without the suffix (https://site.ludus-game.com/store/).
-- P-02: Logged-in check: the header shows a teal loyalty-points balance ("200"), a gold store-points balance ("0") and a green button with a door icon and "Player12580628". There is no "Login" button.
+- P-01: Opening a page with "?user-id={TEST_USER_ID}" logs in. The address then changes to the page without the suffix (https://site.ludus-game.com/store/).
+- P-02: Logged-in check: the header shows a teal loyalty-points balance ("200" on 2026-10-28, "40" on 2026-10-29, see P-14), a gold store-points balance ("0") and a green button with a door icon and "Player{TEST_USER_ID}". There is no "Login" button.
 - P-03: No popup is shown after login. The "How we use cookies" banner is still shown in a new session.
-- P-04: Clicking the green "Player12580628" button on desktop logs out at once, with no confirmation: the header shows "Login" again and the Rewards Market shows "Login to claim". (Found by accident while exploring; logging back in with the link worked.)
-- P-05: Logged-in Store tab bar has only "Free wares", "Might Passes" and "Gold" (12 tabs when logged out). There is no "Seasonal" section, no "Emeralds", no "Gifts to friends" section and no "Log in to see more offers" button.
+- P-04: Clicking the green "Player{TEST_USER_ID}" button on desktop logs out at once, with no confirmation: the header shows "Login" again and the Rewards Market shows "Login to claim". (Found by accident while exploring; logging back in with the link worked.)
+- P-05: (still true 2026-10-29, but see P-17 for Special offers) Logged-in Store tab bar has only "Free wares", "Might Passes" and "Gold" (12 tabs when logged out). There is no "Seasonal" section, no "Emeralds", no "Gifts to friends" section and no "Log in to see more offers" button.
 - P-06: The "Might Passes" category says "The store is empty for now. Come back later!" but its tab is still shown.
-- P-07: Free wares: "Free emeralds" 100, "Available weekly: 1/1", green "Claim" (enabled); "Free Gold" 500, "Available daily: 1/1", green "Claim" (enabled). Both can be claimed now. Not clicked.
+- P-07: (2026-10-28, changed: see P-15) Free wares: "Free emeralds" 100, "Available weekly: 1/1", green "Claim" (enabled); "Free Gold" 500, "Available daily: 1/1", green "Claim" (enabled). Both can be claimed now. Not clicked.
 - P-08: Rewards Market: "0/500 points", "Step 1 of 10", first card "5000" shows "0/3" instead of a point cost, no "Login to claim" button and no claim button. Nothing can be claimed (0 store points).
-- P-09: Loyalty Shop shows 7 cards (12 when logged out), prices in loyalty points (teal icon): "Astral hero" 1100 (Available weekly: 1/1), "Astral Hero" 550 (Available weekly: 2/2, countdown), "Astral Echo" 750, "Magical Order" 550 (countdown), "Unique Emote" 550 (Available: 1/1), "Unique Avatar" 300 (Available: 1/1), "Unique Frame" 160 (Available: 1/1). All 7 price buttons are enabled, even the ones above the 200 balance. Only "Unique Frame" (160) is affordable. Not clicked.
-- P-10: Logged-in Home: header "Home", "Store", "Reward chain", "Clan reward", "Loyalty shop", the two balances and "Player12580628". The "Special offer" card is not shown on Home when logged in; the hero is followed directly by the "Check out our Store" banner.
-- P-11: Still logged in after a reload, after going Store → Home, and after switching to Français (https://site.ludus-game.com/fr-FR shows the balances and "Player12580628") and back to English.
+- P-09: (2026-10-28, changed: see P-16) Loyalty Shop shows 7 cards (12 when logged out), prices in loyalty points (teal icon): "Astral hero" 1100 (Available weekly: 1/1), "Astral Hero" 550 (Available weekly: 2/2, countdown), "Astral Echo" 750, "Magical Order" 550 (countdown), "Unique Emote" 550 (Available: 1/1), "Unique Avatar" 300 (Available: 1/1), "Unique Frame" 160 (Available: 1/1). All 7 price buttons are enabled, even the ones above the 200 balance. Only "Unique Frame" (160) is affordable. Not clicked.
+- P-10: Logged-in Home: header "Home", "Store", "Reward chain", "Clan reward", "Loyalty shop", the two balances and "Player{TEST_USER_ID}". The "Special offer" card is not shown on Home when logged in; the hero is followed directly by the "Check out our Store" banner.
+- P-11: Still logged in after a reload, after going Store → Home, and after switching to Français (https://site.ludus-game.com/fr-FR shows the balances and "Player{TEST_USER_ID}") and back to English.
 - P-12: Phone (390x844): header has burger, logo, balances "200" and "0", and the player button cut to "Play…". The burger menu shows the balances, the "Play…" button, "Home", "Store", "Reward chain", "Loyalty shop" and "Logout" (no "Clan reward" on the Store page).
 - P-13: No clan reward section was found when logged in either, and the "Gifts to friends" section is missing, so the gift flow cannot be tested with this user.
 
+## New facts from 2026-10-29 (LOGGED OUT)
+
+- F-42: The header stays fixed at the top of the window while scrolling (Home and Store).
+- F-43: Pressing Escape closes the "Log in to make purchases" popup.
+- F-44: The footer button "Privacy settings" opens the "How we use cookies" banner again. The banner's round close (x) icon closes it. The "cookie policy" link points to https://xsolla.com/cookie (new tab).
+- F-45: On the Store page (logged out), "Login to claim" in the Rewards Market opens the "Log in to make purchases" popup.
+- F-46: "About the game" carousel: slide 1 of 5 is a YouTube video; the next arrow moves to slide 2 / 5. The Rewards Market carousel has previous / next arrows; the next arrow moves the reward cards.
+- F-47: FAQ: "Who can help me with my purchase issue?" opens "If you need assistance with your purchase or wish to request a refund, contact Xsolla Customer Support." (no link). Clicking an open question again closes it. "What's a referral program?" opens "After you make a purchase, you can invite your friends using your personal referral code. ..."
+- F-48: Choosing "Français" on the Store page opens https://site.ludus-game.com/fr-FR/store: header "Accueil", "Boutique", "Chaîne de récompenses", "Boutique de fidélité", "Connexion"; heading "LUDUS・Jeu de combat stratégique en JcJ・Boutique en ligne officielle". The tab title stays "LUDUS - Merge Battle Arena PvP Web Shop". The French sub-heading says "10 % moins chers" while the English one says "much cheaper".
+- F-49: Choosing "English" on https://site.ludus-game.com/fr-FR opens https://site.ludus-game.com/ (header "Home", "Store", ...).
+- F-50: Store footer social links have accessible names ("Open https://www.youtube.com/@playludus" and so on); the Home social icons have none (see N-08).
+- F-51: Mobile: the cookie banner appears about 1-2 s after the page loads. Its "Dismiss" button is partly covered by the "Add It to Home Screen" banner and the floating Referral button, but a click on it still works.
+- F-52: Mobile: after closing the "Add It to Home Screen" banner with its X on Home, it is not shown again on Store in the same session.
+- F-53: Mobile: the red close (x) of the burger menu closes the menu. It is a plain element with no button role and no accessible name.
+- (Also seen) Home has a hidden h2 "Your game title" (placeholder text, not visible on screen).
+
+## New facts from 2026-10-29 (LOGGED IN as user {TEST_USER_ID})
+
+- P-14: Header balances: loyalty points "40" (teal), store points "0" (gold). Yesterday it was 200 loyalty points, so 160 points were spent in the 2026-10-28 test run (the 160-point "Unique Frame" is gone from the Loyalty Shop).
+- P-15: Free wares: "Free emeralds" 100 shows "Available in 3d 16h" and a green text "Claimed" (no Claim button). "Free Gold" 500 shows "Available daily: 1/1" and an enabled green "Claim" button. Not clicked.
+- P-16: Loyalty Shop shows 6 cards: "Astral hero" 1100 (Available weekly: 1/1), "Astral Hero" 550 (Available weekly: 2/2, countdown), "Astral Echo" 750 (Available weekly: 1/1), "Magical Order" 550 (Available weekly: 1/1, countdown), "Unique Emote" 550 (Available: 1/1), "Unique Avatar" 300 (Available: 1/1). All 6 price buttons are enabled, but none is affordable with 40 points. Not clicked.
+- P-17: The logged-in Store shows the "Special offer" card (USD price, points badges 50 and 550) and the "Special offers" section (Small / Medium / Big welcome bundle, each "Available: 1/1"). There is no "Seasonal" section. Rewards Market is the same as P-08.
+- P-18: Logged-in Referral panel: same top texts as logged out, then a read-only field with "https://site.ludus-game.com/?referralCode=..." and a green "Copy" button, "No rewards to claim yet", "Make a purchase to get your bonus. Invite friends to receive more rewards." and a "Back to store" button. There is no "Invite friends" or "Log in to view rewards" button.
+- P-19: Switching to "Deutsch" keeps the login: https://site.ludus-game.com/de-DE/store shows "Startseite", "Shop", "Belohnungskette", "Treue-Shop", the balances and "Player{TEST_USER_ID}". In German the Free Gold button says "Kostenlos" and the Free emeralds card says "Beansprucht".
+- P-20: Switching back to "English" opens https://site.ludus-game.com/store and the user is still logged in.
+- P-21: Phone (390x844) login with the suffix: the cookie banner and the "Add It to Home Screen" banner are shown; the header shows the burger, logo, "40", "0" and "Play…"; the burger menu shows the balances, "Play…", "Home", "Store" (yellow), "Reward chain", "Loyalty shop" and "Logout".
+
 ## Non-functional facts (LOGGED OUT)
 
-Measured on 2026-10-28 in a new Chrome session (no cache) unless noted. Screenshots: explore/nf-*.
+Measured on 2026-10-28 in a new Chrome session (no cache) unless noted. On 2026-10-29 N-03, N-06, N-11, N-12 and N-13 were checked again and still hold.
 
 - N-01: Home timing (first visit): time to first byte 1.0 s, first contentful paint 1.8 s, DOMContentLoaded 2.7 s, load event 7.5 s; 142 resource requests.
 - N-02: Store (same session, cache warm): first contentful paint 0.7 s, load event 1.0 s; 250 resource requests and 321 images.
@@ -112,3 +140,4 @@ Measured on 2026-10-28 in a new Chrome session (no cache) unless noted. Screensh
 - All USD price buttons and "Send to friends": they lead to payment (Never).
 - External links (app stores, socials, Support, Xsolla, affiliate): only their link targets were read.
 - LOGGED IN: Claim, loyalty point buttons and Logout were not clicked on purpose (the one logout in P-04 was an accident). Session length was not measured.
+- 2026-10-29: Loyalty Shop price buttons and Claim buttons were not clicked while logged out either ("Allowed when LOGGED OUT" does not list them). The "Copy" button in the logged-in Referral panel was not clicked.

@@ -67,6 +67,7 @@ The Python scripts in `.claude/scripts/` build the evidence and reports:
 ```
 website-tests/<site>/
   settings.md          site rules: cookie banner, login, what may be clicked
+  settings.local.md    test-account values such as the test user ID (not in git)
   site-map.md          pages and facts found while exploring (F-, P-, N- numbers)
   testcases.xlsx       test cases; the Approved column decides what runs
   explore/             screenshots taken while exploring
@@ -80,7 +81,15 @@ website-tests/<site>/
 Each site has its own `website-tests/<site>/settings.md`. `/test-website` creates it on the first run. It contains:
 
 - **Cookie banner**: the banner title and the button to click
-- **Login (LOGGED IN mode)**: the login method (for example `?user-id=<id>` added to the URL), the test user, how to tell the user is logged in, and any popup shown after login. LOGGED IN tests are only written and run when this section exists.
+- **Login (LOGGED IN mode)**: the login method (for example `?user-id={TEST_USER_ID}` added to the URL), the test user, how to tell the user is logged in, and any popup shown after login. LOGGED IN tests are only written and run when this section exists.
+
+The test user ID works like a password on some sites (anyone with the link is logged in), so it is not stored in git. settings.md, site-map.md, testcases.xlsx and the reports use the placeholder `{TEST_USER_ID}`. The real value goes in `website-tests/<site>/settings.local.md`, which git ignores:
+
+```
+- TEST_USER_ID: <id>
+```
+
+The commands put the real value in only while the browser runs, and `.claude/scripts/scrub_secrets.py` replaces it with the placeholder in the results. `python3 .claude/scripts/scrub_secrets.py website-tests/<site> --check` lists any real value left in the tracked files.
 - **Allowed when LOGGED IN / Allowed when LOGGED OUT**: what tests may click
 - **Never**: what must never be clicked
 - **Skip**: content that changes all the time and should not be tested
@@ -123,6 +132,6 @@ The tester always follows these rules:
 
 ## Git
 
-Test evidence is large (about 1.8 GB for one site), so `.gitignore` keeps it out of git. Git keeps the scripts, commands, `settings.md`, `site-map.md`, `testcases.xlsx`, the `explore/` screenshots, and `Results/README.md`, `results.xlsx` and `json/`. To share the full report with screenshots, zip the `runs/Results/` folder.
+Test evidence is large (about 1.8 GB for one site), so `.gitignore` keeps it out of git. Git keeps the scripts, commands, `settings.md`, `site-map.md` and `testcases.xlsx`. The `explore/` screenshots and all test runs and results (`runs/`, including `runs/Results/`) stay on this computer only, and `settings.local.md` (the test user ID) is never in git. To share the full report with screenshots, zip the `runs/Results/` folder.
 
 The commands, script names and folder layout in it match what's in the repo now. I left out an install command for wdio-mcp because I don't know how you set it up. If you have a link or command for it, add it under "Requirements".
