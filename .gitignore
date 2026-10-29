@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Excel lock files (created while a workbook is open)
+~$*
+
+# Personal Claude Code settings (local permissions)
+.claude/settings.local.json
+
+# Browser trace zips written by wdio-mcp on close_session
+.trace/
+
+# Test run evidence (screenshots, replay GIFs, PDFs, trace zips): about 1.8 GB per site.
+# Kept in git: settings.md, site-map.md, testcases.xlsx, explore/ screenshots, and from
+# Results/ only README.md, results.xlsx and json/ (small; the raw result of every test).
+website-tests/*/runs/*
+!website-tests/*/runs/Results/
+website-tests/*/runs/Results/*
+!website-tests/*/runs/Results/README.md
+!website-tests/*/runs/Results/results.xlsx
+!website-tests/*/runs/Results/json/
