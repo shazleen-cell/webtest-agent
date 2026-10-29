@@ -1,0 +1,73 @@
+{
+  "id": "TC-065",
+  "title": "[LOGGED OUT] Basic security headers are sent",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T14:36:47+08:00",
+  "ended": "2026-10-28T14:37:47+08:00",
+  "duration_sec": 60,
+  "failed_step": 4,
+  "reason": "X-Content-Type-Options, X-Frame-Options, Content-Security-Policy and Referrer-Policy are all missing from the Home page response",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at https://site.ludus-game.com/, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-065/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "\"How we use cookies\" banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-065/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read these response headers (read with execute_script: const r = await fetch(location.href, {cache: 'no-store'}); r.headers.get('<name>')): X-Content-Type-Options, X-Frame-Options, Content-Security-Policy, Referrer-Policy.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "fetch https://site.ludus-game.com/ -> 200. X-Content-Type-Options: null, X-Frame-Options: null, Content-Security-Policy: null (also no CSP-Report-Only), Referrer-Policy: null. All response headers: cache-control, content-encoding, content-type, date, expires, strict-transport-security, vary, x-geoip-country, x-geoip-region-code, x-guploader-uploadid, x-real-ip, x-request-id. No <meta http-equiv> or <meta name=referrer> in the page either",
+      "ok": true,
+      "screenshot": "TC-065/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is X-Content-Type-Options present with the value \"nosniff\"?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "X-Content-Type-Options header is missing (null)",
+      "ok": false,
+      "screenshot": "TC-065/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Is clickjacking protection present (X-Frame-Options, or a Content-Security-Policy with \"frame-ancestors\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "X-Frame-Options missing (null); Content-Security-Policy missing (null), so no frame-ancestors",
+      "ok": false,
+      "screenshot": "TC-065/step05_FAIL.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a Referrer-Policy header present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Referrer-Policy header missing (null); no <meta name=referrer> either",
+      "ok": false,
+      "screenshot": "TC-065/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-065/TC-065_replay.gif",
+  "steps_pdf": "TC-065/TC-065_steps.pdf",
+  "evidence_folder": "TC-065/",
+  "run": "2026-10-28_1426"
+}

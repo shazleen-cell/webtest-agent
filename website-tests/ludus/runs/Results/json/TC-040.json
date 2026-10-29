@@ -1,0 +1,82 @@
+{
+  "id": "TC-040",
+  "title": "[LOGGED OUT] Mobile Store has no sideways scroll and a scrollable tab bar",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:37:16+08:00",
+  "ended": "2026-10-28T12:38:14+08:00",
+  "duration_sec": 58,
+  "failed_step": null,
+  "reason": "No page-level horizontal scroll; tab bar scrolls (Free wares first); free cards 2 per row. Mobile via Chrome mobileEmulation fallback (390x844, DPR 3, iPhone UA), not emulate_device.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser on a phone screen (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at 390px wide with heading \"LUDUS・Official Webshop\"; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-040/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed. \"Add It to Home Screen\" banner then visible at the bottom.",
+      "ok": true,
+      "screenshot": "TC-040/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, click its X (close) button. Do not click \"Claim\" on that banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked its X (\"Close pwa banner\"), banner gone. Claim not clicked.",
+      "ok": true,
+      "screenshot": "TC-040/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the page free of horizontal scrolling (the page is not wider than the screen)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement.scrollWidth = 390, body.scrollWidth = 390, innerWidth = 390. Only carousel (swiper) slides extend past the edge and are clipped inside their slider.",
+      "ok": true,
+      "screenshot": "TC-040/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Scroll down to the heading \"Store\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled down 1400px; red \"Store\" ribbon heading (H2) at the top of the view with the tab bar below.",
+      "ok": true,
+      "screenshot": "TC-040/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the tab bar shown with \"Free wares\" as the first tab?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab bar shows Free wares (selected, yellow), Battle Passes, Licenses, Might Pass... cut at the right edge. It scrolls sideways (overflow-x auto, scrollWidth 1100 vs 354 visible) with 12 tabs: Free wares, Battle Passes, Licenses, Might Passes, Ludus Royal, Ethereal Crystals, Spells, Runes, Dice of Fortune, Gold, Emeralds, Gift to friends.",
+      "ok": true,
+      "screenshot": "TC-040/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Are the \"Free emeralds\" and \"Free Gold\" cards shown side by side, 2 per row?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free emeralds card at x=27 and Free Gold card at x=203, both y=219, width 160 each: side by side in one row (2 per row). Claim buttons not clicked.",
+      "ok": true,
+      "screenshot": "TC-040/step07.png"
+    }
+  ],
+  "replay_gif": "TC-040/TC-040_replay.gif",
+  "steps_pdf": "TC-040/TC-040_steps.pdf",
+  "evidence_folder": "TC-040/",
+  "run": "2026-10-28_1132"
+}

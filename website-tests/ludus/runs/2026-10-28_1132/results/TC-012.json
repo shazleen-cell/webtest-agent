@@ -1,0 +1,99 @@
+{
+  "id": "TC-012",
+  "title": "[LOGGED OUT] The chosen language is remembered on the next visit",
+  "area": "Language",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-28T11:50:58+08:00",
+  "ended": "2026-10-28T11:52:44+08:00",
+  "duration_sec": 106,
+  "failed_step": null,
+  "reason": "Reopening the root URL redirected to /fr-FR with French header; switching back to English restored Home",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded in English; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-012/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-012/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the bottom of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to bottom; footer selector shows \"EN\"",
+      "ok": true,
+      "screenshot": "TC-012/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Choose \"Français\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Français; page changed to https://site.ludus-game.com/fr-FR in French",
+      "ok": true,
+      "screenshot": "TC-012/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Opened https://site.ludus-game.com/; the site redirected the fresh load to /fr-FR (navigation entry type 'navigate', readyState complete, page at top)",
+      "ok": true,
+      "screenshot": "TC-012/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the page address https://site.ludus-game.com/fr-FR?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/fr-FR",
+      "ok": true,
+      "screenshot": "TC-012/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the header menu start with \"Accueil\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Accueil, Boutique, Chaîne de récompenses, Récompense de clan, Boutique de fidélité, Connexion",
+      "ok": true,
+      "screenshot": "TC-012/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Scroll down to the bottom of the page and choose \"English\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to bottom (selector \"FR\"), chose English; page reloaded at https://site.ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-012/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Does the header menu start with \"Home\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Clan reward, Loyalty shop, Login",
+      "ok": true,
+      "screenshot": "TC-012/step09.png"
+    }
+  ],
+  "replay_gif": "TC-012/TC-012_replay.gif",
+  "steps_pdf": "TC-012/TC-012_steps.pdf",
+  "evidence_folder": "TC-012/"
+}

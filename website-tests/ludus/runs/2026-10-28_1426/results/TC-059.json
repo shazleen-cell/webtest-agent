@@ -1,0 +1,72 @@
+{
+  "id": "TC-059",
+  "title": "[LOGGED OUT] Store page loads fast enough on a first visit",
+  "area": "Non-functional",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T14:27:57+08:00",
+  "ended": "2026-10-28T14:28:35+08:00",
+  "duration_sec": 38,
+  "failed_step": null,
+  "reason": "FCP 700 ms, DCL 695 ms, load 884 ms - all within limits",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome session (1440x900, no cookies); Store page loaded with heading \"LUDUS · Official Webshop\"",
+      "ok": true,
+      "screenshot": "TC-059/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner \"How we use cookies\" was shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-059/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Wait 5 seconds, then read the page timings (first-contentful-paint startTime, navigation domContentLoadedEventEnd and loadEventEnd, in ms). Write the three numbers in \"saw\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "After 5 s wait: FCP = 700 ms, domContentLoadedEventEnd = 694.6 ms, loadEventEnd = 884.2 ms (TTFB responseStart 285 ms)",
+      "ok": true,
+      "screenshot": "TC-059/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the first contentful paint 2500 ms or less?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "FCP 700 ms <= 2500 ms",
+      "ok": true,
+      "screenshot": "TC-059/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is DOMContentLoaded 3000 ms or less?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "DOMContentLoaded 694.6 ms <= 3000 ms",
+      "ok": true,
+      "screenshot": "TC-059/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the load event 5000 ms or less?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "loadEventEnd 884.2 ms <= 5000 ms",
+      "ok": true,
+      "screenshot": "TC-059/step06.png"
+    }
+  ],
+  "replay_gif": "TC-059/TC-059_replay.gif",
+  "steps_pdf": "TC-059/TC-059_steps.pdf",
+  "evidence_folder": "TC-059/"
+}

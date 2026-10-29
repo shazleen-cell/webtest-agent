@@ -1,0 +1,63 @@
+{
+  "id": "TC-074",
+  "title": "[LOGGED OUT] Each page has exactly one h1 heading",
+  "area": "Non-functional",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T14:52:17+08:00",
+  "ended": "2026-10-28T14:53:18+08:00",
+  "duration_sec": 61,
+  "failed_step": 5,
+  "reason": "Store page has no h1 element (0); Home has exactly 1",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-074/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-074/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the Home page have exactly one h1 element (read with execute_script)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.querySelectorAll('h1').length = 1 on https://site.ludus-game.com/: \"Check out our Store and shop with profit\" (visible)",
+      "ok": true,
+      "screenshot": "TC-074/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded (readyState complete), \"LUDUS - Official Webshop\" header shown",
+      "ok": true,
+      "screenshot": "TC-074/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the Store page have exactly one h1 element?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "document.querySelectorAll('h1').length = 0 on https://site.ludus-game.com/store/ (no role=heading aria-level=1 either). Top-level headings are h2: \"Special offers\", \"Seasonal\", \"Store\", \"Gifts to friends\", \"Rewards Market\", \"Loyalty shop\", \"FAQ\"...",
+      "ok": false,
+      "screenshot": "TC-074/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-074/TC-074_replay.gif",
+  "steps_pdf": "TC-074/TC-074_steps.pdf",
+  "evidence_folder": "TC-074/"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "TC-063",
+  "title": "[LOGGED OUT] No mixed content: every resource is loaded over https",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:34:24+08:00",
+  "ended": "2026-10-28T14:35:15+08:00",
+  "duration_sec": 51,
+  "failed_step": null,
+  "reason": "No http: resources: 0 http entries in performance resource list (only 1 entry kept, buffer cleared by page); DOM cross-check 0 http URLs in 321 img, 5 script, all link tags",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store/, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-063/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "\"How we use cookies\" banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-063/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Wait 5 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 5001 ms in the page",
+      "ok": true,
+      "screenshot": "TC-063/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Do all loaded resources use https (read with execute_script: performance.getEntriesByType('resource') entries whose name starts with \"http:\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "performance.getEntriesByType('resource'): 1 entry (https://consent-api.xsolla.com/v2/consent), 0 entries starting with http: (the page appears to clear the resource timing buffer). Cross-check of the DOM: 321 img, 5 script src, all link href (CSS/JS/preload, cdn.xsolla.net, store.xsolla.com) - 0 URLs starting with http:. Page protocol https:",
+      "ok": true,
+      "screenshot": "TC-063/step04.png"
+    }
+  ],
+  "replay_gif": "TC-063/TC-063_replay.gif",
+  "steps_pdf": "TC-063/TC-063_steps.pdf",
+  "evidence_folder": "TC-063/"
+}

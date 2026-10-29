@@ -1,0 +1,90 @@
+{
+  "id": "TC-033",
+  "title": "[LOGGED OUT] FAQ questions open and close",
+  "area": "FAQ",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:26:27+08:00",
+  "ended": "2026-10-28T12:27:45+08:00",
+  "duration_sec": 78,
+  "failed_step": null,
+  "reason": "All 6 FAQ questions shown; first question opens with the expected answer and closes again",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with the cookie banner at the bottom.",
+      "ok": true,
+      "screenshot": "TC-033/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner \"How we use cookies\" was shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-033/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the heading \"FAQ\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the H2 \"FAQ\" with all 6 question rows below it and the footer icons at the bottom edge.",
+      "ok": true,
+      "screenshot": "TC-033/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are these 6 questions shown: \"How does purchasing from Web Shop benefit me?\", \"Is it safe to purchase on Web Shop?\", \"Who can help me with my purchase issue?\", \"What payment methods does Web Shop support?\", \"How to make a purchase?\", \"What's a referral program?\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "FAQ has exactly these 6 buttons in this order: How does purchasing from Web Shop benefit me? / Is it safe to purchase on Web Shop? / Who can help me with my purchase issue? / What payment methods does Web Shop support? / How to make a purchase? / What's a referral program? (late-loading content above shifted the view slightly in the step screenshot; step 3 screenshot shows all 6).",
+      "ok": true,
+      "screenshot": "TC-033/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"How does purchasing from Web Shop benefit me?\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the first question; its chevron turned to point up and an answer paragraph appeared.",
+      "ok": true,
+      "screenshot": "TC-033/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is an answer shown that starts with \"In Web Shop, you can purchase game items at lower prices\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Answer: \"In Web Shop, you can purchase game items at lower prices, find some special offers, and claim free rewards. Moreover, there's a variety of payment options available, allowing you to choose the most convenient one for your purchases.\"",
+      "ok": true,
+      "screenshot": "TC-033/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click \"How does purchasing from Web Shop benefit me?\" again.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the same question again; the answer paragraph was removed and the chevron points down.",
+      "ok": true,
+      "screenshot": "TC-033/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the answer hidden again?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Answer paragraph has height 0 and checkVisibility() = false; the first FAQ row shows only the question.",
+      "ok": true,
+      "screenshot": "TC-033/step08.png"
+    }
+  ],
+  "replay_gif": "TC-033/TC-033_replay.gif",
+  "steps_pdf": "TC-033/TC-033_steps.pdf",
+  "evidence_folder": "TC-033/"
+}

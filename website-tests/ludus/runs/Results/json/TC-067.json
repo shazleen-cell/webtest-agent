@@ -1,0 +1,55 @@
+{
+  "id": "TC-067",
+  "title": "[LOGGED OUT] Home images have alt text",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T14:40:00+08:00",
+  "ended": "2026-10-28T14:40:51+08:00",
+  "duration_sec": 51,
+  "failed_step": 4,
+  "reason": "2 of 17 img elements have no alt attribute: both are the header LUDUS logo (img._1vixu5z1 in .custom-header__logo, 0a6cd8c0c9ea08a8835207bbb0c5d5a9.png)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at https://site.ludus-game.com/ (opened already scrolled to about y=650, showing \"Check out our Store\" and \"Latest news\"), cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-067/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "\"How we use cookies\" banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-067/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll slowly to the bottom of the page, then wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled from top in 8 steps of 400 px (300 ms apart) to y=2899 (page height 3648, viewport 749), footer with EN selector visible; waited 3 s",
+      "ok": true,
+      "screenshot": "TC-067/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does every img element on the page have an alt attribute (read with execute_script; write the count of images without alt in \"saw\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "17 img elements; 2 without an alt attribute (both visible, 95 px wide): the header LUDUS logo image img._1vixu5z1 inside a.custom-header__logo, src .../0a6cd8c0c9ea08a8835207bbb0c5d5a9.png (the logo link also has no accessible name). 3 more images have alt=\"\" (empty, decorative)",
+      "ok": false,
+      "screenshot": "TC-067/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-067/TC-067_replay.gif",
+  "steps_pdf": "TC-067/TC-067_steps.pdf",
+  "evidence_folder": "TC-067/",
+  "run": "2026-10-28_1426"
+}

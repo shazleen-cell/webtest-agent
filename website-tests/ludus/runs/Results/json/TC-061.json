@@ -1,0 +1,73 @@
+{
+  "id": "TC-061",
+  "title": "[LOGGED OUT] Home and Store have no broken images",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:30:36+08:00",
+  "ended": "2026-10-28T14:32:14+08:00",
+  "duration_sec": 98,
+  "failed_step": null,
+  "reason": "0 broken images: Store 0/321, Home 0/17 (3 lazy images not yet loaded, not broken)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome session (1440x900, no cookies); Store page loaded with heading \"LUDUS · Official Webshop\"",
+      "ok": true,
+      "screenshot": "TC-061/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner was shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-061/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll slowly to the bottom of the page so that all images load, then wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled in 400 px steps every 300 ms to the bottom (scrollY 15818 of scrollHeight 16567, viewport 749), footer with \"(c) 2026 LUDUS\" visible; waited 3 s",
+      "ok": true,
+      "screenshot": "TC-061/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are there no broken images on the Store page (images where complete is true and naturalWidth is 0)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "321 <img> elements, 0 broken (complete && naturalWidth 0), 0 still loading",
+      "ok": true,
+      "screenshot": "TC-061/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Open https://site.ludus-game.com/ in the browser, scroll slowly to the bottom of the page and wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page opened; scrolled in 400 px steps to the bottom (scrollY 2899 of scrollHeight 3648), footer visible; waited 3 s",
+      "ok": true,
+      "screenshot": "TC-061/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are there no broken images on the Home page (same check)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "17 <img> elements, 0 broken. 3 images with loading=lazy (cdn.xsolla.net sitebuilder/463788/671d788ab4ad4225, b8553ba869501ccd, 8deb515184c91493) were still not complete (not loaded yet), which is not counted as broken by the check",
+      "ok": true,
+      "screenshot": "TC-061/step06.png"
+    }
+  ],
+  "replay_gif": "TC-061/TC-061_replay.gif",
+  "steps_pdf": "TC-061/TC-061_steps.pdf",
+  "evidence_folder": "TC-061/",
+  "run": "2026-10-28_1426"
+}

@@ -1,0 +1,108 @@
+{
+  "id": "TC-022",
+  "title": "[LOGGED OUT] Store header \"Reward chain\" scrolls to the Rewards Market",
+  "area": "Rewards Market",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:07:38+08:00",
+  "ended": "2026-10-28T12:09:18+08:00",
+  "duration_sec": 100,
+  "failed_step": null,
+  "reason": "Reward chain scrolled to Rewards Market; all elements shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-022/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed.",
+      "ok": true,
+      "screenshot": "TC-022/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Reward chain\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button \"Reward chain\"; page scrolled (scrollY ~13302) to the Rewards Market section.",
+      "ok": true,
+      "screenshot": "TC-022/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Rewards Market\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Rewards Market\" heading at top of viewport, plus \"Rewards Market\" title inside the banner.",
+      "ok": true,
+      "screenshot": "TC-022/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Reward chain\" shown in yellow in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Reward chain\" computed colour rgb(249, 223, 66) (yellow) with highlighted background; \"Store\" is now white rgb(255, 255, 255).",
+      "ok": true,
+      "screenshot": "TC-022/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a points counter \"0/500 points\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Counter pill \"0/500 points\" shown on the left.",
+      "ok": true,
+      "screenshot": "TC-022/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is \"Step 1 of 10\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Step 1 of 10\" shown on the right above a 10-segment progress bar.",
+      "ok": true,
+      "screenshot": "TC-022/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is a \"Limited time\" label with a countdown shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Ribbon \"Limited time\" with clock icon and countdown \"5d 05h\".",
+      "ok": true,
+      "screenshot": "TC-022/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Are reward cards with point costs shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "8 cards visible: 5000 (3 pts), 15 (5), 1 (10), 50 (30), 2 (50), 25000 (70), 1 (100), 20 (200).",
+      "ok": true,
+      "screenshot": "TC-022/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is a green \"Login to claim\" button shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green \"Login to claim\" button below the cards (background linear-gradient rgb(12,150,87) -> rgb(118,211,71)).",
+      "ok": true,
+      "screenshot": "TC-022/step10.png"
+    }
+  ],
+  "replay_gif": "TC-022/TC-022_replay.gif",
+  "steps_pdf": "TC-022/TC-022_steps.pdf",
+  "evidence_folder": "TC-022/"
+}

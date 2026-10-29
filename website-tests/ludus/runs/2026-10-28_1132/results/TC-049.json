@@ -1,0 +1,90 @@
+{
+  "id": "TC-049",
+  "title": "[LOGGED IN] Loyalty Shop shows items with point prices and the header loyalty balance",
+  "area": "Loyalty Shop",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:53:58",
+  "ended": "2026-10-28T12:55:55",
+  "duration_sec": 117,
+  "failed_step": null,
+  "reason": "Loyalty Shop shows 7 cards, each with a green point-price button using the same teal icon as the header balance (200) and an Available line; Unique Frame = 160",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; URL became https://site.ludus-game.com/store/; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-049/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no 'Login successful' popup was shown",
+      "ok": true,
+      "screenshot": "TC-049/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows green 'Player12580628' button (gradient rgb(12,150,87)->rgb(118,211,71)), balances 200 teal / 0 gold; no visible Login button",
+      "ok": true,
+      "screenshot": "TC-049/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button 'Loyalty shop'; page scrolled to the Loyalty Shop section",
+      "ok": true,
+      "screenshot": "TC-049/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"Loyalty Shop\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 banner 'Loyalty Shop' visible at the top of the viewport (DOM text 'Loyalty shop' with text-transform: capitalize)",
+      "ok": true,
+      "screenshot": "TC-049/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does every card show a green button with a point price and the same teal icon as the header loyalty balance?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "7 cards: Astral hero 1100, Astral Hero 550, Astral Echo 750, Magical Order 550, Unique Emote 550, Unique Avatar 300, Unique Frame 160. Every button has green gradient rgb(12,150,87)->rgb(118,211,71) and icon 9b2e6444...png, the same image as the header teal balance (200)",
+      "ok": true,
+      "screenshot": "TC-049/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is a \"Unique Frame\" card with the price \"160\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "'Unique Frame' card in the second row with button '160' (scrolled down 450px to show it)",
+      "ok": true,
+      "screenshot": "TC-049/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Does every card show an \"Available\" line (for example \"Available: 1/1\" or \"Available weekly: 1/1\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Astral hero 'Available weekly: 1/1', Astral Hero 'Available weekly: 2/2', Astral Echo 'Available weekly: 1/1', Magical Order 'Available weekly: 1/1', Unique Emote/Avatar/Frame 'Available: 1/1'",
+      "ok": true,
+      "screenshot": "TC-049/step08.png"
+    }
+  ],
+  "replay_gif": "TC-049/TC-049_replay.gif",
+  "steps_pdf": "TC-049/TC-049_steps.pdf",
+  "evidence_folder": "TC-049/"
+}

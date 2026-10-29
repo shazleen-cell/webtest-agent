@@ -1,0 +1,54 @@
+{
+  "id": "TC-025",
+  "title": "[LOGGED OUT] Loyalty Shop item names are not duplicated",
+  "area": "Loyalty Shop",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T12:13:29+08:00",
+  "ended": "2026-10-28T12:14:28+08:00",
+  "duration_sec": 59,
+  "failed_step": 4,
+  "reason": "Duplicate names ignoring case: \"Astral hero\" (2, 1100) and \"Astral Hero\" (1, 550)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-025/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed.",
+      "ok": true,
+      "screenshot": "TC-025/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the Loyalty Shop section; \"Loyalty shop\" highlighted yellow in header.",
+      "ok": true,
+      "screenshot": "TC-025/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are all Loyalty Shop card names different from each other, ignoring upper and lower case?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "12 cards: Astral hero (1100), Astral Hero (550), Astral Echo (750), Magical Order (550), Unique Emote (550), Unique Avatar (300), Unique Frame (160), Spell chest (650), Essence Bundle (180), Small pile of Golden Runes (240), Barrel of Runes (350), Handful of dice (160). Cards 1 and 2 are both \"astral hero\" ignoring case (amount 2 vs 1, different hero images).",
+      "ok": false,
+      "screenshot": "TC-025/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-025/TC-025_replay.gif",
+  "steps_pdf": "TC-025/TC-025_steps.pdf",
+  "evidence_folder": "TC-025/"
+}

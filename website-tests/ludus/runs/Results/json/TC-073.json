@@ -1,0 +1,55 @@
+{
+  "id": "TC-073",
+  "title": "[LOGGED OUT] Pinch zoom is allowed on phones",
+  "area": "Non-functional",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T14:51:10+08:00",
+  "ended": "2026-10-28T14:51:52+08:00",
+  "duration_sec": 42,
+  "failed_step": 4,
+  "reason": "Viewport meta contains maximum-scale=1, which blocks pinch zoom",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-073/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-073/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the content of the meta name=\"viewport\" tag with execute_script and write it in \"saw\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "1 viewport meta tag: content=\"width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no\"",
+      "ok": true,
+      "screenshot": "TC-073/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the viewport tag allow zoom (it does not contain \"maximum-scale=1\" or \"user-scalable=no\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Content contains \"maximum-scale=1\" (no user-scalable=no). maximum-scale=1 prevents pinch zoom on iOS/Android",
+      "ok": false,
+      "screenshot": "TC-073/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-073/TC-073_replay.gif",
+  "steps_pdf": "TC-073/TC-073_steps.pdf",
+  "evidence_folder": "TC-073/",
+  "run": "2026-10-28_1426"
+}

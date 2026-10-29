@@ -1,0 +1,73 @@
+{
+  "id": "TC-045",
+  "title": "[LOGGED IN] Home \"Clan reward\" opens a Clan reward section when logged in",
+  "area": "Clan reward",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T12:46:20",
+  "ended": "2026-10-28T12:47:55",
+  "duration_sec": 95,
+  "failed_step": 6,
+  "reason": "Header 'Clan reward' (href /store/) opened the top of the Store page; no Clan reward section anywhere on the page",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded at https://site.ludus-game.com/; cookie banner and 'Login successful' popup shown",
+      "ok": true,
+      "screenshot": "TC-045/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner, then 'Ok' on the 'Login successful' popup",
+      "ok": true,
+      "screenshot": "TC-045/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header button 'Player12580628' with green gradient rgb(12,150,87)->rgb(118,211,71); 0 visible 'Login' buttons",
+      "ok": true,
+      "screenshot": "TC-045/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Clan reward\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header link 'Clan reward' (href https://site.ludus-game.com/store/, target _self); navigated to https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-045/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 3 s; still at https://site.ludus-game.com/store/, scrollY 0, no #hash",
+      "ok": true,
+      "screenshot": "TC-045/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a section about the clan reward (with its rewards or a Claim button) visible on screen?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Screen shows the top of the Store page ('LUDUS - Official Webshop' and the 'Special offer' USD 54.00 banner). The Store page has no Clan reward section at all: headings are Special offers, Store, Free wares, Might Passes, Gold, Rewards Market, Loyalty Shop, FAQ; no text containing 'clan' found. The Store header menu also has no 'Clan reward' item.",
+      "ok": false,
+      "screenshot": "TC-045/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-045/TC-045_replay.gif",
+  "steps_pdf": "TC-045/TC-045_steps.pdf",
+  "evidence_folder": "TC-045/",
+  "run": "2026-10-28_1132"
+}

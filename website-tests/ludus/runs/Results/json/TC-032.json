@@ -1,0 +1,82 @@
+{
+  "id": "TC-032",
+  "title": "[LOGGED OUT] Gifts to friends section shows gift tickets",
+  "area": "Gifts",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:25:02+08:00",
+  "ended": "2026-10-28T12:26:05+08:00",
+  "duration_sec": 63,
+  "failed_step": null,
+  "reason": "Heading, ribbon and Tournament Diamond Ticket shown; all 4 first-row cards have Gift badge, Send to friends and USD price",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with the cookie banner at the bottom.",
+      "ok": true,
+      "screenshot": "TC-032/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner \"How we use cookies\" was shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-032/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the heading \"Gifts to friends\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled so the H2 \"Gifts to friends\" is near the top of the view, with the first row of gift cards below.",
+      "ok": true,
+      "screenshot": "TC-032/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Gifts to friends\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 \"Gifts to friends\" shown below the \"Log in to see more offers\" button.",
+      "ok": true,
+      "screenshot": "TC-032/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the ribbon text \"Buy Tickets as gifts for your friends and fellow Clan members!\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Pink ribbon under the heading reads exactly \"Buy Tickets as gifts for your friends and fellow Clan members!\".",
+      "ok": true,
+      "screenshot": "TC-032/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a \"Tournament Diamond Ticket\" card shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First card in the first row is \"Tournament Diamond Ticket\" (USD 21.60, was 23.99).",
+      "ok": true,
+      "screenshot": "TC-032/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does each card in the first row show a \"Gift\" badge, the text \"Send to friends\" and a price button that starts with \"USD\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First row (4 cards): Tournament Diamond Ticket USD 21.60, Tournament Golden Ticket USD 10.80, Clan War Golden Ticket USD 16.20, Clan War Diamond Ticket USD 32.40; each has the red \"Gift\" badge and \"Send to friends\" ribbon. 10 gift cards in total. Nothing clicked.",
+      "ok": true,
+      "screenshot": "TC-032/step07.png"
+    }
+  ],
+  "replay_gif": "TC-032/TC-032_replay.gif",
+  "steps_pdf": "TC-032/TC-032_steps.pdf",
+  "evidence_folder": "TC-032/",
+  "run": "2026-10-28_1132"
+}

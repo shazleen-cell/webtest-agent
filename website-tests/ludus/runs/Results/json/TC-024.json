@@ -1,0 +1,82 @@
+{
+  "id": "TC-024",
+  "title": "[LOGGED OUT] Store header \"Loyalty shop\" scrolls to the Loyalty Shop",
+  "area": "Loyalty Shop",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:11:28+08:00",
+  "ended": "2026-10-28T12:13:10+08:00",
+  "duration_sec": 102,
+  "failed_step": null,
+  "reason": "Loyalty shop scrolled to Loyalty Shop; header yellow; first-row cards complete with point prices",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-024/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed.",
+      "ok": true,
+      "screenshot": "TC-024/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button \"Loyalty shop\"; page scrolled to scrollY 13974.5 with the Loyalty Shop banner at the top. (Tester note: a read-only snapshot 'find' call later scrolled the page by itself; the view was restored to the same scrollY 13974.5 with JS before the step 4-7 screenshots.)",
+      "ok": true,
+      "screenshot": "TC-024/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Loyalty Shop\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading \"Loyalty Shop\" (h2, DOM text \"Loyalty shop\") on a pink ribbon at top of viewport (top 113px).",
+      "ok": true,
+      "screenshot": "TC-024/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Loyalty shop\" shown in yellow in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header \"Loyalty shop\" computed colour rgb(249, 223, 66) (yellow) with highlighted background; \"Reward chain\" and \"Store\" white.",
+      "ok": true,
+      "screenshot": "TC-024/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does every card in the first row show a name, an amount and an \"Available\" line (for example \"Available weekly: 1/1\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Astral hero / 2 / Available weekly: 1/1; Astral Hero / 1 / Available weekly: 2/2; Astral Echo / 1 / Available weekly: 1/1; Magical Order / 1 / Available weekly: 1/1.",
+      "ok": true,
+      "screenshot": "TC-024/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does every card in the first row have a green button with a point price (a number, not a USD price)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green buttons with teal loyalty-point icon: 1100, 550, 750, 550. No USD shown.",
+      "ok": true,
+      "screenshot": "TC-024/step07.png"
+    }
+  ],
+  "replay_gif": "TC-024/TC-024_replay.gif",
+  "steps_pdf": "TC-024/TC-024_steps.pdf",
+  "evidence_folder": "TC-024/",
+  "run": "2026-10-28_1132"
+}

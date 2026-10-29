@@ -1,0 +1,91 @@
+{
+  "id": "TC-017",
+  "title": "[LOGGED OUT] Login button opens and closes the login popup",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:00:06+08:00",
+  "ended": "2026-10-28T12:01:18+08:00",
+  "duration_sec": 72,
+  "failed_step": null,
+  "reason": "Login popup with QR code and red close button opens and closes as expected",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop', cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-017/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-017/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the green \"Login\" button in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Login' button; a modal opened over a dimmed page",
+      "ok": true,
+      "screenshot": "TC-017/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a popup with the title \"Log in to make purchases\" shown (the title may be in capital letters)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Modal heading h3 'Log in to make purchases' shown as 'LOG IN TO MAKE PURCHASES' (text-transform: uppercase)",
+      "ok": true,
+      "screenshot": "TC-017/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a QR code shown in the popup?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "A QR code is shown in the white area below the title",
+      "ok": true,
+      "screenshot": "TC-017/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a red close (x) button shown at the top right of the popup?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Red square button with white X at the popup's top right corner (button.ui-site-modal-window__close, x 883-918 within popup 520-920)",
+      "ok": true,
+      "screenshot": "TC-017/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the red close (x) button of the popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the red X button",
+      "ok": true,
+      "screenshot": "TC-017/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the \"Log in to make purchases\" popup gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Modal gone, page no longer dimmed; the heading element has height 0 (not visible)",
+      "ok": true,
+      "screenshot": "TC-017/step08.png"
+    }
+  ],
+  "replay_gif": "TC-017/TC-017_replay.gif",
+  "steps_pdf": "TC-017/TC-017_steps.pdf",
+  "evidence_folder": "TC-017/",
+  "run": "2026-10-28_1132"
+}

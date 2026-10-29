@@ -1,0 +1,72 @@
+{
+  "id": "TC-041",
+  "title": "[LOGGED IN] Login link shows the player name and both balances",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:39:11",
+  "ended": "2026-10-28T12:40:13",
+  "duration_sec": 62,
+  "failed_step": null,
+  "reason": "Logged in as Player12580628; URL cleaned to /store/; balances 200 (teal) and 0 (gold) shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop'; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-041/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no other popup shown",
+      "ok": true,
+      "screenshot": "TC-041/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header button 'Player12580628' with green gradient rgb(12,150,87)->rgb(118,211,71); 0 visible 'Login' buttons",
+      "ok": true,
+      "screenshot": "TC-041/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the page address now https://site.ludus-game.com/store/ (without \"?user-id=\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-041/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are two balances shown in the header next to the player button: a teal loyalty points balance and a gold store points balance?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal gem icon with '200' and gold chevron icon with '0' left of the Player12580628 button",
+      "ok": true,
+      "screenshot": "TC-041/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the teal loyalty points balance a number (for example \"200\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal balance text is '200'",
+      "ok": true,
+      "screenshot": "TC-041/step06.png"
+    }
+  ],
+  "replay_gif": "TC-041/TC-041_replay.gif",
+  "steps_pdf": "TC-041/TC-041_steps.pdf",
+  "evidence_folder": "TC-041/"
+}

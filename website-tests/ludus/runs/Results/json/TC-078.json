@@ -1,0 +1,73 @@
+{
+  "id": "TC-078",
+  "title": "[LOGGED OUT] Layout at 1280x800 laptop size",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:57:21+08:00",
+  "ended": "2026-10-28T14:58:40+08:00",
+  "duration_sec": 79,
+  "failed_step": null,
+  "reason": "No horizontal scroll at 1280px on Home and Store; all header items fully visible",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Use a window of 1280x800. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome 1280x800 (viewport innerWidth 1280, innerHeight 657); Home page loaded with title 'LUDUS - Merge Battle Arena PvP Web Shop' and the cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-078/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "'How we use cookies' banner was shown; clicked 'Dismiss' and it closed.",
+      "ok": true,
+      "screenshot": "TC-078/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the page free of horizontal scrolling (scrollWidth equals innerWidth)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement.scrollWidth 1280, body.scrollWidth 1280, innerWidth 1280, clientWidth 1280.",
+      "ok": true,
+      "screenshot": "TC-078/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are \"Home\", \"Store\", \"Reward chain\", \"Clan reward\", \"Loyalty shop\" and \"Login\" all fully visible in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All six visible in one header row, none clipped: Home x195-260, Store 292-346, Reward chain 378-529, Clan reward 561-696, Loyalty shop 728-868, Login button 1129-1200 (viewport 1280).",
+      "ok": true,
+      "screenshot": "TC-078/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Store'; navigated to https://site.ludus-game.com/store/ showing 'LUDUS - Official Webshop' and the Special offer card. Header on Store shows Home, Store, Reward chain, Loyalty shop, Login.",
+      "ok": true,
+      "screenshot": "TC-078/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the Store page free of horizontal scrolling?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "On /store/: documentElement.scrollWidth 1280, body.scrollWidth 1280, innerWidth 1280.",
+      "ok": true,
+      "screenshot": "TC-078/step06.png"
+    }
+  ],
+  "replay_gif": "TC-078/TC-078_replay.gif",
+  "steps_pdf": "TC-078/TC-078_steps.pdf",
+  "evidence_folder": "TC-078/",
+  "run": "2026-10-28_1426"
+}

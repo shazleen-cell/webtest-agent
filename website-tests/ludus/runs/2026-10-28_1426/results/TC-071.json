@@ -1,0 +1,63 @@
+{
+  "id": "TC-071",
+  "title": "[LOGGED OUT] Cookie banner can be closed with the keyboard only",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:46:14+08:00",
+  "ended": "2026-10-28T14:47:32+08:00",
+  "duration_sec": 78,
+  "failed_step": null,
+  "reason": "Dismiss reached with 3 Tab presses (X close, cookie policy, Dismiss); Enter closed the banner",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop'",
+      "ok": true,
+      "screenshot": "TC-071/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a \"How we use cookies\" banner shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner at the bottom with heading 'How we use cookies', 'cookie policy' link and blue 'Dismiss' button",
+      "ok": true,
+      "screenshot": "TC-071/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Press Tab until the \"Dismiss\" button has focus (at most 10 times). Does the \"Dismiss\" button get the focus?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab 1: banner close X button (gdpr-compact-close, no name); Tab 2: 'cookie policy' link; Tab 3: 'Dismiss' button focused (document.activeElement = BUTTON 'Dismiss', :focus-visible true; button turns lighter blue, no outline: outline 'none 3px', box-shadow none)",
+      "ok": true,
+      "screenshot": "TC-071/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Press Enter.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Pressed Enter on focused 'Dismiss'; button became disabled and banner closed",
+      "ok": true,
+      "screenshot": "TC-071/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'How we use cookies' no longer in the DOM; screenshot shows page without banner, 'Referral program' button visible",
+      "ok": true,
+      "screenshot": "TC-071/step05.png"
+    }
+  ],
+  "replay_gif": "TC-071/TC-071_replay.gif",
+  "steps_pdf": "TC-071/TC-071_steps.pdf",
+  "evidence_folder": "TC-071/"
+}

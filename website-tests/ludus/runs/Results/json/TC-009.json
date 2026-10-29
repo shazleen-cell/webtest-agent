@@ -1,0 +1,109 @@
+{
+  "id": "TC-009",
+  "title": "[LOGGED OUT] Footer links and buttons",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T11:45:24+08:00",
+  "ended": "2026-10-28T11:46:48+08:00",
+  "duration_sec": 84,
+  "failed_step": null,
+  "reason": "Footer logos, copyright, 3 link targets, Privacy settings and EN language button all as expected",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-009/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-009/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the bottom of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to bottom (scrollY 2899 of 3648); footer visible",
+      "ok": true,
+      "screenshot": "TC-009/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are the LUDUS logo and the \"TOP APP GAMES\" logo shown in the footer?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Footer shows the LUDUS logo and the \"TOP APP GAMES\" logo side by side (135x65 each), plus the game icon on the left",
+      "ok": true,
+      "screenshot": "TC-009/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a copyright line that ends with \"LUDUS\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"© 2026 LUDUS\"",
+      "ok": true,
+      "screenshot": "TC-009/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the \"Support\" link point to https://help.xsolla.com/ (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Support href=https://help.xsolla.com/, target=_blank",
+      "ok": true,
+      "screenshot": "TC-009/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the \"Powered by Xsolla Web Shop\" link point to an xsolla.com address (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href=https://xsolla.com/mobile-web-shop?utm_source=webshop&utm_medium=footer",
+      "ok": true,
+      "screenshot": "TC-009/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Does the \"Join Affiliate Program\" link point to an influencer.xsolla.com address (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href=https://influencer.xsolla.com/api/programs/show?merchant=463788&project=253824&utm_source=sitebuilder&...",
+      "ok": true,
+      "screenshot": "TC-009/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is a \"Privacy settings\" button shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "BUTTON \"Privacy settings\" shown at the end of the footer link row",
+      "ok": true,
+      "screenshot": "TC-009/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is a language button showing \"EN\" shown in the footer?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Blue language selector with globe icon showing \"EN\" and a down arrow, right side of footer (select value en-US)",
+      "ok": true,
+      "screenshot": "TC-009/step10.png"
+    }
+  ],
+  "replay_gif": "TC-009/TC-009_replay.gif",
+  "steps_pdf": "TC-009/TC-009_steps.pdf",
+  "evidence_folder": "TC-009/",
+  "run": "2026-10-28_1132"
+}

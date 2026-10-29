@@ -1,0 +1,90 @@
+{
+  "id": "TC-029",
+  "title": "[LOGGED OUT] Tab \"Gold\" shows the five gold packs with USD prices",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:19:27+08:00",
+  "ended": "2026-10-28T12:20:50+08:00",
+  "duration_sec": 83,
+  "failed_step": null,
+  "reason": "Gold heading and all 5 gold packs shown with green USD price buttons and struck-through old prices",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with Special offer banner and cookie banner",
+      "ok": true,
+      "screenshot": "TC-029/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-029/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Store'; page scrolled to Store heading and tab bar",
+      "ok": true,
+      "screenshot": "TC-029/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the \"Gold\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked tab 'Gold'; page scrolled to the Gold section",
+      "ok": true,
+      "screenshot": "TC-029/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"Gold\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H3 'Gold' centered near the top of the viewport (y=105px)",
+      "ok": true,
+      "screenshot": "TC-029/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are these cards shown: \"Small pile of gold\", \"Piggy bank of gold\", \"Carpetbag of gold\", \"Goblet of gold\", \"Strongbox of gold\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Cards: Small pile of gold (5000), Piggy bank of gold (25000), Carpetbag of gold (60000), Goblet of gold (140000) in row 1; Strongbox of gold below (350000)",
+      "ok": true,
+      "screenshot": "TC-029/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does each of these cards have a green button with a price that starts with \"USD\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green gradient buttons: USD 2.88, USD 10.71, USD 20.07, USD 38.70, USD 73.40 (not clicked)",
+      "ok": true,
+      "screenshot": "TC-029/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Does each of these price buttons also show a struck-through old price?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "line-through old prices: 3.20, 11.89, 22.30, 42.99, 81.55",
+      "ok": true,
+      "screenshot": "TC-029/step08.png"
+    }
+  ],
+  "replay_gif": "TC-029/TC-029_replay.gif",
+  "steps_pdf": "TC-029/TC-029_steps.pdf",
+  "evidence_folder": "TC-029/"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "TC-027",
+  "title": "[LOGGED OUT] Store tab bar fits in a 1440x900 window",
+  "area": "Store",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T12:16:49+08:00",
+  "ended": "2026-10-28T12:17:42+08:00",
+  "duration_sec": 53,
+  "failed_step": 4,
+  "reason": "\"Gift to friends\" tab is cut off at the right edge of the tab bar; only \"Gift\" is visible without scrolling the bar",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with Special offer banner and cookie banner",
+      "ok": true,
+      "screenshot": "TC-027/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-027/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Store'; page scrolled to Store heading and tab bar",
+      "ok": true,
+      "screenshot": "TC-027/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the last tab, \"Gift to friends\", fully visible without scrolling the tab bar?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Tab bar (.new-store-tabs__wrapper, overflow-x auto) is 1404px wide (x 18-1422) but its content is 1501px (scrollLeft 0). The 'Gift to friends' tab spans x 1372-1519, so ~97px is hidden; on screen only 'Gift' is visible at the right edge",
+      "ok": false,
+      "screenshot": "TC-027/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-027/TC-027_replay.gif",
+  "steps_pdf": "TC-027/TC-027_steps.pdf",
+  "evidence_folder": "TC-027/",
+  "run": "2026-10-28_1132"
+}

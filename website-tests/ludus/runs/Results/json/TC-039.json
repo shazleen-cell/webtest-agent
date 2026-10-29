@@ -1,0 +1,55 @@
+{
+  "id": "TC-039",
+  "title": "[LOGGED OUT] Mobile \"Add It to Home Screen\" banner text has no spelling mistake",
+  "area": "Mobile banner",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T12:36:20+08:00",
+  "ended": "2026-10-28T12:36:53+08:00",
+  "duration_sec": 33,
+  "failed_step": 3,
+  "reason": "Banner second line reads \"To got a quicker access !\" (grammar error). Mobile via Chrome mobileEmulation fallback (390x844, DPR 3, iPhone UA), not emulate_device.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser on a phone screen (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 390px wide; cookie banner and \"Add It to Home Screen\" banner visible.",
+      "ok": true,
+      "screenshot": "TC-039/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed.",
+      "ok": true,
+      "screenshot": "TC-039/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the second line of the \"Add It to Home Screen\" banner read correct English (for example \"To get quicker access!\") rather than \"To got a quicker access !\"?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Second line text in the DOM is exactly \"To got a quicker access !\" (wrong verb \"got\", extra article \"a\", space before \"!\").",
+      "ok": false,
+      "screenshot": "TC-039/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the X (close) button of the banner. Do not click \"Claim\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the X (\"Close pwa banner\"); banner closed. Claim not clicked.",
+      "ok": true,
+      "screenshot": "TC-039/step04.png"
+    }
+  ],
+  "replay_gif": "TC-039/TC-039_replay.gif",
+  "steps_pdf": "TC-039/TC-039_steps.pdf",
+  "evidence_folder": "TC-039/",
+  "run": "2026-10-28_1132"
+}

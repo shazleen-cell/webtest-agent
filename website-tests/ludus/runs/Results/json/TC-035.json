@@ -1,0 +1,64 @@
+{
+  "id": "TC-035",
+  "title": "[LOGGED OUT] Unknown page address goes back to the Home page",
+  "area": "Error page",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:30:20+08:00",
+  "ended": "2026-10-28T12:31:05+08:00",
+  "duration_sec": 45,
+  "failed_step": null,
+  "reason": "Unknown URL redirected to https://site.ludus-game.com/ with full Home header and Special offer card",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/this-page-does-not-exist in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "The 404 response (\"Page Not Found\") was redirected; the Home page loaded at https://site.ludus-game.com/ with the cookie banner.",
+      "ok": true,
+      "screenshot": "TC-035/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner \"How we use cookies\" was shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-035/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the page address now https://site.ludus-game.com/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = \"https://site.ludus-game.com/\"; title \"LUDUS - Merge Battle Arena PvP Web Shop\".",
+      "ok": true,
+      "screenshot": "TC-035/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the header menu show \"Home\", \"Store\", \"Reward chain\", \"Clan reward\", \"Loyalty shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header links left to right: Home (x=195, yellow/active), Store (292), Reward chain (378), Clan reward (561), Loyalty shop (728), then Login.",
+      "ok": true,
+      "screenshot": "TC-035/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a \"Special offer\" card shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card with \"Special offer\" ribbon: \"URUK BUNDLE\", \"You will get:\" 6 / 2000 / 100000, \"Available: 5/5\", button \"Check our store\".",
+      "ok": true,
+      "screenshot": "TC-035/step05.png"
+    }
+  ],
+  "replay_gif": "TC-035/TC-035_replay.gif",
+  "steps_pdf": "TC-035/TC-035_steps.pdf",
+  "evidence_folder": "TC-035/",
+  "run": "2026-10-28_1132"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "TC-028",
+  "title": "[LOGGED OUT] Free wares show Free emeralds and Free Gold with Claim buttons",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:17:58+08:00",
+  "ended": "2026-10-28T12:19:09+08:00",
+  "duration_sec": 71,
+  "failed_step": null,
+  "reason": "Free emeralds 100 (Available weekly: 1/1) and Free Gold 500 (Available daily: 1/1) both with green Claim buttons",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with Special offer banner and cookie banner",
+      "ok": true,
+      "screenshot": "TC-028/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-028/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Store'; page scrolled to the Store section with Free wares tab active",
+      "ok": true,
+      "screenshot": "TC-028/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a \"Free emeralds\" card with the amount \"100\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card 'Free emeralds' with amount '100' and emerald image",
+      "ok": true,
+      "screenshot": "TC-028/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the \"Free emeralds\" card show \"Available weekly:\" and a green \"Claim\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card text: 'Available weekly: 1/1' and enabled 'Claim' button with green gradient rgb(12,150,87) -> rgb(118,211,71) (button partly below the fold; not clicked)",
+      "ok": true,
+      "screenshot": "TC-028/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a \"Free Gold\" card with the amount \"500\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card 'Free Gold' with amount '500' and gold coins image",
+      "ok": true,
+      "screenshot": "TC-028/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the \"Free Gold\" card show \"Available daily:\" and a green \"Claim\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card text: 'Available daily: 1/1' and enabled 'Claim' button with green gradient rgb(12,150,87) -> rgb(118,211,71) (not clicked)",
+      "ok": true,
+      "screenshot": "TC-028/step07.png"
+    }
+  ],
+  "replay_gif": "TC-028/TC-028_replay.gif",
+  "steps_pdf": "TC-028/TC-028_steps.pdf",
+  "evidence_folder": "TC-028/",
+  "run": "2026-10-28_1132"
+}

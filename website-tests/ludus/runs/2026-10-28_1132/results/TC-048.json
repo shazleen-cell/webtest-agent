@@ -1,0 +1,90 @@
+{
+  "id": "TC-048",
+  "title": "[LOGGED IN] Rewards Market shows the player's store points",
+  "area": "Rewards Market",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:52:18",
+  "ended": "2026-10-28T12:53:39",
+  "duration_sec": 81,
+  "failed_step": null,
+  "reason": "Rewards Market shows '0/500 points' and 'Step 1 of 10'; no 'Login to claim' button",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; URL became https://site.ludus-game.com/store/; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-048/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no 'Login successful' popup was shown",
+      "ok": true,
+      "screenshot": "TC-048/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows green 'Player12580628' button (gradient rgb(12,150,87)->rgb(118,211,71)), balances 200 teal / 0 gold; no visible Login button",
+      "ok": true,
+      "screenshot": "TC-048/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Reward chain\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button 'Reward chain'; page scrolled to the Rewards Market section",
+      "ok": true,
+      "screenshot": "TC-048/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"Rewards Market\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Section heading 'Rewards Market' at the top of the viewport, plus 'Rewards Market' title inside the banner",
+      "ok": true,
+      "screenshot": "TC-048/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a points counter in the form \"<number>/500 points\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Counter '0/500 points' shown with the gold store-points icon",
+      "ok": true,
+      "screenshot": "TC-048/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is \"Step 1 of 10\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "'Step 1 of 10' shown on the right above the 10-segment progress bar",
+      "ok": true,
+      "screenshot": "TC-048/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the \"Login to claim\" button NOT shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No button or link with 'Login to claim' anywhere on the page; reward cards show only point thresholds (0/3, 5, 10, 30, 50, 70, 100, 200)",
+      "ok": true,
+      "screenshot": "TC-048/step08.png"
+    }
+  ],
+  "replay_gif": "TC-048/TC-048_replay.gif",
+  "steps_pdf": "TC-048/TC-048_steps.pdf",
+  "evidence_folder": "TC-048/"
+}

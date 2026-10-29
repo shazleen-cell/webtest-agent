@@ -1,0 +1,73 @@
+{
+  "id": "TC-014",
+  "title": "[LOGGED OUT] Header \"Reward chain\" on Home opens the Rewards Market section",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T11:54:44+08:00",
+  "ended": "2026-10-28T11:56:04+08:00",
+  "duration_sec": 80,
+  "failed_step": 6,
+  "reason": "Home \"Reward chain\" link (href /store/, no anchor) opens Store at the top; \"Rewards Market\" heading is ~13,500px down, not on screen",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-014/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-014/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Reward chain\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header link \"Reward chain\"; navigated to https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-014/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 3 s; page still at scrollY 0, no hash in URL",
+      "ok": true,
+      "screenshot": "TC-014/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the page address https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-014/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the heading \"Rewards Market\" visible on screen without scrolling?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Screen shows top of Store (\"LUDUS・Official Webshop\", Uruk Bundle, \"Special offers\"). H2 \"Rewards Market\" (section #rewards-697b33c4d9f6270a0e7c0d3f) is at top=13488px with viewport height 749px, scrollY 0. The Home page header link \"Reward chain\" has href https://site.ludus-game.com/store/ (no section anchor), same as Store, Clan reward and Loyalty shop",
+      "ok": false,
+      "screenshot": "TC-014/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-014/TC-014_replay.gif",
+  "steps_pdf": "TC-014/TC-014_steps.pdf",
+  "evidence_folder": "TC-014/",
+  "run": "2026-10-28_1132"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "TC-072",
+  "title": "[LOGGED OUT] Keyboard focus is visible on header menu items",
+  "area": "Non-functional",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T14:47:48+08:00",
+  "ended": "2026-10-28T14:50:22+08:00",
+  "duration_sec": 154,
+  "failed_step": 4,
+  "reason": "10 Tabs never reached 'Reward chain': focus start point was the clicked spot below the header, so Tab went to store price buttons. Probably a test-design issue (start point); the steps need review",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-072/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Dismiss'; banner closed",
+      "ok": true,
+      "screenshot": "TC-072/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click on an empty part of the page background, then scroll to the top.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the non-interactive subtitle text 'Enjoy lower prices...' on the brick background below the header (no change); scrolled to top (scrollY 0); activeElement BODY",
+      "ok": true,
+      "screenshot": "TC-072/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Press Tab until \"Reward chain\" in the header has focus (at most 10 times). Does \"Reward chain\" get the focus?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Focus order after 10 Tabs: 1 'USD 54.00 59.99' (special offer), 2 'USD 5.40 5.99', 3 'USD 54.00 59.99', 4 'USD 108.00 119.99', 5 carousel next arrow (no name), 6 'USD 21.60 23.99', 7 'USD 7.65 8.49', 8 'USD 32.40 35.99', 9 'USD 10.80 11.99', 10 carousel next arrow; page scrolled to y=1000. Tab navigation started after the clicked point (below the header), so the header 'Reward chain' button was never focused. Nothing was activated.",
+      "ok": false,
+      "screenshot": "TC-072/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the focused \"Reward chain\" item show a visible focus indicator (an outline, underline, box shadow or other style that is not shown when it has no focus)? Check its computed outline and box-shadow with execute_script and compare with the screenshot.",
+      "expected": "",
+      "answer": "Not done",
+      "saw": "Could not check: 'Reward chain' never had keyboard focus. Unfocused style: outline 'rgb(255,255,255) none 3px', box-shadow none, text-decoration none. (In TC-071 the focused Dismiss button also had outline none / box-shadow none, only a lighter background.)",
+      "ok": false,
+      "screenshot": "TC-072/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-072/TC-072_replay.gif",
+  "steps_pdf": "TC-072/TC-072_steps.pdf",
+  "evidence_folder": "TC-072/"
+}

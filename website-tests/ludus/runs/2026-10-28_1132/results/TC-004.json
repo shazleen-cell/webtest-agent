@@ -1,0 +1,90 @@
+{
+  "id": "TC-004",
+  "title": "[LOGGED OUT] \"Check our store\" on the Special offer card opens the Store page",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T11:37:16+08:00",
+  "ended": "2026-10-28T11:38:32+08:00",
+  "duration_sec": 76,
+  "failed_step": null,
+  "reason": "Special offer card complete; Check our store opened /store with heading LUDUS・Official Webshop",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://site.ludus-game.com/ with the cookie banner.",
+      "ok": true,
+      "screenshot": "TC-004/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-004/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a card with the ribbon \"Special offer\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card with red ribbon \"Special offer\" (URUK BUNDLE, 230% badge).",
+      "ok": true,
+      "screenshot": "TC-004/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the card show \"You will get:\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"You will get:\" with items 6 (hero card), 2000 (emeralds), 100000 (gold); \"Available: 5/5\".",
+      "ok": true,
+      "screenshot": "TC-004/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a green \"Check our store\" button shown on the card?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green gradient button \"Check our store\" (href https://site.ludus-game.com/store).",
+      "ok": true,
+      "screenshot": "TC-004/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Check our store\" on the Special offer card.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked; navigated to the Store page.",
+      "ok": true,
+      "screenshot": "TC-004/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the page address https://site.ludus-game.com/store or https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-004/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the heading \"LUDUS・Official Webshop\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First heading on the page: \"LUDUS・Official Webshop\" (subtitle \"Enjoy lower prices - buy game resources and passes much cheaper!\").",
+      "ok": true,
+      "screenshot": "TC-004/step08.png"
+    }
+  ],
+  "replay_gif": "TC-004/TC-004_replay.gif",
+  "steps_pdf": "TC-004/TC-004_steps.pdf",
+  "evidence_folder": "TC-004/"
+}

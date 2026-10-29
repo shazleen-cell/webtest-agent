@@ -1,0 +1,73 @@
+{
+  "id": "TC-066",
+  "title": "[LOGGED OUT] Page language is set for English and French",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:38:12+08:00",
+  "ended": "2026-10-28T14:39:34+08:00",
+  "duration_sec": 82,
+  "failed_step": null,
+  "reason": "html lang=\"en\" on / and lang=\"fr\" on /fr-FR; switched back to English via footer selector (ends on / with lang=en)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at https://site.ludus-game.com/, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-066/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "\"How we use cookies\" banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-066/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the lang attribute of the html element \"en\" (or starts with \"en\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement lang=\"en\" on https://site.ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-066/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Open https://site.ludus-game.com/fr-FR in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "https://site.ludus-game.com/fr-FR loaded in French: header Accueil, Boutique, Chaine de recompenses, Recompense de clan, Boutique de fidelite, Connexion",
+      "ok": true,
+      "screenshot": "TC-066/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the lang attribute of the html element \"fr\" (or starts with \"fr\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement lang=\"fr\" on https://site.ludus-game.com/fr-FR",
+      "ok": true,
+      "screenshot": "TC-066/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Scroll down to the bottom of the page and choose \"English\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to bottom (scrollY 2967 of 3716); footer language select showed \"Francais\"; selected \"English\" (en-US). Page went to https://site.ludus-game.com/ with lang=\"en\" and header Home, Store, Reward chain, Clan reward, Loyalty shop, Login",
+      "ok": true,
+      "screenshot": "TC-066/step06.png"
+    }
+  ],
+  "replay_gif": "TC-066/TC-066_replay.gif",
+  "steps_pdf": "TC-066/TC-066_steps.pdf",
+  "evidence_folder": "TC-066/",
+  "run": "2026-10-28_1426"
+}

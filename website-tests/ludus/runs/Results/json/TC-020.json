@@ -1,0 +1,73 @@
+{
+  "id": "TC-020",
+  "title": "[LOGGED OUT] Store page loads with heading and header menu",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:05:03+08:00",
+  "ended": "2026-10-28T12:05:43+08:00",
+  "duration_sec": 40,
+  "failed_step": null,
+  "reason": "Store page shows expected tab title, heading, subtitle and header menu",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store/, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-020/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-020/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the tab title \"LUDUS - Merge Battle Arena PvP Web Shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.title = 'LUDUS - Merge Battle Arena PvP Web Shop'",
+      "ok": true,
+      "screenshot": "TC-020/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"LUDUS・Official Webshop\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First heading 'LUDUS・Official Webshop' shown at the top (LUDUS in yellow)",
+      "ok": true,
+      "screenshot": "TC-020/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the text \"Enjoy lower prices - buy game resources and passes much cheaper!\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Subtitle 'Enjoy lower prices - buy game resources and passes much cheaper!' shown under the heading ('much' highlighted in yellow)",
+      "ok": true,
+      "screenshot": "TC-020/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the header show \"Home\", \"Store\", \"Reward chain\", \"Loyalty shop\" and a green \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: logo, Home, Store (active, yellow), Reward chain, Loyalty shop, and green 'Login' button at the right",
+      "ok": true,
+      "screenshot": "TC-020/step06.png"
+    }
+  ],
+  "replay_gif": "TC-020/TC-020_replay.gif",
+  "steps_pdf": "TC-020/TC-020_steps.pdf",
+  "evidence_folder": "TC-020/",
+  "run": "2026-10-28_1132"
+}

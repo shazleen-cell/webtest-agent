@@ -1,0 +1,73 @@
+{
+  "id": "TC-023",
+  "title": "[LOGGED OUT] Rewards Market reward cards can be scrolled with the arrows",
+  "area": "Rewards Market",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-28T12:09:41+08:00",
+  "ended": "2026-10-28T12:11:08+08:00",
+  "duration_sec": 87,
+  "failed_step": null,
+  "reason": "Next arrow shown; click moved carousel one card (new 5000 / 350 card appeared)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-023/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed.",
+      "ok": true,
+      "screenshot": "TC-023/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Reward chain\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the Rewards Market section; \"Reward chain\" highlighted yellow.",
+      "ok": true,
+      "screenshot": "TC-023/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a next arrow (>) shown under the reward cards?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Under the cards: '<' (disabled, class swiper-button-disabled), 4 pagination dots (first active), '>' enabled.",
+      "ok": true,
+      "screenshot": "TC-023/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the next arrow (>) under the reward cards.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked '>' (swiper-button-next); carousel moved.",
+      "ok": true,
+      "screenshot": "TC-023/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are different reward cards shown now?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Before: 5000(3), 15(5), 1(10), 50(30), 2(50), 25000(70), 1(100), 20(200). After: 15(5), 1(10), 50(30), 2(50), 25000(70), 1(100), 20(200), 5000 emeralds(350). First card gone, new card added; pagination moved to dot 2; '<' now enabled.",
+      "ok": true,
+      "screenshot": "TC-023/step06.png"
+    }
+  ],
+  "replay_gif": "TC-023/TC-023_replay.gif",
+  "steps_pdf": "TC-023/TC-023_steps.pdf",
+  "evidence_folder": "TC-023/",
+  "run": "2026-10-28_1132"
+}

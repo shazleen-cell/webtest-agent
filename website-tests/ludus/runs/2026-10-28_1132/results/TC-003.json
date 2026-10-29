@@ -1,0 +1,81 @@
+{
+  "id": "TC-003",
+  "title": "[LOGGED OUT] Hero download badges link to the right stores",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T11:36:11+08:00",
+  "ended": "2026-10-28T11:36:54+08:00",
+  "duration_sec": 43,
+  "failed_step": null,
+  "reason": "All three hero badges shown with correct hrefs and target _blank",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://site.ludus-game.com/ with the cookie banner.",
+      "ok": true,
+      "screenshot": "TC-003/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-003/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are three badges shown under the big LUDUS logo: \"App Store\", \"Google Play\" and \"Web-Version\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Under the LUDUS logo, left to right: \"Download on the App Store\", \"GET IT ON Google Play\", \"GET IT ON Web-Version\".",
+      "ok": true,
+      "screenshot": "TC-003/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the \"App Store\" badge link to https://apps.apple.com/ae/app/ludus-strategy-card-rpg-battle/id6446642912 (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href = https://apps.apple.com/ae/app/ludus-strategy-card-rpg-battle/id6446642912",
+      "ok": true,
+      "screenshot": "TC-003/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the \"Google Play\" badge link to a play.google.com address that contains \"com.studion.mergearena\" (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href = https://play.google.com/store/apps/details?id=com.studion.mergearena&hl=en&pli=1",
+      "ok": true,
+      "screenshot": "TC-003/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the \"Web-Version\" badge link to https://ludus-game.com/game (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href = https://ludus-game.com/game",
+      "ok": true,
+      "screenshot": "TC-003/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Do all three badges open in a new tab (target _blank)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All three hero badges have target=\"_blank\" and rel=\"noopener noreferrer\".",
+      "ok": true,
+      "screenshot": "TC-003/step07.png"
+    }
+  ],
+  "replay_gif": "TC-003/TC-003_replay.gif",
+  "steps_pdf": "TC-003/TC-003_steps.pdf",
+  "evidence_folder": "TC-003/"
+}

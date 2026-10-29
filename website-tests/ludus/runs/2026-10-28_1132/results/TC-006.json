@@ -1,0 +1,108 @@
+{
+  "id": "TC-006",
+  "title": "[LOGGED OUT] \"Latest news\" and \"About the game\" sections are shown",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T11:40:58+08:00",
+  "ended": "2026-10-28T11:42:14+08:00",
+  "duration_sec": 76,
+  "failed_step": null,
+  "reason": "Both sections shown; next arrow moved gallery from slide 1/5 (video) to 2/5 (image)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title \"LUDUS - Merge Battle Arena PvP Web Shop\"; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-006/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-006/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Latest news\" heading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to H2 \"Latest news\"",
+      "ok": true,
+      "screenshot": "TC-006/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Latest news\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 \"Latest news\" on a pink ribbon banner",
+      "ok": true,
+      "screenshot": "TC-006/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is at least one news card with a picture, a title and a date shown under it?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "One news card: picture (board game island), date \"October 15\", title \"v1.38 is live!\"",
+      "ok": true,
+      "screenshot": "TC-006/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Scroll down to the \"About the game\" heading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to H2 \"About the game\"; YouTube video slide below it",
+      "ok": true,
+      "screenshot": "TC-006/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the heading \"About the game\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 \"About the game\" on a pink ribbon banner",
+      "ok": true,
+      "screenshot": "TC-006/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Are a previous arrow and a next arrow shown next to the \"About the game\" slides?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Below the slides: \"<\" (custom-swiper-controls__prev), 5 dots, \">\" (custom-swiper-controls__next)",
+      "ok": true,
+      "screenshot": "TC-006/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Click the next arrow of the \"About the game\" slides. Do not play the video.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the \">\" arrow; video was not played",
+      "ok": true,
+      "screenshot": "TC-006/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is a different slide shown now?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Active slide changed from 1/5 (YouTube video) to \"2 / 5\" (gameplay image with raccoon king); second dot active",
+      "ok": true,
+      "screenshot": "TC-006/step10.png"
+    }
+  ],
+  "replay_gif": "TC-006/TC-006_replay.gif",
+  "steps_pdf": "TC-006/TC-006_steps.pdf",
+  "evidence_folder": "TC-006/"
+}

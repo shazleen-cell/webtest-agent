@@ -1,0 +1,90 @@
+{
+  "id": "TC-057",
+  "title": "[LOGGED IN] Logout from the phone burger menu",
+  "area": "Login",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T13:05:18+08:00",
+  "ended": "2026-10-28T13:06:45+08:00",
+  "duration_sec": 87,
+  "failed_step": null,
+  "reason": "Logout from burger menu works: header now has green Login, balances gone. Note: menu stays open after Logout and covers the header (menu item changes to 'Login'). Mobile via Chrome mobileEmulation 390x844 fallback",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser on a phone screen (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at 390px width (Chrome mobileEmulation fallback); cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-057/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup; 'Add It to Home Screen' banner appeared (handled in step 4)",
+      "ok": true,
+      "screenshot": "TC-057/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green player button (its text may be cut to \"Play…\") and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green 'Play…' (Player12580628) button next to teal 200 and gold 0; 0 visible Login buttons",
+      "ok": true,
+      "screenshot": "TC-057/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, click its X (close) button. Do not click \"Claim\" on that banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the X ('Close pwa banner'); banner closed; Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-057/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the green burger button at the top left.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu opened: 200, 0, Play…, Home, Store, Reward chain, Loyalty shop, Logout",
+      "ok": true,
+      "screenshot": "TC-057/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Logout\" in the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Logout; no confirmation; menu stayed open, balances and player button disappeared from it and the last item changed to 'Login'",
+      "ok": true,
+      "screenshot": "TC-057/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is a green \"Login\" button shown in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header now contains a green 'Login' button (x=316, gradient rgb(12,150,87)->rgb(118,211,71)) in place of the player button; on screen it is covered by the burger menu, which stays open after Logout",
+      "ok": true,
+      "screenshot": "TC-057/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Are the two balances gone from the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header text outside the menu is only Home, Store, Reward chain, Loyalty shop, Login; teal 200 and gold 0 gone (also gone from the menu)",
+      "ok": true,
+      "screenshot": "TC-057/step08.png"
+    }
+  ],
+  "replay_gif": "TC-057/TC-057_replay.gif",
+  "steps_pdf": "TC-057/TC-057_steps.pdf",
+  "evidence_folder": "TC-057/"
+}

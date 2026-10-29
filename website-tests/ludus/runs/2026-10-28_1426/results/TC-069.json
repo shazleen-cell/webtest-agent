@@ -1,0 +1,54 @@
+{
+  "id": "TC-069",
+  "title": "[LOGGED OUT] Icon-only links on Home have an accessible name",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T14:43:03+08:00",
+  "ended": "2026-10-28T14:43:57+08:00",
+  "duration_sec": 54,
+  "failed_step": 4,
+  "reason": "14 of 29 links have no accessible name: LUDUS logo (img without alt), App Store/Google Play/Web-Version badges and all 6 social icons (empty <a> with CSS background image)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop'; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-069/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Dismiss'; banner closed",
+      "ok": true,
+      "screenshot": "TC-069/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read all links (a elements) on the page with execute_script and find the ones with no accessible name (an accessible name means visible text, aria-label, title, or an img inside with a non-empty alt). Write their href values in \"saw\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "29 a elements, 14 without accessible name: https://site.ludus-game.com/ (header logo, x2: desktop + mobile header, img has no alt); https://apps.apple.com/ae/app/ludus-strategy-card-rpg-battle/id6446642912 (x2); https://play.google.com/store/apps/details?id=com.studion.mergearena&hl=en&pli=1 (x2); https://ludus-game.com/game; https://ludus-game.com/; https://www.youtube.com/@playludus; https://twitter.com/playludus; https://www.tiktok.com/@playludus; https://discord.gg/5qFQGUXQTD; https://www.instagram.com/play.ludus.game; https://www.facebook.com/play.ludus. Badges and social links are empty <a class='ui-site-calltoaction ...'></a> with only a CSS background-image, no text/aria-label/title.",
+      "ok": true,
+      "screenshot": "TC-069/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Do the LUDUS logo link, the App Store / Google Play / Web-Version badges and the 6 social icon links all have an accessible name?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "None of them has an accessible name: logo link contains <img> with no alt attribute; App Store, Google Play and Web-Version badges and the YouTube, X/Twitter, TikTok, Discord, Instagram, Facebook icons are empty links with no text, aria-label or title",
+      "ok": false,
+      "screenshot": "TC-069/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-069/TC-069_replay.gif",
+  "steps_pdf": "TC-069/TC-069_steps.pdf",
+  "evidence_folder": "TC-069/"
+}

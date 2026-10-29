@@ -1,0 +1,81 @@
+{
+  "id": "TC-007",
+  "title": "[LOGGED OUT] \"Download it today\" section shows the three store badges",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T11:42:41+08:00",
+  "ended": "2026-10-28T11:43:36+08:00",
+  "duration_sec": 55,
+  "failed_step": null,
+  "reason": "Heading and 3 badges shown; Google Play and App Store hrefs contain expected IDs",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-007/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-007/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the heading \"Don’t have the game? Download it today!\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the H2 heading",
+      "ok": true,
+      "screenshot": "TC-007/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Don’t have the game? Download it today!\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 \"Don’t have the game? Download it today!\" shown",
+      "ok": true,
+      "screenshot": "TC-007/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are three badges shown in this section: \"Google Play\", \"App Store\" and \"Web-Version\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Three badges in a row: \"GET IT ON Google Play\", \"Download on the App Store\", \"GET IT ON Web-Version\" (each 137x48 link)",
+      "ok": true,
+      "screenshot": "TC-007/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the \"Google Play\" badge in this section link to a play.google.com address that contains \"com.studion.mergearena\" (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href=https://play.google.com/store/apps/details?id=com.studion.mergearena&hl=en&pli=1, target=_blank",
+      "ok": true,
+      "screenshot": "TC-007/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the \"App Store\" badge in this section link to an apps.apple.com address that contains \"id6446642912\" (read the link, do not open it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href=https://apps.apple.com/ae/app/ludus-strategy-card-rpg-battle/id6446642912, target=_blank (Web-Version badge links to https://ludus-game.com/)",
+      "ok": true,
+      "screenshot": "TC-007/step07.png"
+    }
+  ],
+  "replay_gif": "TC-007/TC-007_replay.gif",
+  "steps_pdf": "TC-007/TC-007_steps.pdf",
+  "evidence_folder": "TC-007/"
+}

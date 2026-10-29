@@ -1,0 +1,82 @@
+{
+  "id": "TC-001",
+  "title": "[LOGGED OUT] Home page loads with title and header menu",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T11:33:07+08:00",
+  "ended": "2026-10-28T11:34:05+08:00",
+  "duration_sec": 58,
+  "failed_step": null,
+  "reason": "Title, logo, menu order, green Login and yellow Home all as expected",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://site.ludus-game.com/ with the cookie banner at the bottom.",
+      "ok": true,
+      "screenshot": "TC-001/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner \"How we use cookies\" was shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-001/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the tab title \"LUDUS - Merge Battle Arena PvP Web Shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.title = \"LUDUS - Merge Battle Arena PvP Web Shop\".",
+      "ok": true,
+      "screenshot": "TC-001/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the header show the LUDUS logo at the left?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "LUDUS logo image link at x=80 (leftmost header item), links to https://site.ludus-game.com/.",
+      "ok": true,
+      "screenshot": "TC-001/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the header menu show, in this order: \"Home\", \"Store\", \"Reward chain\", \"Clan reward\", \"Loyalty shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header links left to right: Home (x=195), Store (292), Reward chain (378), Clan reward (561), Loyalty shop (728).",
+      "ok": true,
+      "screenshot": "TC-001/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a green \"Login\" button shown at the right of the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green \"Login\" button at the right of the header (x=1282 of 1440).",
+      "ok": true,
+      "screenshot": "TC-001/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is \"Home\" shown in yellow as the current page?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Home\" colour rgb(249, 223, 66) (yellow); other menu items rgb(255, 255, 255) (white).",
+      "ok": true,
+      "screenshot": "TC-001/step07.png"
+    }
+  ],
+  "replay_gif": "TC-001/TC-001_replay.gif",
+  "steps_pdf": "TC-001/TC-001_steps.pdf",
+  "evidence_folder": "TC-001/",
+  "run": "2026-10-28_1132"
+}

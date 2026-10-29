@@ -1,0 +1,127 @@
+{
+  "id": "TC-050",
+  "title": "[LOGGED IN] Loyalty Shop shows a \"not enough points\" message for an item that costs too much",
+  "area": "Loyalty Shop",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:56:20",
+  "ended": "2026-10-28T12:58:31",
+  "duration_sec": 131,
+  "failed_step": null,
+  "reason": "Clicking 1100 on Astral hero with balance 200 showed 'Not enough loyalty points. Earn more by making purchases.' (server POST returned 422); balance stayed 200, card still 1/1",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; URL became https://site.ludus-game.com/store/; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-050/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no 'Login successful' popup was shown",
+      "ok": true,
+      "screenshot": "TC-050/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows green 'Player12580628' button (gradient rgb(12,150,87)->rgb(118,211,71)), balances 200 teal / 0 gold; no visible Login button",
+      "ok": true,
+      "screenshot": "TC-050/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button 'Loyalty shop'; page scrolled to the Loyalty Shop section",
+      "ok": true,
+      "screenshot": "TC-050/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the teal loyalty points balance in the header lower than 1100? (precondition)",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal loyalty balance in header = 200, which is lower than 1100",
+      "ok": true,
+      "screenshot": "TC-050/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Write down the teal loyalty points balance shown in the header. Is it a number?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal loyalty balance = 200 (numeric)",
+      "ok": true,
+      "screenshot": "TC-050/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the \"Astral hero\" card show \"Available weekly: 1/1\" and a \"1100\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Astral hero card (x2 hero card): 'Available weekly: 1/1' and green button '1100' with teal loyalty icon",
+      "ok": true,
+      "screenshot": "TC-050/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the \"1100\" button on the \"Astral hero\" card. If a confirmation popup is shown, do not confirm: only read it.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked '1100' once. No confirmation popup appeared; the site sent POST .../payment/item/LoyaltyShopSlotVolkov/loyalty_point/... which returned 422, and an error toast appeared at the top",
+      "ok": true,
+      "screenshot": "TC-050/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is a message shown saying there are not enough points (or the purchase is not possible)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Toast at top of page: 'Not enough loyalty points. Earn more by making purchases.' with a red ! icon and a Close (x) button",
+      "ok": true,
+      "screenshot": "TC-050/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Close the message or popup with its close (x) button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the toast's 'Close' (x) button; toast disappeared (0 visible elements with the message)",
+      "ok": true,
+      "screenshot": "TC-050/step10.png"
+    },
+    {
+      "n": 11,
+      "text": "Is the teal loyalty points balance in the header the same as before?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal loyalty balance still 200 (before: 200); gold store points still 0",
+      "ok": true,
+      "screenshot": "TC-050/step11.png"
+    },
+    {
+      "n": 12,
+      "text": "Does the \"Astral hero\" card still show \"Available weekly: 1/1\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Astral hero card still shows 'Available weekly: 1/1' and button '1100'",
+      "ok": true,
+      "screenshot": "TC-050/step12.png"
+    }
+  ],
+  "replay_gif": "TC-050/TC-050_replay.gif",
+  "steps_pdf": "TC-050/TC-050_steps.pdf",
+  "evidence_folder": "TC-050/",
+  "run": "2026-10-28_1132"
+}

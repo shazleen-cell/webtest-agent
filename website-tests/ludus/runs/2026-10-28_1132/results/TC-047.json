@@ -1,0 +1,72 @@
+{
+  "id": "TC-047",
+  "title": "[LOGGED IN] \"Might Passes\" category shows items",
+  "area": "Store",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T12:50:46",
+  "ended": "2026-10-28T12:52:00",
+  "duration_sec": 74,
+  "failed_step": 6,
+  "reason": "Might Passes tab shows 'The store is empty for now. Come back later!' with 0 cards for logged-in user",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; URL became https://site.ludus-game.com/store/; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-047/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no 'Login successful' popup was shown",
+      "ok": true,
+      "screenshot": "TC-047/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows green 'Player12580628' button (gradient rgb(12,150,87)->rgb(118,211,71)), balances 200 teal / 0 gold; no visible Login button",
+      "ok": true,
+      "screenshot": "TC-047/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Store'; Store section with tabs Free wares / Might Passes / Gold shown",
+      "ok": true,
+      "screenshot": "TC-047/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the \"Might Passes\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked tab 'Might Passes'; page scrolled to the 'Might Passes' section",
+      "ok": true,
+      "screenshot": "TC-047/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is at least one Might Pass card shown (instead of \"The store is empty for now. Come back later!\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Might Passes section shows only 'The store is empty for now. Come back later!'; 0 cards in the Might Passes tabpanel. The next section 'Gold' follows directly.",
+      "ok": false,
+      "screenshot": "TC-047/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-047/TC-047_replay.gif",
+  "steps_pdf": "TC-047/TC-047_steps.pdf",
+  "evidence_folder": "TC-047/"
+}

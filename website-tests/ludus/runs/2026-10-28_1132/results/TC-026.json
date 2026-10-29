@@ -1,0 +1,72 @@
+{
+  "id": "TC-026",
+  "title": "[LOGGED OUT] Store header \"Store\" scrolls to the Store tabs",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:15:15+08:00",
+  "ended": "2026-10-28T12:16:23+08:00",
+  "duration_sec": 68,
+  "failed_step": null,
+  "reason": "Store heading visible, all 12 tabs in expected order, Free wares tab yellow",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded: 'LUDUS - Merge Battle Arena PvP Web Shop', Special offer banner, cookie banner at bottom",
+      "ok": true,
+      "screenshot": "TC-026/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner 'How we use cookies' shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-026/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button 'Store'; page scrolled to the Store section (scrollY 1514)",
+      "ok": true,
+      "screenshot": "TC-026/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Store\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 'Store' on red ribbon at top of viewport (y=108px)",
+      "ok": true,
+      "screenshot": "TC-026/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the tab bar show, in this order: \"Free wares\", \"Battle Passes\", \"Licenses\", \"Might Passes\", \"Ludus Royal\", \"Ethereal Crystals\", \"Spells\", \"Runes\", \"Dice of Fortune\", \"Gold\", \"Emeralds\", \"Gift to friends\" (read the tab texts)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab texts read from DOM: Free wares | Battle Passes | Licenses | Might Passes | Ludus Royal | Ethereal Crystals | Spells | Runes | Dice of Fortune | Gold | Emeralds | Gift to friends (last tab is cut at the right edge on screen, shows only 'Gift')",
+      "ok": true,
+      "screenshot": "TC-026/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is \"Free wares\" shown in yellow?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free wares tab is active with yellow background radial-gradient rgb(255,250,1) -> rgb(255,217,2), white text",
+      "ok": true,
+      "screenshot": "TC-026/step06.png"
+    }
+  ],
+  "replay_gif": "TC-026/TC-026_replay.gif",
+  "steps_pdf": "TC-026/TC-026_steps.pdf",
+  "evidence_folder": "TC-026/"
+}

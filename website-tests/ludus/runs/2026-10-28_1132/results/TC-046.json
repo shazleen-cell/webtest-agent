@@ -1,0 +1,81 @@
+{
+  "id": "TC-046",
+  "title": "[LOGGED IN] Logged-in Store category tabs",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:48:53",
+  "ended": "2026-10-28T12:50:17",
+  "duration_sec": 84,
+  "failed_step": null,
+  "reason": "Logged in as Player12580628; Store heading and tabs Free wares / Might Passes / Gold shown; no 'Log in to see more offers' button",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; URL became https://site.ludus-game.com/store/ (user-id removed); cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-046/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no 'Login successful' popup was shown",
+      "ok": true,
+      "screenshot": "TC-046/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows 'Player12580628' button with green gradient rgb(12,150,87)->rgb(118,211,71), balances 200 (teal) and 0 (gold); 0 visible Login buttons",
+      "ok": true,
+      "screenshot": "TC-046/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header button 'Store'; page scrolled to the Store section",
+      "ok": true,
+      "screenshot": "TC-046/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"Store\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 'Store' banner visible at the top of the viewport (top 108px)",
+      "ok": true,
+      "screenshot": "TC-046/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the tab bar show \"Free wares\", \"Might Passes\" and \"Gold\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab bar: 'Free wares' (selected, yellow), 'Might Passes', 'Gold'",
+      "ok": true,
+      "screenshot": "TC-046/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"Log in to see more offers\" button NOT shown anywhere on the page?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No rendered element with 'Log in to see more offers'; the text only exists inside a <script> config block (not displayed)",
+      "ok": true,
+      "screenshot": "TC-046/step07.png"
+    }
+  ],
+  "replay_gif": "TC-046/TC-046_replay.gif",
+  "steps_pdf": "TC-046/TC-046_steps.pdf",
+  "evidence_folder": "TC-046/"
+}

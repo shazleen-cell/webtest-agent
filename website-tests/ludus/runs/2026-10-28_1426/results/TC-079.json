@@ -1,0 +1,99 @@
+{
+  "id": "TC-079",
+  "title": "[LOGGED OUT] Layout at tablet size 768x1024",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:59:04+08:00",
+  "ended": "2026-10-28T15:01:02+08:00",
+  "duration_sec": 118,
+  "failed_step": null,
+  "reason": "Tablet 768x1024 (Chrome mobileEmulation, iPad UA): no horizontal scroll, burger/logo/Login header OK, burger menu opens and closes",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Use Chrome mobileEmulation for a tablet (768x1024, DPR 2, touch, iPad UA). Open https://site.ludus-game.com/store/ and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome 900x1000 with mobileEmulation 768x1024 DPR 2, iPad user agent; innerWidth 768. /store/ loaded ('LUDUS - Official Webshop'), cookie banner shown at the bottom.",
+      "ok": true,
+      "screenshot": "TC-079/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "'How we use cookies' banner shown; clicked 'Dismiss' and it closed.",
+      "ok": true,
+      "screenshot": "TC-079/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, click its X (close) button. Do not click \"Claim\" on that banner.",
+      "expected": "",
+      "answer": "Skipped (no banner)",
+      "saw": "No 'Add It to Home Screen' banner on the page (no 'home screen' text in the DOM, none visible). Nothing clicked.",
+      "ok": true,
+      "screenshot": "TC-079/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the page free of horizontal scrolling (scrollWidth equals innerWidth)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement.scrollWidth 768, body.scrollWidth 768, innerWidth 768 (off-screen swiper slides are clipped inside their carousels).",
+      "ok": true,
+      "screenshot": "TC-079/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are a green burger button, the LUDUS logo and a green \"Login\" button shown in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows burger button at x20-60 (green gradient rgb(12,150,87)->rgb(118,211,71)), LUDUS logo link at x64-164, and 'Login' button at x693-748 with the same green gradient.",
+      "ok": true,
+      "screenshot": "TC-079/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the burger button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the burger button; a blue menu panel slid in from the top with the LUDUS logo and a red X close button at top right; page behind dimmed.",
+      "ok": true,
+      "screenshot": "TC-079/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the menu show \"Home\", \"Store\", \"Reward chain\", \"Loyalty shop\" and \"Login\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu lists Home, Store (highlighted yellow), Reward chain, Loyalty shop, then a divider and Login.",
+      "ok": true,
+      "screenshot": "TC-079/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the red close (x) button of the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the red X (img.burger-menu__close-button at top right); the menu panel went away.",
+      "ok": true,
+      "screenshot": "TC-079/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is the menu closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu panel no longer visible; menu links moved off-screen (left -748) and close button at x -36. Store page with burger, logo and Login header shown normally; scrollWidth still 768.",
+      "ok": true,
+      "screenshot": "TC-079/step09.png"
+    }
+  ],
+  "replay_gif": "TC-079/TC-079_replay.gif",
+  "steps_pdf": "TC-079/TC-079_steps.pdf",
+  "evidence_folder": "TC-079/"
+}

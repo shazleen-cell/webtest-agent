@@ -1,0 +1,55 @@
+{
+  "id": "TC-064",
+  "title": "[LOGGED OUT] Strict-Transport-Security header is sent",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T14:35:40+08:00",
+  "ended": "2026-10-28T14:36:22+08:00",
+  "duration_sec": 42,
+  "failed_step": null,
+  "reason": "HSTS present: max-age=63072000; includeSubDomains; preload (>= 31536000)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at https://site.ludus-game.com/, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-064/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "\"How we use cookies\" banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-064/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the Strict-Transport-Security response header (read with execute_script: const r = await fetch(location.href, {cache: 'no-store'}); r.headers.get('<name>')).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "fetch https://site.ludus-game.com/ -> 200; Strict-Transport-Security: \"max-age=63072000; includeSubDomains; preload\"",
+      "ok": true,
+      "screenshot": "TC-064/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a Strict-Transport-Security header present with a max-age of at least 31536000?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Present; max-age=63072000 (2 years) >= 31536000, with includeSubDomains and preload",
+      "ok": true,
+      "screenshot": "TC-064/step04.png"
+    }
+  ],
+  "replay_gif": "TC-064/TC-064_replay.gif",
+  "steps_pdf": "TC-064/TC-064_steps.pdf",
+  "evidence_folder": "TC-064/",
+  "run": "2026-10-28_1426"
+}

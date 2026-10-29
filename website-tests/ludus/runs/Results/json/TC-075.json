@@ -1,0 +1,64 @@
+{
+  "id": "TC-075",
+  "title": "[LOGGED OUT] Meta description describes Ludus",
+  "area": "Non-functional",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T14:53:43+08:00",
+  "ended": "2026-10-28T14:54:24+08:00",
+  "duration_sec": 41,
+  "failed_step": 4,
+  "reason": "meta description and og:description are both the template placeholder \"Your Game takes players on a grand adventure...\"",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-075/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-075/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the content of the meta name=\"description\" tag and the meta property=\"og:description\" tag with execute_script.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "meta description = \"Your Game takes players on a grand adventure filled with detractors, monsters, gold hunters and grave danger.\"; og:description = same text (1 tag each)",
+      "ok": true,
+      "screenshot": "TC-075/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the meta description about LUDUS (not the placeholder text that starts with \"Your Game takes players on a grand adventure\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "meta description is the placeholder \"Your Game takes players on a grand adventure filled with detractors, monsters, gold hunters and grave danger.\" - no mention of LUDUS",
+      "ok": false,
+      "screenshot": "TC-075/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the og:description about LUDUS (not the same placeholder text)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "og:description is the same placeholder \"Your Game takes players on a grand adventure filled with detractors, monsters, gold hunters and grave danger.\"",
+      "ok": false,
+      "screenshot": "TC-075/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-075/TC-075_replay.gif",
+  "steps_pdf": "TC-075/TC-075_steps.pdf",
+  "evidence_folder": "TC-075/",
+  "run": "2026-10-28_1426"
+}

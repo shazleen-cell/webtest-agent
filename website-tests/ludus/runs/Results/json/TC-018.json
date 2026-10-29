@@ -1,0 +1,109 @@
+{
+  "id": "TC-018",
+  "title": "[LOGGED OUT] Referral program panel opens and closes",
+  "area": "Referral",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:01:39+08:00",
+  "ended": "2026-10-28T12:03:05+08:00",
+  "duration_sec": 86,
+  "failed_step": null,
+  "reason": "Referral panel opens with all expected texts and buttons and closes with the X",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-018/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-018/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a white \"Referral program\" button shown at the bottom right?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "White pill button 'Referral program' with a gift icon at the bottom right (launcher iframe at x 1306, y 655)",
+      "ok": true,
+      "screenshot": "TC-018/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Referral program\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Referral program'; a panel slid in on the right and the button turned into an X",
+      "ok": true,
+      "screenshot": "TC-018/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does a panel open with the text \"get bonuses together!\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Panel shows 'Invite friends — get bonuses together!' (first line partly cut off at the top of the window)",
+      "ok": true,
+      "screenshot": "TC-018/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the panel show \"You will get:\" and \"Your friend will get:\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "'You will get:' Emeralds x100, Gold x1000 x1; 'Your friend will get:' Emeralds x650, Gold x10000 x1",
+      "ok": true,
+      "screenshot": "TC-018/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the panel show an \"Invite friends\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green-outlined 'Invite friends' button",
+      "ok": true,
+      "screenshot": "TC-018/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Does the panel show a \"Log in to view rewards\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "'Log in to view rewards' button under 'My rewards'",
+      "ok": true,
+      "screenshot": "TC-018/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Click the close (X) button at the bottom right, where the \"Referral program\" button was.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the X button in the launcher iframe at the bottom right",
+      "ok": true,
+      "screenshot": "TC-018/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is the panel closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Panel gone from the screen (widget iframe moved off-screen, translateX 496px); 'Referral program' button shown again",
+      "ok": true,
+      "screenshot": "TC-018/step10.png"
+    }
+  ],
+  "replay_gif": "TC-018/TC-018_replay.gif",
+  "steps_pdf": "TC-018/TC-018_steps.pdf",
+  "evidence_folder": "TC-018/",
+  "run": "2026-10-28_1132"
+}

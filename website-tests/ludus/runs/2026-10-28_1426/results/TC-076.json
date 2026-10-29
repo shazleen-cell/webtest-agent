@@ -1,0 +1,63 @@
+{
+  "id": "TC-076",
+  "title": "[LOGGED OUT] Canonical link and og:url point to site.ludus-game.com",
+  "area": "Non-functional",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T14:54:50+08:00",
+  "ended": "2026-10-28T14:55:33+08:00",
+  "duration_sec": 43,
+  "failed_step": 4,
+  "reason": "canonical and og:url both point to https://ludus-merge-battle-arena-pvp-landing.xsolla.site, not site.ludus-game.com",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store/, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-076/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-076/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the href of link rel=\"canonical\" and the content of meta property=\"og:url\" with execute_script.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "link rel=canonical href=\"https://ludus-merge-battle-arena-pvp-landing.xsolla.site\"; meta og:url content=\"https://ludus-merge-battle-arena-pvp-landing.xsolla.site\" (1 tag each)",
+      "ok": true,
+      "screenshot": "TC-076/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the canonical link point to an address on site.ludus-game.com?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "canonical = https://ludus-merge-battle-arena-pvp-landing.xsolla.site (Xsolla landing domain, and the root rather than /store/)",
+      "ok": false,
+      "screenshot": "TC-076/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Does og:url point to an address on site.ludus-game.com?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "og:url = https://ludus-merge-battle-arena-pvp-landing.xsolla.site",
+      "ok": false,
+      "screenshot": "TC-076/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-076/TC-076_replay.gif",
+  "steps_pdf": "TC-076/TC-076_steps.pdf",
+  "evidence_folder": "TC-076/"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "TC-019",
+  "title": "[LOGGED OUT] Referral program panel fits in a 1440x900 window",
+  "area": "Referral",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T12:03:32+08:00",
+  "ended": "2026-10-28T12:04:42+08:00",
+  "duration_sec": 70,
+  "failed_step": 4,
+  "reason": "Panel title 'Invite friends —' is cut off at the top: widget iframe starts at y=-34, title top at y=-10 in a 749px-high viewport",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-019/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-019/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Referral program\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Referral program' (launcher iframe); referral panel opened on the right",
+      "ok": true,
+      "screenshot": "TC-019/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the first line of the panel title, \"Invite friends —\", fully visible inside the window?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Only the lower part of 'Invite friends —' is visible at the very top edge; the line is clipped. Widget iframe top = -34px, title element top = -10px (bottom 30px) in the window (viewport 1440x749). Second line 'get bonuses together!' is fully visible.",
+      "ok": false,
+      "screenshot": "TC-019/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the close (X) button at the bottom right.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the X at the bottom right; panel closed and 'Referral program' button shown again",
+      "ok": true,
+      "screenshot": "TC-019/step05.png"
+    }
+  ],
+  "replay_gif": "TC-019/TC-019_replay.gif",
+  "steps_pdf": "TC-019/TC-019_steps.pdf",
+  "evidence_folder": "TC-019/"
+}

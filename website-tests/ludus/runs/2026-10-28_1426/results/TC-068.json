@@ -1,0 +1,54 @@
+{
+  "id": "TC-068",
+  "title": "[LOGGED OUT] Store images have alt text",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T14:41:38+08:00",
+  "ended": "2026-10-28T14:42:47+08:00",
+  "duration_sec": 69,
+  "failed_step": 4,
+  "reason": "46 of 321 img elements on the Store page have no alt attribute (e.g. header LUDUS logo, reward-chain progress images)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop'; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-068/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Dismiss'; banner closed",
+      "ok": true,
+      "screenshot": "TC-068/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll slowly to the bottom of the page, then wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled in 400px steps to the bottom (scrollY 15818, page height 16567), waited 3 s; footer visible",
+      "ok": true,
+      "screenshot": "TC-068/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does every img element on the page have an alt attribute (read with execute_script; write the count of images without alt in \"saw\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "321 img elements; 46 have NO alt attribute, 128 have alt=\"\" (empty), the rest have text alt (e.g. 'Hero card', 'Emeralds', 'Gold'). Without alt: header LUDUS logo (img._1vixu5z1, cdn.xsolla.net/.../0a6cd8c0...png), reward chain images (img.reward-button__progress-image 7c5fd639...png and item images like 2d06ab08...png, 0e889926...png)",
+      "ok": false,
+      "screenshot": "TC-068/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-068/TC-068_replay.gif",
+  "steps_pdf": "TC-068/TC-068_steps.pdf",
+  "evidence_folder": "TC-068/"
+}

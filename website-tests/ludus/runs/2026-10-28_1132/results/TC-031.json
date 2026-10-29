@@ -1,0 +1,72 @@
+{
+  "id": "TC-031",
+  "title": "[LOGGED OUT] Special offers section shows the three welcome bundles",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:23:38+08:00",
+  "ended": "2026-10-28T12:24:37+08:00",
+  "duration_sec": 59,
+  "failed_step": null,
+  "reason": "Special offers carousel has Small/Medium/Big welcome bundle, each Available: 1/1 with a USD price button",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded (title \"LUDUS - Merge Battle Arena PvP Web Shop\") with the cookie banner at the bottom.",
+      "ok": true,
+      "screenshot": "TC-031/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner \"How we use cookies\" was shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-031/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the heading \"Special offers\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled so the H2 \"Special offers\" ribbon is near the top of the view, with the carousel below.",
+      "ok": true,
+      "screenshot": "TC-031/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Special offers\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 \"Special offers\" on a pink ribbon above the bundle carousel.",
+      "ok": true,
+      "screenshot": "TC-031/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are cards named \"Small welcome bundle\", \"Medium welcome bundle\" and \"Big welcome bundle\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "The section is a carousel with 3 slides (3 dots): \"Small welcome bundle\" is visible; \"Medium welcome bundle\" and \"Big welcome bundle\" are the next slides (in the DOM, off to the right, reachable with the arrow).",
+      "ok": true,
+      "screenshot": "TC-031/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does each of these cards show \"Available: 1/1\" and a price button that starts with \"USD\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Small: \"Available: 1/1\", \"USD 5.40\" (was 5.99). Medium: \"Available: 1/1\", \"USD 54.00\" (was 59.99). Big: \"Available: 1/1\", \"USD 108.00\" (was 119.99). Price buttons not clicked.",
+      "ok": true,
+      "screenshot": "TC-031/step06.png"
+    }
+  ],
+  "replay_gif": "TC-031/TC-031_replay.gif",
+  "steps_pdf": "TC-031/TC-031_steps.pdf",
+  "evidence_folder": "TC-031/"
+}

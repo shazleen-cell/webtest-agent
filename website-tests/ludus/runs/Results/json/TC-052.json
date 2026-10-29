@@ -1,0 +1,111 @@
+{
+  "id": "TC-052",
+  "title": "[LOGGED IN] Claim \"Free Gold\"",
+  "area": "Free wares",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T13:10:56",
+  "ended": "2026-10-28T13:13:01",
+  "duration_sec": 125,
+  "failed_step": null,
+  "reason": "Free Gold claimed once; Congrats popup showed 500; card now shows 'Available in 15h 47m' + 'Claimed'",
+  "account_changes": [
+    "claimed Free Gold (500 gold): Available daily 1/1 -> claimed, card shows 'Available in 15h 47m' and 'Claimed'; header balances unchanged (loyalty 40, store points 0)"
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome 1440x900; page 'LUDUS - Merge Battle Arena PvP Web Shop' loaded, URL became https://site.ludus-game.com/store/ (user-id removed). Cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-052/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Dismiss' on 'How we use cookies' banner; no 'Login successful' popup appeared.",
+      "ok": true,
+      "screenshot": "TC-052/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header buttons: Home, Store, Reward chain, Loyalty shop, Player12580628 (green gradient rgb(12,150,87)->rgb(118,211,71)); balances 40 and 0; no Login button.",
+      "ok": true,
+      "screenshot": "TC-052/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the 'Store' section with tabs Free wares / Might Passes / Gold and the Free wares cards.",
+      "ok": true,
+      "screenshot": "TC-052/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a green \"Claim\" button shown on the \"Free Gold\" card? (precondition)",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free Gold card (500) has an enabled green 'Claim' button.",
+      "ok": true,
+      "screenshot": "TC-052/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the \"Free Gold\" card show \"Available daily: 1/1\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card text: 'Free Gold | 500 | Available daily: 1/1 | Claim'.",
+      "ok": true,
+      "screenshot": "TC-052/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click \"Claim\" on the \"Free Gold\" card.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Claim once; button changed to 'Loading...' (disabled), then a popup opened.",
+      "ok": true,
+      "screenshot": "TC-052/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is a success message or popup shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'CONGRATS! YOU'VE GOT:' with 500 gold coins image and a 'Back to store' button.",
+      "ok": true,
+      "screenshot": "TC-052/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Close the success message or popup with its close (x) button, if it is still open.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Popup had no X close button; closed it with its only button 'Back to store'. Popup closed, store page shown.",
+      "ok": true,
+      "screenshot": "TC-052/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Does the \"Free Gold\" card now show \"Available daily: 0/1\" or a countdown, instead of an active \"Claim\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free Gold card now shows 'Available in 15h 47m' and green 'Claimed' label; no Claim button on the card.",
+      "ok": true,
+      "screenshot": "TC-052/step10.png"
+    }
+  ],
+  "replay_gif": "TC-052/TC-052_replay.gif",
+  "steps_pdf": "TC-052/TC-052_steps.pdf",
+  "evidence_folder": "TC-052/",
+  "run": "2026-10-28_1132"
+}

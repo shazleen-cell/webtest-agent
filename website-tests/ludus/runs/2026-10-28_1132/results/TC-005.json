@@ -1,0 +1,81 @@
+{
+  "id": "TC-005",
+  "title": "[LOGGED OUT] \"Check out our Store\" banner text and button link",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T11:38:54+08:00",
+  "ended": "2026-10-28T11:39:46+08:00",
+  "duration_sec": 52,
+  "failed_step": null,
+  "reason": "Banner heading, text and green Check Our Store button (href /store) as expected",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://site.ludus-game.com/ with the cookie banner.",
+      "ok": true,
+      "screenshot": "TC-005/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-005/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the banner with the heading \"Check out our Store and shop with profit\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled down 800 px then up 250 px; the orange banner is fully in view below the Special offer card.",
+      "ok": true,
+      "screenshot": "TC-005/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Check out our Store and shop with profit\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Yellow h1 heading \"Check out our Store and shop with profit\".",
+      "ok": true,
+      "screenshot": "TC-005/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the text \"Buy game resources and Passes at lower prices and make savings with each purchase!\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Paragraph: \"Buy game resources and Passes at lower prices and make savings with each purchase!\"",
+      "ok": true,
+      "screenshot": "TC-005/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a green \"Check Our Store\" button shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green gradient button \"Check Our Store\" (linear-gradient rgb(12,150,87) to rgb(118,211,71)).",
+      "ok": true,
+      "screenshot": "TC-005/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the \"Check Our Store\" button link to https://site.ludus-game.com/store (read the link)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href = https://site.ludus-game.com/store (target=\"_blank\", opens in a new tab). Not clicked.",
+      "ok": true,
+      "screenshot": "TC-005/step07.png"
+    }
+  ],
+  "replay_gif": "TC-005/TC-005_replay.gif",
+  "steps_pdf": "TC-005/TC-005_steps.pdf",
+  "evidence_folder": "TC-005/"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "TC-062",
+  "title": "[LOGGED OUT] http address redirects to https",
+  "area": "Non-functional",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T14:32:36+08:00",
+  "ended": "2026-10-28T14:33:23+08:00",
+  "duration_sec": 47,
+  "failed_step": null,
+  "reason": "http://site.ludus-game.com/store/ ended on https://site.ludus-game.com/store/ with heading \"LUDUS・Official Webshop\"",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open http://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome session (1440x900, no cookies); navigated to http://site.ludus-game.com/store/ and wdio-mcp reported \"Navigated to https://site.ludus-game.com/store/\"",
+      "ok": true,
+      "screenshot": "TC-062/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner was shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-062/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the page address now https://site.ludus-game.com/store/ (starting with https)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/, protocol https:, navigation entry name https://site.ludus-game.com/store/, status 200 (redirectCount 0 - the upgrade happened before the page navigation entry, e.g. browser/HSTS upgrade)",
+      "ok": true,
+      "screenshot": "TC-062/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the page shown normally, with the heading \"LUDUS・Official Webshop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading (h3) \"LUDUS・Official Webshop\" with \"Enjoy lower prices - buy game resources and passes much cheaper!\"; header, Special offer and Special offers section render normally; title \"LUDUS - Merge Battle Arena PvP Web Shop\"",
+      "ok": true,
+      "screenshot": "TC-062/step04.png"
+    }
+  ],
+  "replay_gif": "TC-062/TC-062_replay.gif",
+  "steps_pdf": "TC-062/TC-062_steps.pdf",
+  "evidence_folder": "TC-062/",
+  "run": "2026-10-28_1426"
+}

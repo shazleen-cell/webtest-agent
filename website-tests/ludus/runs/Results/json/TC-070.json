@@ -1,0 +1,73 @@
+{
+  "id": "TC-070",
+  "title": "[LOGGED OUT] Buttons on Home and Store have an accessible name",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T14:44:17+08:00",
+  "ended": "2026-10-28T14:45:53+08:00",
+  "duration_sec": 96,
+  "failed_step": 4,
+  "reason": "Home: 7 of 18 buttons unnamed (all currently hidden: burger, modal close, swiper arrows); Store: 12 of 125 unnamed, 6 visible (carousel prev/next arrows, img without alt)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-070/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked 'Dismiss'; banner closed",
+      "ok": true,
+      "screenshot": "TC-070/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read all button elements on the page with execute_script and count the ones with no accessible name (an accessible name means visible text, aria-label, title, or an img inside with a non-empty alt).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "18 button elements (3 rendered/visible: Login, Privacy settings, Login); 7 have no accessible name, all of them currently not rendered: burger__button (svg only), 2 swiper prev/next arrows (swiper-button-lock), load-more-button (empty span), user-id-modal close (svg), input type-toggler (svg), cart modal close (svg)",
+      "ok": true,
+      "screenshot": "TC-070/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Do all buttons on the Home page have an accessible name?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No: 7 of 18 buttons have no accessible name (icon-only svg buttons with no aria-label: burger menu, user-id modal close, cart modal close, password toggler, 2 carousel arrows, empty load-more). All 3 currently visible buttons are named, but the icon-only close/burger buttons have no name when shown.",
+      "ok": false,
+      "screenshot": "TC-070/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop' (some 404s for manifest.json and store API in network log)",
+      "ok": true,
+      "screenshot": "TC-070/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Count the buttons with no accessible name again. Do all buttons on the Store page have an accessible name?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "125 buttons (112 visible); 12 have no accessible name, 6 of them visible: 3 carousel 'swiper-button' prev + 3 next arrows (contain only an <img> with no alt, no aria-label). Hidden ones: burger, 2 locked swiper arrows, user-id modal close, input toggler, cart modal close. Named examples: Store, Reward chain, Loyalty shop, Login, 'USD 54.00 59.99'.",
+      "ok": false,
+      "screenshot": "TC-070/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-070/TC-070_replay.gif",
+  "steps_pdf": "TC-070/TC-070_steps.pdf",
+  "evidence_folder": "TC-070/",
+  "run": "2026-10-28_1426"
+}

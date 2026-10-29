@@ -1,0 +1,99 @@
+{
+  "id": "TC-002",
+  "title": "[LOGGED OUT] Cookie banner is shown on the first visit and stays closed after Dismiss",
+  "area": "Cookie banner",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T11:34:40+08:00",
+  "ended": "2026-10-28T11:35:48+08:00",
+  "duration_sec": 68,
+  "failed_step": null,
+  "reason": "Banner shown on first visit with expected text/link/button; gone after Dismiss and stays hidden after reload",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh session (no cookies); page loaded at https://site.ludus-game.com/.",
+      "ok": true,
+      "screenshot": "TC-002/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner with the title \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner at the bottom with heading \"How we use cookies\" is visible.",
+      "ok": true,
+      "screenshot": "TC-002/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the banner say \"We only use essential cookies that allow us to run this service.\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner text: \"We only use essential cookies that allow us to run this service. Read our cookie policy to learn more.\"",
+      "ok": true,
+      "screenshot": "TC-002/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a \"cookie policy\" link shown in the banner?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Link \"cookie policy\" with href https://xsolla.com/cookie (not opened).",
+      "ok": true,
+      "screenshot": "TC-002/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a \"Dismiss\" button shown in the banner?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Blue \"Dismiss\" button shown in the banner (plus a small X close icon).",
+      "ok": true,
+      "screenshot": "TC-002/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss.",
+      "ok": true,
+      "screenshot": "TC-002/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner heading no longer in the DOM; Special offer card fully visible.",
+      "ok": true,
+      "screenshot": "TC-002/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Reload the page and wait until it has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Reloaded https://site.ludus-game.com/; readyState complete.",
+      "ok": true,
+      "screenshot": "TC-002/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is the \"How we use cookies\" banner still hidden?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "After reload (+1.5 s wait) no \"How we use cookies\" heading and no Dismiss button on the page.",
+      "ok": true,
+      "screenshot": "TC-002/step09.png"
+    }
+  ],
+  "replay_gif": "TC-002/TC-002_replay.gif",
+  "steps_pdf": "TC-002/TC-002_steps.pdf",
+  "evidence_folder": "TC-002/"
+}

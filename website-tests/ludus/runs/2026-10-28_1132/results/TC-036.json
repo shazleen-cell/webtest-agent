@@ -1,0 +1,108 @@
+{
+  "id": "TC-036",
+  "title": "[LOGGED OUT] Mobile header and burger menu",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:31:54+08:00",
+  "ended": "2026-10-28T12:33:14+08:00",
+  "duration_sec": 80,
+  "failed_step": null,
+  "reason": "Burger menu opens with correct order and closes with red X. Mobile via Chrome mobileEmulation fallback (390x844, DPR 3, iPhone UA), not emulate_device.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser on a phone screen (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 390px wide (innerWidth 390), title \"LUDUS - Merge Battle Arena PvP Web Shop\". Cookie banner and \"Add It to Home Screen\" banner visible.",
+      "ok": true,
+      "screenshot": "TC-036/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "\"How we use cookies\" banner shown; clicked Dismiss, banner closed.",
+      "ok": true,
+      "screenshot": "TC-036/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, click its X (close) button. Do not click \"Claim\" on that banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked its X (\"Close pwa banner\"), banner gone. Claim not clicked.",
+      "ok": true,
+      "screenshot": "TC-036/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a green burger (menu) button shown at the top left?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Burger button at x=20,y=7 (40x42 px) with green gradient rgb(12,150,87) -> rgb(118,211,71).",
+      "ok": true,
+      "screenshot": "TC-036/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a green \"Login\" button shown at the top right?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Login\" button at x=316,y=7 (right edge 370 of 390) with the same green gradient.",
+      "ok": true,
+      "screenshot": "TC-036/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the burger button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu panel slid open over the page with the LUDUS logo and a red X.",
+      "ok": true,
+      "screenshot": "TC-036/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the menu show, in this order: \"Home\", \"Store\", \"Reward chain\", \"Clan reward\", \"Loyalty shop\", then \"Login\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu items top to bottom: Home (y=114, highlighted yellow), Store (158), Reward chain (202), Clan reward (246), Loyalty shop (290), divider, Login (347).",
+      "ok": true,
+      "screenshot": "TC-036/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is a red close (x) button shown at the top right of the menu?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Red square button with white X at the top right of the menu (img.burger-menu__close-button).",
+      "ok": true,
+      "screenshot": "TC-036/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Click the red close (x) button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the red X; menu panel closed.",
+      "ok": true,
+      "screenshot": "TC-036/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is the menu closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu no longer visible; home page with header (burger, logo, Login) shown again.",
+      "ok": true,
+      "screenshot": "TC-036/step10.png"
+    }
+  ],
+  "replay_gif": "TC-036/TC-036_replay.gif",
+  "steps_pdf": "TC-036/TC-036_steps.pdf",
+  "evidence_folder": "TC-036/"
+}

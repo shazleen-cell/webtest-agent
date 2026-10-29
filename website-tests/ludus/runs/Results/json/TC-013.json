@@ -1,0 +1,73 @@
+{
+  "id": "TC-013",
+  "title": "[LOGGED OUT] Header \"Store\" on Home opens the Store page",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T11:53:16+08:00",
+  "ended": "2026-10-28T11:54:22+08:00",
+  "duration_sec": 66,
+  "failed_step": null,
+  "reason": "Store opened at /store/, heading \"LUDUS・Official Webshop\" shown, Store highlighted yellow rgb(249,223,66)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-013/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-013/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header link \"Store\"; navigated to the Store page",
+      "ok": true,
+      "screenshot": "TC-013/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the page address https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-013/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"LUDUS・Official Webshop\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Visible H3 \"LUDUS・Official Webshop\" at top of page, subtitle \"Enjoy lower prices - buy game resources and passes much cheaper!\"",
+      "ok": true,
+      "screenshot": "TC-013/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is \"Store\" shown in yellow in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header \"Store\" color rgb(249, 223, 66) (yellow); Home, Reward chain, Loyalty shop are white rgb(255, 255, 255)",
+      "ok": true,
+      "screenshot": "TC-013/step06.png"
+    }
+  ],
+  "replay_gif": "TC-013/TC-013_replay.gif",
+  "steps_pdf": "TC-013/TC-013_steps.pdf",
+  "evidence_folder": "TC-013/",
+  "run": "2026-10-28_1132"
+}

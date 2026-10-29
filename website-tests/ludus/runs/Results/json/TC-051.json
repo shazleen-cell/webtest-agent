@@ -1,0 +1,130 @@
+{
+  "id": "TC-051",
+  "title": "[LOGGED IN] Spend 160 loyalty points on \"Unique Frame\"",
+  "area": "Loyalty Shop",
+  "priority": "High",
+  "status": "FAILED",
+  "started": "2026-10-28T13:07:07+08:00",
+  "ended": "2026-10-28T13:09:57+08:00",
+  "duration_sec": 170,
+  "failed_step": 12,
+  "reason": "Purchase worked (200 -> 40, 'CONGRATS! YOU'VE GOT: 1' popup) but the Unique Frame card disappears from the shop instead of showing 'Available: 0/1' or sold out; popup has no X, closed with its only button 'Back to store'. Expectation may need updating",
+  "account_changes": [
+    "bought Unique Frame for 160 loyalty points: loyalty points 200 -> 40",
+    "Unique Frame: Available 1/1 -> card removed from Loyalty Shop"
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store/; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-051/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup shown",
+      "ok": true,
+      "screenshot": "TC-051/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, 200, 0, green 'Player12580628'; no Login button",
+      "ok": true,
+      "screenshot": "TC-051/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the Loyalty Shop section; 'Loyalty shop' highlighted in header",
+      "ok": true,
+      "screenshot": "TC-051/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the \"Unique Frame\" card show \"Available: 1/1\" and a \"160\" button? (precondition)",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Unique Frame card: '1', 'Available: 1/1', green button '160' (loyalty points icon)",
+      "ok": true,
+      "screenshot": "TC-051/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the teal loyalty points balance in the header 160 or more? (precondition)",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal loyalty balance in header: 200",
+      "ok": true,
+      "screenshot": "TC-051/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Write down the teal loyalty points balance shown in the header. Is it a number?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Balance before purchase: 200",
+      "ok": true,
+      "screenshot": "TC-051/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the \"160\" button on the \"Unique Frame\" card. If a confirmation popup is shown, click its button that shows the point price \"160\" (never a button with a USD price).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked '160' once; no confirmation popup, purchase happened immediately; no payment window",
+      "ok": true,
+      "screenshot": "TC-051/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is a success message or popup shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'CONGRATS! YOU'VE GOT:' with '1' and the Unique Frame image, button 'Back to store'",
+      "ok": true,
+      "screenshot": "TC-051/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Close the success message or popup with its close (x) button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Popup has no X/close button (only 'Back to store' in the dialog); closed it with 'Back to store'",
+      "ok": true,
+      "screenshot": "TC-051/step10.png"
+    },
+    {
+      "n": 11,
+      "text": "Is the teal loyalty points balance in the header now 160 lower than before?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header teal balance now 40 (was 200, difference 160)",
+      "ok": true,
+      "screenshot": "TC-051/step11.png"
+    },
+    {
+      "n": 12,
+      "text": "Does the \"Unique Frame\" card now show \"Available: 0/1\", or is it shown as sold out?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Unique Frame card is gone from the Loyalty Shop (page text no longer contains 'Unique Frame'); only Astral hero, Astral Hero, Astral Echo, Magical Order, Unique Emote, Unique Avatar remain. No 'Available: 0/1' or sold-out label",
+      "ok": false,
+      "screenshot": "TC-051/step12_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-051/TC-051_replay.gif",
+  "steps_pdf": "TC-051/TC-051_steps.pdf",
+  "evidence_folder": "TC-051/",
+  "run": "2026-10-28_1132"
+}

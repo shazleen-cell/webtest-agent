@@ -1,0 +1,100 @@
+{
+  "id": "TC-054",
+  "title": "[LOGGED IN] Logout with the \"Player12580628\" button",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-28T12:59:34+08:00",
+  "ended": "2026-10-28T13:01:25+08:00",
+  "duration_sec": 111,
+  "failed_step": null,
+  "reason": "Logout via Player12580628 button works; Login shown, balances gone, stays logged out after reload, Reward chain shows 'Login to claim'",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store/ (user-id removed from URL); cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-054/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it. Do not click the \"Player12580628\" button: it logs out.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner; no Login successful popup shown",
+      "ok": true,
+      "screenshot": "TC-054/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green \"Player12580628\" button and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, teal 200, gold 0, green 'Player12580628' button; no Login button",
+      "ok": true,
+      "screenshot": "TC-054/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the green \"Player12580628\" button in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Player12580628; header changed immediately with no confirmation",
+      "ok": true,
+      "screenshot": "TC-054/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a green \"Login\" button shown in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green 'Login' button (gradient rgb(12,150,87) -> rgb(118,211,71)) at top right",
+      "ok": true,
+      "screenshot": "TC-054/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are the two balances gone from the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header text is only Home, Store, Reward chain, Loyalty shop, Login; teal 200 and gold 0 balances gone",
+      "ok": true,
+      "screenshot": "TC-054/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Reload the page and wait until it has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page reloaded (navigation type 'reload'), readyState complete, URL https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-054/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the green \"Login\" button still shown (the user stays logged out)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "After reload header still shows green 'Login', no balances, no player button",
+      "ok": true,
+      "screenshot": "TC-054/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Click \"Reward chain\" in the header. Is the \"Login to claim\" button shown in the Rewards Market?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Scrolled to Rewards Market (0/500 points, Step 1 of 10); green 'Login to claim' button shown below the rewards",
+      "ok": true,
+      "screenshot": "TC-054/step09.png"
+    }
+  ],
+  "replay_gif": "TC-054/TC-054_replay.gif",
+  "steps_pdf": "TC-054/TC-054_steps.pdf",
+  "evidence_folder": "TC-054/",
+  "run": "2026-10-28_1132"
+}

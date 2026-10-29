@@ -1,0 +1,82 @@
+{
+  "id": "TC-060",
+  "title": "[LOGGED OUT] Home and Store load without failed network requests",
+  "area": "Non-functional",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T14:28:55+08:00",
+  "ended": "2026-10-28T14:30:12+08:00",
+  "duration_sec": 77,
+  "failed_step": 7,
+  "reason": "Store page has 404s: store/manifest.json (x4), Xsolla API items/bundle/group (x3), user/offer_chain/1512 and /1310; Home had none",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome session (1440x900, no cookies); navigated to https://site.ludus-game.com/, title \"LUDUS - Merge Battle Arena PvP Web Shop\"; wdio-mcp showed no \"Requests failed\" list after navigate",
+      "ok": true,
+      "screenshot": "TC-060/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner was shown; clicked Dismiss, banner closed (the click also scrolled the page to the \"Check out our Store\" section)",
+      "ok": true,
+      "screenshot": "TC-060/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Wait 5 seconds, then list the failed requests (resource entries with responseStatus >= 400, and the wdio-mcp \"Requests failed\" list). Write them in \"saw\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "149 resource entries, 0 with responseStatus >= 400; navigation responseStatus 200; wdio-mcp \"Requests failed\" list after navigate: none",
+      "ok": true,
+      "screenshot": "TC-060/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Did the Home page load with no failed (4xx or 5xx) requests?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No failed (4xx/5xx) requests on Home",
+      "ok": true,
+      "screenshot": "TC-060/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait 5 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page opened (\"LUDUS · Official Webshop\"), waited 5 s",
+      "ok": true,
+      "screenshot": "TC-060/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "List the failed requests again (resource entries with responseStatus >= 400, and the wdio-mcp \"Requests failed\" list). Write them in \"saw\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "wdio-mcp after navigate: \"Requests failed: 404 GET site.ludus-game.com/store/manifest.json (x4); 404 GET store.xsolla.com/api/v2/project/253824/user/offer_chain/1512 (x2); 404 GET store.xsolla.com/api/v2/project/253824/user/offer_chain/1310 (x2); +2 more\". Resource timing: 66 entries, 3 with status 404 - all XHR GET https://store.xsolla.com/api/v2/project/253824/items/bundle/group?external_id[]=&locale=en&offset=0&limit=50&... (empty external_id)",
+      "ok": true,
+      "screenshot": "TC-060/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Did the Store page load with no failed (4xx or 5xx) requests?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Store page had failed 404 requests: manifest.json (x4), Xsolla Store API items/bundle/group (x3), user/offer_chain/1512 and /1310 (x2 each). Page still rendered normally.",
+      "ok": false,
+      "screenshot": "TC-060/step07_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-060/TC-060_replay.gif",
+  "steps_pdf": "TC-060/TC-060_steps.pdf",
+  "evidence_folder": "TC-060/",
+  "run": "2026-10-28_1426"
+}

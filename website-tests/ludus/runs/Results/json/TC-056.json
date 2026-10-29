@@ -1,0 +1,64 @@
+{
+  "id": "TC-056",
+  "title": "[LOGGED IN] Phone header shows the full player name",
+  "area": "Header",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-28T13:04:09+08:00",
+  "ended": "2026-10-28T13:04:58+08:00",
+  "duration_sec": 49,
+  "failed_step": 5,
+  "reason": "Phone header player button shows 'Play…' (CSS text-overflow: ellipsis), not the full 'Player12580628' (mobile via Chrome mobileEmulation 390x844 fallback)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies. Open https://site.ludus-game.com/store/?user-id=12580628 in the browser on a phone screen (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at 390px width (Chrome mobileEmulation fallback); cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-056/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If any other popup is shown after login, close it.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup; 'Add It to Home Screen' banner appeared (handled in step 4)",
+      "ok": true,
+      "screenshot": "TC-056/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show a green player button (its text may be cut to \"Play…\") and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green player button 'Play…' at top right next to teal 200 and gold 0; 0 visible Login buttons",
+      "ok": true,
+      "screenshot": "TC-056/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, click its X (close) button. Do not click \"Claim\" on that banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the X ('Close pwa banner'); banner closed; Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-056/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the full player name \"Player12580628\" readable in the header button (not cut to \"Play…\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Header button shows only 'Play…': button 80px wide, name span clientWidth 44px vs scrollWidth 107px, overflow hidden, text-overflow ellipsis",
+      "ok": false,
+      "screenshot": "TC-056/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-056/TC-056_replay.gif",
+  "steps_pdf": "TC-056/TC-056_steps.pdf",
+  "evidence_folder": "TC-056/",
+  "run": "2026-10-28_1132"
+}

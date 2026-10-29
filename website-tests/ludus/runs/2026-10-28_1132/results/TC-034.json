@@ -1,0 +1,90 @@
+{
+  "id": "TC-034",
+  "title": "[LOGGED OUT] Store footer shows social icons, links and language button",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:28:11+08:00",
+  "ended": "2026-10-28T12:29:58+08:00",
+  "duration_sec": 107,
+  "failed_step": null,
+  "reason": "6 social icons with correct platform links, Support/Powered by/Affiliate links, Privacy settings and EN language button all shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with the cookie banner at the bottom.",
+      "ok": true,
+      "screenshot": "TC-034/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner \"How we use cookies\" was shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-034/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the bottom of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the bottom (scrollY 15818 of 16567, viewport 749); the footer is fully in view.",
+      "ok": true,
+      "screenshot": "TC-034/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are six social icon buttons shown in the footer?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Six blue square icon buttons in one row: YouTube, X, TikTok, Discord, Instagram, Facebook.",
+      "ok": true,
+      "screenshot": "TC-034/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Do they link to YouTube, X/Twitter, TikTok, Discord, Instagram and Facebook accounts of playludus / play.ludus (read the links, do not open them)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "hrefs (all target=_blank, not opened): https://www.youtube.com/@playludus, https://twitter.com/playludus, https://www.tiktok.com/@playludus, https://discord.gg/5qFQGUXQTD (Discord invite, no handle), https://www.instagram.com/play.ludus.game, https://www.facebook.com/play.ludus.",
+      "ok": true,
+      "screenshot": "TC-034/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are the links \"Support\", \"Powered by Xsolla Web Shop\" and \"Join Affiliate Program\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Bottom row links: \"Support\" (help.xsolla.com), \"Powered by Xsolla Web Shop\" (xsolla.com/mobile-web-shop), \"Join Affiliate Program\" (influencer.xsolla.com). Not opened.",
+      "ok": true,
+      "screenshot": "TC-034/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is a \"Privacy settings\" button shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "BUTTON \"Privacy settings\" at the end of the bottom link row.",
+      "ok": true,
+      "screenshot": "TC-034/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is a language button showing \"EN\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Language selector at the right of the social row shows globe icon + \"EN\" + chevron (select value en-US, 15 languages). Not clicked.",
+      "ok": true,
+      "screenshot": "TC-034/step08.png"
+    }
+  ],
+  "replay_gif": "TC-034/TC-034_replay.gif",
+  "steps_pdf": "TC-034/TC-034_steps.pdf",
+  "evidence_folder": "TC-034/"
+}

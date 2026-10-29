@@ -1,0 +1,73 @@
+{
+  "id": "TC-016",
+  "title": "[LOGGED OUT] Header \"Clan reward\" on Home opens a Clan reward section",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-28T11:58:24+08:00",
+  "ended": "2026-10-28T11:59:44+08:00",
+  "duration_sec": 80,
+  "failed_step": 6,
+  "reason": "Clan reward opens /store/ at the top (scrollY 0); no Clan reward section on screen or anywhere on the page",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop', cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-016/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-016/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Clan reward\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header link 'Clan reward'; navigated to https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-016/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 3 s; URL still /store/, scrollY 0, no hash",
+      "ok": true,
+      "screenshot": "TC-016/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the page address https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-016/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a section about the clan reward visible on screen without scrolling?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Page stays at the top (scrollY 0) showing 'LUDUS・Official Webshop' heading, the URUK BUNDLE 'Special offer' and the 'Special offers' banner. No text 'Clan reward' exists in the visible page; header on /store/ shows only Home, Store, Reward chain, Loyalty shop. Only 'Clan Competition' paid passes exist further down (top 1152px+, below the 749px viewport).",
+      "ok": false,
+      "screenshot": "TC-016/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-016/TC-016_replay.gif",
+  "steps_pdf": "TC-016/TC-016_steps.pdf",
+  "evidence_folder": "TC-016/",
+  "run": "2026-10-28_1132"
+}

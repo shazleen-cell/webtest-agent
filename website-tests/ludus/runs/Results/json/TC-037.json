@@ -1,0 +1,82 @@
+{
+  "id": "TC-037",
+  "title": "[LOGGED OUT] Mobile burger menu \"Store\" opens the Store page",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:33:44+08:00",
+  "ended": "2026-10-28T12:34:45+08:00",
+  "duration_sec": 61,
+  "failed_step": null,
+  "reason": "Burger menu Store opens /store/ with heading LUDUS・Official Webshop. Mobile via Chrome mobileEmulation fallback (390x844, DPR 3, iPhone UA), not emulate_device.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser on a phone screen (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 390px wide; cookie banner and \"Add It to Home Screen\" banner visible.",
+      "ok": true,
+      "screenshot": "TC-037/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed.",
+      "ok": true,
+      "screenshot": "TC-037/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, click its X (close) button. Do not click \"Claim\" on that banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked its X (\"Close pwa banner\"), banner gone. Claim not clicked.",
+      "ok": true,
+      "screenshot": "TC-037/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the burger button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu opened: Home, Store, Reward chain, Clan reward, Loyalty shop, Login.",
+      "ok": true,
+      "screenshot": "TC-037/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Store\" in the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Store link in the menu; navigated to https://site.ludus-game.com/store/.",
+      "ok": true,
+      "screenshot": "TC-037/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the page address https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-037/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the heading \"LUDUS・Official Webshop\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First heading (H3) text \"LUDUS・Official Webshop\" shown at top of the page, subtitle \"Enjoy lower prices - buy game resources and passes much cheaper!\".",
+      "ok": true,
+      "screenshot": "TC-037/step07.png"
+    }
+  ],
+  "replay_gif": "TC-037/TC-037_replay.gif",
+  "steps_pdf": "TC-037/TC-037_steps.pdf",
+  "evidence_folder": "TC-037/",
+  "run": "2026-10-28_1132"
+}

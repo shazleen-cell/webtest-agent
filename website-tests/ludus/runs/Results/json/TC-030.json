@@ -1,0 +1,91 @@
+{
+  "id": "TC-030",
+  "title": "[LOGGED OUT] Tab \"Emeralds\" shows first-purchase packs and \"Log in to see more offers\"",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-28T12:21:09+08:00",
+  "ended": "2026-10-28T12:22:44+08:00",
+  "duration_sec": 95,
+  "failed_step": null,
+  "reason": "Emeralds heading, 5 emerald packs each with '1st purchase' and 'Available: 1/1', 'Log in to see more offers' button below",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with Special offer banner and cookie banner",
+      "ok": true,
+      "screenshot": "TC-030/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner shown; clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-030/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Store\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked header 'Store'; page scrolled to Store heading and tab bar",
+      "ok": true,
+      "screenshot": "TC-030/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the \"Emeralds\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked tab 'Emeralds'; page scrolled to the Emeralds section",
+      "ok": true,
+      "screenshot": "TC-030/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"Emeralds\" visible on screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H3 'Emeralds' centered near the top of the viewport (y=105px)",
+      "ok": true,
+      "screenshot": "TC-030/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are these cards shown: \"Small pile of emeralds\", \"Pouch of emeralds\", \"Sack of emeralds\", \"Chest of emeralds\", \"Pot of emeralds\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Cards: Small pile of emeralds (650), Pouch of emeralds (1500), Sack of emeralds (3200), Chest of emeralds (8300); Pot of emeralds (17500) below",
+      "ok": true,
+      "screenshot": "TC-030/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does each of these cards show a \"1st purchase\" label and \"Available: 1/1\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All 5 cards show the 'x2 1st purchase' ribbon and 'Available: 1/1' (prices USD 5.40, 10.80, 21.60, 54.00, 108.00; not clicked)",
+      "ok": true,
+      "screenshot": "TC-030/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Scroll down a little. Is a \"Log in to see more offers\" button shown under the emerald cards?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Scrolled down 600px; outlined button 'Log in to see more offers' shown directly under the Pot of emeralds card (not clicked)",
+      "ok": true,
+      "screenshot": "TC-030/step08.png"
+    }
+  ],
+  "replay_gif": "TC-030/TC-030_replay.gif",
+  "steps_pdf": "TC-030/TC-030_steps.pdf",
+  "evidence_folder": "TC-030/",
+  "run": "2026-10-28_1132"
+}

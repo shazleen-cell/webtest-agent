@@ -1,0 +1,64 @@
+{
+  "id": "TC-077",
+  "title": "[LOGGED OUT] Favicon and share image are set",
+  "area": "Non-functional",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-28T14:55:56+08:00",
+  "ended": "2026-10-28T14:56:37+08:00",
+  "duration_sec": 41,
+  "failed_step": null,
+  "reason": "Favicon, og:image and og:title (\"LUDUS - Merge Battle Arena PvP Web Shop\") all present",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no saved cookies or cache. Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title \"LUDUS - Merge Battle Arena PvP Web Shop\", cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-077/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-077/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a favicon link (link rel containing \"icon\") present (read with execute_script)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "1 link rel=\"icon\" href=\"//cdn.xsolla.net/merchant-bucket-prod/files/uploaded/sitebuilder/463788/d885652a4837848c5ac715757cef5828.webp\"",
+      "ok": true,
+      "screenshot": "TC-077/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a meta property=\"og:image\" present?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "og:image content=\"//cdn.xsolla.net/merchant-bucket-prod/files/uploaded/sitebuilder/463788/9cf83e83063c72b206b288c1cafd54cb.webp\" (note: protocol-relative URL, not absolute https)",
+      "ok": true,
+      "screenshot": "TC-077/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a meta property=\"og:title\" present with the text \"LUDUS - Merge Battle Arena PvP Web Shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "og:title content=\"LUDUS - Merge Battle Arena PvP Web Shop\" (exact match)",
+      "ok": true,
+      "screenshot": "TC-077/step05.png"
+    }
+  ],
+  "replay_gif": "TC-077/TC-077_replay.gif",
+  "steps_pdf": "TC-077/TC-077_steps.pdf",
+  "evidence_folder": "TC-077/",
+  "run": "2026-10-28_1426"
+}
