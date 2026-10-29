@@ -7,10 +7,9 @@ The original run folders (for example `../2026-10-28_1132/`) are left untouched.
 ## Start here
 
 Open **`results.html`** in a browser. It has:
-- totals at the top, with filters for status, LOGGED OUT / LOGGED IN and priority
-- a searchable list of all tests on the left
-- an overview table showing which run each result came from
-- one page per test with its steps, the expected and actual answer for each step, screenshots, and a replay animation. Failed steps are shown in red.
+- an Overview with the totals, the pass rate by category (Functional / Non-functional), mode and priority, the tests that need attention, the changes made to the test account, and a list of all tests with the run each result came from. Click a category, mode or priority to show only those tests.
+- a list of all tests on the left, with search and filters for status, mode, priority and category
+- one page per test. It starts with what went wrong: the failed step, its expected and actual answer, and its screenshot. Below that are the evidence files, a replay animation and every step. Failed steps are shown in red.
 
 **`results.xlsx`** has the same data as a spreadsheet, in three sheets:
 - "Summary": the totals

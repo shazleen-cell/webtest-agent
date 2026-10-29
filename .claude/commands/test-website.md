@@ -54,7 +54,7 @@ Write as many test cases as needed to cover every fact in site-map.md (F- facts 
   One action per test. Only test the cases that are possible: do not plan two tests that claim the same reward.
 - Gift flow cases stop at the confirmation screen: the last step closes the flow with its close or back button. The final button that opens payment is never clicked, and no step may name it as an action.
 - Logout cases are allowed (they do not change the account, "Changes account" = No).
-- Each test case has: TC ID, Title, Area (for example Home, Store, Header, Footer, Error page), Priority (High, Medium, Low), Type (Positive or Negative), Platform (Desktop or Mobile), Start URL, Steps, Expected answers, Evidence (the F-, P- or R- numbers it is based on), Changes account (Yes or No).
+- Each test case has: TC ID, Title, Area (for example Home, Store, Header, Footer, Error page), Priority (High, Medium, Low), Type (Positive or Negative), Platform (Desktop or Mobile), Start URL, Steps, Expected answers, Evidence (the F-, P- or R- numbers it is based on), Changes account (Yes or No), Test category (Functional or Non-functional) and Sub-type (for example Navigation, Claim reward, Performance, Security, Accessibility, SEO, Usability / layout). Functional = does a feature work (links, menus, popups, login, claiming). Non-functional = how well it works (speed, failed requests, security headers, accessibility, SEO, layout on other screen sizes, spelling and content quality).
 - Priority: High = page loads, main menu, key buttons visible, prices shown, login and logout, claiming. Medium = sections and links. Low = small text and cosmetic items.
 - Steps are numbered, in plain English. Step 1: Open <URL> in the browser and wait until the page has finished loading. Step 2: If a "<banner title>" banner is shown, click "<cookie button>".
 - Action steps end with a full stop. Checks are Yes/No questions ending with a question mark. Use the exact visible text in quotes.
@@ -65,9 +65,9 @@ Write as many test cases as needed to cover every fact in site-map.md (F- facts 
 
 ## Step 4: Save the test cases
 Use python3 with openpyxl to save SITE/testcases.xlsx, sheet "Test cases", with columns:
-Approved, TC ID, Title, Area, Priority, Type, Platform, Start URL, Steps, Expected answers, Evidence, Last result, Last run, Changes account.
-- If the file already exists, keep all existing rows and their Approved values. Add new rows with the next free TC IDs. If the "Changes account" column is missing, add it at the end and fill it with No for existing rows.
-- New rows have Approved empty. Add a Yes/No dropdown to the Approved and Changes account columns. Wrap text, freeze the header row, add filters.
+Approved, TC ID, Title, Area, Priority, Type, Platform, Start URL, Steps, Expected answers, Evidence, Last result, Last run, Changes account, Test category, Sub-type.
+- If the file already exists, keep all existing rows and their Approved values. Add new rows with the next free TC IDs. If the "Changes account" column is missing, add it at the end and fill it with No for existing rows. If the "Test category" or "Sub-type" column is missing, add it at the end and fill it in for existing rows too. The reports use these columns for the Functional / Non-functional breakdown.
+- New rows have Approved empty. Add a Yes/No dropdown to the Approved and Changes account columns, and a Functional/Non-functional dropdown to the Test category column. Wrap text, freeze the header row, add filters.
 - If the file is open in Excel and cannot be saved, ask me to close it.
 
 ## Step 5: STOP for review

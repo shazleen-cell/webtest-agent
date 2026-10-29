@@ -7,7 +7,7 @@ Writes Results/results.html, Results/results.xlsx, Results/json/<TC ID>.json and
 import glob, json, os, re, shutil, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill
-from report_html import COLORS, PRIOS, e, totals, render
+from report_html import COLORS, PRIOS, e, totals, render, load_categories
 
 RUNS, NAME = os.path.abspath(sys.argv[1]), sys.argv[2]
 OUT = os.path.join(RUNS, "Results")
@@ -84,19 +84,52 @@ def md_to_html(text):
     return "\n".join(out)
 
 
+def md_sections(text):
+    """[(heading, body)] split on "## " headings; the first entry is the text before the first heading."""
+    secs, head, body = [], "", []
+    for line in text.splitlines():
+        m = re.match(r"##\s+(.*)", line)
+        if m:
+            secs.append((head, "\n".join(body))); head, body = m.group(1).strip(), []
+        else:
+            body.append(line)
+    secs.append((head, "\n".join(body)))
+    return secs
+
+
+def findings(body):
+    """{TC ID: "Bug or test wording?" value} from the README table of tests that did not pass."""
+    rows = [[c.strip() for c in r.strip().strip("|").split("|")] for r in body.splitlines()
+            if r.strip().startswith("|") and not re.fullmatch(r"[\s|:-]+", r)]
+    if not rows: return {}
+    col = next((i for i, h in enumerate(rows[0]) if h.lower().startswith("bug")), None)
+    return {r[0]: r[col] for r in rows[1:] if col is not None and len(r) > col} if col is not None else {}
+
+
 tot = totals(tests)
 total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
 runs_used = sorted({t["run"] for t in tests})
+info = load_categories(os.path.join(os.path.dirname(RUNS), "testcases.xlsx"))
 readme = os.path.join(OUT, "README.md")
 views = []
 if os.path.exists(readme):
     with open(readme, encoding="utf-8") as f:
-        views.append(("summary", "Summary & guide", md_to_html(f.read())))
-intro = ('<p>New here? Read the <a href="#summary">Summary &amp; guide</a> (the same text as <a href="README.md">README.md</a>) '
-         'for the latest results, the tests that did not pass and what every file means. ' if views else
-         '<p>New here? Read <a href="README.md">README.md</a> for what every file and folder means. ') + \
-        f'Raw results per test: <a href="json/">json/</a>. Newest result per test from these runs: {e(", ".join(runs_used))}.</p>'
-page = render(tests, NAME, OUT, f"{NAME} · all runs · {len(tests)} tests", show_run=True, intro=intro, views=views)
+        secs = md_sections(f.read())
+    # Totals, the not-passed table and account changes are already on the overview; the rest is the guide.
+    for head, body in secs:
+        if head.lower().startswith("tests that did not pass"):
+            for tid, k in findings(body).items():
+                info.setdefault(tid, {})["finding"] = k
+    guide = [(h, re.sub(r"^#\s.*$", "", b, flags=re.M)) for h, b in secs
+             if not h.lower().startswith(("totals", "tests that did not pass", "account changes"))]
+    views.append(("guide", "How to read this report", "<h2>How to read this report</h2>\n" +
+                  md_to_html("\n".join((f"## {h}\n" if h else "") + b for h, b in guide))))
+intro = (f'<p>Newest result of every test, taken from {len(runs_used)} run{"s" if len(runs_used) != 1 else ""}: {e(", ".join(runs_used))}. '
+         f'New here? See <a href="#guide">How to read this report</a>. ' if views else
+         f'<p>Newest result of every test, taken from these runs: {e(", ".join(runs_used))}. ') + \
+        'Raw results: <a href="json/">json/</a> · <a href="results.xlsx">results.xlsx</a> · <a href="README.md">README.md</a></p>'
+page = render(tests, NAME, OUT, f"{len(tests)} tests · newest result from {len(runs_used)} run{'s' if len(runs_used) != 1 else ''}",
+              show_run=True, intro=intro, views=views, info=info)
 with open(os.path.join(OUT, "results.html"), "w", encoding="utf-8") as f:
     f.write(page)
 

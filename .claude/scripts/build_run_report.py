@@ -4,7 +4,7 @@ Usage: build_run_report.py <RUN> <SITE> <site name>"""
 import csv, glob, json, os, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
-from report_html import COLORS, totals, changes, render
+from report_html import COLORS, totals, changes, render, load_categories
 
 RUN, SITE, NAME = sys.argv[1], sys.argv[2], sys.argv[3]
 run_date = os.path.basename(RUN.rstrip("/"))
@@ -16,7 +16,7 @@ tests.sort(key=lambda t: t["id"])
 
 tot = totals(tests)
 total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
-page = render(tests, NAME, RUN, f"{NAME} · run {run_date} · {len(tests)} tests")
+page = render(tests, NAME, RUN, f"run {run_date} · {len(tests)} tests", info=load_categories(os.path.join(SITE, "testcases.xlsx")))
 with open(os.path.join(RUN, "report.html"), "w", encoding="utf-8") as f:
     f.write(page)
 

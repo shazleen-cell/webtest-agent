@@ -31,7 +31,7 @@ If the website-tester agent is not available, use a general-purpose agent and pa
 ## Step 4: Make the reports
 Run: python3 "<PROJECT>/.claude/scripts/build_run_report.py" "<RUN>" "<SITE absolute path>" "<site name>"
 It creates from RUN/results/*.json:
-1. RUN/report.html: site, date, totals (passed, failed, blocked, skipped, unsure), total time and a note that real video is not available; a summary table (each TC ID links to its section) with a LOGGED OUT / LOGGED IN filter; then per test: what it changed on the test account, links to its evidence folder, steps PDF and trace zip, the replay GIF, and a step table with expected answer, answer, what was seen and a screenshot. Failed steps are shown in red.
+1. RUN/report.html (layout from .claude/scripts/report_html.py): an Overview with totals, the pass rate by category (Functional / Non-functional, from the Test category column of testcases.xlsx), mode and priority, a "Needs attention" table of tests that did not pass, the changes to the test account and a table of all tests; a sidebar with search and status, mode, priority and category filters; then one page per test that starts with what went wrong (the failed step, expected and actual answer, and its screenshot), then account changes, links to its evidence folder, steps PDF and trace zip, the replay GIF, and every step with expected answer, answer, what was seen and a screenshot. Failed steps are shown in red. A note says real video is not available.
 2. RUN/results.xlsx: sheets "Summary", "Results" and "Steps".
 3. RUN/results.csv: the Results sheet as UTF-8 with BOM.
 It also fills "Last result" and "Last run" in SITE/testcases.xlsx. If it prints TESTCASES_OPEN, the file is open in Excel: ask me to close it, then run the script again.
