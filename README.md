@@ -1,2 +1,128 @@
 # webtest-agent
-webshop automated testing
+
+Automated website testing with Claude Code. It explores a website, writes test cases for you to review, runs them in a real Chrome browser, and builds HTML and Excel reports with a screenshot of every step.
+
+It was built for game web shops (first site: [LUDUS](https://site.ludus-game.com/)) and tests in two modes:
+
+- **LOGGED OUT**: as a visitor who is not logged in.
+- **LOGGED IN**: as an approved test user. These tests can claim free rewards and spend loyalty points when the site's settings allow it.
+
+**It never pays or purchases anything.**
+
+## Requirements
+
+- [Claude Code](https://claude.com/claude-code)
+- The **wdio-mcp** MCP server set up in Claude Code. It drives Chrome.
+- Google Chrome
+- Python 3 with `openpyxl` and `pillow`:
+  ```
+  pip3 install --user openpyxl pillow
+  ```
+
+## Quick start
+
+Open Claude Code in this folder and run:
+
+| Step | Command | What it does |
+|---|---|---|
+| 1 | `/test-website <url> <site name>` | Explores the site and writes test cases to `website-tests/<site>/testcases.xlsx`, then stops so you can review them. |
+| 2 | Type `proceed`, or mark *Approved* = Yes in the Excel file | Approves the test cases. |
+| 3 | `/run-tests <site name>` | Runs the approved tests and makes `report.html`, `results.xlsx` and `results.csv` for that run. |
+| 4 | `/gather-results <site name>` | Combines all runs into one `Results/` folder with the newest result of every test. |
+
+Example:
+```
+/test-website https://site.ludus-game.com/ ludus
+/run-tests ludus
+/gather-results ludus
+```
+
+`/run-tests` can also run only some of the tests:
+```
+/run-tests ludus High            # High priority only
+/run-tests ludus LoggedOut       # LOGGED OUT tests only
+/run-tests ludus LoggedIn        # LOGGED IN tests only
+/run-tests ludus Changes         # only tests that change the test account
+/run-tests ludus TC-001,TC-005   # specific tests
+```
+
+## How it works
+
+There are two roles:
+
+1. **The main Claude Code session (coordinator).** It follows the slash commands in `.claude/commands/`. It explores the site, writes the test cases, splits the approved tests into batches of 5 and builds the reports.
+2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a replay GIF, a steps PDF and a browser trace zip.
+
+The Python scripts in `.claude/scripts/` build the evidence and reports:
+
+| Script | Used by | What it does |
+|---|---|---|
+| `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay GIF and steps PDF |
+| `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
+| `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
+| `report_html.py` | both report scripts | The shared HTML report layout |
+
+## Folder layout
+
+```
+website-tests/<site>/
+  settings.md          site rules: cookie banner, login, what may be clicked
+  site-map.md          pages and facts found while exploring (F-, P-, N- numbers)
+  testcases.xlsx       test cases; the Approved column decides what runs
+  explore/             screenshots taken while exploring
+  runs/
+    <date_time>/       one folder per run: report.html, results.xlsx, results.csv, evidence
+    Results/           newest result of every test from all runs (results.html, results.xlsx, json/)
+```
+
+## settings.md
+
+Each site has its own `website-tests/<site>/settings.md`. `/test-website` creates it on the first run. It contains:
+
+- **Cookie banner**: the banner title and the button to click
+- **Login (LOGGED IN mode)**: the login method (for example `?user-id=<id>` added to the URL), the test user, how to tell the user is logged in, and any popup shown after login. LOGGED IN tests are only written and run when this section exists.
+- **Allowed when LOGGED IN / Allowed when LOGGED OUT**: what tests may click
+- **Never**: what must never be clicked
+- **Skip**: content that changes all the time and should not be tested
+
+## Test cases
+
+Every test case in `testcases.xlsx` has:
+
+- a title starting with `[LOGGED OUT]` or `[LOGGED IN]`
+- an area, a priority (High / Medium / Low), and a platform (Desktop / Mobile / Tablet)
+- a category (Functional / Non-functional) and a sub-type
+- numbered steps. Checks are Yes/No questions, and the expected answers are listed by step number.
+- *Changes account* = Yes when the test claims a reward or spends points. These tests check a precondition first. If the reward was already claimed or is on cooldown, the result is SKIPPED instead of FAILED.
+
+Only rows with *Approved* = Yes are run.
+
+## Results
+
+| Status | Meaning |
+|---|---|
+| PASSED | Every check gave the expected answer |
+| FAILED | A check gave the wrong answer, or a step could not be done |
+| BLOCKED | The next step would break a safety rule, or the test user was not logged in |
+| SKIPPED | The precondition was not met (for example, the reward was already claimed) |
+| UNSURE | The tester could not tell the answer from the page |
+
+`results.html` opens with an overview: totals, pass rate by category, mode and priority, the tests that need attention, and the changes made to the test account. Each test has its own page, which starts with what went wrong: the failed step, the expected and actual answer, and the screenshot.
+
+wdio-mcp cannot record video. Each test has a replay GIF of its step screenshots instead, plus a trace zip you can open at https://trace.playwright.dev.
+
+## Safety rules
+
+The tester always follows these rules:
+
+- No payment and no purchase: no real-money prices, Buy, Pay, Checkout or Add to cart, and never the final button of a flow that leads to payment.
+- It never types into fields, and never enters credentials, personal data or payment details.
+- It only opens pages on the same website: no external links, no downloads.
+- Claiming and spending points happen only when `settings.md` allows them, and only in tests marked *Changes account*.
+- If a step needs something that is not clearly allowed, the test is BLOCKED. The tester does not work around it.
+
+## Git
+
+Test evidence is large (about 1.8 GB for one site), so `.gitignore` keeps it out of git. Git keeps the scripts, commands, `settings.md`, `site-map.md`, `testcases.xlsx`, the `explore/` screenshots, and `Results/README.md`, `results.xlsx` and `json/`. To share the full report with screenshots, zip the `runs/Results/` folder.
+
+The commands, script names and folder layout in it match what's in the repo now. I left out an install command for wdio-mcp because I don't know how you set it up. If you have a link or command for it, add it under "Requirements".
