@@ -40,7 +40,7 @@ a{color:#2563eb}
 aside{position:sticky;top:var(--top);height:calc(100vh - var(--top));overflow:auto;border-right:1px solid var(--line);background:var(--card);padding:12px 8px 24px}
 .search{width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;margin-bottom:8px}
 .links a{display:block;padding:5px 8px;border-radius:6px;color:inherit;text-decoration:none;font-size:14px}.links a:hover,.item:hover{background:var(--bg)}
-.links.cur-o a{background:var(--sel)}
+.links.cur-o a[href="#overview"]{background:var(--sel)}
 .gh{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.04em;padding:12px 8px 4px}
 .item{display:grid;grid-template-columns:18px 58px minmax(0,1fr);gap:4px;align-items:center;padding:5px 8px;border-radius:6px;color:inherit;text-decoration:none;font-size:14px}
 .item .it{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.iid{font-weight:600;font-variant-numeric:tabular-nums}
@@ -80,6 +80,8 @@ tbody tr{cursor:pointer}td:first-child{white-space:nowrap}tbody tr:hover{backgro
 .noshot{color:var(--block);font-size:13px;padding:8px;border:1px dashed var(--line);border-radius:6px}
 .hint{color:var(--mut);font-size:12px;margin-top:16px}kbd{border:1px solid var(--line);border-radius:3px;padding:0 4px;font-size:11px}
 .empty{color:var(--mut);font-size:13px;padding:8px}
+.md table{margin:8px 0 16px}.md tbody tr{cursor:auto}.md td:first-child{white-space:normal}.md h2{margin-top:0}.md h3{margin:22px 0 6px}
+.md code{font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px}
 @media (max-width:860px){
  .wrap{grid-template-columns:1fr}.menubtn{display:inline-block}.health{display:none}
  aside{position:fixed;left:0;top:var(--top);width:85vw;max-width:340px;z-index:15;transform:translateX(-105%);transition:transform .2s;box-shadow:0 6px 24px #0004}
@@ -164,9 +166,10 @@ JS = """
 """
 
 
-def render(tests, name, root, summary, show_run=False, intro=""):
+def render(tests, name, root, summary, show_run=False, intro="", views=()):
     """tests: result dicts; root: folder the evidence paths are relative to; summary: overview line (plain text);
-    show_run: add a Run column and run label per test; intro: extra HTML paragraph for the overview."""
+    show_run: add a Run column and run label per test; intro: extra HTML paragraph for the overview;
+    views: extra (id, label, html) pages, linked in the sidebar next to Overview."""
     def exists(rel): return bool(rel) and os.path.exists(os.path.join(root, rel))
     tot = totals(tests)
     total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
@@ -192,7 +195,8 @@ def render(tests, name, root, summary, show_run=False, intro=""):
 <div class="wrap">
 <aside>
   <input class="search" type="search" placeholder="Search cases…  ( / )" aria-label="Search cases">
-  <div class="links"><a href="#overview">Overview</a></div>""")
+  <div class="links"><a href="#overview">Overview</a>""" +
+               "".join(f'<a href="#{e(vid)}">{e(label)}</a>' for vid, label, _ in views) + "</div>")
     for k in SHOWN + ["UNSURE"]:
         group = [t for t in tests if t.get("status") == k]
         if not group: continue
@@ -227,6 +231,9 @@ def render(tests, name, root, summary, show_run=False, intro=""):
                    f'<td>{e(t.get("priority"))}</td><td><span class="b b-{e(st.lower())}">{e(st)}</span></td><td><span class="m">{mode(t)}</span></td>'
                    f'{run_td}<td>{e(t.get("title"))}</td><td>{e(reason)}</td></tr>')
     out.append("  </tbody></table>\n</section>")
+
+    for vid, _, html_ in views:
+        out.append(f'<section class="view md" id="{e(vid)}" hidden>\n{html_}\n</section>')
 
     # One view per test
     for t in tests:

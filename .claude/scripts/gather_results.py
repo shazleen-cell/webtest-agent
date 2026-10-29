@@ -4,7 +4,7 @@ Usage: gather_results.py <runs dir> <site name>
 Sources: every run folder (runs/<run>/results/*.json) plus results already in Results/json/*.json.
 Copies only; never moves or deletes anything from the run folders.
 Writes Results/results.html, Results/results.xlsx, Results/json/<TC ID>.json and Results/<TC ID>/ evidence folders."""
-import glob, json, os, shutil, sys
+import glob, json, os, re, shutil, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill
 from report_html import COLORS, PRIOS, e, totals, render
@@ -39,12 +39,64 @@ for tid, (_, run_dir, run, t) in sorted(best.items()):
         json.dump(t, f, ensure_ascii=False, indent=2)
     tests.append(t)
 
+def md_inline(s):
+    s = e(s)
+    s = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
+    return re.sub(r"`(.+?)`", r"<code>\1</code>", s)
+
+
+def md_to_html(text):
+    """Small Markdown subset used by Results/README.md: headings, tables, bullet lists, paragraphs, **bold**, `code`.
+    URLs stay plain text so the report only links to files inside Results/."""
+    out, para, rows, items = [], [], [], []
+
+    def flush():
+        if para:
+            out.append(f"<p>{md_inline(' '.join(para))}</p>"); para.clear()
+        if items:
+            out.append("<ul>" + "".join(f"<li>{md_inline(i)}</li>" for i in items) + "</ul>"); items.clear()
+        if rows:
+            cells = [[c.strip() for c in r.strip().strip("|").split("|")] for r in rows if not re.fullmatch(r"[\s|:-]+", r)]
+            head, body = cells[0], cells[1:]
+            out.append("<table><thead><tr>" + "".join(f"<th>{md_inline(c)}</th>" for c in head) + "</tr></thead><tbody>"
+                       + "".join("<tr>" + "".join(f"<td>{md_inline(c)}</td>" for c in r) + "</tr>" for r in body)
+                       + "</tbody></table>"); rows.clear()
+
+    for line in text.splitlines():
+        s = line.strip()
+        if s.startswith("|"):
+            if para or items: flush()
+            rows.append(s); continue
+        if rows: flush()
+        m = re.match(r"(#{1,6})\s+(.*)", s)
+        if m:
+            flush(); lvl = min(len(m.group(1)) + 1, 4)
+            out.append(f"<h{lvl}>{md_inline(m.group(2))}</h{lvl}>")
+        elif s.startswith(("- ", "* ")):
+            if para: flush()
+            items.append(s[2:])
+        elif not s:
+            flush()
+        else:
+            if items: flush()
+            para.append(s)
+    flush()
+    return "\n".join(out)
+
+
 tot = totals(tests)
 total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
 runs_used = sorted({t["run"] for t in tests})
-intro = ('<p>New here? Read <a href="README.md">README.md</a> for what every file and folder means. '
-         f'Raw results per test: <a href="json/">json/</a>. Newest result per test from these runs: {e(", ".join(runs_used))}.</p>')
-page = render(tests, NAME, OUT, f"{NAME} · all runs · {len(tests)} tests", show_run=True, intro=intro)
+readme = os.path.join(OUT, "README.md")
+views = []
+if os.path.exists(readme):
+    with open(readme, encoding="utf-8") as f:
+        views.append(("summary", "Summary & guide", md_to_html(f.read())))
+intro = ('<p>New here? Read the <a href="#summary">Summary &amp; guide</a> (the same text as <a href="README.md">README.md</a>) '
+         'for the latest results, the tests that did not pass and what every file means. ' if views else
+         '<p>New here? Read <a href="README.md">README.md</a> for what every file and folder means. ') + \
+        f'Raw results per test: <a href="json/">json/</a>. Newest result per test from these runs: {e(", ".join(runs_used))}.</p>'
+page = render(tests, NAME, OUT, f"{NAME} · all runs · {len(tests)} tests", show_run=True, intro=intro, views=views)
 with open(os.path.join(OUT, "results.html"), "w", encoding="utf-8") as f:
     f.write(page)
 
