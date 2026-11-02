@@ -50,7 +50,7 @@ Open Claude Code in this folder and run:
 
 | Step | Command | What it does |
 |---|---|---|
-| 1 | `/test-website <url> <site name>` | Explores the site, creates `settings.md` and `site-mses to `website-tests/<site>/testcases.xlsx`. Then it stops so you can review them. |
+| 1 | `/website-test <url> <site name>` | Explores the site, creates `settings.md` and `site-mses to `website-tests/<site>/testcases.xlsx`. Then it stops so you can review them. |
 | 2 | Type `proceed`, or mark *Approved* = Yes in the Excel file | Approves the test cases. `proceed` approves all new test cases and runs them straight away. |
 | 3 | `/run-tests <site name>` | Runs the approved tests and makes `report.html`, `results.xlshat run. |
 | 4 | `/gather-results <site name>` | Combines all runs into one `Results/` folder with the newest result of every test. |
