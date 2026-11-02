@@ -87,9 +87,10 @@ The Python scripts in `.claude/scripts/` build the evidence and reports:
 | `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
 | `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
 | `eval_score.py` | you, after `/run-tests demoblaze-eval` | Scores a run against `golden.json`, writes `eval_report.html`, and compares runs (`eval_comparison.html`) |
+| `report_html.py` | both report scripts | The shared HTML report layout |
+| `eval_report_html.py` | `eval_score.py` | The eval report and comparison pages |
 
 Each run folder also has `run_timing.json` (start and end time, and the time, tokens and tool calls of every website-tester batch). The reports use it to show the **full run time**, split into **coordinator** time (batching, checks, building reports) and **website-tester** time, next to the **test step time** (the time inside the tests themselves) and the tokens used.
-| `report_html.py` | both report scripts | The shared HTML report layout |
 
 ## Folder layout
 
