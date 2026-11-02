@@ -63,6 +63,7 @@ Write as many test cases as needed to cover every fact in site-map.md (F- facts 
 - Steps are numbered, in plain English. Step 1: Open <URL> in the browser and wait until the page has finished loading. Step 2: If a "<banner title>" banner is shown, click "<cookie button>".
 - Action steps end with a full stop. Checks are Yes/No questions ending with a question mark. Use the exact visible text in quotes.
 - Expected answers list the checks by number, for example: #3 Yes, #5 Yes. Write questions so the correct answer is Yes where possible.
+- Browser alert boxes (for example form validation messages) are closed automatically by the browser tools. To check an alert message, add the action step "Turn on the alert recorder." after the page has loaded and before the click, then ask: Is the alert message "<exact text>"? (Turn it on again after any page load.)
 - Typing, cart and checkout steps are allowed only when the matching opt-in section is ON, and only for exactly the fields, values and buttons it lists. Write typing steps like: Type "{TEST_USERNAME}" into the "Username:" field of the "Log in" popup. Use the placeholder, never the real value. A cart or checkout test has "Changes account" = Yes and should remove what it added.
 - Never write a step that pays or purchases (except a demo checkout that "Allowed demo checkout" allows), or anything in the "Never" list of settings.md. Skip anything in the skip list. Do not check rotating content or the current year.
 - A LOGGED IN test must fit in the session-length from settings.md.

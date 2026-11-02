@@ -47,6 +47,8 @@ Screenshots: explore/
 - F-19: "Sign up" opens a "Sign up" popup with "Username:" and "Password:" fields, a "×", "Close" and "Sign up". Pressing Escape closes it.
 - F-20: Accessibility: the "Username:" and "Password:" labels in the Log in popup and the "Contact Email:" label in the Contact popup are not linked to their fields (no label "for"), so screen readers announce the fields without a name. The Sign up fields, "Contact Name:" and "Message:" are linked.
 
+- F-26: (2026-11-02) Clicking "Log in" inside the Log in popup with both fields empty shows the browser alert "Please fill out Username and Password.". Browser alerts are closed automatically by the browser tools, so the text can only be read with the alert recorder (window.alert replaced by a function that stores the message).
+
 ### Error page
 - F-21: https://www.demoblaze.com/this-page-does-not-exist answers 404 with a plain server page: tab title "404 Not Found", "Error: Not Found" and "The requested URL /this-page-does-not-exist was not found on this server." It has no header, no styling and no link back to the shop.
 

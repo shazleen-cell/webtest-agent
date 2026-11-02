@@ -34,9 +34,13 @@
 - fields:
   - Log in popup, "Username:" = {TEST_USERNAME}
   - Log in popup, "Password:" = {TEST_PASSWORD}
+  - Log in popup, "Username:" = no-such-user-12345 (fake, for the "User does not exist." check)
+  - Log in popup, "Password:" = wrong-password (fake, for the "Wrong password." and "User does not exist." checks)
 - submit-buttons:
-  - "Log in" (inside the Log in popup)
-- Not allowed even when ON: the Contact form ("Send message") and the Sign up form (they create data on the shared demo site).
+  - "Log in" (inside the Log in popup), with the values above or with both fields empty
+  - "Sign up" (inside the Sign up popup), only with both fields empty (validation check; nothing is created)
+  - "Send message" (inside the Contact popup), only with all fields empty (validation check; approved by m.zain, 2026-11-02)
+- Not allowed even when ON: typing anything into the Sign up or Contact fields (that would create an account or send a real message on the shared demo site).
 - Needs in settings.local.md: `- TEST_USERNAME: <demo account username>` and `- TEST_PASSWORD: <demo account password>`.
 
 ## Allowed cart actions
