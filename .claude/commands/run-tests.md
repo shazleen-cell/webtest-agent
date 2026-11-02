@@ -11,10 +11,10 @@ PROJECT = the project folder (absolute path). EVIDENCE SCRIPT = PROJECT/.claude/
 ## Step 1: Load the approved tests
 Use python3 with openpyxl to read SITE/testcases.xlsx and take only rows where Approved is Yes, then apply the filter.
 If there are none, stop and tell me.
-Read SITE/settings.md: the "Login (LOGGED IN mode)" section, "Allowed when LOGGED IN", "Allowed when LOGGED OUT" and "Never". The website-tester agent needs these.
+Read SITE/settings.md: the "Login (LOGGED IN mode)" section, "Allowed when LOGGED IN", "Allowed when LOGGED OUT", "Never", and the opt-in sections "Allowed to type", "Allowed cart actions" and "Allowed demo checkout" if present (see .claude/rules/opt-in.md). The website-tester agent needs these.
 Also read SITE/settings.local.md (ignored by git). It holds the real test-account values, for example `- TEST_USER_ID: <id>`, for the placeholders such as {TEST_USER_ID} in settings.md and in the Start URLs and Steps. If an approved [LOGGED IN] case uses a placeholder whose value is missing, stop and ask me for it.
 Check that Pillow is installed (python3 -c "import PIL"). If it is missing, run: pip3 install --user pillow
-Safety check before running: read the Steps of every approved case. If any action step clicks or presses something that pays or purchases (a button with a real-money price, Buy, Purchase, Pay, Checkout, Add to cart, the final button of the gift flow) or anything in the "Never" list of settings.md, do NOT run that case. List it for me with the TC ID and the step, and run the rest. Claim, spending loyalty points and Logout are allowed if settings.md allows them.
+Safety check before running: read the Steps of every approved case. If any action step clicks or presses something that pays or purchases (a button with a real-money price, Buy, Purchase, Pay, Checkout, Add to cart, the final button of the gift flow) or anything in the "Never" list of settings.md, do NOT run that case. List it for me with the TC ID and the step, and run the rest. Claim, spending loyalty points and Logout are allowed if settings.md allows them. A step that types, changes the cart or checks out may run only if the matching opt-in section has status ON and lists that exact field, value or button; otherwise do NOT run that case and list it for me.
 
 ## Step 2: Make the run folder
 RUN = SITE/runs/<YYYY-MM-DD_HHMM>/ (absolute path) with a subfolder results/ and one evidence folder per test: RUN/<TC ID>/ (for example RUN/TC-001/).

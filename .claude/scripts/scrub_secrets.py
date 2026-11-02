@@ -22,7 +22,7 @@ def load_secrets(site):
     f = site / "settings.local.md"
     if not f.exists():
         return {}
-    pairs = re.findall(r"^\s*-\s*([A-Z][A-Z0-9_]*)\s*:\s*(\S.*?)\s*$", f.read_text(encoding="utf-8"), re.M)
+    pairs = re.findall(r"^[ \t]*-[ \t]*([A-Z][A-Z0-9_]*)[ \t]*:[ \t]*(\S.*?)[ \t]*$", f.read_text(encoding="utf-8"), re.M)
     return {k: v for k, v in pairs if len(v) >= 4}
 
 

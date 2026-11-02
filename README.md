@@ -96,6 +96,10 @@ The commands put the real value in only while the browser runs, and `.claude/scr
 - **Never**: what must never be clicked
 - **Skip**: content that changes all the time and should not be tested
 
+### Opt-in rules
+
+By default the agent never types, never changes a cart and never checks out. A site can loosen this only through three opt-in sections in its `settings.md`: **Allowed to type**, **Allowed cart actions** (demo or test sites only) and **Allowed demo checkout** (demo sites only, no real payment). Each section has a `status` (OFF unless someone switches it to ON), who approved it, and the exact fields, values and buttons it allows. The full rules and templates are in `.claude/rules/opt-in.md`. Logins and passwords for "Allowed to type" go in `settings.local.md` as `{TEST_USERNAME}` and `{TEST_PASSWORD}`, like the test user ID.
+
 ## Test cases
 
 Every test case in `testcases.xlsx` has:
