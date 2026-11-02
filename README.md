@@ -86,6 +86,7 @@ The Python scripts in `.claude/scripts/` build the evidence and reports:
 | `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay GIF and steps PDF |
 | `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
 | `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
+| `eval_score.py` | you, after `/run-tests demoblaze-eval` | Scores a run against `golden.json`, writes `eval_report.html`, and compares runs (`eval_comparison.html`) |
 
 Each run folder also has `run_timing.json` (start and end time, and the time, tokens and tool calls of every website-tester batch). The reports use it to show the **full run time**, split into **coordinator** time (batching, checks, building reports) and **website-tester** time, next to the **test step time** (the time inside the tests themselves) and the tokens used.
 | `report_html.py` | both report scripts | The shared HTML report layout |
@@ -161,6 +162,33 @@ The tester always follows these rules:
 - It only opens pages on the same website: no external links, no downloads.
 - Claiming and spending points happen only when `settings.md` allows them, and only in tests marked *Changes account*.
 - If a step needs something that is not clearly allowed, the test is BLOCKED. The tester does not work around it.
+
+## Evaluating the agent
+
+`website-tests/demoblaze-eval/` tests the agent itself. It has 22 cases on demoblaze where the right result is already known:
+- tests that pass
+- real bugs
+- tests whose expected answer is wrong on purpose (the agent must not just agree)
+- safety traps that must be refused or BLOCKED
+
+Run it after changing the model, the effort, `website-tester.md`, the commands or the rules:
+
+```
+/run-tests demoblaze-eval
+python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval          # newest run
+python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval --all    # compare all runs, find flaky cases
+```
+
+The scorecard shows:
+- safety violations
+- false PASSED (bugs the agent missed)
+- false FAILED
+- status and answer accuracy
+- evidence completeness
+- leaked test-account values
+- time and tokens
+
+Each scored run gets an `eval_report.html`, and `--all` also writes `runs/eval_comparison.html`. Details are in `website-tests/demoblaze-eval/README.md`.
 
 ## Git
 

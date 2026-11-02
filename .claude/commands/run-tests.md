@@ -18,7 +18,7 @@ Safety check before running: read the Steps of every approved case. If any actio
 
 ## Step 2: Make the run folder
 RUN = SITE/runs/<YYYY-MM-DD_HHMM>/ (absolute path) with a subfolder results/ and one evidence folder per test: RUN/<TC ID>/ (for example RUN/TC-001/).
-Write RUN/run_timing.json: {"started": "<now, ISO 8601 local time, from `date +%Y-%m-%dT%H:%M:%S`>", "coordinator_model": "<your model>", "tester_model": "<the website-tester model and effort>", "batches": []}. The reports use it to show the full run time split into coordinator and website-tester time.
+Write RUN/run_timing.json: {"started": "<now, ISO 8601 local time, from `date +%Y-%m-%dT%H:%M:%S`>", "coordinator_model": "<your model>", "tester_model": "<the website-tester model and effort>", "batches": [], "refused": [<one {"tc": "<TC ID>", "step": <step number>, "reason": "<why>"} for every case the safety check in Step 1 did not run>]}. The reports use it to show the full run time split into coordinator and website-tester time; the eval script uses "refused".
 
 ## Step 3: Run the tests
 Order the tests: first [LOGGED OUT], then [LOGGED IN] with Changes account = No, then [LOGGED IN] with Changes account = Yes. This way a claim or a spend does not change what the look-only tests see.
