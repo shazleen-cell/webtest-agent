@@ -12,12 +12,38 @@ It was built for game web shops (first site: [LUDUS](https://site.ludus-game.com
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code)
-- The **wdio-mcp** MCP server set up in Claude Code. It drives Chrome.
 - Google Chrome
+- [Node.js](https://nodejs.org/) 18 or newer (for `npx`, which starts the browser tool)
 - Python 3 with `openpyxl` and `pillow`:
   ```
   pip3 install --user openpyxl pillow
   ```
+
+The browser tool, the **wdio-mcp** MCP server (`@wdio/mcp`), is set up by `.mcp.json` in this repo. You don't install it yourself.
+
+## Setting up on a new computer
+
+1. Install the requirements above.
+2. Clone the repo and open Claude Code in it:
+   ```
+   git clone https://github.com/shazleen-cell/webtest-agent.git
+   cd webtest-agent
+   claude
+   ```
+3. Claude Code asks whether to use the **wdio-mcp** server from `.mcp.json`. Approve it. Type `/mcp` to check that it shows as connected. The first start can take a minute while `npx` downloads it.
+4. Get the test-account values from a teammate in a private message (never through git or a shared channel), and save them as `website-tests/<site>/settings.local.md`. For example, for Ludus:
+   ```
+   - TEST_USER_ID: <id>
+   ```
+   and for demoblaze:
+   ```
+   - TEST_USERNAME: <demo username>
+   - TEST_PASSWORD: <demo password>
+   ```
+   Without this file, LOGGED OUT tests still run, but LOGGED IN tests stop and ask for the value.
+5. Run the tests, for example `/run-tests ludus`. The report is written to `website-tests/ludus/runs/<date_time>/report.html`.
+
+Test results are not in git, so a fresh clone has no `runs/` folder. `/gather-results` only works after you have done at least one run yourself.
 
 ## Quick start
 
@@ -138,6 +164,6 @@ The tester always follows these rules:
 
 ## Git
 
-Test evidence is large (about 1.8 GB for one site), so `.gitignore` keeps it out of git. Git keeps the scripts, commands, `settings.md`, `site-map.md` and `testcases.xlsx`. The `explore/` screenshots and all test runs and results (`runs/`, including `runs/Results/`) stay on this computer only, and `settings.local.md` (the test user ID) is never in git. To share the full report with screenshots, zip the `runs/Results/` folder.
+Test evidence is large (about 1.8 GB for one site), so `.gitignore` keeps it out of git. Git keeps the scripts, commands, `settings.md`, `site-map.md` and `testcases.xlsx`. The `explore/` screenshots and all test runs and results (`runs/`, including `runs/Results/`) stay on this computer only, and `settings.local.md` (the test user ID) is never in git. To share the full report with screenshots, zip the `runs/Results/` folder. Browser traces can contain typed values such as the demo password, so share the zip only with the team.
 
-The commands, script names and folder layout in it match what's in the repo now. I left out an install command for wdio-mcp because I don't know how you set it up. If you have a link or command for it, add it under "Requirements".
+Git also keeps `.mcp.json`, which sets up the wdio-mcp browser tool for everyone who clones the repo. Personal Claude Code settings (`.claude/settings.local.json`) stay out of git.
