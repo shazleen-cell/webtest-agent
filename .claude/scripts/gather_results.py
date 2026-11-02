@@ -7,7 +7,7 @@ Writes Results/results.html, Results/results.xlsx, Results/json/<TC ID>.json and
 import glob, json, os, re, shutil, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill
-from report_html import COLORS, PRIOS, e, totals, render, load_categories
+from report_html import COLORS, PRIOS, e, totals, render, load_categories, load_timing, run_time
 
 RUNS, NAME = os.path.abspath(sys.argv[1]), sys.argv[2]
 OUT = os.path.join(RUNS, "Results")
@@ -109,6 +109,7 @@ def findings(body):
 tot = totals(tests)
 total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
 runs_used = sorted({t["run"] for t in tests})
+timing = run_time([load_timing(os.path.join(RUNS, r)) for r in runs_used], runs_used)
 info = load_categories(os.path.join(os.path.dirname(RUNS), "testcases.xlsx"))
 readme = os.path.join(OUT, "README.md")
 views = []
@@ -129,7 +130,7 @@ intro = (f'<p>Newest result of every test, taken from {len(runs_used)} run{"s" i
          f'<p>Newest result of every test, taken from these runs: {e(", ".join(runs_used))}. ') + \
         'Raw results: <a href="json/">json/</a> · <a href="results.xlsx">results.xlsx</a> · <a href="README.md">README.md</a></p>'
 page = render(tests, NAME, OUT, f"{len(tests)} tests · newest result from {len(runs_used)} run{'s' if len(runs_used) != 1 else ''}",
-              show_run=True, intro=intro, views=views, info=info)
+              show_run=True, intro=intro, views=views, info=info, timing=timing)
 with open(os.path.join(OUT, "results.html"), "w", encoding="utf-8") as f:
     f.write(page)
 
@@ -139,7 +140,9 @@ wb = openpyxl.Workbook()
 ws = wb.active; ws.title = "Summary"
 for r in [["Site", NAME], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v in tot.items()] + \
          [[f"{p} tests", sum(1 for t in tests if t.get("priority") == p)] for p in PRIOS] + \
-         [["Total time (sec)", total_sec], ["Runs used", ", ".join(runs_used)], ["Report", "results.html"],
+         [["Full run time (sec)", timing["full"] if timing else ""], ["Coordinator time (sec)", timing["coordinator"] if timing else ""],
+          ["website-tester agent time (sec)", timing["tester"] if timing else ""], ["Test step time (sec)", total_sec],
+          ["Tokens (website-tester, latest full run)", timing["tokens"] if timing else ""], ["Token run", timing["token_run"] if timing else ""], ["Tool calls (same run)", timing["tool_calls"] if timing else ""]] + [["Runs used", ", ".join(runs_used)], ["Report", "results.html"],
           ["Video", "Not available (wdio-mcp cannot record video); see replay GIFs and trace zips"]]:
     ws.append(r)
 ws.column_dimensions["A"].width = 18; ws.column_dimensions["B"].width = 90

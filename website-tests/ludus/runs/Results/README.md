@@ -18,13 +18,13 @@ Open **`results.html`** in a browser. It has:
 
 ## Totals
 
-Runs used: 2026-10-28_1132 (TC-001 to TC-057) and 2026-10-28_1426 (TC-058 to TC-079).
+Runs used: 2026-10-30_0829 (full run on Sonnet, 86 tests), 2026-10-30_1003 (TC-037 and TC-059 re-run after their steps were fixed) and 2026-10-30_1016 (TC-072 re-run with the no-script-click rule).
 
 | | Tests | PASSED | FAILED | BLOCKED | SKIPPED | UNSURE |
 |---|---|---|---|---|---|---|
-| All | 79 | 56 | 23 | 0 | 0 | 0 |
-| LOGGED OUT | 62 | 43 | 19 | 0 | 0 | 0 |
-| LOGGED IN | 17 | 13 | 4 | 0 | 0 | 0 |
+| All | 89 | 66 | 23 | 0 | 0 | 0 |
+| LOGGED OUT | 73 | 52 | 21 | 0 | 0 | 0 |
+| LOGGED IN | 16 | 14 | 2 | 0 | 0 | 0 |
 
 ## What is in a test folder (for example `TC-051/`)
 
@@ -67,26 +67,27 @@ No test ever pays real money.
 
 | TC | Test | Priority | What happened | Bug or test wording? |
 |---|---|---|---|---|
-| TC-014 | [LOGGED OUT] Header "Reward chain" on Home opens the Rewards Market section | Medium | Opens the Store page at the top, not at the Rewards Market | Bug |
-| TC-015 | [LOGGED OUT] Header "Loyalty shop" on Home opens the Loyalty Shop section | Medium | Opens the Store page at the top, not at the Loyalty Shop | Bug |
-| TC-016 | [LOGGED OUT] Header "Clan reward" on Home opens a Clan reward section | Medium | No Clan reward section anywhere on the Store page | Bug (or the feature is turned off) |
-| TC-019 | [LOGGED OUT] Referral program panel fits in a 1440x900 window | Low | The top of the panel title "Invite friends —" is cut off | Bug |
-| TC-021 | [LOGGED OUT] Store header menu also has "Clan reward" like the Home header | Medium | The Store header has no "Clan reward" item | Bug |
-| TC-025 | [LOGGED OUT] Loyalty Shop item names are not duplicated | Low | "Astral hero" and "Astral Hero" both exist | Content bug |
-| TC-027 | [LOGGED OUT] Store tab bar fits in a 1440x900 window | Low | The "Gift to friends" tab is cut to "Gift" | Bug |
-| TC-039 | [LOGGED OUT] Mobile "Add It to Home Screen" banner text has no spelling mistake | Low | Says "To got a quicker access !" | Content bug |
-| TC-045 | [LOGGED IN] Home "Clan reward" opens a Clan reward section when logged in | Medium | No Clan reward section when logged in either | Bug (or the feature is turned off) |
-| TC-047 | [LOGGED IN] "Might Passes" category shows items | Low | The tab shows "The store is empty for now. Come back later!" | Possibly on purpose |
-| TC-051 | [LOGGED IN] Spend 160 loyalty points on "Unique Frame" | High | The purchase worked, but the card disappears instead of showing "Available: 0/1" | Test wording (now fixed in testcases.xlsx) |
-| TC-056 | [LOGGED IN] Phone header shows the full player name | Low | Shows "Play…" | Bug |
-| TC-060 | [LOGGED OUT] Home and Store load without failed network requests | Medium | The Store page gets 404s (manifest.json, Xsolla store API calls) | Bug |
-| TC-065 | [LOGGED OUT] Basic security headers are sent | Medium | X-Content-Type-Options, X-Frame-Options, Content-Security-Policy and Referrer-Policy are missing | Security finding |
-| TC-067 | [LOGGED OUT] Home images have alt text | Medium | 2 images (the header logo) have no alt text | Accessibility |
-| TC-068 | [LOGGED OUT] Store images have alt text | Medium | 46 of 321 images have no alt text | Accessibility |
-| TC-069 | [LOGGED OUT] Icon-only links on Home have an accessible name | Medium | 14 links (logo, app badges, social icons) have no name a screen reader can read | Accessibility |
-| TC-070 | [LOGGED OUT] Buttons on Home and Store have an accessible name | Medium | 7 buttons on Home and 12 on Store have no readable name | Accessibility |
-| TC-072 | [LOGGED OUT] Keyboard focus is visible on header menu items | Low | Tab never reached the header, so the focus style was not checked | Test wording (now fixed in testcases.xlsx) |
-| TC-073 | [LOGGED OUT] Pinch zoom is allowed on phones | Low | The page blocks zoom (maximum-scale=1) | Accessibility |
-| TC-074 | [LOGGED OUT] Each page has exactly one h1 heading | Low | The Store page has no h1 heading | Accessibility / SEO |
-| TC-075 | [LOGGED OUT] Meta description describes Ludus | Low | Still template text ("Your Game takes players on a grand adventure…") | SEO |
-| TC-076 | [LOGGED OUT] Canonical link and og:url point to site.ludus-game.com | Low | They point to ludus-merge-battle-arena-pvp-landing.xsolla.site | SEO |
+| TC-008 | [LOGGED OUT] Header "Clan reward" on Home opens a clan reward section | Medium | Opens the Store page at the top; there is no Clan reward section anywhere | Bug (or the feature is turned off) |
+| TC-009 | [LOGGED OUT] Header "Loyalty shop" on Home opens the Store at the Loyalty Shop section | Medium | Opens the Store page at the top, not at the Loyalty Shop | Bug |
+| TC-010 | [LOGGED OUT] Header "Reward chain" on Home opens the Store at the Rewards Market section | Medium | Opens the Store page at the top, not at the Rewards Market | Bug |
+| TC-024 | [LOGGED OUT] The news date is the same in English and French | Low | The same news card says "October 15" in English but "10 mars" in French | Content bug |
+| TC-026 | [LOGGED OUT] Top of the "Referral program" panel is fully visible at 1440x900 | Low | The first line "Invite friends —" is cut off at the top of the window | Bug |
+| TC-029 | [LOGGED OUT] Store header shows the same menu items as Home, including "Clan reward" | High | The Store header has no "Clan reward" item, although Home has one | Bug |
+| TC-033 | [LOGGED OUT] Last Store tab "Gift to friends" is fully visible at 1440x900 | Low | Only "Gift" of the last tab "Gift to friends" is visible; the rest is cut off | Bug |
+| TC-042 | [LOGGED OUT] Loyalty Shop offers have different names | Low | Two cards are called "Astral hero" and "Astral Hero" | Content bug |
+| TC-048 | [LOGGED OUT] Unknown page shows a clear error message | Medium | The unknown address silently shows Home; no not-found message | Bug |
+| TC-051 | [LOGGED OUT] Phone cookie "Dismiss" button is not covered by other elements | Low | The "Add It to Home Screen" banner partly covers "Dismiss" (it can still be clicked) | Bug |
+| TC-053 | [LOGGED OUT] Phone "Add It to Home Screen" banner text has no spelling mistakes | Low | The banner says "To got a quicker access !" | Content bug |
+| TC-057 | [LOGGED OUT] Phone Store burger menu shows "Clan reward" like on Home | Medium | The phone menu on the Store page has no "Clan reward" item | Bug |
+| TC-058 | [LOGGED OUT] Phone "Referral program" button shows its icon and opens the panel | Low | On a phone the Referral panel covers its own close X, so it cannot be closed with it | Bug |
+| TC-060 | [LOGGED OUT] Store page loads with no failed requests | Medium | 404 errors for manifest.json and store.xsolla.com offer_chain / bundle requests | Bug |
+| TC-063 | [LOGGED OUT] Page response has the usual security headers | Medium | Only Strict-Transport-Security is sent; CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy and Permissions-Policy are missing | Security finding |
+| TC-065 | [LOGGED OUT] Home images and links have text for screen readers | Low | Images without alt text, and links and buttons without a name | Accessibility |
+| TC-066 | [LOGGED OUT] Store images have alt text and the page has one h1 heading | Low | 46 of 293 images have no alt text and the page has no h1 heading | Accessibility |
+| TC-068 | [LOGGED OUT] Phone users can zoom the page | Low | The viewport meta tag has maximum-scale=1, which blocks zooming | Accessibility |
+| TC-069 | [LOGGED OUT] Meta description is real text about LUDUS | Low | The meta description is placeholder text and a hidden "Your game title" heading exists | SEO |
+| TC-072 | [LOGGED OUT] Layout works on a tablet (768x1024) | Medium | On a 768x1024 tablet the Referral button covers the cookie "Dismiss" button, so it cannot be clicked. The layout itself is fine | Bug |
+| TC-073 | [LOGGED OUT] Phone burger menu close button has a name for screen readers | Low | The close (x) is an image in plain divs: no button role, no name, not reachable by keyboard | Accessibility |
+| TC-087 | [LOGGED IN] Gift flow can be started from the Store | Medium | This test user has no "Gifts to friends" section, so the gift flow cannot start | Test wording (account limit, to confirm with the team) |
+| TC-089 | [LOGGED IN] Logout with "Logout" in the phone burger menu | High | Logout works, but the menu stays open and covers the header Login button | Bug (minor) |
+

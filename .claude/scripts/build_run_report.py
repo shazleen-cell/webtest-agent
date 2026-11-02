@@ -4,7 +4,7 @@ Usage: build_run_report.py <RUN> <SITE> <site name>"""
 import csv, glob, json, os, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
-from report_html import COLORS, totals, changes, render, load_categories
+from report_html import COLORS, totals, changes, render, load_categories, load_timing, run_time
 
 RUN, SITE, NAME = sys.argv[1], sys.argv[2], sys.argv[3]
 run_date = os.path.basename(RUN.rstrip("/"))
@@ -16,7 +16,9 @@ tests.sort(key=lambda t: t["id"])
 
 tot = totals(tests)
 total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
-page = render(tests, NAME, RUN, f"run {run_date} · {len(tests)} tests", info=load_categories(os.path.join(SITE, "testcases.xlsx")))
+timing = run_time([load_timing(RUN)], [run_date])
+page = render(tests, NAME, RUN, f"run {run_date} · {len(tests)} tests", info=load_categories(os.path.join(SITE, "testcases.xlsx")),
+              timing=timing)
 with open(os.path.join(RUN, "report.html"), "w", encoding="utf-8") as f:
     f.write(page)
 
@@ -34,8 +36,10 @@ for t in tests:
 wb = openpyxl.Workbook()
 ws = wb.active; ws.title = "Summary"
 for r in [["Site", NAME], ["Run date", run_date], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v in tot.items()] + \
-         [["Total time (sec)", total_sec], ["Report", os.path.join(RUN, "report.html")],
-          ["Video", "Not available (wdio-mcp cannot record video); see replay GIFs and trace zips"]]:
+         ([["Full run time (sec)", timing["full"] if timing else ""], ["Coordinator time (sec)", timing["coordinator"] if timing else ""],
+          ["website-tester agent time (sec)", timing["tester"] if timing else ""], ["Test step time (sec)", total_sec],
+          ["Tokens (website-tester, latest full run)", timing["tokens"] if timing else ""], ["Token run", timing["token_run"] if timing else ""], ["Tool calls (same run)", timing["tool_calls"] if timing else ""]] + [["Report", os.path.join(RUN, "report.html")],
+          ["Video", "Not available (wdio-mcp cannot record video); see replay GIFs and trace zips"]]):
     ws.append(r)
 ws.column_dimensions["A"].width = 18; ws.column_dimensions["B"].width = 90
 wr = wb.create_sheet("Results"); wr.append(hdr)

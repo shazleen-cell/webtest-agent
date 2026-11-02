@@ -51,7 +51,7 @@ Example:
 There are two roles:
 
 1. **The main Claude Code session (coordinator).** It follows the slash commands in `.claude/commands/`. It explores the site, writes the test cases, splits the approved tests into batches of 5 and builds the reports.
-2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a replay GIF, a steps PDF and a browser trace zip.
+2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. It runs on Sonnet (`model: sonnet` in that file), while the coordinator uses the model of your Claude Code session (Opus). One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a replay GIF, a steps PDF and a browser trace zip.
 
 The Python scripts in `.claude/scripts/` build the evidence and reports:
 
@@ -60,6 +60,8 @@ The Python scripts in `.claude/scripts/` build the evidence and reports:
 | `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay GIF and steps PDF |
 | `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
 | `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
+
+Each run folder also has `run_timing.json` (start and end time, and the time, tokens and tool calls of every website-tester batch). The reports use it to show the **full run time**, split into **coordinator** time (batching, checks, building reports) and **website-tester** time, next to the **test step time** (the time inside the tests themselves) and the tokens used.
 | `report_html.py` | both report scripts | The shared HTML report layout |
 
 ## Folder layout

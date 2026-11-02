@@ -50,7 +50,7 @@ The site has only two real pages (Home and Store). "Reward chain", "Clan reward"
 - F-24: Clicking a tab (for example "Gold") scrolls to that category. "Gold" has 5 cards: "Small pile of gold" (5000), "Piggy bank of gold" (25000), "Carpetbag of gold" (60000), "Goblet of gold" (140000), "Strongbox of gold" (350000), each with a green USD price button and a struck-through old price (for example "USD 2.88" and "3.20").
 - F-25: "Free wares": "Free emeralds" 100, "Available weekly: 1/1", green "Claim" button; "Free Gold" 500, "Available daily: 1/1", green "Claim" button. Claim was not clicked.
 - F-26: "Emeralds": "Small pile of emeralds", "Pouch of emeralds", "Sack of emeralds", "Chest of emeralds", "Pot of emeralds", each with a "1st purchase" label and "Available: 1/1". Below it is a "Log in to see more offers" button.
-- F-27: "Gifts to friends" section with the ribbon "Buy Tickets as gifts for your friends and fellow Clan members!" and 10 ticket cards (first: "Tournament Diamond Ticket"), each with a "Gift" badge, "Send to friends" and a USD price button.
+- F-27: (the number of cards changes: 10 on 2026-10-28/29, 8 on 2026-10-30 after the limited-time Clan Competition tickets ended and two Astral Key tickets were added) "Gifts to friends" section with the ribbon "Buy Tickets as gifts for your friends and fellow Clan members!" and 10 ticket cards (first: "Tournament Diamond Ticket"), each with a "Gift" badge, "Send to friends" and a USD price button.
 - F-28: The header "Reward chain" scrolls to the "Rewards Market" section: "Limited time" with a countdown, text "Make purchases, earn Store points, and claim cool rewards! More purchases mean more Store points. Gotta claim them all!", "0/500 points", "Step 1 of 10", a row of reward cards with point costs, carousel arrows and dots, and a green "Login to claim" button.
 - F-29: The header "Loyalty shop" scrolls to the "Loyalty Shop" section: 12 cards, each with a name, amount, an "Available weekly: x/y" or "Available: x/y" line and a green button with a point price (for example "Astral Echo" 750, "Unique Avatar" 300). Some cards have a countdown.
 - F-30: Possible content bug: two Loyalty Shop cards have almost the same name: "Astral hero" (1100) and "Astral Hero" (550).
@@ -119,7 +119,7 @@ Explored on 2026-10-28 with https://site.ludus-game.com/store/?user-id={TEST_USE
 
 Measured on 2026-10-28 in a new Chrome session (no cache) unless noted. On 2026-10-29 N-03, N-06, N-11, N-12 and N-13 were checked again and still hold.
 
-- N-01: Home timing (first visit): time to first byte 1.0 s, first contentful paint 1.8 s, DOMContentLoaded 2.7 s, load event 7.5 s; 142 resource requests.
+- N-01: (2026-10-29 run: load event 21.1 s; 2026-10-30 run: first contentful paint 0.9 s, load event 2.5 s. Timing depends on the network.) Home timing (first visit): time to first byte 1.0 s, first contentful paint 1.8 s, DOMContentLoaded 2.7 s, load event 7.5 s; 142 resource requests.
 - N-02: Store (same session, cache warm): first contentful paint 0.7 s, load event 1.0 s; 250 resource requests and 321 images.
 - N-03: Failed requests: Home and Store both log 404s, for example store.xsolla.com/api/v2/project/253824/items/bundle/group, Store also site.ludus-game.com/store/manifest.json and store.xsolla.com/.../user/offer_chain/1511.
 - N-04: No broken images (every loaded image has a size) on Home and Store.

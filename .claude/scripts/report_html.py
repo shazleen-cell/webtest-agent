@@ -3,7 +3,8 @@
 render() returns the page: a slim top bar, a sidebar with search, filters and the tests grouped by status,
 an overview (totals, breakdowns, tests that need attention, account changes, all tests) and one view per test
 that starts with what went wrong, then its evidence and steps."""
-import html, os, re
+import html, json, os, re
+from datetime import datetime
 
 COLORS = {"PASSED": "#16a34a", "FAILED": "#dc2626", "BLOCKED": "#d97706", "SKIPPED": "#2563eb", "UNSURE": "#6b7280"}
 SHOWN = ["FAILED", "BLOCKED", "SKIPPED", "PASSED"]  # status order in the sidebar and tables (UNSURE last)
@@ -25,6 +26,39 @@ def step_badge(s):
     if not s.get("ok", True): return "fail", "FAIL"
     if s.get("expected"): return "pass", "PASS"
     return ("done", "SKIPPED") if str(s.get("answer", "")).startswith("Skipped") else ("done", "DONE")
+
+
+def load_timing(run_dir):
+    """The run's run_timing.json (written by /run-tests), or None."""
+    p = os.path.join(run_dir, "run_timing.json")
+    if not os.path.exists(p): return None
+    with open(p, encoding="utf-8") as f: return json.load(f)
+
+
+def run_time(timings, names=None):
+    """Add up run_timing.json dicts. full = started to finished, tester = website-tester agent time,
+    coordinator = full minus tester (batching, checks, waiting, building reports).
+    Tokens and tool calls come only from the latest full run: the run that ran the most tests (newest on a tie).
+    names: the run folder names, in the same order as timings."""
+    names = list(names) if names else [""] * len(timings)
+    pairs = [(n, t) for n, t in zip(names, timings) if t]
+    if not pairs: return None
+    timings = [t for _, t in pairs]
+    size = lambda t: sum(len(b.get("tests") or []) for b in t.get("batches", []))
+    tok_name, tok_run = max(pairs, key=lambda p: (size(p[1]), p[0]))
+    full = tester = tokens = calls = batches = 0
+    for t in timings:
+        if t.get("started") and t.get("finished"):
+            full += int((datetime.fromisoformat(t["finished"]) - datetime.fromisoformat(t["started"])).total_seconds())
+        for b in t.get("batches", []):
+            tester += int(b.get("agent_sec") or 0); batches += 1
+    for b in tok_run.get("batches", []):
+        tokens += int(b.get("tokens") or 0); calls += int(b.get("tool_calls") or 0)
+    full = max(full, tester)
+    models = sorted({(t.get("coordinator_model") or "", t.get("tester_model") or "") for t in timings})
+    return {"full": full, "tester": tester, "coordinator": full - tester, "tokens": tokens, "tool_calls": calls,
+            "batches": batches, "runs": len(timings), "models": models,
+            "token_run": tok_name, "token_tests": size(tok_run), "token_batches": len(tok_run.get("batches", []))}
 
 
 def run_label(run):
@@ -91,6 +125,8 @@ h3.sec{font-size:17px;margin:30px 0 10px}h3.sec .cnt{color:var(--mut);font-weigh
 .m{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 6px;color:var(--mut);white-space:nowrap}
 .k-bug{color:var(--fail);border-color:color-mix(in srgb,var(--fail) 40%,transparent)}.k-wording{color:var(--block);border-color:color-mix(in srgb,var(--block) 45%,transparent)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.cards.time{margin-bottom:6px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}.cards.time .v{font-size:22px}.cards.time .s{display:block;margin:0}
+.tnote{font-size:12px;color:var(--mut);margin:0 0 14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
 .card .k{display:block;font-size:13px;color:var(--mut)}.card .v{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}.card .s{margin-left:6px;color:var(--mut);font-size:14px}
 .c-passed .v{color:var(--pass)}.c-failed .v{color:var(--fail)}.c-blocked .v{color:var(--block)}.c-skipped .v{color:var(--skip)}
@@ -242,11 +278,29 @@ JS = """
 """
 
 
-def render(tests, name, root, summary, show_run=False, intro="", views=(), info=None):
+def time_cards(timing, test_sec):
+    """Cards for the full run time: coordinator + website-tester, the test steps inside it, and tokens."""
+    if not timing: return ""
+    models = "; ".join(f"coordinator {c}, tester {t}" for c, t in timing["models"] if c or t)
+    runs = f'{timing["runs"]} run{"s" if timing["runs"] != 1 else ""}, ' if timing["runs"] > 1 else ""
+    cards = [("Full run time", fmt(timing["full"]), f"{runs}start to finish"),
+             ("Coordinator", fmt(timing["coordinator"]), "batching, checks, reports"),
+             ("website-tester agents", fmt(timing["tester"]), f'{timing["batches"]} batches'),
+             ("Test steps", fmt(test_sec), "inside the agent time"),
+             ("Tokens, latest full run" if timing["runs"] > 1 else "Tokens", f'{timing["tokens"] / 1e6:.2f}M',
+              (f'{timing["token_run"]}, ' if timing["runs"] > 1 and timing["token_run"] else "")
+              + f'{timing["token_tests"]} tests, website-tester only')]
+    return ('  <div class="cards time">\n' + "".join(
+        f'    <div class="card"><span class="k">{e(k)}</span><span class="v">{e(v)}</span><span class="s">{e(s)}</span></div>\n'
+        for k, v, s in cards) + f'  </div>\n  <p class="tnote">{e(models)}</p>\n')
+
+
+def render(tests, name, root, summary, show_run=False, intro="", views=(), info=None, timing=None):
     """tests: result dicts; root: folder the evidence paths are relative to; summary: one-line description (plain text);
     show_run: show the run each result came from; intro: extra HTML for the overview footer;
     views: extra (id, label, html) pages, linked in the sidebar next to Overview;
-    info: optional {TC ID: {"category", "subtype", "finding"}} (Functional / Non-functional, and bug or test wording)."""
+    info: optional {TC ID: {"category", "subtype", "finding"}} (Functional / Non-functional, and bug or test wording);
+    timing: optional run_time() result, shown as the full run time split into coordinator and website-tester."""
     info = info or {}
     def exists(rel): return bool(rel) and os.path.exists(os.path.join(root, rel))
     def x(t, k): return str((info.get(t["id"]) or {}).get(k) or "")
@@ -326,7 +380,8 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
 
     # Overview: totals, breakdowns, tests that need attention, account changes, all tests
     out.append(f'<section class="view" id="overview" data-label="Overview">\n  <h2>Overview</h2>\n'
-               f'  <p class="lead">{e(summary)} · total test time {fmt(total_sec)}</p>\n  <div class="cards">\n'
+               f'  <p class="lead">{e(summary)}' + (f' · full run time {fmt(timing["full"])}' if timing else "") +
+               f' · test step time {fmt(total_sec)}</p>\n' + time_cards(timing, total_sec) + '  <div class="cards">\n'
                f'    <div class="card"><span class="k">Tests</span><span class="v">{n}</span></div>')
     for k in ["PASSED", "FAILED", "BLOCKED", "SKIPPED", "UNSURE"]:
         if tot[k] or k in ("PASSED", "FAILED"):

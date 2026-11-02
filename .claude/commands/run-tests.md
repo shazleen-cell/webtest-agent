@@ -18,18 +18,20 @@ Safety check before running: read the Steps of every approved case. If any actio
 
 ## Step 2: Make the run folder
 RUN = SITE/runs/<YYYY-MM-DD_HHMM>/ (absolute path) with a subfolder results/ and one evidence folder per test: RUN/<TC ID>/ (for example RUN/TC-001/).
+Write RUN/run_timing.json: {"started": "<now, ISO 8601 local time, from `date +%Y-%m-%dT%H:%M:%S`>", "coordinator_model": "<your model>", "tester_model": "<the website-tester model and effort>", "batches": []}. The reports use it to show the full run time split into coordinator and website-tester time.
 
 ## Step 3: Run the tests
 Order the tests: first [LOGGED OUT], then [LOGGED IN] with Changes account = No, then [LOGGED IN] with Changes account = Yes. This way a claim or a spend does not change what the look-only tests see.
 Split the tests into batches of 5, keeping that order. For each batch, start one **website-tester** agent (Agent tool, subagent_type "website-tester"; its rules are in .claude/agents/website-tester.md). Run the batches one after another, never at the same time.
 Give each agent: the test cases of its batch (TC ID, Title, Area, Priority, Platform, Start URL, Steps, Expected answers, Changes account), the RUN path, the PROJECT path, the EVIDENCE SCRIPT path, the settings.md sections listed in Step 1 (paste them as text), and the placeholder values from SITE/settings.local.md (for example "{TEST_USER_ID} = <id>"). Pass the test cases with their placeholders as they are.
 The agent replies with one line per test: TC ID | status | duration | short reason.
-After each batch, check that RUN/results/<TC ID>.json, the screenshots, the replay GIF and the trace zip exist for every test in it.
+After each batch, check that RUN/results/<TC ID>.json, the screenshots, the replay GIF and the trace zip exist for every test in it, and add the batch to "batches" in RUN/run_timing.json: {"batch": <n>, "tests": [<TC IDs>], "agent_sec": <agent duration in seconds>, "tokens": <agent tokens>, "tool_calls": <agent tool uses>}, taken from the usage the agent run reports when it finishes.
 If a test comes back BLOCKED or needs confirmation, do not re-run it or work around it: keep it as it is and list it in Step 5.
 A SKIPPED test (its precondition was not met, for example the reward was already claimed) is not re-run either.
 If the website-tester agent is not available, use a general-purpose agent and paste the whole content of .claude/agents/website-tester.md into its prompt.
 
 ## Step 4: Make the reports
+Set "finished" in RUN/run_timing.json to the current time (`date +%Y-%m-%dT%H:%M:%S`).
 First take the real test-account values out of the results: python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE absolute path>" "<RUN>/results"
 Run: python3 "<PROJECT>/.claude/scripts/build_run_report.py" "<RUN>" "<SITE absolute path>" "<site name>"
 It creates from RUN/results/*.json:
