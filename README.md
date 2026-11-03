@@ -31,7 +31,7 @@ The browser tool, the **wdio-mcp** MCP server (`@wdio/mcp`), is set up by `.mcp.
    claude
    ```
 3. Claude Code asks whether to use the **wdio-mcp** server from `.mcp.json`. Approve it. Type `/mcp` to check that it shows as connected. The first start can take a minute while `npx` downloads it. If it is not connected, quit Claude Code and open it again.
-4. You can now run LOGGED OUT tests. For LOGGED IN tests, get the test-account values from a teammate in a private message (never through git or a shared channel), and save them as `website-tests/<site>/settings.local.md`. For a site that logs in with a link:
+4. You can now run LOGGED OUT tests. For LOGGED IN tests, get the test-account values from a teammate in a private message (never through git or a shared channel), and save them as `tests-website/<site>/settings.local.md`. For a site that logs in with a link:
    ```
    - TEST_USER_ID: <id>
    ```
@@ -50,7 +50,7 @@ Open Claude Code in this folder and run:
 
 | Step | Command | What it does |
 |---|---|---|
-| 1 | `/website-test <url> <site name>` | Explores the site, creates `settings.md` and `site-mses to `website-tests/<site>/testcases.xlsx`. Then it stops so you can review them. |
+| 1 | `/website-tests <url> <site name>` | Explores the site, creates `settings.md` and `site-mses to `website-tests/<site>/testcases.xlsx`. Then it stops so you can review them. |
 | 2 | Type `proceed`, or mark *Approved* = Yes in the Excel file | Approves the test cases. `proceed` approves all new test cases and runs them straight away. |
 | 3 | `/run-tests <site name>` | Runs the approved tests and makes `report.html`, `results.xlshat run. |
 | 4 | `/gather-results <site name>` | Combines all runs into one `Results/` folder with the newest result of every test. |
