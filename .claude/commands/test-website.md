@@ -1,10 +1,10 @@
 ---
 description: Explore a website, write test cases (LOGGED OUT, and LOGGED IN if settings.md has a Login section), and save them for review
-argument-hint: <website URL> <site name, e.g. ludus>
+argument-hint: <website URL> <site name, e.g. ludus> [userid=<test user ID>]
 ---
 
 You are a website testing agent. Arguments: $ARGUMENTS
-The first argument is the website URL. The second is the site name.
+The first argument is the website URL. The second is the site name. The third is optional: `userid=<test user ID>` (also accept `userid: <id>` or `user-id=<id>`). It is for sites that log in with an ID in the URL (a login-url-suffix, for example Ludus).
 SITE folder = website-tests/<site name>/ (create it if missing).
 
 Use the wdio-mcp browser tools for everything in the browser. If you cannot find wdio-mcp tools, stop and tell me.
@@ -27,10 +27,16 @@ The site's own rules are in SITE/settings.md: sections "Allowed when LOGGED IN",
 
 ## Step 1: Settings
 Read SITE/settings.md if it exists. Treat its facts as hints and confirm them on the live site. Its rules ("Allowed", "Never") are not hints: follow them.
-If it does not exist, create it with these sections, mostly empty: Cookie banner (banner-title, cookie-button), Facts seen before, Allowed when LOGGED OUT, Never (with the payment and purchase rule), Skip. Then tell me that LOGGED IN mode needs a "Login (LOGGED IN mode)" section with the login method, and the test user ID in SITE/settings.local.md as `- TEST_USER_ID: <id>`.
+If it does not exist, create it with these sections, mostly empty: Cookie banner (banner-title, cookie-button), Facts seen before, Allowed when LOGGED OUT, Never (with the payment and purchase rule), Skip. If no `userid=` was given, tell me that LOGGED IN mode is OFF for this site and that I can turn it on by running the command again with `userid=<test user ID>` (nobody has to edit files by hand).
+**Auto login setup (only when `userid=` was given).** Do this yourself, never ask me to edit a file:
+1. Save the ID in SITE/settings.local.md as the line `- TEST_USER_ID: <id>` (create the file if missing; if a TEST_USER_ID line exists, replace its value). Never write the real ID anywhere else. Do not print it back to me; write the placeholder `{TEST_USER_ID}`.
+2. If settings.md has no "Login (LOGGED IN mode)" section, add it with `login method: login-url-suffix`, `login-url-suffix: ?user-id={TEST_USER_ID}`, and `logged-in-check`, `after-login-popup`, `session-length` set to "(to be confirmed during exploration)". If it already has a Login section, keep it as it is (do not overwrite it). If its login method is `login-form`, the `userid=` is not used: say so and use the values in settings.local.md.
+3. If settings.md has no "Allowed when LOGGED IN" section, add the safe default: everything in "Allowed when LOGGED OUT", logging in with the login-url-suffix, normal navigation clicks and looking, and "Logout". It does NOT allow claiming, spending points or the gift flow: those are only added to this list when I ask for them. If the section already exists, keep it as it is.
+4. Check the login on the live site: open the site with the suffix and the real ID (cookie banner closed first) and see whether the page shows a logged-in state (for example a player name or balance, and no "Login" button). If it does not log in, do NOT keep a Login section that does not work: remove the section you added, work in LOGGED OUT mode only and tell me why.
+5. After LOGGED IN exploration (Step 2.9) fill in `logged-in-check` and `after-login-popup` in settings.md with what you saw (placeholders only for any account value), and `session-length` if you could measure it.
 Also read the opt-in sections "Allowed to type", "Allowed cart actions" and "Allowed demo checkout" if present (see .claude/rules/opt-in.md). When creating a new settings.md, add all three with "status: OFF" and the template from .claude/rules/opt-in.md.
-If settings.md has a "Login (LOGGED IN mode)" section, LOGGED IN mode is ON: read the login method, login-url-suffix, logged-in-check, after-login-popup and session-length from it. If not, work in LOGGED OUT mode only.
-**Test-account values stay out of git.** settings.md uses placeholders such as {TEST_USER_ID}. The real values are in SITE/settings.local.md (ignored by git, lines like `- TEST_USER_ID: <id>`). Put the real value in only when you open a page in the browser. In every file you write (settings.md, site-map.md, testcases.xlsx) write the placeholder, for example `?user-id={TEST_USER_ID}` and "Player{TEST_USER_ID}". If LOGGED IN mode is ON but settings.local.md or the value is missing, stop and ask me for it.
+If settings.md has a "Login (LOGGED IN mode)" section (an existing one, or the one the auto login setup above just added), LOGGED IN mode is ON: read the login method, login-url-suffix, logged-in-check, after-login-popup and session-length from it. If not, work in LOGGED OUT mode only. LOGGED IN mode adds the [LOGGED IN] cases to the [LOGGED OUT] ones in the same run; existing [LOGGED OUT] cases are kept. Running again without `userid=` is fine: the ID already saved in settings.local.md is used.
+**Test-account values stay out of git.** settings.md uses placeholders such as {TEST_USER_ID}. The real values are in SITE/settings.local.md (ignored by git, lines like `- TEST_USER_ID: <id>`). Put the real value in only when you open a page in the browser. In every file you write (settings.md, site-map.md, testcases.xlsx) write the placeholder, for example `?user-id={TEST_USER_ID}` and "Player{TEST_USER_ID}". If LOGGED IN mode is ON but settings.local.md or the value is missing and no `userid=` was given, stop and ask me to type the ID in the chat (or to run the command again with `userid=<id>`); then save it yourself as described above.
 
 ## Step 2: Explore
 1. Start Chrome in headed mode, window 1440x900, trace recording on.
@@ -78,7 +84,7 @@ Approved, TC ID, Title, Area, Priority, Type, Platform, Start URL, Steps, Expect
 - Then run `python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE>"` and `python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE>" --check` (PROJECT = the project folder). The check must say "found 0 in total": no real test-account value may be left in settings.md, site-map.md or testcases.xlsx.
 
 ## Step 5: STOP for review
-Show me: the number of test cases per mode (LOGGED OUT / LOGGED IN), how many change the account, per Area and Priority, a short list (TC ID, title, priority, changes account), and anything you were unsure about.
+Show me: the number of test cases per mode (LOGGED OUT / LOGGED IN), how many change the account, per Area and Priority, a short list (TC ID, title, priority, changes account), and anything you were unsure about. If you set up the login automatically, say what you added to settings.md (the Login section and what "Allowed when LOGGED IN" lets a test do) and whether the login check worked.
 List every step that clicks something not in the "Allowed" lists of settings.md, so I can remove it. List separately every step that types, changes the cart or checks out, with the opt-in section that allows it. List what each "Changes account" test will change on the test account.
 Then tell me I can either:
 - type "proceed" to approve all new test cases and run them now, or
