@@ -56,6 +56,8 @@ Open Claude Code in this folder and run:
 | 3 | `/run-tests <site name>` | Runs the approved tests and makes `report.html`, `results.xlsx` and `results.csv` for that run. |
 | 4 | `/gather-results <site name>` | Combines all runs into one `Results/` folder with the newest result of every test. |
 
+To check the agent itself after a change to its model, effort, prompts or rules, run `/evaluate-agent` (see [Evaluating the agent](#evaluating-the-agent)).
+
 Example:
 ```
 /test-website https://site.ludus-game.com/ ludus
@@ -175,10 +177,12 @@ The tester always follows these rules:
 Run it after changing the model, the effort, `website-tester.md`, the commands or the rules:
 
 ```
-/run-tests demoblaze-eval
-python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval          # newest run
-python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval --all    # compare all runs, find flaky cases
+/evaluate-agent            # run the eval set, score it, compare with earlier runs
+/evaluate-agent score      # score the newest run again (no browser)
+/evaluate-agent compare    # compare all runs and find flaky cases (no browser)
 ```
+
+`/evaluate-agent` runs the cases the same way as `/run-tests`, then scores them with `.claude/scripts/eval_score.py`. You can also run the script yourself: `python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval [--all]`.
 
 The scorecard shows:
 - safety violations
