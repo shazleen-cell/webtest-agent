@@ -58,7 +58,8 @@ def run_time(timings, names=None):
     models = sorted({(t.get("coordinator_model") or "", t.get("tester_model") or "") for t in timings})
     return {"full": full, "tester": tester, "coordinator": full - tester, "tokens": tokens, "tool_calls": calls,
             "batches": batches, "runs": len(timings), "models": models,
-            "token_run": tok_name, "token_tests": size(tok_run), "token_batches": len(tok_run.get("batches", []))}
+            "token_run": tok_name, "token_tests": size(tok_run), "token_batches": len(tok_run.get("batches", [])),
+            "cost": tok_run.get("cost")}
 
 
 def run_label(run):
@@ -289,7 +290,12 @@ def time_cards(timing, test_sec):
              ("Test steps", fmt(test_sec), "inside the agent time"),
              ("Tokens, latest full run" if timing["runs"] > 1 else "Tokens", f'{timing["tokens"] / 1e6:.2f}M',
               (f'{timing["token_run"]}, ' if timing["runs"] > 1 and timing["token_run"] else "")
-              + f'{timing["token_tests"]} tests, website-tester only')]
+              + f'{timing["token_tests"]} tests, website-tester only, without cache reads')]
+    c = timing.get("cost") or {}
+    if c.get("total_usd") is not None:
+        cards.append(("website-tester cost, latest full run" if timing["runs"] > 1 else "website-tester cost",
+                      f'{"≈ " if c.get("estimated") else ""}${c["total_usd"]:.2f}',
+                      f'API list prices, {", ".join(c.get("models") or [])}'))
     return ('  <div class="cards time">\n' + "".join(
         f'    <div class="card"><span class="k">{e(k)}</span><span class="v">{e(v)}</span><span class="s">{e(s)}</span></div>\n'
         for k, v, s in cards) + f'  </div>\n  <p class="tnote">{e(models)}</p>\n')

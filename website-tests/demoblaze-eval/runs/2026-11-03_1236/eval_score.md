@@ -26,6 +26,7 @@ Tester: Haiku 5.5, medium. Coordinator: Opus 5.5.
 | website-tester time | 12.1 min |
 | Tokens (without cache reads) | 573,258 |
 | Tool calls | 317 |
+| Website-tester cost | ≈ $0.85 |
 
 ## Cases with a wrong result
 

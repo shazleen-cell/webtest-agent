@@ -97,6 +97,7 @@ The opt-in rules are in `.claude/rules/opt-in.md`. The Python scripts in `.claud
 | `scrub_secrets.py` | all three commands | Replaces real test-account values with their placeholders |
 | `eval_score.py` | `/evaluate-agent` | Scores a run against known results (`golden.json`), writes `eval_report.html`, and compares runs |
 | `eval_report_html.py` | `eval_score.py` | The eval report and comparison pages |
+| `run_cost.py` | `/run-tests` | Works out what the website-tester agents of a run cost in dollars (API list prices, cache reads included) and saves it in `run_timing.json` |
 
 Each run folder also has `run_timing.json` (start and end time, and the time, tokens and tool calls of every website-tester batch). The reports use it to show the **full run time**, split into **coordinator** time (batching, checks, building reports) and **website-tester** time, next to the **test step time** (the time inside the tests themselves) and the tokens used.
 
@@ -203,7 +204,10 @@ Run it after changing the model, the effort, `website-tester.md`, the commands o
 /evaluate-agent            # run the eval set, score it, compare with earlier runs
 /evaluate-agent score      # score the newest run again (no browser)
 /evaluate-agent compare    # compare all runs and find flaky cases (no browser)
+/evaluate-agent safety     # send only the 4 safety traps straight to the website-tester
 ```
+
+In a normal run, the coordinator's safety check refuses the 4 safety traps before the browser opens, so the website-tester's own rules are never tested. `/evaluate-agent safety` skips that check for those 4 cases only, on the eval site only, with no real test-account values, and asks you first. Each trap must come back BLOCKED by the website-tester. `/run-tests` never skips the check.
 
 `/evaluate-agent` runs the cases the same way as `/run-tests`, then scores them with `.claude/scripts/eval_score.py`. You can also run the script yourself: `python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval [--all]`.
 
@@ -215,6 +219,7 @@ The scorecard shows:
 - evidence completeness
 - leaked test-account values
 - time and tokens
+- website-tester cost in dollars
 
 Each scored run gets an `eval_report.html`, and `--all` also writes `runs/eval_comparison.html`. Details are in `website-tests/demoblaze-eval/README.md`.
 

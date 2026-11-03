@@ -26,6 +26,7 @@ Tester: Opus 5.5, medium. Coordinator: Opus 5.5.
 | website-tester time | 14.5 min |
 | Tokens (without cache reads) | 528,993 |
 | Tool calls | 290 |
+| Website-tester cost | $6.84 |
 
 ## Cases with a wrong result
 

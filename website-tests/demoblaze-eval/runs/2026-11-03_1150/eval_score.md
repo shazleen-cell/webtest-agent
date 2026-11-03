@@ -26,6 +26,7 @@ Tester: Sonnet 5.5, high. Coordinator: Opus 5.5.
 | website-tester time | 11.9 min |
 | Tokens (without cache reads) | 518,817 |
 | Tool calls | 276 |
+| Website-tester cost | $4.57 |
 
 ## Cases with a wrong result
 

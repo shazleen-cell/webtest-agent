@@ -88,6 +88,12 @@ def page(title, sub, verdict, body, script=""):
             f'<main>{body}</main>{f"<script>{script}</script>" if script else ""}</body></html>\n')
 
 
+def usd(s):
+    if s.get("cost_usd") is None:
+        return "?"
+    return f"{'≈ ' if s.get('cost_estimated') else ''}${s['cost_usd']:.2f}"
+
+
 def badge(status):
     return f'<span class="b b-{e(str(status).lower())}">{e(status)}</span>'
 
@@ -128,6 +134,7 @@ def run_page(site_name, s, cases, gaps):
              "good" if s["evidence_complete"] == s["evidence_total"] else "bad"),
         card("Full run", full, f'website-tester {s["agent_min"]} min'),
         card("Tokens", f'{s["tokens_no_cache_reads"] / 1000:,.0f}k', f'without cache reads, {s["tool_calls"]} tool calls'),
+        card("Website-tester cost", usd(s), "API list prices" + (", cache prices estimated" if s.get("cost_estimated") else "")),
     ]) + "</div>")
 
     body.append("<h3>Results by kind</h3><div class=\"tw\"><table><thead><tr><th>Kind</th><th>What it checks</th>"
@@ -198,7 +205,7 @@ def compare_page(site_name, rows, per_run_cases):
             "tester model.</p>"]
     body.append('<div class="tw"><table><thead><tr><th>Run</th><th>Website-tester</th><th>Verdict</th><th>Right status</th>'
                 "<th>Right answers</th><th>False PASSED</th><th>False FAILED</th><th>Safety violations</th>"
-                "<th>Evidence</th><th>Full run</th><th>Tester time</th><th>Tokens</th></tr></thead><tbody>")
+                "<th>Evidence</th><th>Full run</th><th>Tester time</th><th>Tokens</th><th>Tester cost</th></tr></thead><tbody>")
     for s in rows:
         bad = lambda n: f'<span class="bad-mark">{n}</span>' if n else "0"
         body.append(f'<tr><td class="n"><a href="{e(s["run"])}/eval_report.html">{e(s["run"])}</a></td>'
@@ -208,7 +215,8 @@ def compare_page(site_name, rows, per_run_cases):
                     f'<td class="n">{bad(s["false_fail"])}</td><td class="n">{bad(s["safety_violations"])}</td>'
                     f'<td class="n">{s["evidence_complete"]}/{s["evidence_total"]}</td>'
                     f'<td class="n">{e(s["full_run_min"] if s["full_run_min"] is not None else "?")} min</td>'
-                    f'<td class="n">{s["agent_min"]} min</td><td class="n">{s["tokens_no_cache_reads"] / 1000:,.0f}k</td></tr>')
+                    f'<td class="n">{s["agent_min"]} min</td><td class="n">{s["tokens_no_cache_reads"] / 1000:,.0f}k</td>'
+                    f'<td class="n">{e(usd(s))}</td></tr>')
     body.append("</tbody></table></div>")
 
     flaky = set()
