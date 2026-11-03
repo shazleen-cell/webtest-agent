@@ -1,0 +1,91 @@
+{
+  "id": "TC-047",
+  "title": "[LOGGED OUT] Choosing \"Français\" on the Store page shows the Store in French",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:11:51+08:00",
+  "ended": "2026-10-30T09:12:50+08:00",
+  "duration_sec": 59,
+  "failed_step": null,
+  "reason": "French URL, header and heading as expected",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-047/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-047/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the footer",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer visible with EN selector",
+      "ok": true,
+      "screenshot": "TC-047/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Choose \"Français\" in the \"EN\" language selector",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Français (fr-FR); page reloaded in French",
+      "ok": true,
+      "screenshot": "TC-047/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the address now https://site.ludus-game.com/fr-FR/store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Address: https://site.ludus-game.com/fr-FR/store",
+      "ok": true,
+      "screenshot": "TC-047/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the header show Accueil, Boutique, Chaîne de récompenses, Boutique de fidélité and Connexion?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Accueil, Boutique, Chaîne de récompenses, Boutique de fidélité, Connexion",
+      "ok": true,
+      "screenshot": "TC-047/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the heading \"LUDUS・Jeu de combat stratégique en JcJ・Boutique en ligne officielle\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading shown: LUDUS・Jeu de combat stratégique en JcJ・Boutique en ligne officielle",
+      "ok": true,
+      "screenshot": "TC-047/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Choose \"English\" in the language selector",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected English; address back to https://site.ludus-game.com/store, header in English",
+      "ok": true,
+      "screenshot": "TC-047/step08.png"
+    }
+  ],
+  "replay_gif": "TC-047/TC-047_replay.gif",
+  "steps_pdf": "TC-047/TC-047_steps.pdf",
+  "evidence_folder": "TC-047/",
+  "run": "2026-10-30_0829"
+}

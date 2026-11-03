@@ -1,0 +1,73 @@
+{
+  "id": "TC-035",
+  "title": "[LOGGED OUT] http and non-www addresses go to https www with a permanent redirect",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T11:21:29",
+  "ended": "2026-11-02T11:21:52",
+  "duration_sec": 23,
+  "failed_step": 4,
+  "reason": "http redirect is a temporary 302 (not 301/308), and https://demoblaze.com/ stays on non-www (no redirect to www)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open http://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-035/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is the address now https://www.demoblaze.com/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-035/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the redirect status of http://www.demoblaze.com/.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Browser Navigation Timing showed no redirect info (redirectCount 0); read headers with curl -sI: HTTP/1.1 302 Found, location: https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-035/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is it a permanent redirect (301 or 308), not a temporary 302?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Status is 302 Found (temporary)",
+      "ok": false,
+      "screenshot": "TC-035/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Open https://demoblaze.com/ (without www) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-035/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the address now https://www.demoblaze.com/ (redirected to www)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Address stayed https://demoblaze.com/ (no www, redirectCount 0); curl -sI https://demoblaze.com/ gave HTTP/2 200 with no location header",
+      "ok": false,
+      "screenshot": "TC-035/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-035/TC-035_replay.gif",
+  "steps_pdf": "TC-035/TC-035_steps.pdf",
+  "evidence_folder": "TC-035/",
+  "run": "2026-11-02_1059"
+}

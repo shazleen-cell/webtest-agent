@@ -1,0 +1,73 @@
+{
+  "id": "TC-072",
+  "title": "[LOGGED OUT] Layout works on a tablet (768x1024)",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T10:16:47",
+  "ended": "2026-10-30T10:17:30",
+  "duration_sec": 43,
+  "failed_step": 2,
+  "reason": "Step 2 not done: cookie banner Dismiss button is covered by the Referral program iframe, a normal click is refused. Tablet emulation via Chrome mobileEmulation 768x1024 iPad UA. Layout answers 4-6 all matched.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ with tablet emulation (768x1024, iPad) and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded in iPad emulation 768 wide; cookie banner and Add It to Home Screen banner visible",
+      "ok": true,
+      "screenshot": "TC-072/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Not done",
+      "saw": "Banner shown, but click on Dismiss was refused: \"covered by iframe\" (the Referral program widget iframe overlaps the Dismiss button). Not clicked via script.",
+      "ok": false,
+      "screenshot": "TC-072/step02_FAIL.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown, close it with its X button",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked X (Close pwa banner); banner disappeared",
+      "ok": true,
+      "screenshot": "TC-072/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the header show the burger button, the LUDUS logo and \"Login\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows green burger button, LUDUS logo on the left and green Login button on the right",
+      "ok": true,
+      "screenshot": "TC-072/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Can the page NOT be scrolled sideways (no horizontal scroll)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement.scrollWidth 768 = innerWidth 768; body scrollWidth 768",
+      "ok": true,
+      "screenshot": "TC-072/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the page content fit the width of the screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Content fits 768px width (hero, store buttons, Special offer card all inside the screen)",
+      "ok": true,
+      "screenshot": "TC-072/step06.png"
+    }
+  ],
+  "replay_gif": "TC-072/TC-072_replay.gif",
+  "steps_pdf": "TC-072/TC-072_steps.pdf",
+  "evidence_folder": "TC-072/",
+  "run": "2026-10-30_1016"
+}

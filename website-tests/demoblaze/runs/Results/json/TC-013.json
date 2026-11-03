@@ -1,0 +1,73 @@
+{
+  "id": "TC-013",
+  "title": "[LOGGED OUT] Product title opens the product page with name, price and description",
+  "area": "Product",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T10:06:34",
+  "ended": "2026-11-02T10:06:49",
+  "duration_sec": 15,
+  "failed_step": null,
+  "reason": "Product page shows expected URL, heading, price, description and green Add to cart button",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-013/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click the title \"Samsung galaxy s6\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Navigated to the product page",
+      "ok": true,
+      "screenshot": "TC-013/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the address now https://www.demoblaze.com/prod.html?idp_=1?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://www.demoblaze.com/prod.html?idp_=1",
+      "ok": true,
+      "screenshot": "TC-013/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Samsung galaxy s6\" shown with the price \"$360 *includes tax\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'Samsung galaxy s6', price '$360 *includes tax'",
+      "ok": true,
+      "screenshot": "TC-013/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Product description\" shown with text that starts with \"The Samsung Galaxy S6 is powered by\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Product description: The Samsung Galaxy S6 is powered by 1.5GHz octa-core Samsung Exynos 7420 processor...",
+      "ok": true,
+      "screenshot": "TC-013/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a green \"Add to cart\" button shown (look only, do not click it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Add to cart button (background rgb(52, 168, 83)); not clicked",
+      "ok": true,
+      "screenshot": "TC-013/step06.png"
+    }
+  ],
+  "replay_gif": "TC-013/TC-013_replay.gif",
+  "steps_pdf": "TC-013/TC-013_steps.pdf",
+  "evidence_folder": "TC-013/",
+  "run": "2026-11-02_1059"
+}

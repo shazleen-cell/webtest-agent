@@ -1,0 +1,91 @@
+{
+  "id": "TC-043",
+  "title": "[LOGGED OUT] Log in with an unknown user shows \"User does not exist.\"",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T11:26:33",
+  "ended": "2026-11-02T11:27:09",
+  "duration_sec": 36,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-043/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Log in\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Log in popup opened (screenshot caught the fade-in animation)",
+      "ok": true,
+      "screenshot": "TC-043/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Turn on the alert recorder.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Recorder script run",
+      "ok": true,
+      "screenshot": "TC-043/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Type \"no-such-user-12345\" into the \"Username:\" field of the \"Log in\" popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Username field shows no-such-user-12345",
+      "ok": true,
+      "screenshot": "TC-043/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Type \"wrong-password\" into the \"Password:\" field of the \"Log in\" popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Password field filled (14 masked characters)",
+      "ok": true,
+      "screenshot": "TC-043/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the \"Log in\" button inside the popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Log in in the popup",
+      "ok": true,
+      "screenshot": "TC-043/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the alert message \"User does not exist.\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "window.__alerts = [\"User does not exist.\"]",
+      "ok": true,
+      "screenshot": "TC-043/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the user still logged out (the header still shows \"Log in\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header link #login2 text is \"Log in\", #nameofuser is empty",
+      "ok": true,
+      "screenshot": "TC-043/step08.png"
+    }
+  ],
+  "replay_gif": "TC-043/TC-043_replay.gif",
+  "steps_pdf": "TC-043/TC-043_steps.pdf",
+  "evidence_folder": "TC-043/",
+  "run": "2026-11-02_1059"
+}

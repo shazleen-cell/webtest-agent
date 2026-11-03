@@ -1,0 +1,64 @@
+{
+  "id": "TC-053",
+  "title": "[LOGGED OUT] Phone \"Add It to Home Screen\" banner text has no spelling mistakes",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:16:47+08:00",
+  "ended": "2026-10-30T09:17:02+08:00",
+  "duration_sec": 15,
+  "failed_step": 4,
+  "reason": "Banner second line has a typo: \"To got a quicker access !\"",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser with phone emulation (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded at 390x844",
+      "ok": true,
+      "screenshot": "TC-053/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-053/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a bottom banner with \"Add It to Home Screen\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Bottom banner \"Add It to Home Screen\" with Claim and X shown",
+      "ok": true,
+      "screenshot": "TC-053/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the second line spelled correctly (for example \"To get quicker access!\", not \"To got a quicker access !\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Second line reads \"To got a quicker access !\" (wrong word \"got\", extra \"a\", space before \"!\")",
+      "ok": false,
+      "screenshot": "TC-053/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Close the banner with its X button. Do not click \"Claim\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked X (Close pwa banner); banner gone, Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-053/step05.png"
+    }
+  ],
+  "replay_gif": "TC-053/TC-053_replay.gif",
+  "steps_pdf": "TC-053/TC-053_steps.pdf",
+  "evidence_folder": "TC-053/",
+  "run": "2026-10-30_0829"
+}

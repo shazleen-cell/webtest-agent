@@ -1,0 +1,64 @@
+{
+  "id": "TC-009",
+  "title": "[LOGGED OUT] \"Next\" shows the second page of products",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "Page 2 shows the 6 expected products and only Previous",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-009/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Scroll down to the Previous and Next buttons below the products.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled; Previous and Next buttons visible below the products",
+      "ok": true,
+      "screenshot": "TC-009/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Next\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Next clicked; second page loaded",
+      "ok": true,
+      "screenshot": "TC-009/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are 6 products shown: Apple monitor 24, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, ASUS Full HD, MacBook Pro?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "6 cards: Apple monitor 24, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, ASUS Full HD, MacBook Pro",
+      "ok": true,
+      "screenshot": "TC-009/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is only the \"Previous\" button shown below the products (no \"Next\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Only Previous visible; Next button is display:none",
+      "ok": true,
+      "screenshot": "TC-009/step05.png"
+    }
+  ],
+  "started": "2026-11-02T11:03:32+08:00",
+  "ended": "2026-11-02T11:03:58+08:00",
+  "duration_sec": 26,
+  "replay_gif": "TC-009/TC-009_replay.gif",
+  "steps_pdf": "TC-009/TC-009_steps.pdf",
+  "evidence_folder": "TC-009/",
+  "run": "2026-11-02_1059"
+}

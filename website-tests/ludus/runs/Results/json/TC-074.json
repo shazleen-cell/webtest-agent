@@ -1,0 +1,73 @@
+{
+  "id": "TC-074",
+  "title": "[LOGGED IN] Login with the user-id link shows the player and both balances",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T08:58:36",
+  "ended": "2026-10-30T08:59:21",
+  "duration_sec": 45,
+  "failed_step": null,
+  "reason": "Logged in as Player{TEST_USER_ID}; address /store/; balances 40 (teal) and 0 (gold); no Login button",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/?user-id={TEST_USER_ID} in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded already logged in, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-074/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If a \"Login successful\" popup is shown, click \"Ok\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner dismissed; no Login successful popup appeared",
+      "ok": true,
+      "screenshot": "TC-074/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Player{TEST_USER_ID} button top right, no Login button",
+      "ok": true,
+      "screenshot": "TC-074/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the address now https://site.ludus-game.com/store/ (without \"?user-id=\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-074/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the header show a teal loyalty points balance and a gold store points balance next to the player button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal icon with 40 and gold icon with 0 left of the player button",
+      "ok": true,
+      "screenshot": "TC-074/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"Login\" button gone from the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No Login button in the header or on the page",
+      "ok": true,
+      "screenshot": "TC-074/step06.png"
+    }
+  ],
+  "replay_gif": "TC-074/TC-074_replay.gif",
+  "steps_pdf": "TC-074/TC-074_steps.pdf",
+  "evidence_folder": "TC-074/",
+  "run": "2026-10-30_0829"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "TC-026",
+  "title": "[LOGGED OUT] Unknown page shows a friendly error with a way back",
+  "area": "Error page",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T11:14:41",
+  "ended": "2026-11-02T11:14:50",
+  "duration_sec": 9,
+  "failed_step": 3,
+  "reason": "404 page is a bare 'Error: Not Found' text page with no shop header and no link back to Home",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/this-page-does-not-exist and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title '404 Not Found'",
+      "ok": true,
+      "screenshot": "TC-026/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a \"not found\" message shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'Error: Not Found' and 'The requested URL /this-page-does-not-exist was not found on this server.'",
+      "ok": true,
+      "screenshot": "TC-026/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the shop header or a link back to the Home page shown?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Only two plain headings on a white page; no header, no links",
+      "ok": false,
+      "screenshot": "TC-026/step03_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-026/TC-026_replay.gif",
+  "steps_pdf": "TC-026/TC-026_steps.pdf",
+  "evidence_folder": "TC-026/",
+  "run": "2026-11-02_1059"
+}

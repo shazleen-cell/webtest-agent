@@ -1,0 +1,64 @@
+{
+  "id": "TC-014",
+  "title": "[LOGGED OUT] Laptop product page opens from the Laptops category",
+  "area": "Product",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T10:07:05",
+  "ended": "2026-11-02T10:07:18",
+  "duration_sec": 13,
+  "failed_step": null,
+  "reason": "MacBook Pro page shows heading, price, image and description",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-014/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Laptops\" in the \"CATEGORIES\" box.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Laptop list shown (Sony vaio i5, Sony vaio i7, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, MacBook Pro)",
+      "ok": true,
+      "screenshot": "TC-014/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the title \"MacBook Pro\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Opened https://www.demoblaze.com/prod.html?idp_=15",
+      "ok": true,
+      "screenshot": "TC-014/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"MacBook Pro\" shown with the price \"$1100 *includes tax\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'MacBook Pro', price '$1100 *includes tax'",
+      "ok": true,
+      "screenshot": "TC-014/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a product image and a \"Product description\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Laptop image on the left; Product description: Apple has introduced three new versions of its MacBook Pro line...",
+      "ok": true,
+      "screenshot": "TC-014/step05.png"
+    }
+  ],
+  "replay_gif": "TC-014/TC-014_replay.gif",
+  "steps_pdf": "TC-014/TC-014_steps.pdf",
+  "evidence_folder": "TC-014/",
+  "run": "2026-11-02_1059"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "TC-023",
+  "title": "[LOGGED OUT] \"Log in\" popup shows the form and closes with ×",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T11:12:37+08:00",
+  "ended": "2026-11-02T11:12:52+08:00",
+  "duration_sec": 15,
+  "failed_step": null,
+  "reason": "All answers match.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded.",
+      "ok": true,
+      "screenshot": "TC-023/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Log in\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Log in popup opened.",
+      "ok": true,
+      "screenshot": "TC-023/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a popup titled \"Log in\" shown with \"Username:\" and \"Password:\" fields?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'Log in' with labels Username: and Password: and two empty fields.",
+      "ok": true,
+      "screenshot": "TC-023/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are \"Close\" and \"Log in\" buttons shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Close (white) and Log in (blue) buttons in the popup footer.",
+      "ok": true,
+      "screenshot": "TC-023/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the \"×\" at the top right of the popup. Do not type anything.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the x (header Close) button; nothing typed.",
+      "ok": true,
+      "screenshot": "TC-023/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"Log in\" popup closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup gone, home page visible.",
+      "ok": true,
+      "screenshot": "TC-023/step06.png"
+    }
+  ],
+  "replay_gif": "TC-023/TC-023_replay.gif",
+  "steps_pdf": "TC-023/TC-023_steps.pdf",
+  "evidence_folder": "TC-023/",
+  "run": "2026-11-02_1059"
+}

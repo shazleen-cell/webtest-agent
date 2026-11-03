@@ -1,0 +1,100 @@
+{
+  "id": "TC-047",
+  "title": "[LOGGED OUT] Place Order with an empty form shows \"Please fill out Name and Creditcard.\"",
+  "area": "Cart",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:29:45",
+  "ended": "2026-11-02T11:30:39",
+  "duration_sec": 54,
+  "failed_step": null,
+  "reason": "All answers match: alert 'Please fill out Name and Creditcard.' and form stayed open.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-047/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Cart\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "cart.html opened, empty table, Place Order button",
+      "ok": true,
+      "screenshot": "TC-047/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Place Order\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Place order dialog opened (screenshot during fade-in)",
+      "ok": true,
+      "screenshot": "TC-047/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is an order form shown with empty fields such as \"Name:\" and \"Credit card:\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Place order form with Name, Country, City, Credit card, Month, Year all empty",
+      "ok": true,
+      "screenshot": "TC-047/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Turn on the alert recorder.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Recorder script ran",
+      "ok": true,
+      "screenshot": "TC-047/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Purchase\" without typing anything.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Purchase with empty form",
+      "ok": true,
+      "screenshot": "TC-047/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the alert message \"Please fill out Name and Creditcard.\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "window.__alerts = [\"Please fill out Name and Creditcard.\"]",
+      "ok": true,
+      "screenshot": "TC-047/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the order form still open (no \"Thank you for your purchase!\" message)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Order modal display=block, no thank-you message, URL still cart.html",
+      "ok": true,
+      "screenshot": "TC-047/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Click \"Close\" in the order form.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dialog closed, cart page visible",
+      "ok": true,
+      "screenshot": "TC-047/step09.png"
+    }
+  ],
+  "replay_gif": "TC-047/TC-047_replay.gif",
+  "steps_pdf": "TC-047/TC-047_steps.pdf",
+  "evidence_folder": "TC-047/",
+  "run": "2026-11-02_1059"
+}

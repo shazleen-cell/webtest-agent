@@ -1,0 +1,55 @@
+{
+  "id": "TC-060",
+  "title": "[LOGGED OUT] Store page loads with no failed requests",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T09:24:33",
+  "ended": "2026-10-30T09:25:10",
+  "duration_sec": 37,
+  "failed_step": 4,
+  "reason": "Store page makes 404 requests: site.ludus-game.com/store/manifest.json, store.xsolla.com offer_chain/1512, 1511, 1310 and items/bundle/group",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-060/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookies banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-060/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the failed network requests and console errors of the page",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Failed requests (all 404): GET site.ludus-game.com/store/manifest.json (x2); GET store.xsolla.com/api/v2/project/253824/user/offer_chain/1512, /1511, /1310; GET store.xsolla.com/api/v2/project/253824/items/bundle/group (x3 across loads)",
+      "ok": true,
+      "screenshot": "TC-060/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are there no 404 errors (e.g. store/manifest.json or store.xsolla.com offer_chain / bundle/group requests)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "404 errors are present for store/manifest.json, offer_chain/1512, 1511, 1310 and items/bundle/group",
+      "ok": false,
+      "screenshot": "TC-060/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-060/TC-060_replay.gif",
+  "steps_pdf": "TC-060/TC-060_steps.pdf",
+  "evidence_folder": "TC-060/",
+  "run": "2026-10-30_0829"
+}

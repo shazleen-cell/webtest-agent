@@ -19,6 +19,19 @@ website-tests/*/explore/
 # Browser trace zips written by wdio-mcp on close_session
 .trace/
 
-# Test runs and results stay on this computer only (about 1 GB per run).
-# Nothing under runs/ goes to git: not the run folders, not Results/ (report, results.xlsx, json/).
-website-tests/*/runs/
+# Test runs and evidence stay on this computer only (about 1 GB per run):
+# screenshots, replay GIFs, steps PDFs, trace zips (can contain typed passwords) and the run folders.
+# Only the small summary reports go to git (about 1-2 MB per site), so QA can read the results in a clone.
+# The evidence links inside results.html only work on a computer that has the evidence.
+website-tests/*/runs/**
+!website-tests/*/runs/**/
+# Combined results (built by /gather-results)
+!website-tests/*/runs/Results/README.md
+!website-tests/*/runs/Results/results.html
+!website-tests/*/runs/Results/results.xlsx
+!website-tests/*/runs/Results/json/*.json
+# Agent evaluation scorecards (built by /evaluate-agent)
+!website-tests/*/runs/*/eval_report.html
+!website-tests/*/runs/*/eval_score.md
+!website-tests/*/runs/*/eval_score.json
+!website-tests/*/runs/eval_comparison.html

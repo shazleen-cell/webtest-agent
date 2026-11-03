@@ -1,0 +1,82 @@
+{
+  "id": "TC-063",
+  "title": "[LOGGED OUT] Page response has the usual security headers",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T09:27:32+08:00",
+  "ended": "2026-10-30T09:28:27+08:00",
+  "duration_sec": 55,
+  "failed_step": 5,
+  "reason": "Only Strict-Transport-Security present; Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy and Permissions-Policy are missing",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-063/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-063/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the response headers of https://site.ludus-game.com/store/",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Response headers (same-origin fetch and curl) were only: cache-control, content-encoding, content-type, date, expires, strict-transport-security, vary, x-geoip-*, x-guploader-uploadid, x-real-ip, x-request-id, set-cookie",
+      "ok": true,
+      "screenshot": "TC-063/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is \"Strict-Transport-Security\" present?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "strict-transport-security: max-age=63072000; includeSubDomains; preload",
+      "ok": true,
+      "screenshot": "TC-063/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Content-Security-Policy\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No content-security-policy header and no CSP meta tag",
+      "ok": false,
+      "screenshot": "TC-063/step05_FAIL.png"
+    },
+    {
+      "n": 6,
+      "text": "Are \"X-Frame-Options\" (or a CSP frame-ancestors rule) and \"X-Content-Type-Options: nosniff\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Neither x-frame-options, x-content-type-options nor CSP frame-ancestors present",
+      "ok": false,
+      "screenshot": "TC-063/step06_FAIL.png"
+    },
+    {
+      "n": 7,
+      "text": "Are \"Referrer-Policy\" and \"Permissions-Policy\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Neither referrer-policy nor permissions-policy present",
+      "ok": false,
+      "screenshot": "TC-063/step07_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-063/TC-063_replay.gif",
+  "steps_pdf": "TC-063/TC-063_steps.pdf",
+  "evidence_folder": "TC-063/",
+  "run": "2026-10-30_0829"
+}

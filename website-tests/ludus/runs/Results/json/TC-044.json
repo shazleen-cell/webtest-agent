@@ -1,0 +1,82 @@
+{
+  "id": "TC-044",
+  "title": "[LOGGED OUT] FAQ shows 6 questions and the first one opens its answer",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:09:00+08:00",
+  "ended": "2026-10-30T09:09:32+08:00",
+  "duration_sec": 32,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-044/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-044/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the FAQ section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "FAQ heading with 6 questions in view",
+      "ok": true,
+      "screenshot": "TC-044/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are the 6 questions shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Shown: How does purchasing from Web Shop benefit me?; Is it safe to purchase on Web Shop?; Who can help me with my purchase issue?; What payment methods does Web Shop support?; How to make a purchase?; What's a referral program?",
+      "ok": true,
+      "screenshot": "TC-044/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"How does purchasing from Web Shop benefit me?\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Question clicked, answer expanded",
+      "ok": true,
+      "screenshot": "TC-044/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is an answer shown that starts with \"In Web Shop, you can purchase game items at lower prices\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Answer: 'In Web Shop, you can purchase game items at lower prices, find some special offers, and claim free rewards...'",
+      "ok": true,
+      "screenshot": "TC-044/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the arrow of this question now point up?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Arrow of the opened question is a chevron pointing up; the other 5 point down",
+      "ok": true,
+      "screenshot": "TC-044/step07.png"
+    }
+  ],
+  "replay_gif": "TC-044/TC-044_replay.gif",
+  "steps_pdf": "TC-044/TC-044_steps.pdf",
+  "evidence_folder": "TC-044/",
+  "run": "2026-10-30_0829"
+}

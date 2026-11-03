@@ -1,0 +1,64 @@
+{
+  "id": "TC-042",
+  "title": "[LOGGED OUT] Loyalty Shop offers have different names",
+  "area": "Store",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:07:44+08:00",
+  "ended": "2026-10-30T09:08:08+08:00",
+  "duration_sec": 24,
+  "failed_step": 5,
+  "reason": "Two cards share the same name ignoring case: 'Astral hero' and 'Astral Hero'",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-042/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-042/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Loyalty shop\" in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to Loyalty Shop",
+      "ok": true,
+      "screenshot": "TC-042/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Read the names of all Loyalty Shop cards",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Astral hero, Astral Hero, Astral Echo, Magical Order, Unique Emote, Unique Avatar, Unique Frame, Spell chest, Essence Bundle, Small pile of Golden Runes, Barrel of Runes, Handful of dice",
+      "ok": true,
+      "screenshot": "TC-042/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are all card names different from each other (ignoring case)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "'Astral hero' (1100 points, 1/1) and 'Astral Hero' (550 points, 2/2) are the same name ignoring case",
+      "ok": false,
+      "screenshot": "TC-042/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-042/TC-042_replay.gif",
+  "steps_pdf": "TC-042/TC-042_steps.pdf",
+  "evidence_folder": "TC-042/",
+  "run": "2026-10-30_0829"
+}

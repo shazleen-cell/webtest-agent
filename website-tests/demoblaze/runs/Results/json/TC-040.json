@@ -1,0 +1,46 @@
+{
+  "id": "TC-040",
+  "title": "[LOGGED OUT] Phone users can zoom the page",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-02T11:24:23+08:00",
+  "ended": "2026-11-02T11:24:43+08:00",
+  "duration_sec": 20,
+  "failed_step": null,
+  "reason": "Viewport meta is width=device-width, initial-scale=1, shrink-to-fit=no; zoom is allowed",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-040/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the \"viewport\" meta tag of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "content = width=device-width, initial-scale=1, shrink-to-fit=no",
+      "ok": true,
+      "screenshot": "TC-040/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the viewport meta tag allow zoom (no \"maximum-scale=1\" and no \"user-scalable=no\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No maximum-scale and no user-scalable in the viewport meta",
+      "ok": true,
+      "screenshot": "TC-040/step03.png"
+    }
+  ],
+  "replay_gif": "TC-040/TC-040_replay.gif",
+  "steps_pdf": "TC-040/TC-040_steps.pdf",
+  "evidence_folder": "TC-040/",
+  "run": "2026-11-02_1059"
+}

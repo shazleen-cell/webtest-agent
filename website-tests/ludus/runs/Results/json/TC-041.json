@@ -1,0 +1,82 @@
+{
+  "id": "TC-041",
+  "title": "[LOGGED OUT] Header \"Loyalty shop\" scrolls to the Loyalty Shop with 12 offers",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:06:31+08:00",
+  "ended": "2026-10-30T09:07:20+08:00",
+  "duration_sec": 49,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-041/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-041/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Loyalty shop\" in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to Loyalty Shop",
+      "ok": true,
+      "screenshot": "TC-041/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the \"Loyalty Shop\" section shown on the screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading \"Loyalty Shop\" with cards visible",
+      "ok": true,
+      "screenshot": "TC-041/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are 12 cards shown in the Loyalty Shop?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "12 cards counted (Astral hero ... Handful of dice)",
+      "ok": true,
+      "screenshot": "TC-041/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does each card show a name, an amount, an Available line and a green button with a point price?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All 12 cards have name, amount, 'Available weekly: x/y' or 'Available: x/y' and a green price button (1100, 550, 750, ...)",
+      "ok": true,
+      "screenshot": "TC-041/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is \"Loyalty shop\" shown in yellow in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header item colour rgb(249, 223, 66) (yellow)",
+      "ok": true,
+      "screenshot": "TC-041/step07.png"
+    }
+  ],
+  "replay_gif": "TC-041/TC-041_replay.gif",
+  "steps_pdf": "TC-041/TC-041_steps.pdf",
+  "evidence_folder": "TC-041/",
+  "run": "2026-10-30_0829"
+}

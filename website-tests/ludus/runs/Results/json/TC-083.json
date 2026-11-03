@@ -1,0 +1,100 @@
+{
+  "id": "TC-083",
+  "title": "[LOGGED IN] Player stays logged in after a reload and a page change",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:46:03+08:00",
+  "ended": "2026-10-30T09:47:32+08:00",
+  "duration_sec": 89,
+  "failed_step": null,
+  "reason": "Player stayed logged in after reload, Home and Store",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open the Store URL with login and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store/; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-083/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Dismiss cookie banner / close Login successful popup",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on cookie banner; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-083/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login button.",
+      "ok": true,
+      "screenshot": "TC-083/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Reload the page",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page reloaded, still /store/",
+      "ok": true,
+      "screenshot": "TC-083/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login button.",
+      "ok": true,
+      "screenshot": "TC-083/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click Home in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Opened https://site.ludus-game.com/ (Home page)",
+      "ok": true,
+      "screenshot": "TC-083/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header on Home: Home, Store, Reward chain, Clan reward, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login.",
+      "ok": true,
+      "screenshot": "TC-083/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click Store in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Opened https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-083/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login button.",
+      "ok": true,
+      "screenshot": "TC-083/step09.png"
+    }
+  ],
+  "replay_gif": "TC-083/TC-083_replay.gif",
+  "steps_pdf": "TC-083/TC-083_steps.pdf",
+  "evidence_folder": "TC-083/",
+  "run": "2026-10-30_0829"
+}

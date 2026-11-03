@@ -1,0 +1,64 @@
+{
+  "id": "TC-070",
+  "title": "[LOGGED OUT] Canonical link and og:url point to the site itself",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T09:34:29+08:00",
+  "ended": "2026-10-30T09:34:58+08:00",
+  "duration_sec": 29,
+  "failed_step": null,
+  "reason": "canonical and og:url point to site.ludus-game.com; og:image and favicon present",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-070/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-070/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the canonical link and the og:url meta tag",
+      "expected": "",
+      "answer": "Done",
+      "saw": "canonical = https://site.ludus-game.com/ ; og:url = https://site.ludus-game.com (no trailing slash)",
+      "ok": true,
+      "screenshot": "TC-070/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Do both point to https://site.ludus-game.com/ (not to ludus-merge-battle-arena-pvp-landing.xsolla.site)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Both point to site.ludus-game.com; no xsolla.site domain (og:url lacks trailing slash only)",
+      "ok": true,
+      "screenshot": "TC-070/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are an og:image and a favicon present?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "og:image = cdn.xsolla.net/.../9cf83e83063c72b206b288c1cafd54cb.webp ; favicon link rel=icon = cdn.xsolla.net/.../d885652a4837848c5ac715757cef5828.webp",
+      "ok": true,
+      "screenshot": "TC-070/step05.png"
+    }
+  ],
+  "replay_gif": "TC-070/TC-070_replay.gif",
+  "steps_pdf": "TC-070/TC-070_steps.pdf",
+  "evidence_folder": "TC-070/",
+  "run": "2026-10-30_0829"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "TC-038",
+  "title": "[LOGGED OUT] Home has an h1, a meta description and a canonical link",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:23:26+08:00",
+  "ended": "2026-11-02T11:23:50+08:00",
+  "duration_sec": 24,
+  "failed_step": 3,
+  "reason": "No h1 (0 found), meta description is empty, no canonical link",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-038/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the headings and the meta tags of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Headings: H5 New message, H5 Sign up, H5 Log in, H5 About us (modals), H4 product names, H5 prices. Metas: utf-8, viewport, description (empty), author (empty), X-UA-Compatible",
+      "ok": true,
+      "screenshot": "TC-038/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the page have exactly one h1 heading?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "0 h1 elements",
+      "ok": false,
+      "screenshot": "TC-038/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the meta description filled in with text about the shop?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "meta name=description content is empty",
+      "ok": false,
+      "screenshot": "TC-038/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a canonical link present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No link[rel=canonical] in the page",
+      "ok": false,
+      "screenshot": "TC-038/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-038/TC-038_replay.gif",
+  "steps_pdf": "TC-038/TC-038_steps.pdf",
+  "evidence_folder": "TC-038/",
+  "run": "2026-11-02_1059"
+}

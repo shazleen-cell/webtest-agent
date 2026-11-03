@@ -1,0 +1,73 @@
+{
+  "id": "TC-021",
+  "title": "[LOGGED OUT] \"Contact\" popup opens and closes",
+  "area": "Popup",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:11:29+08:00",
+  "ended": "2026-11-02T11:11:47+08:00",
+  "duration_sec": 18,
+  "failed_step": null,
+  "reason": "All answers match.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title STORE.",
+      "ok": true,
+      "screenshot": "TC-021/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Contact\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Contact popup opened.",
+      "ok": true,
+      "screenshot": "TC-021/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a popup titled \"New message\" shown with \"Contact Email:\", \"Contact Name:\" and \"Message:\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'New message' with labels Contact Email:, Contact Name:, Message: and three empty fields.",
+      "ok": true,
+      "screenshot": "TC-021/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are \"Close\" and \"Send message\" buttons shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Close (white) and Send message (blue) buttons in the popup footer.",
+      "ok": true,
+      "screenshot": "TC-021/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Close\". Do not type anything and do not click \"Send message\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked footer Close button; nothing typed.",
+      "ok": true,
+      "screenshot": "TC-021/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"New message\" popup closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup gone, home page with carousel visible again.",
+      "ok": true,
+      "screenshot": "TC-021/step06.png"
+    }
+  ],
+  "replay_gif": "TC-021/TC-021_replay.gif",
+  "steps_pdf": "TC-021/TC-021_steps.pdf",
+  "evidence_folder": "TC-021/",
+  "run": "2026-11-02_1059"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "TC-029",
+  "title": "[LOGGED OUT] Store header shows the same menu items as Home, including \"Clan reward\"",
+  "area": "Header",
+  "priority": "High",
+  "status": "FAILED",
+  "started": "2026-10-30T08:56:04",
+  "ended": "2026-10-30T08:56:23",
+  "duration_sec": 19,
+  "failed_step": 5,
+  "reason": "Store header has no 'Clan reward' item (Home, Store, Reward chain, Loyalty shop, Login only)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner (header briefly showed Home, Reward chain, Loyalty shop while loading)",
+      "ok": true,
+      "screenshot": "TC-029/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-029/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the LUDUS logo, Home, Store, Reward chain, Loyalty shop and a green Login button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Logo, Home, Store, Reward chain, Loyalty shop and green Login button shown",
+      "ok": true,
+      "screenshot": "TC-029/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is Store shown in yellow?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Store colour rgb(249, 223, 66) (yellow)",
+      "ok": true,
+      "screenshot": "TC-029/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a Clan reward item shown in the header, like on the Home page?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No Clan reward item in the header; Home page header has it",
+      "ok": false,
+      "screenshot": "TC-029/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-029/TC-029_replay.gif",
+  "steps_pdf": "TC-029/TC-029_steps.pdf",
+  "evidence_folder": "TC-029/",
+  "run": "2026-10-30_0829"
+}

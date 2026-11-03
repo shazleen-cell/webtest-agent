@@ -1,0 +1,82 @@
+{
+  "id": "TC-079",
+  "title": "[LOGGED IN] Logged-in Rewards Market shows the player's progress",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:42:48",
+  "ended": "2026-10-30T09:43:22",
+  "duration_sec": 34,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/?user-id={TEST_USER_ID} and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-079/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If Login successful popup, click Ok",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-079/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green button Player{TEST_USER_ID} with balances 40 and 0; no Login button",
+      "ok": true,
+      "screenshot": "TC-079/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Reward chain\" in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to Rewards Market section; Reward chain tab highlighted",
+      "ok": true,
+      "screenshot": "TC-079/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the Rewards Market show \"0/500 points\" and \"Step 1 of 10\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"0/500 points\" and \"Step 1 of 10\" shown",
+      "ok": true,
+      "screenshot": "TC-079/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the first reward card (\"5000\") show \"0 / 3\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First card 5000 shows 0/3",
+      "ok": true,
+      "screenshot": "TC-079/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"Login to claim\" button gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No \"Login to claim\" text or button anywhere on the page",
+      "ok": true,
+      "screenshot": "TC-079/step07.png"
+    }
+  ],
+  "replay_gif": "TC-079/TC-079_replay.gif",
+  "steps_pdf": "TC-079/TC-079_steps.pdf",
+  "evidence_folder": "TC-079/",
+  "run": "2026-10-30_0829"
+}

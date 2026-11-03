@@ -1,0 +1,73 @@
+{
+  "id": "TC-037",
+  "title": "[LOGGED OUT] \"Gifts to friends\" section shows gift ticket cards",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T10:04:04",
+  "ended": "2026-10-30T10:05:12",
+  "duration_sec": 68,
+  "failed_step": null,
+  "reason": "All answers match. Note: one scroll to the section was first done by script by mistake, then the page was re-scrolled with the scroll tool and the evidence taken from that.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop', cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-037/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-037/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Gifts to friends\" section.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Heading 'Gifts to friends' at top of viewport",
+      "ok": true,
+      "screenshot": "TC-037/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the ribbon text \"Buy Tickets as gifts for your friends and fellow Clan members!\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Ribbon with exactly that text under the heading",
+      "ok": true,
+      "screenshot": "TC-037/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is at least one ticket card shown in the section (do not count them, the number changes over time)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Ticket cards shown, e.g. Tournament Diamond Ticket, Tournament Golden Ticket, Clan War Golden Ticket",
+      "ok": true,
+      "screenshot": "TC-037/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does each card show a \"Gift\" badge, a \"Send to friends\" line and a price button that starts with \"USD\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All cards in both rows show Gift badge, Send to friends line and a price button starting with USD (e.g. USD 21.60, USD 10.80, USD 16.20, USD 32.40)",
+      "ok": true,
+      "screenshot": "TC-037/step06.png"
+    }
+  ],
+  "replay_gif": "TC-037/TC-037_replay.gif",
+  "steps_pdf": "TC-037/TC-037_steps.pdf",
+  "evidence_folder": "TC-037/",
+  "run": "2026-10-30_1003"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "TC-030",
+  "title": "[LOGGED OUT] Store top shows the heading, the text and the \"Special offer\" card with a price",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T08:56:40",
+  "ended": "2026-10-30T08:57:03",
+  "duration_sec": 23,
+  "failed_step": null,
+  "reason": "Heading, text, Special offer card with USD price and two badges all shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-030/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-030/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the heading 'LUDUS・Official Webshop' shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'LUDUS・Official Webshop' shown (LUDUS in yellow)",
+      "ok": true,
+      "screenshot": "TC-030/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the text 'Enjoy lower prices - buy game resources and passes much cheaper!' shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Text 'Enjoy lower prices - buy game resources and passes much cheaper!' shown under the heading",
+      "ok": true,
+      "screenshot": "TC-030/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a 'Special offer' card shown with a green price button that starts with USD and a struck-through old price?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Special offer card (Uruk bundle) with green button 'USD 54.00' and struck-through 59.99",
+      "ok": true,
+      "screenshot": "TC-030/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are two point badges shown next to the price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Two badges next to the button: 50 and 550",
+      "ok": true,
+      "screenshot": "TC-030/step06.png"
+    }
+  ],
+  "replay_gif": "TC-030/TC-030_replay.gif",
+  "steps_pdf": "TC-030/TC-030_steps.pdf",
+  "evidence_folder": "TC-030/",
+  "run": "2026-10-30_0829"
+}

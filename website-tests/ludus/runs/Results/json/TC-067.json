@@ -1,0 +1,73 @@
+{
+  "id": "TC-067",
+  "title": "[LOGGED OUT] Header menu items show a clear focus ring with the keyboard",
+  "area": "Header",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T09:31:35+08:00",
+  "ended": "2026-10-30T09:32:26+08:00",
+  "duration_sec": 51,
+  "failed_step": null,
+  "reason": "Home and Store both show a visible blue focus ring",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-067/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-067/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Press Tab until Home in the header has focus",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Tab x2: first the logo link, then Home focused",
+      "ok": true,
+      "screenshot": "TC-067/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a clear focus ring shown around Home?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Blue rectangular outline (rgb(0,95,204) auto 1px, :focus-visible) clearly visible around Home",
+      "ok": true,
+      "screenshot": "TC-067/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Press Tab once more",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Focus moved to Store",
+      "ok": true,
+      "screenshot": "TC-067/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a clear focus ring shown around Store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "White/blue rectangular outline clearly visible around Store",
+      "ok": true,
+      "screenshot": "TC-067/step06.png"
+    }
+  ],
+  "replay_gif": "TC-067/TC-067_replay.gif",
+  "steps_pdf": "TC-067/TC-067_steps.pdf",
+  "evidence_folder": "TC-067/",
+  "run": "2026-10-30_0829"
+}

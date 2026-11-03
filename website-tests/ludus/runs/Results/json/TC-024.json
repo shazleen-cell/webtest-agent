@@ -1,0 +1,91 @@
+{
+  "id": "TC-024",
+  "title": "[LOGGED OUT] The news date is the same in English and French",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T08:50:45",
+  "ended": "2026-10-30T08:51:27",
+  "duration_sec": 42,
+  "failed_step": 7,
+  "reason": "News card date differs: English \"October 15\" vs French \"10 mars\" (March 10)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-024/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-024/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Latest news\" section.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Latest news section with one card visible",
+      "ok": true,
+      "screenshot": "TC-024/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Read the date on the first news card (for example \"October 15\").",
+      "expected": "",
+      "answer": "Done",
+      "saw": "First card: \"October 15\", title \"v1.38 is live!\"",
+      "ok": true,
+      "screenshot": "TC-024/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Scroll down to the footer and choose \"Français\" in the \"EN\" language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Français; address https://site.ludus-game.com/fr-FR",
+      "ok": true,
+      "screenshot": "TC-024/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Scroll down to the \"Dernières infos\" section.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dernières infos section visible with the same card",
+      "ok": true,
+      "screenshot": "TC-024/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the date on the same news card the same day and month as in English?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "French card shows \"10 mars\" (10 March), title \"La version 1.38 est disponible !\"; English card showed \"October 15\"",
+      "ok": false,
+      "screenshot": "TC-024/step07_FAIL.png"
+    },
+    {
+      "n": 8,
+      "text": "Choose \"English\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected English; address back to https://site.ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-024/step08.png"
+    }
+  ],
+  "replay_gif": "TC-024/TC-024_replay.gif",
+  "steps_pdf": "TC-024/TC-024_steps.pdf",
+  "evidence_folder": "TC-024/",
+  "run": "2026-10-30_0829"
+}

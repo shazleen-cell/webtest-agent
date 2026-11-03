@@ -1,0 +1,82 @@
+{
+  "id": "TC-059",
+  "title": "[LOGGED OUT] Home page loads fast enough",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T10:05:26",
+  "ended": "2026-10-30T10:06:08",
+  "duration_sec": 42,
+  "failed_step": null,
+  "reason": "First contentful paint 1128 ms, load event 2739 ms; no second load needed.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no cache.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh headed Chrome session started (blank page)",
+      "ok": true,
+      "screenshot": "TC-059/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop', cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-059/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-059/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Read the page timing from the browser (Navigation Timing: first contentful paint and the load event).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "FCP 1128 ms; loadEventStart 2738 ms, loadEventEnd 2739 ms; DOMContentLoaded 1255 ms",
+      "ok": true,
+      "screenshot": "TC-059/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "If the first contentful paint is 3 seconds or more, or the load event is 10 seconds or more, close the session, start a new one with no cache, open the page again and read the timing once more.",
+      "expected": "",
+      "answer": "Skipped (precondition)",
+      "saw": "FCP 1.13 s (<3 s) and load 2.74 s (<10 s), so no second load was needed",
+      "ok": true,
+      "screenshot": "TC-059/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "In the faster of the two loads (or the only load), is the first contentful paint under 3 seconds?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First contentful paint 1128 ms (1.13 s)",
+      "ok": true,
+      "screenshot": "TC-059/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "In the faster of the two loads (or the only load), is the load event under 10 seconds?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Load event 2739 ms (2.74 s)",
+      "ok": true,
+      "screenshot": "TC-059/step07.png"
+    }
+  ],
+  "replay_gif": "TC-059/TC-059_replay.gif",
+  "steps_pdf": "TC-059/TC-059_steps.pdf",
+  "evidence_folder": "TC-059/",
+  "run": "2026-10-30_1003"
+}

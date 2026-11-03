@@ -1,0 +1,55 @@
+{
+  "id": "TC-011",
+  "title": "[LOGGED OUT] Product images on page 2 open the product page",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T10:05:21",
+  "ended": "2026-11-02T10:05:48",
+  "duration_sec": 27,
+  "failed_step": 4,
+  "reason": "Clicking the Apple monitor 24 image stayed on https://www.demoblaze.com/# (image link href is '#', showed page 1 of the home page); the title link goes to prod.html?idp_=10",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-011/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Scroll down and click \"Next\" below the products.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page 2 shown: Apple monitor 24, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, ASUS Full HD, MacBook Pro",
+      "ok": true,
+      "screenshot": "TC-011/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the image (not the title) of \"Apple monitor 24\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page URL became https://www.demoblaze.com/# and the home page reloaded to the top",
+      "ok": true,
+      "screenshot": "TC-011/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the \"Apple monitor 24\" product page open (address contains \"prod.html?idp_=10\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Address is https://www.demoblaze.com/# , no product page. Image anchor href is '#'; only the title link has prod.html?idp_=10",
+      "ok": false,
+      "screenshot": "TC-011/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-011/TC-011_replay.gif",
+  "steps_pdf": "TC-011/TC-011_steps.pdf",
+  "evidence_folder": "TC-011/",
+  "run": "2026-11-02_1059"
+}

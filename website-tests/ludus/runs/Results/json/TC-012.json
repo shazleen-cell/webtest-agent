@@ -1,0 +1,64 @@
+{
+  "id": "TC-012",
+  "title": "[LOGGED OUT] The LUDUS logo in the header goes back to Home",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:38:44",
+  "ended": "2026-10-30T08:39:28",
+  "duration_sec": 44,
+  "failed_step": null,
+  "reason": "Logo click opened Home; Home yellow",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-012/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-012/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the LUDUS logo at the left of the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Navigated to the Home page",
+      "ok": true,
+      "screenshot": "TC-012/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the address now https://site.ludus-game.com/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-012/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Home\" shown in yellow in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Home link colour rgb(249, 223, 66), yellow; other links white",
+      "ok": true,
+      "screenshot": "TC-012/step05.png"
+    }
+  ],
+  "replay_gif": "TC-012/TC-012_replay.gif",
+  "steps_pdf": "TC-012/TC-012_steps.pdf",
+  "evidence_folder": "TC-012/",
+  "run": "2026-10-30_0829"
+}

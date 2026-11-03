@@ -1,0 +1,55 @@
+{
+  "id": "TC-001",
+  "title": "[LOGGED OUT] Home page loads with the correct tab title",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T08:29:46+08:00",
+  "ended": "2026-10-30T08:30:05+08:00",
+  "duration_sec": 19,
+  "failed_step": null,
+  "reason": "All answers match the expected answers",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, cookie banner shown at bottom",
+      "ok": true,
+      "screenshot": "TC-001/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-001/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the tab title \"LUDUS - Merge Battle Arena PvP Web Shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.title = LUDUS - Merge Battle Arena PvP Web Shop",
+      "ok": true,
+      "screenshot": "TC-001/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the big LUDUS logo shown in the hero area below the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Large LUDUS logo centered in hero below header",
+      "ok": true,
+      "screenshot": "TC-001/step04.png"
+    }
+  ],
+  "replay_gif": "TC-001/TC-001_replay.gif",
+  "steps_pdf": "TC-001/TC-001_steps.pdf",
+  "evidence_folder": "TC-001/",
+  "run": "2026-10-30_0829"
+}

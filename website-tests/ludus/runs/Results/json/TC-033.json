@@ -1,0 +1,55 @@
+{
+  "id": "TC-033",
+  "title": "[LOGGED OUT] Last Store tab \"Gift to friends\" is fully visible at 1440x900",
+  "area": "Store",
+  "priority": "Low",
+  "status": "FAILED",
+  "failed_step": 4,
+  "reason": "The last tab is cut off at the right edge: the screenshot shows only \"Gift\"; the tab bar scrolls sideways (scrollWidth 1501 > clientWidth 1404) and the tab ends at x=1502 in a 1440 px window.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-033/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-033/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the Store heading",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store heading and tab bar in view",
+      "ok": true,
+      "screenshot": "TC-033/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the last tab Gift to friends fully visible at the right end of the tab bar, without scrolling the bar?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Only \"Gift\" is visible at the right edge; the rest of the label is cut off (tab spans x=1392 to 1502 in a 1440 px window; bar scrollWidth 1501 vs clientWidth 1404)",
+      "ok": false,
+      "screenshot": "TC-033/step04_FAIL.png"
+    }
+  ],
+  "started": "2026-10-30T08:59:22+08:00",
+  "ended": "2026-10-30T08:59:47+08:00",
+  "duration_sec": 25,
+  "replay_gif": "TC-033/TC-033_replay.gif",
+  "steps_pdf": "TC-033/TC-033_steps.pdf",
+  "evidence_folder": "TC-033/",
+  "run": "2026-10-30_0829"
+}

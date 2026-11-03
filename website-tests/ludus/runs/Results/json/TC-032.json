@@ -1,0 +1,64 @@
+{
+  "id": "TC-032",
+  "title": "[LOGGED OUT] Store tab bar shows the 12 categories in order",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "12 tabs in the expected order; Free wares is shown on a yellow pill.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-032/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-032/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the Store heading",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store heading and tab bar in view",
+      "ok": true,
+      "screenshot": "TC-032/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the tab bar show the 12 tabs in order?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free wares | Battle Passes | Licenses | Might Passes | Ludus Royal | Ethereal Crystals | Spells | Runes | Dice of Fortune | Gold | Emeralds | Gift to friends (read from the bar text; last tab is cut off at the right edge at 1440 px)",
+      "ok": true,
+      "screenshot": "TC-032/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is Free wares shown in yellow?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free wares is the selected tab, shown on a yellow pill (text white)",
+      "ok": true,
+      "screenshot": "TC-032/step05.png"
+    }
+  ],
+  "started": "2026-10-30T08:58:35+08:00",
+  "ended": "2026-10-30T08:59:12+08:00",
+  "duration_sec": 37,
+  "replay_gif": "TC-032/TC-032_replay.gif",
+  "steps_pdf": "TC-032/TC-032_steps.pdf",
+  "evidence_folder": "TC-032/",
+  "run": "2026-10-30_0829"
+}

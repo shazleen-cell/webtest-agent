@@ -1,0 +1,37 @@
+{
+  "id": "TC-020",
+  "title": "[LOGGED OUT] Cart content has a side margin",
+  "area": "Cart",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:10:26+08:00",
+  "ended": "2026-11-02T11:10:34+08:00",
+  "duration_sec": 8,
+  "failed_step": 2,
+  "reason": "No left margin: \"Products\" heading and table start at x=0 (window edge).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/cart.html and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cart page loaded.",
+      "ok": true,
+      "screenshot": "TC-020/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is there a visible margin between the left edge of the window and the \"Products\" heading and table?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Products heading x=0 and table x=0 (body margin 0px); content touches the left edge of the 1440px window.",
+      "ok": false,
+      "screenshot": "TC-020/step02_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-020/TC-020_replay.gif",
+  "steps_pdf": "TC-020/TC-020_steps.pdf",
+  "evidence_folder": "TC-020/",
+  "run": "2026-11-02_1059"
+}

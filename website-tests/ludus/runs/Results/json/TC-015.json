@@ -1,0 +1,73 @@
+{
+  "id": "TC-015",
+  "title": "[LOGGED OUT] \"Check out our Store\" banner shows its text and links to the Store",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:42:01",
+  "ended": "2026-10-30T08:42:43",
+  "duration_sec": 42,
+  "failed_step": null,
+  "reason": "Banner heading and text match; button href is /store",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-015/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-015/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a banner with the heading \"Check out our Store and shop with profit\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading Check out our Store and shop with profit shown (scrolled it into view)",
+      "ok": true,
+      "screenshot": "TC-015/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does it show the text \"Buy game resources and Passes at lower prices and make savings with each purchase!\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Text: Buy game resources and Passes at lower prices and make savings with each purchase!",
+      "ok": true,
+      "screenshot": "TC-015/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Read the link target of the green \"Check Our Store\" button without opening it.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Read via script: href https://site.ludus-game.com/store (target=_blank)",
+      "ok": true,
+      "screenshot": "TC-015/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does \"Check Our Store\" point to https://site.ludus-game.com/store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href = https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-015/step06.png"
+    }
+  ],
+  "replay_gif": "TC-015/TC-015_replay.gif",
+  "steps_pdf": "TC-015/TC-015_steps.pdf",
+  "evidence_folder": "TC-015/",
+  "run": "2026-10-30_0829"
+}

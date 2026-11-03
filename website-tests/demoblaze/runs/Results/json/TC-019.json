@@ -1,0 +1,46 @@
+{
+  "id": "TC-019",
+  "title": "[LOGGED OUT] Cart page does not mark \"Home\" as the current page",
+  "area": "Header",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:10:00+08:00",
+  "ended": "2026-11-02T11:10:13+08:00",
+  "duration_sec": 13,
+  "failed_step": 3,
+  "reason": "On the Cart page the Home link still contains hidden text \"(current)\".",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/cart.html and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cart page loaded (it already lists items from other visitors).",
+      "ok": true,
+      "screenshot": "TC-019/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the hidden screen-reader text of the \"Home\" link in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home link HTML: Home <span class=\"sr-only\">(current)</span>",
+      "ok": true,
+      "screenshot": "TC-019/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is \"Home\" NOT marked as \"(current)\" on the Cart page?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Home is marked with hidden text \"(current)\" on cart.html.",
+      "ok": false,
+      "screenshot": "TC-019/step03_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-019/TC-019_replay.gif",
+  "steps_pdf": "TC-019/TC-019_steps.pdf",
+  "evidence_folder": "TC-019/",
+  "run": "2026-11-02_1059"
+}

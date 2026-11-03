@@ -1,0 +1,73 @@
+{
+  "id": "TC-087",
+  "title": "[LOGGED IN] Gift flow can be started from the Store",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T09:52:16+08:00",
+  "ended": "2026-10-30T09:53:19+08:00",
+  "duration_sec": 63,
+  "failed_step": 4,
+  "reason": "No 'Gifts to friends' section or 'Gift to friends' tab on the Store page for {TEST_USER_ID}; no gift cards or 'Send to friends' entry (matches the 2026-10-28 note)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open the Store URL with login and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-087/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Dismiss cookie banner / close Login successful popup",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-087/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login.",
+      "ok": true,
+      "screenshot": "TC-087/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a \"Gifts to friends\" section or a \"Gift to friends\" tab shown on the Store page?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Store tabs: Free wares, Might Passes, Gold, Rewards Market. No 'Gift' text anywhere on the page (page text search found none).",
+      "ok": false,
+      "screenshot": "TC-087/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Look at the gift cards only. Do not click a price button.",
+      "expected": "",
+      "answer": "Not done",
+      "saw": "No gift cards on the page to look at; no price button clicked",
+      "ok": false,
+      "screenshot": "TC-087/step05_FAIL.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a gift card with a \"Send to friends\" entry shown?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No gift card and no 'Send to friends' entry on the page",
+      "ok": false,
+      "screenshot": "TC-087/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-087/TC-087_replay.gif",
+  "steps_pdf": "TC-087/TC-087_steps.pdf",
+  "evidence_folder": "TC-087/",
+  "run": "2026-10-30_0829"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "TC-023",
+  "title": "[LOGGED OUT] The chosen language is remembered on the next visit",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:49:44",
+  "ended": "2026-10-30T08:50:34",
+  "duration_sec": 50,
+  "failed_step": null,
+  "reason": "French stayed after reopening the root URL (redirected to /fr-FR)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-023/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-023/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer with EN selector visible",
+      "ok": true,
+      "screenshot": "TC-023/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Choose \"Français\" in the \"EN\" language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Français; page now in French",
+      "ok": true,
+      "screenshot": "TC-023/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the address now https://site.ludus-game.com/fr-FR?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Address is https://site.ludus-game.com/fr-FR",
+      "ok": true,
+      "screenshot": "TC-023/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Open https://site.ludus-game.com/ in the same tab and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Navigation to the root URL ended on https://site.ludus-game.com/fr-FR (the tool reported it as redirected); page loaded in French",
+      "ok": true,
+      "screenshot": "TC-023/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the address now https://site.ludus-game.com/fr-FR?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Address is https://site.ludus-game.com/fr-FR, header in French (Accueil, Boutique ...)",
+      "ok": true,
+      "screenshot": "TC-023/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Choose \"English\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected English; address back to https://site.ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-023/step08.png"
+    }
+  ],
+  "replay_gif": "TC-023/TC-023_replay.gif",
+  "steps_pdf": "TC-023/TC-023_steps.pdf",
+  "evidence_folder": "TC-023/",
+  "run": "2026-10-30_0829"
+}

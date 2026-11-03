@@ -1,0 +1,46 @@
+{
+  "id": "TC-015",
+  "title": "[LOGGED OUT] Unknown product shows a clear message instead of \"undefined\"",
+  "area": "Product",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T10:07:46",
+  "ended": "2026-11-02T10:07:53",
+  "duration_sec": 7,
+  "failed_step": 2,
+  "reason": "Unknown product page shows 'undefined', '$undefined' and 'undefined' description with a broken image and a visible Add to cart button; no not-found message",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/prod.html?idp_=999 in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at prod.html?idp_=999",
+      "ok": true,
+      "screenshot": "TC-015/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a message shown that the product does not exist (and no \"undefined\" text)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Heading 'undefined', price '$undefined *includes tax', description 'undefined', broken image; no 'does not exist' message",
+      "ok": false,
+      "screenshot": "TC-015/step02_FAIL.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the \"Add to cart\" button hidden for this unknown product?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Green 'Add to cart' button is visible (display inline-block, width about 149px); not clicked",
+      "ok": false,
+      "screenshot": "TC-015/step03_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-015/TC-015_replay.gif",
+  "steps_pdf": "TC-015/TC-015_steps.pdf",
+  "evidence_folder": "TC-015/",
+  "run": "2026-11-02_1059"
+}

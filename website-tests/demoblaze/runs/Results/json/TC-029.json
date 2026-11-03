@@ -1,0 +1,37 @@
+{
+  "id": "TC-029",
+  "title": "[LOGGED OUT] Phone menu items fit on one line each",
+  "area": "Header",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:18:04",
+  "ended": "2026-11-02T11:18:11",
+  "duration_sec": 7,
+  "failed_step": 2,
+  "reason": "\"About us\", \"Log in\" and \"Sign up\" are each broken over two lines",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ with phone emulation (390x844) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-029/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is each menu item (\"About us\", \"Log in\", \"Sign up\") shown on one line, not broken over two lines?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Shown as About / us, Log / in, Sign / up on two lines each (link height 64px vs 40px for one-line items Home, Contact, Cart)",
+      "ok": false,
+      "screenshot": "TC-029/step02_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-029/TC-029_replay.gif",
+  "steps_pdf": "TC-029/TC-029_steps.pdf",
+  "evidence_folder": "TC-029/",
+  "run": "2026-11-02_1059"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "TC-017",
+  "title": "[LOGGED OUT] \"About the game\" carousel moves with its arrows",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "Carousel with arrows shown; next showed slide 2 of 5, previous returned to slide 1",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-017/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-017/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the About the game section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "About the game heading and video slide (YouTube play button) in view",
+      "ok": true,
+      "screenshot": "TC-017/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a carousel with previous and next arrows shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Carousel with left and right arrows and 5 pagination dots below it, first dot active (1 / 5)",
+      "ok": true,
+      "screenshot": "TC-017/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the next arrow (right) of the carousel. Do not play the video.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked next arrow; video not played",
+      "ok": true,
+      "screenshot": "TC-017/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the carousel now show a different slide (slide 2 of 5)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Game screenshot slide (wolf character, two phone screens) shown, second dot active",
+      "ok": true,
+      "screenshot": "TC-017/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the previous arrow (left) of the carousel.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked previous arrow",
+      "ok": true,
+      "screenshot": "TC-017/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Does the carousel show the first slide again?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Video slide with play button shown again, first dot active",
+      "ok": true,
+      "screenshot": "TC-017/step08.png"
+    }
+  ],
+  "started": "2026-10-30T08:44:08+08:00",
+  "ended": "2026-10-30T08:44:53+08:00",
+  "duration_sec": 45,
+  "replay_gif": "TC-017/TC-017_replay.gif",
+  "steps_pdf": "TC-017/TC-017_steps.pdf",
+  "evidence_folder": "TC-017/",
+  "run": "2026-10-30_0829"
+}

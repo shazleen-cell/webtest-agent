@@ -1,0 +1,64 @@
+{
+  "id": "TC-035",
+  "title": "[LOGGED OUT] \"Free wares\" shows the two free rewards with Claim buttons",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "Free emeralds and Free Gold cards show the expected amounts, availability and green Claim buttons (not clicked).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-035/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-035/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the Free wares category",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Free wares category in view with Free emeralds, Free Gold and Spheres cards",
+      "ok": true,
+      "screenshot": "TC-035/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the Free emeralds card show 100, Available weekly: 1/1 and a green Claim button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free emeralds: 100, Available weekly: 1/1, green Claim button",
+      "ok": true,
+      "screenshot": "TC-035/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the Free Gold card show 500, Available daily: 1/1 and a green Claim button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free Gold: 500, Available daily: 1/1, green Claim button",
+      "ok": true,
+      "screenshot": "TC-035/step05.png"
+    }
+  ],
+  "started": "2026-10-30T09:00:47+08:00",
+  "ended": "2026-10-30T09:01:22+08:00",
+  "duration_sec": 35,
+  "replay_gif": "TC-035/TC-035_replay.gif",
+  "steps_pdf": "TC-035/TC-035_steps.pdf",
+  "evidence_folder": "TC-035/",
+  "run": "2026-10-30_0829"
+}

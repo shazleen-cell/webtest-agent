@@ -1,0 +1,82 @@
+{
+  "id": "TC-075",
+  "title": "[LOGGED IN] Logged-in Store shows only the player's categories",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:59:32",
+  "ended": "2026-10-30T09:00:29",
+  "duration_sec": 57,
+  "failed_step": null,
+  "reason": "Store tabs are Free wares, Might Passes, Gold; welcome bundles shown; no Log in to see more offers button",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/?user-id={TEST_USER_ID} in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded logged in, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-075/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If a \"Login successful\" popup is shown, click \"Ok\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner dismissed; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-075/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Player{TEST_USER_ID} button with balances 40 and 0, no Login button",
+      "ok": true,
+      "screenshot": "TC-075/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the \"Store\" heading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the Store heading (ribbon) with the tab bar below",
+      "ok": true,
+      "screenshot": "TC-075/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the tab bar show only \"Free wares\", \"Might Passes\" and \"Gold\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Store tab bar has exactly Free wares, Might Passes, Gold",
+      "ok": true,
+      "screenshot": "TC-075/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"Special offers\" section with \"Small welcome bundle\", \"Medium welcome bundle\" and \"Big welcome bundle\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Special offers section shown; carousel (3 slides) shows Small welcome bundle (USD price not touched), Medium and Big welcome bundle are in the other slides",
+      "ok": true,
+      "screenshot": "TC-075/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"Log in to see more offers\" button gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No Log in to see more offers button found on the page",
+      "ok": true,
+      "screenshot": "TC-075/step07.png"
+    }
+  ],
+  "replay_gif": "TC-075/TC-075_replay.gif",
+  "steps_pdf": "TC-075/TC-075_steps.pdf",
+  "evidence_folder": "TC-075/",
+  "run": "2026-10-30_0829"
+}

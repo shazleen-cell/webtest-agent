@@ -1,0 +1,64 @@
+{
+  "id": "TC-066",
+  "title": "[LOGGED OUT] Store images have alt text and the page has one h1 heading",
+  "area": "Store",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:30:49+08:00",
+  "ended": "2026-10-30T09:31:24+08:00",
+  "duration_sec": 35,
+  "failed_step": 4,
+  "reason": "46 of 293 images have no alt attribute; page has 0 h1 headings",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop', cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-066/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-066/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the alt text of all images and the headings",
+      "expected": "",
+      "answer": "Done",
+      "saw": "293 images (247 with alt attribute, 110 of those empty alt); headings found: H3 'LUDUS・Official Webshop', many H2/H3/H4, no H1",
+      "ok": true,
+      "screenshot": "TC-066/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does every image have an alt attribute?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "46 of 293 images have no alt attribute (e.g. repeated 7c5fd63984...png, 9b2e6444...png, 0a6cd8c0...png)",
+      "ok": false,
+      "screenshot": "TC-066/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the page have exactly one h1 heading?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "0 h1 elements; top heading is an H3",
+      "ok": false,
+      "screenshot": "TC-066/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-066/TC-066_replay.gif",
+  "steps_pdf": "TC-066/TC-066_steps.pdf",
+  "evidence_folder": "TC-066/",
+  "run": "2026-10-30_0829"
+}

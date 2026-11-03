@@ -1,0 +1,55 @@
+{
+  "id": "TC-016",
+  "title": "[LOGGED OUT] Product page header has the same layout as Home",
+  "area": "Header",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:08:28+08:00",
+  "ended": "2026-11-02T11:08:51+08:00",
+  "duration_sec": 23,
+  "failed_step": 4,
+  "reason": "Header layout differs: product page logo x=165, menu x=408; Home logo x=16, menu x=563.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/prod.html?idp_=1 and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Product page Samsung galaxy s6 loaded.",
+      "ok": true,
+      "screenshot": "TC-016/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Note where the logo and the menu are in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Logo at x=165,y=8 (227x58); menu at x=408,y=17 (488 wide); header content centered in a container.",
+      "ok": true,
+      "screenshot": "TC-016/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Open https://www.demoblaze.com/ in the same tab and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded.",
+      "ok": true,
+      "screenshot": "TC-016/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are the logo and the menu in the same place as on the product page?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "On Home logo is at x=16 (far left) and menu at x=563; on the product page logo x=165 and menu x=408. Positions differ.",
+      "ok": false,
+      "screenshot": "TC-016/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-016/TC-016_replay.gif",
+  "steps_pdf": "TC-016/TC-016_steps.pdf",
+  "evidence_folder": "TC-016/",
+  "run": "2026-11-02_1059"
+}

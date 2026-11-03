@@ -1,0 +1,73 @@
+{
+  "id": "TC-036",
+  "title": "[LOGGED OUT] \"Emeralds\" category shows 5 first-purchase offers and \"Log in to see more offers\"",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:01:46",
+  "ended": "2026-10-30T09:02:26",
+  "duration_sec": 40,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-036/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-036/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the Store heading and click the Emeralds tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Emeralds tab opened",
+      "ok": true,
+      "screenshot": "TC-036/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are 5 cards shown: Small pile, Pouch, Sack, Chest, Pot of emeralds?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "5 cards: Small pile of emeralds 650, Pouch 1500, Sack 3200, Chest 8300, Pot 17500",
+      "ok": true,
+      "screenshot": "TC-036/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does each card show a 1st purchase label and Available: 1/1?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All 5 cards show '1st purchase' and 'Available: 1/1'",
+      "ok": true,
+      "screenshot": "TC-036/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a Log in to see more offers button shown below the cards?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "'Log in to see more offers' button below the Pot of emeralds card",
+      "ok": true,
+      "screenshot": "TC-036/step06.png"
+    }
+  ],
+  "replay_gif": "TC-036/TC-036_replay.gif",
+  "steps_pdf": "TC-036/TC-036_steps.pdf",
+  "evidence_folder": "TC-036/",
+  "run": "2026-10-30_0829"
+}

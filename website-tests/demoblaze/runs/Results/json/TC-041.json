@@ -1,0 +1,46 @@
+{
+  "id": "TC-041",
+  "title": "[LOGGED OUT] Header links show a focus ring with the keyboard",
+  "area": "Header",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-02T11:25:15",
+  "ended": "2026-11-02T11:25:33",
+  "duration_sec": 18,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-041/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Press the Tab key until \"Home\" in the header has focus.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Tab pressed twice: first PRODUCT STORE, then Home (current) focused",
+      "ok": true,
+      "screenshot": "TC-041/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a clear focus ring shown around \"Home\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "A blue rounded outline (rgb(0,95,204) auto 1px, :focus-visible true) is visible around Home",
+      "ok": true,
+      "screenshot": "TC-041/step03.png"
+    }
+  ],
+  "replay_gif": "TC-041/TC-041_replay.gif",
+  "steps_pdf": "TC-041/TC-041_steps.pdf",
+  "evidence_folder": "TC-041/",
+  "run": "2026-11-02_1059"
+}

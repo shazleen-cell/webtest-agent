@@ -1,0 +1,82 @@
+{
+  "id": "TC-004",
+  "title": "[LOGGED OUT] \"Privacy settings\" in the footer opens the cookie banner again",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:31:31+08:00",
+  "ended": "2026-10-30T08:32:18+08:00",
+  "duration_sec": 47,
+  "failed_step": null,
+  "reason": "All answers match the expected answers",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded",
+      "ok": true,
+      "screenshot": "TC-004/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-004/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer visible with Support, Powered by Xsolla Web Shop, Join Affiliate Program, Privacy settings",
+      "ok": true,
+      "screenshot": "TC-004/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Privacy settings\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Privacy settings",
+      "ok": true,
+      "screenshot": "TC-004/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"How we use cookies\" banner shown again?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner How we use cookies shown at the bottom again",
+      "ok": true,
+      "screenshot": "TC-004/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss",
+      "ok": true,
+      "screenshot": "TC-004/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner no longer on the page",
+      "ok": true,
+      "screenshot": "TC-004/step07.png"
+    }
+  ],
+  "replay_gif": "TC-004/TC-004_replay.gif",
+  "steps_pdf": "TC-004/TC-004_steps.pdf",
+  "evidence_folder": "TC-004/",
+  "run": "2026-10-30_0829"
+}

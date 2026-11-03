@@ -1,0 +1,73 @@
+{
+  "id": "TC-064",
+  "title": "[LOGGED OUT] Page language attribute matches the chosen language",
+  "area": "Footer",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T09:28:31+08:00",
+  "ended": "2026-10-30T09:29:37+08:00",
+  "duration_sec": 66,
+  "failed_step": null,
+  "reason": "html lang was en, then fr after choosing Français",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-064/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-064/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the html lang attribute \"en\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement.lang = en",
+      "ok": true,
+      "screenshot": "TC-064/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the footer and choose \"Français\" in the \"EN\" language selector",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Français (fr-FR); URL became https://site.ludus-game.com/fr-FR and page text turned French",
+      "ok": true,
+      "screenshot": "TC-064/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the html lang attribute now \"fr\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement.lang = fr on /fr-FR",
+      "ok": true,
+      "screenshot": "TC-064/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Choose \"English\" in the language selector",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected English; back at https://site.ludus-game.com/ with English text",
+      "ok": true,
+      "screenshot": "TC-064/step06.png"
+    }
+  ],
+  "replay_gif": "TC-064/TC-064_replay.gif",
+  "steps_pdf": "TC-064/TC-064_steps.pdf",
+  "evidence_folder": "TC-064/",
+  "run": "2026-10-30_0829"
+}

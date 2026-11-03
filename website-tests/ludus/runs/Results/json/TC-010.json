@@ -1,0 +1,64 @@
+{
+  "id": "TC-010",
+  "title": "[LOGGED OUT] Header \"Reward chain\" on Home opens the Store at the Rewards Market section",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T08:36:44+08:00",
+  "ended": "2026-10-30T08:37:26+08:00",
+  "duration_sec": 42,
+  "failed_step": 5,
+  "reason": "Opens /store/ but stays at top; Rewards Market heading is at y=12638, not visible without scrolling",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-010/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-010/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click Reward chain in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Navigated to the Store page",
+      "ok": true,
+      "screenshot": "TC-010/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the address now https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/ (no hash)",
+      "ok": true,
+      "screenshot": "TC-010/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the Rewards Market heading visible on the screen without scrolling?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "scrollY 0; h2 'Rewards Market' is at top=12638px, viewport height 757. Screen shows the Uruk Bundle at the top of the Store page. Step 5 screenshot is the same state as step 4 (session was closed before a separate shot).",
+      "ok": false,
+      "screenshot": "TC-010/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-010/TC-010_replay.gif",
+  "steps_pdf": "TC-010/TC-010_steps.pdf",
+  "evidence_folder": "TC-010/",
+  "run": "2026-10-30_0829"
+}

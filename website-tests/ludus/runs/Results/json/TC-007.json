@@ -1,0 +1,73 @@
+{
+  "id": "TC-007",
+  "title": "[LOGGED OUT] Header \"Store\" opens the Store page",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T08:34:13+08:00",
+  "ended": "2026-10-30T08:34:55+08:00",
+  "duration_sec": 42,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-007/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-007/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click Store in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Navigated to the Store page",
+      "ok": true,
+      "screenshot": "TC-007/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the address now https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-007/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading LUDUS・Official Webshop shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'LUDUS · Official Webshop' shown at top of page (yellow LUDUS, white Official Webshop)",
+      "ok": true,
+      "screenshot": "TC-007/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is Store shown in yellow in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Store is yellow, Home/Reward chain/Loyalty shop white",
+      "ok": true,
+      "screenshot": "TC-007/step06.png"
+    }
+  ],
+  "replay_gif": "TC-007/TC-007_replay.gif",
+  "steps_pdf": "TC-007/TC-007_steps.pdf",
+  "evidence_folder": "TC-007/",
+  "run": "2026-10-30_0829"
+}

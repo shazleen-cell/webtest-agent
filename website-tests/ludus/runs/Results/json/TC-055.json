@@ -1,0 +1,82 @@
+{
+  "id": "TC-055",
+  "title": "[LOGGED OUT] Phone burger menu opens the Store page",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:17:59+08:00",
+  "ended": "2026-10-30T09:18:30+08:00",
+  "duration_sec": 31,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser with phone emulation (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded at 390x844",
+      "ok": true,
+      "screenshot": "TC-055/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-055/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, close it with its X button (never click its \"Claim\").",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked X (Close pwa banner); banner gone",
+      "ok": true,
+      "screenshot": "TC-055/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the green burger button at the top left.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu opened (first try with an ambiguous selector failed, retried with a ref)",
+      "ok": true,
+      "screenshot": "TC-055/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Store\" in the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Store link in the menu",
+      "ok": true,
+      "screenshot": "TC-055/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the address now https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/",
+      "ok": true,
+      "screenshot": "TC-055/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the heading \"LUDUS・Official Webshop\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading \"LUDUS・Official Webshop\" shown at top of page",
+      "ok": true,
+      "screenshot": "TC-055/step07.png"
+    }
+  ],
+  "replay_gif": "TC-055/TC-055_replay.gif",
+  "steps_pdf": "TC-055/TC-055_steps.pdf",
+  "evidence_folder": "TC-055/",
+  "run": "2026-10-30_0829"
+}

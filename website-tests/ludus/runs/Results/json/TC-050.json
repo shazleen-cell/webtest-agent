@@ -1,0 +1,64 @@
+{
+  "id": "TC-050",
+  "title": "[LOGGED OUT] Phone cookie banner is shown and \"Dismiss\" closes it",
+  "area": "Cookie banner",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:14:19+08:00",
+  "ended": "2026-10-30T09:14:50+08:00",
+  "duration_sec": 31,
+  "failed_step": null,
+  "reason": "Banner shown and closed (Chrome mobileEmulation 390x844)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ with phone emulation (390x844) and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded in phone layout",
+      "ok": true,
+      "screenshot": "TC-050/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Wait 3 seconds",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 3 s; screenshot taken",
+      "ok": true,
+      "screenshot": "TC-050/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a banner with the title \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner 'How we use cookies' with text and Dismiss button shown at bottom",
+      "ok": true,
+      "screenshot": "TC-050/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss",
+      "ok": true,
+      "screenshot": "TC-050/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner gone; heading no longer in the DOM; page shows Check our store button",
+      "ok": true,
+      "screenshot": "TC-050/step05.png"
+    }
+  ],
+  "replay_gif": "TC-050/TC-050_replay.gif",
+  "steps_pdf": "TC-050/TC-050_steps.pdf",
+  "evidence_folder": "TC-050/",
+  "run": "2026-10-30_0829"
+}

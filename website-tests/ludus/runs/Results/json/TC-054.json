@@ -1,0 +1,91 @@
+{
+  "id": "TC-054",
+  "title": "[LOGGED OUT] Phone burger menu on Home shows all items and closes",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:17:17+08:00",
+  "ended": "2026-10-30T09:17:43+08:00",
+  "duration_sec": 26,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser with phone emulation (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded at 390x844",
+      "ok": true,
+      "screenshot": "TC-054/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-054/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, close it with its X button (never click its \"Claim\").",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked X (Close pwa banner); banner gone",
+      "ok": true,
+      "screenshot": "TC-054/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the green burger button at the top left.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu opened",
+      "ok": true,
+      "screenshot": "TC-054/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the menu show the LUDUS logo, a red close (x) button and \"Home\", \"Store\", \"Reward chain\", \"Clan reward\", \"Loyalty shop\", then \"Login\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu shows LUDUS logo, red X at top right, then Home, Store, Reward chain, Clan reward, Loyalty shop, divider, Login",
+      "ok": true,
+      "screenshot": "TC-054/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is \"Home\" shown in yellow?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Home colour rgb(249, 223, 66) (yellow); other items white",
+      "ok": true,
+      "screenshot": "TC-054/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the red close (x) button of the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the red X",
+      "ok": true,
+      "screenshot": "TC-054/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the menu closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu closed; Home page with green burger button and Login visible",
+      "ok": true,
+      "screenshot": "TC-054/step08.png"
+    }
+  ],
+  "replay_gif": "TC-054/TC-054_replay.gif",
+  "steps_pdf": "TC-054/TC-054_steps.pdf",
+  "evidence_folder": "TC-054/",
+  "run": "2026-10-30_0829"
+}

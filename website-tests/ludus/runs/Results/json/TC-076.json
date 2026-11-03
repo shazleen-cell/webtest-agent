@@ -1,0 +1,64 @@
+{
+  "id": "TC-076",
+  "title": "[LOGGED IN] \"Might Passes\" shows the empty store message",
+  "area": "Store",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T09:41:09",
+  "ended": "2026-10-30T09:41:56",
+  "duration_sec": 47,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/?user-id={TEST_USER_ID} and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-076/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If Login successful popup, click Ok",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on cookie banner; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-076/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows balances 40 and 0 and green button Player{TEST_USER_ID}; no Login button",
+      "ok": true,
+      "screenshot": "TC-076/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the \"Store\" heading and click the \"Might Passes\" tab",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to Store heading, clicked Might Passes tab; page moved to Might Passes section",
+      "ok": true,
+      "screenshot": "TC-076/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the text \"The store is empty for now. Come back later!\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Under heading Might Passes: \"The store is empty for now. Come back later!\"",
+      "ok": true,
+      "screenshot": "TC-076/step05.png"
+    }
+  ],
+  "replay_gif": "TC-076/TC-076_replay.gif",
+  "steps_pdf": "TC-076/TC-076_steps.pdf",
+  "evidence_folder": "TC-076/",
+  "run": "2026-10-30_0829"
+}

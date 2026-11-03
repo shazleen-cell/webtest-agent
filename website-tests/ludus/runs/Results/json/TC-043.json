@@ -1,0 +1,55 @@
+{
+  "id": "TC-043",
+  "title": "[LOGGED OUT] Store \"Don't have the game?\" section shows the download badges",
+  "area": "Store",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T09:08:25+08:00",
+  "ended": "2026-10-30T09:08:43+08:00",
+  "duration_sec": 18,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-043/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-043/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the section \"Don't have the game? Download it today!\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Section heading in view above FAQ",
+      "ok": true,
+      "screenshot": "TC-043/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are the Google Play, App Store and Web-Version badges shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Three badges shown: GET IT ON Google Play, Download on the App Store, GET IT ON Web-Version",
+      "ok": true,
+      "screenshot": "TC-043/step04.png"
+    }
+  ],
+  "replay_gif": "TC-043/TC-043_replay.gif",
+  "steps_pdf": "TC-043/TC-043_steps.pdf",
+  "evidence_folder": "TC-043/",
+  "run": "2026-10-30_0829"
+}

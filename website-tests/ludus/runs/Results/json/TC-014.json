@@ -1,0 +1,82 @@
+{
+  "id": "TC-014",
+  "title": "[LOGGED OUT] Home \"Special offer\" card is shown and \"Check our store\" opens the Store",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T08:40:44",
+  "ended": "2026-10-30T08:41:49",
+  "duration_sec": 65,
+  "failed_step": null,
+  "reason": "Special offer card with items and Available 5/5 shown; button opened /store",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-014/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-014/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a card with the ribbon \"Special offer\" shown below the hero area?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card with red ribbon Special offer, 230% badge and URUK BUNDLE title shown below the hero",
+      "ok": true,
+      "screenshot": "TC-014/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the card show \"You will get:\" with item amounts?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "You will get: with amounts 6, 2000 and 100000",
+      "ok": true,
+      "screenshot": "TC-014/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the card show an \"Available:\" line?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Available: 5/5",
+      "ok": true,
+      "screenshot": "TC-014/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the green \"Check our store\" button on the card.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the link; the Store page opened",
+      "ok": true,
+      "screenshot": "TC-014/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the Store page open (address https://site.ludus-game.com/store or /store/)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store, Store highlighted in header",
+      "ok": true,
+      "screenshot": "TC-014/step07.png"
+    }
+  ],
+  "replay_gif": "TC-014/TC-014_replay.gif",
+  "steps_pdf": "TC-014/TC-014_steps.pdf",
+  "evidence_folder": "TC-014/",
+  "run": "2026-10-30_0829"
+}

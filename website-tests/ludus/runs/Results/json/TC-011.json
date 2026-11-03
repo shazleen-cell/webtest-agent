@@ -1,0 +1,73 @@
+{
+  "id": "TC-011",
+  "title": "[LOGGED OUT] Header stays at the top of the window while scrolling",
+  "area": "Header",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T08:37:51",
+  "ended": "2026-10-30T08:38:31",
+  "duration_sec": 40,
+  "failed_step": null,
+  "reason": "Header stayed fixed at top at middle and bottom of page",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-011/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-011/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the middle of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to y=1445 of 3648 (About the game section)",
+      "ok": true,
+      "screenshot": "TC-011/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the header with \"Home\", \"Store\" and \"Login\" still shown at the top of the window?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header with Home, Store, Reward chain, Clan reward, Loyalty shop and Login at the top",
+      "ok": true,
+      "screenshot": "TC-011/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to bottom, footer visible",
+      "ok": true,
+      "screenshot": "TC-011/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the header with \"Home\", \"Store\" and \"Login\" still shown at the top of the window?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header still at top (bounding top = 0) above the footer",
+      "ok": true,
+      "screenshot": "TC-011/step06.png"
+    }
+  ],
+  "replay_gif": "TC-011/TC-011_replay.gif",
+  "steps_pdf": "TC-011/TC-011_steps.pdf",
+  "evidence_folder": "TC-011/",
+  "run": "2026-10-30_0829"
+}

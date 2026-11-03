@@ -1,0 +1,73 @@
+{
+  "id": "TC-065",
+  "title": "[LOGGED OUT] Home images and links have text for screen readers",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:29:41+08:00",
+  "ended": "2026-10-30T09:30:25+08:00",
+  "duration_sec": 44,
+  "failed_step": 4,
+  "reason": "2 images without alt; logo link and 3 store/web badges have no accessible name; social icons only named 'Set up button'; 7 buttons without name",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-065/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-065/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the alt text of all images and the accessible names of all links and buttons",
+      "expected": "",
+      "answer": "Done",
+      "saw": "17 images, 29 links, 18 buttons inspected via script and snapshot",
+      "ok": true,
+      "screenshot": "TC-065/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does every image have an alt attribute?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "2 of 17 images have no alt attribute (same file .../463788/0a6cd8c0c9ea08a8835207bbb0c5d5a9.png); 3 more have alt=''",
+      "ok": false,
+      "screenshot": "TC-065/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Do the logo link, the App Store / Google Play / Web-Version badges and the 6 social icons have an accessible name?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Header logo link (twice) and the 3 badge links have no accessible name (empty). The 6 social icons are named only 'Set up button' (not descriptive of YouTube, X, TikTok, Discord, Instagram, Facebook)",
+      "ok": false,
+      "screenshot": "TC-065/step05_FAIL.png"
+    },
+    {
+      "n": 6,
+      "text": "Do all buttons have an accessible name?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "7 of 18 buttons have no name: burger button, 2 carousel prev/next buttons, 1 xds-button secondary, 2 modal close buttons, 1 input type toggler",
+      "ok": false,
+      "screenshot": "TC-065/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-065/TC-065_replay.gif",
+  "steps_pdf": "TC-065/TC-065_steps.pdf",
+  "evidence_folder": "TC-065/",
+  "run": "2026-10-30_0829"
+}

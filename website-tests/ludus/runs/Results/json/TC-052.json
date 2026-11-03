@@ -1,0 +1,82 @@
+{
+  "id": "TC-052",
+  "title": "[LOGGED OUT] Phone \"Add It to Home Screen\" banner closes with its X",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:15:55+08:00",
+  "ended": "2026-10-30T09:16:20+08:00",
+  "duration_sec": 25,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser with phone emulation (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded at 390x844 with cookie banner and bottom banner",
+      "ok": true,
+      "screenshot": "TC-052/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss (button showed spinner, then banner closed)",
+      "ok": true,
+      "screenshot": "TC-052/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a bottom banner with \"Add It to Home Screen\" and a green \"Claim\" button shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Bottom banner \"Add It to Home Screen\" / \"To got a quicker access !\" with green Claim button and X shown",
+      "ok": true,
+      "screenshot": "TC-052/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the X button at the right of the \"Add It to Home Screen\" banner. Do not click \"Claim\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked X (Close pwa banner); Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-052/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"Add It to Home Screen\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner no longer on page",
+      "ok": true,
+      "screenshot": "TC-052/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Open https://site.ludus-game.com/store/ in the same tab and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded (LUDUS Official Webshop)",
+      "ok": true,
+      "screenshot": "TC-052/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"Add It to Home Screen\" banner still hidden?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No banner on /store/; snapshot find 'Home Screen' returned no match",
+      "ok": true,
+      "screenshot": "TC-052/step07.png"
+    }
+  ],
+  "replay_gif": "TC-052/TC-052_replay.gif",
+  "steps_pdf": "TC-052/TC-052_steps.pdf",
+  "evidence_folder": "TC-052/",
+  "run": "2026-10-30_0829"
+}

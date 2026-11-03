@@ -1,0 +1,82 @@
+{
+  "id": "TC-057",
+  "title": "[LOGGED OUT] Phone Store burger menu shows \"Clan reward\" like on Home",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T09:20:19",
+  "ended": "2026-10-30T09:21:14",
+  "duration_sec": 55,
+  "failed_step": 6,
+  "reason": "Burger menu on phone Store page has no \"Clan reward\" entry (only Home, Store, Reward chain, Loyalty shop, Login)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ with phone emulation (390x844) and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner at bottom",
+      "ok": true,
+      "screenshot": "TC-057/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookies banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-057/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an Add It to Home Screen banner is shown, close it with X",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, closed with X; Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-057/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the green burger button at the top left",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Full-width blue menu panel opened",
+      "ok": true,
+      "screenshot": "TC-057/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the menu show Home, Store, Reward chain, Loyalty shop and Login?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu items: Home, Store (highlighted yellow), Reward chain, Loyalty shop, Login",
+      "ok": true,
+      "screenshot": "TC-057/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is \"Clan reward\" shown in the menu, like on the Home page?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No Clan reward item in the menu; page text contains no 'Clan reward'",
+      "ok": false,
+      "screenshot": "TC-057/step06_FAIL.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the red close (x) button of the menu",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu closed, Store page visible again",
+      "ok": true,
+      "screenshot": "TC-057/step07.png"
+    }
+  ],
+  "replay_gif": "TC-057/TC-057_replay.gif",
+  "steps_pdf": "TC-057/TC-057_steps.pdf",
+  "evidence_folder": "TC-057/",
+  "run": "2026-10-30_0829"
+}

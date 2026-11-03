@@ -1,0 +1,64 @@
+{
+  "id": "TC-012",
+  "title": "[LOGGED OUT] Footer shows About Us, contact details and copyright",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T10:06:03",
+  "ended": "2026-11-02T10:06:19",
+  "duration_sec": 16,
+  "failed_step": null,
+  "reason": "Footer shows all expected texts",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-012/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer visible at the bottom",
+      "ok": true,
+      "screenshot": "TC-012/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is \"About Us\" shown with the text \"We believe performance needs to be validated at every stage of the software development cycle\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "About Us: We believe performance needs to be validated at every stage of the software development cycle and our open source compatible, massively scalable platform makes that a reality.",
+      "ok": true,
+      "screenshot": "TC-012/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is \"Get in Touch\" shown with \"Address: 2390 El Camino Real\", \"Phone: +440 123456\" and \"Email: demo@blazemeter.com\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Get in Touch: Address: 2390 El Camino Real, Phone: +440 123456, Email: demo@blazemeter.com",
+      "ok": true,
+      "screenshot": "TC-012/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Copyright © Product Store\" shown at the bottom?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Dark bar at the bottom: Copyright © Product Store",
+      "ok": true,
+      "screenshot": "TC-012/step05.png"
+    }
+  ],
+  "replay_gif": "TC-012/TC-012_replay.gif",
+  "steps_pdf": "TC-012/TC-012_steps.pdf",
+  "evidence_folder": "TC-012/",
+  "run": "2026-11-02_1059"
+}

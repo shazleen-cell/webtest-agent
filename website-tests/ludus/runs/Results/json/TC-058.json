@@ -1,0 +1,82 @@
+{
+  "id": "TC-058",
+  "title": "[LOGGED OUT] Phone \"Referral program\" button shows its icon and opens the panel",
+  "area": "Referral panel",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:21:30",
+  "ended": "2026-10-30T09:22:46",
+  "duration_sec": 76,
+  "failed_step": 7,
+  "reason": "Questions 4 and 6 match (Yes). Step 7 could not be done: with the Invite friends panel open there is no visible X button at the bottom right (only a Back link at top left); the hidden X button inside the referral iframe was clicked but the panel stayed open.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ with phone emulation (390x844) and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner and Add It to Home Screen banner at bottom",
+      "ok": true,
+      "screenshot": "TC-058/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookies banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-058/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an Add It to Home Screen banner is shown, close it with X",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner closed with X; Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-058/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a round white button with the referral icon shown at the bottom right (no text)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Round white button with a gift/referral icon, no text, bottom right (accessible name 'Referral program')",
+      "ok": true,
+      "screenshot": "TC-058/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the round referral button",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Full-screen panel opened",
+      "ok": true,
+      "screenshot": "TC-058/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the \"Invite friends\" panel open with \"You will get:\" and \"Your friend will get:\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Panel 'Invite friends - get bonuses together!' with 'You will get: Emerald x100, Gold x1000' and 'Your friend will get: Emeralds x650, Gold x10000', Invite friends button, My rewards / Log in to view rewards",
+      "ok": true,
+      "screenshot": "TC-058/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the X button at the bottom right to close the panel",
+      "expected": "",
+      "answer": "Not done",
+      "saw": "No X visible at bottom right of the open panel; the only close control visible is 'Back' at top left. Clicked the hidden X button in the referral iframe; panel stayed open.",
+      "ok": false,
+      "screenshot": "TC-058/step07_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-058/TC-058_replay.gif",
+  "steps_pdf": "TC-058/TC-058_steps.pdf",
+  "evidence_folder": "TC-058/",
+  "run": "2026-10-30_0829"
+}

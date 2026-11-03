@@ -1,0 +1,64 @@
+{
+  "id": "TC-006",
+  "title": "[LOGGED OUT] Home header shows the logo and all menu items in order",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T08:33:25+08:00",
+  "ended": "2026-10-30T08:34:00+08:00",
+  "duration_sec": 35,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title LUDUS - Merge Battle Arena PvP Web Shop; cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-006/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-006/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show LUDUS logo, Home, Store, Reward chain, Clan reward, Loyalty shop left to right?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Logo at left, then Home (x195), Store (292), Reward chain (378), Clan reward (561), Loyalty shop (728) in that order",
+      "ok": true,
+      "screenshot": "TC-006/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a green Login button shown at the right of the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Login button at far right (x1282)",
+      "ok": true,
+      "screenshot": "TC-006/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is Home shown in yellow?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Home colour rgb(249,223,66) yellow; others white",
+      "ok": true,
+      "screenshot": "TC-006/step05.png"
+    }
+  ],
+  "replay_gif": "TC-006/TC-006_replay.gif",
+  "steps_pdf": "TC-006/TC-006_steps.pdf",
+  "evidence_folder": "TC-006/",
+  "run": "2026-10-30_0829"
+}

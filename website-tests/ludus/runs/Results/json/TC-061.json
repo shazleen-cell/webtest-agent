@@ -1,0 +1,82 @@
+{
+  "id": "TC-061",
+  "title": "[LOGGED OUT] Home and Store have no broken images",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:25:07+08:00",
+  "ended": "2026-10-30T09:26:33+08:00",
+  "duration_sec": 86,
+  "failed_step": null,
+  "reason": "No broken images on Home or Store",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home loaded, title LUDUS - Merge Battle Arena PvP Web Shop; cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-061/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-061/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll slowly to the bottom of the page",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled in 400px steps to footer",
+      "ok": true,
+      "screenshot": "TC-061/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Do all loaded images on Home have a size (no broken image icons)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "17 images, 0 with naturalWidth 0; 3 large lazy images still not loaded (not broken)",
+      "ok": true,
+      "screenshot": "TC-061/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store loaded (404s for manifest.json and some Xsolla API calls, not images)",
+      "ok": true,
+      "screenshot": "TC-061/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Scroll slowly to the bottom of the page",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled in steps to footer (page height 15718)",
+      "ok": true,
+      "screenshot": "TC-061/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Do all loaded images on Store have a size (no broken image icons)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "293 images, 0 broken, 0 incomplete",
+      "ok": true,
+      "screenshot": "TC-061/step07.png"
+    }
+  ],
+  "replay_gif": "TC-061/TC-061_replay.gif",
+  "steps_pdf": "TC-061/TC-061_steps.pdf",
+  "evidence_folder": "TC-061/",
+  "run": "2026-10-30_0829"
+}

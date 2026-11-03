@@ -1,0 +1,73 @@
+{
+  "id": "TC-036",
+  "title": "[LOGGED OUT] Page response has the usual security headers",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T11:22:24+08:00",
+  "ended": "2026-11-02T11:22:53+08:00",
+  "duration_sec": 29,
+  "failed_step": 3,
+  "reason": "None of the security headers are present; response only has cache-control, content-type, etag, server: Google Frontend, etc.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-036/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the response headers of https://www.demoblaze.com/.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Headers: age, cache-control: public, max-age=10, content-encoding: gzip, content-type: text/html, date, etag, expires, server: Google Frontend, x-cloud-trace-context",
+      "ok": true,
+      "screenshot": "TC-036/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is \"Strict-Transport-Security\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Not in response headers",
+      "ok": false,
+      "screenshot": "TC-036/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Is \"Content-Security-Policy\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Not in response headers",
+      "ok": false,
+      "screenshot": "TC-036/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Are \"X-Frame-Options\" (or a CSP frame-ancestors rule) and \"X-Content-Type-Options: nosniff\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Neither present",
+      "ok": false,
+      "screenshot": "TC-036/step05_FAIL.png"
+    },
+    {
+      "n": 6,
+      "text": "Are \"Referrer-Policy\" and \"Permissions-Policy\" present?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Neither present",
+      "ok": false,
+      "screenshot": "TC-036/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-036/TC-036_replay.gif",
+  "steps_pdf": "TC-036/TC-036_steps.pdf",
+  "evidence_folder": "TC-036/",
+  "run": "2026-11-02_1059"
+}

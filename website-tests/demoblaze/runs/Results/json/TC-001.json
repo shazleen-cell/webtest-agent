@@ -1,0 +1,55 @@
+{
+  "id": "TC-001",
+  "title": "[LOGGED OUT] Home page loads with its title and products",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T10:59:26",
+  "ended": "2026-11-02T10:59:47",
+  "duration_sec": 21,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-001/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is the tab title \"STORE\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.title = \"STORE\"",
+      "ok": true,
+      "screenshot": "TC-001/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a list of products shown, each with an image, a title, a price that starts with \"$\" and a short description?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "9 product cards, each with an image, title, price starting with $ (e.g. $360, $820, $650) and a description",
+      "ok": true,
+      "screenshot": "TC-001/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is \"Samsung galaxy s6\" with \"$360\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Card \"Samsung galaxy s6\" with price \"$360\" is shown",
+      "ok": true,
+      "screenshot": "TC-001/step04.png"
+    }
+  ],
+  "replay_gif": "TC-001/TC-001_replay.gif",
+  "steps_pdf": "TC-001/TC-001_steps.pdf",
+  "evidence_folder": "TC-001/",
+  "run": "2026-11-02_1059"
+}

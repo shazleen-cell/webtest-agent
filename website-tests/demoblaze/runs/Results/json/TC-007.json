@@ -1,0 +1,46 @@
+{
+  "id": "TC-007",
+  "title": "[LOGGED OUT] \"Laptops\" shows only the 6 laptops",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "6 laptops shown in expected order",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-007/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Laptops\" in the \"CATEGORIES\" box.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Laptops clicked, list updated",
+      "ok": true,
+      "screenshot": "TC-007/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are exactly 6 products shown: Sony vaio i5, Sony vaio i7, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, MacBook Pro?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "6 cards: Sony vaio i5, Sony vaio i7, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, MacBook Pro",
+      "ok": true,
+      "screenshot": "TC-007/step03.png"
+    }
+  ],
+  "started": "2026-11-02T11:02:42+08:00",
+  "ended": "2026-11-02T11:02:57+08:00",
+  "duration_sec": 15,
+  "replay_gif": "TC-007/TC-007_replay.gif",
+  "steps_pdf": "TC-007/TC-007_steps.pdf",
+  "evidence_folder": "TC-007/",
+  "run": "2026-11-02_1059"
+}

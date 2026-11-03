@@ -1,0 +1,64 @@
+{
+  "id": "TC-026",
+  "title": "[LOGGED OUT] Top of the \"Referral program\" panel is fully visible at 1440x900",
+  "area": "Referral panel",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T08:53:14",
+  "ended": "2026-10-30T08:54:06",
+  "duration_sec": 52,
+  "failed_step": 4,
+  "reason": "Panel iframe top is at -26px, so the first line 'Invite friends —' is cut off at the top of the window",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-026/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-026/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click Referral program at the bottom right",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Panel opened on the right",
+      "ok": true,
+      "screenshot": "TC-026/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the first line 'Invite friends —' fully visible inside the window (not cut off at the top)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Heading glyphs touch/cut at the top edge; panel iframe top = -26px (viewport height 757)",
+      "ok": false,
+      "screenshot": "TC-026/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the X button at the bottom right to close the panel",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Panel closed, Referral program button shown again",
+      "ok": true,
+      "screenshot": "TC-026/step05.png"
+    }
+  ],
+  "replay_gif": "TC-026/TC-026_replay.gif",
+  "steps_pdf": "TC-026/TC-026_steps.pdf",
+  "evidence_folder": "TC-026/",
+  "run": "2026-10-30_0829"
+}

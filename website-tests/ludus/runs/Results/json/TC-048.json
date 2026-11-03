@@ -1,0 +1,64 @@
+{
+  "id": "TC-048",
+  "title": "[LOGGED OUT] Unknown page shows a clear error message",
+  "area": "Error page",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T09:13:01+08:00",
+  "ended": "2026-10-30T09:13:34+08:00",
+  "duration_sec": 33,
+  "failed_step": 3,
+  "reason": "Unknown URL redirects to Home (/) with no 404 / not-found message; address changed",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/this-page-does-not-exist and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Site redirected to the Home page https://site.ludus-game.com/ (no error page)",
+      "ok": true,
+      "screenshot": "TC-048/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-048/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a message shown that the page was not found?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No 'Page not found' or '404' text anywhere; the normal Home page (Uruk Bundle special offer) is shown",
+      "ok": false,
+      "screenshot": "TC-048/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a link or button back to the Home page or the Store shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header links Home and Store shown, plus Check our store button (but they belong to the normal Home page, not an error page)",
+      "ok": true,
+      "screenshot": "TC-048/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the address still https://site.ludus-game.com/this-page-does-not-exist?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Address is https://site.ludus-game.com/ (redirected to Home)",
+      "ok": false,
+      "screenshot": "TC-048/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-048/TC-048_replay.gif",
+  "steps_pdf": "TC-048/TC-048_steps.pdf",
+  "evidence_folder": "TC-048/",
+  "run": "2026-10-30_0829"
+}

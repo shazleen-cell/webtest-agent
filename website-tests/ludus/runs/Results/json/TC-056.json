@@ -1,0 +1,91 @@
+{
+  "id": "TC-056",
+  "title": "[LOGGED OUT] Phone Store shows a sideways tab bar and 2 cards per row",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:19:02",
+  "ended": "2026-10-30T09:20:07",
+  "duration_sec": 65,
+  "failed_step": null,
+  "reason": "All answers match. Phone emulation via Chrome mobileEmulation (390x844, DPR 3).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ with phone emulation (390x844) and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner at bottom",
+      "ok": true,
+      "screenshot": "TC-056/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookies banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-056/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an Add It to Home Screen banner is shown, close it with X",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, closed with X (Close pwa banner); Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-056/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the Store heading",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store heading and tab bar visible",
+      "ok": true,
+      "screenshot": "TC-056/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the tab bar start with Free wares and can it be scrolled sideways to reach Gift to friends?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab bar starts with Free wares; scrollWidth 1100 vs clientWidth 354; scrolled right and Gift to friends became visible",
+      "ok": true,
+      "screenshot": "TC-056/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the Gold tab",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Gold section shown",
+      "ok": true,
+      "screenshot": "TC-056/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Are the gold cards shown 2 per row (Small pile of gold next to Piggy bank of gold)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Small pile of gold (x=43) and Piggy bank of gold (x=219) on the same row (y=111)",
+      "ok": true,
+      "screenshot": "TC-056/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Can the page NOT be scrolled sideways?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement scrollWidth 390 = innerWidth 390, body scrollWidth 390",
+      "ok": true,
+      "screenshot": "TC-056/step08.png"
+    }
+  ],
+  "replay_gif": "TC-056/TC-056_replay.gif",
+  "steps_pdf": "TC-056/TC-056_steps.pdf",
+  "evidence_folder": "TC-056/",
+  "run": "2026-10-30_0829"
+}

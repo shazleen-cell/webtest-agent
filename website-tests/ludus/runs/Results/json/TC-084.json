@@ -1,0 +1,100 @@
+{
+  "id": "TC-084",
+  "title": "[LOGGED IN] Player stays logged in after switching the language",
+  "area": "Login",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:47:50+08:00",
+  "ended": "2026-10-30T09:49:13+08:00",
+  "duration_sec": 83,
+  "failed_step": null,
+  "reason": "Player stayed logged in through the DE and EN language switches",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open the Store URL with login and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-084/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Dismiss cookie banner / close Login successful popup",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-084/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login.",
+      "ok": true,
+      "screenshot": "TC-084/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the footer",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer visible with the EN language selector",
+      "ok": true,
+      "screenshot": "TC-084/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Choose Deutsch in the EN language selector",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Deutsch (de-DE); page switched to German",
+      "ok": true,
+      "screenshot": "TC-084/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the address now https://site.ludus-game.com/de-DE/store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Address: https://site.ludus-game.com/de-DE/store",
+      "ok": true,
+      "screenshot": "TC-084/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the header show Startseite, Shop, Belohnungskette, Treue-Shop, the two balances and Player{TEST_USER_ID}?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Startseite, Shop, Belohnungskette, Treue-Shop, balances 40 and 0, Player{TEST_USER_ID}",
+      "ok": true,
+      "screenshot": "TC-084/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Choose English in the language selector",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to footer, selected English; address https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-084/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 40 and 0, green Player{TEST_USER_ID}; no Login.",
+      "ok": true,
+      "screenshot": "TC-084/step09.png"
+    }
+  ],
+  "replay_gif": "TC-084/TC-084_replay.gif",
+  "steps_pdf": "TC-084/TC-084_steps.pdf",
+  "evidence_folder": "TC-084/",
+  "run": "2026-10-30_0829"
+}

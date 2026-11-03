@@ -1,0 +1,64 @@
+{
+  "id": "TC-022",
+  "title": "[LOGGED OUT] \"About us\" popup shows a video and closes",
+  "area": "Popup",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:12:07+08:00",
+  "ended": "2026-11-02T11:12:24+08:00",
+  "duration_sec": 17,
+  "failed_step": null,
+  "reason": "All answers match.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded.",
+      "ok": true,
+      "screenshot": "TC-022/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"About us\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "About us popup opened.",
+      "ok": true,
+      "screenshot": "TC-022/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a popup titled \"About us\" shown with a video player that is not playing?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'About us' with a video player showing the poster and a Play button; video element paused=true.",
+      "ok": true,
+      "screenshot": "TC-022/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Close\". Do not play the video.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked footer Close; video not played.",
+      "ok": true,
+      "screenshot": "TC-022/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"About us\" popup closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup gone, home page visible.",
+      "ok": true,
+      "screenshot": "TC-022/step05.png"
+    }
+  ],
+  "replay_gif": "TC-022/TC-022_replay.gif",
+  "steps_pdf": "TC-022/TC-022_steps.pdf",
+  "evidence_folder": "TC-022/",
+  "run": "2026-11-02_1059"
+}

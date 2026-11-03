@@ -1,0 +1,55 @@
+{
+  "id": "TC-071",
+  "title": "[LOGGED OUT] Layout works at 1280x800",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:55:31",
+  "ended": "2026-10-30T08:56:04",
+  "duration_sec": 33,
+  "failed_step": null,
+  "reason": "All header items visible and no horizontal scroll at 1280x800",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in a browser window of 1280x800 and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 1280x800, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-071/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-071/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are all header items fully visible: \"Home\", \"Store\", \"Reward chain\", \"Clan reward\", \"Loyalty shop\", \"Login\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows logo, Home, Store, Reward chain, Clan reward, Loyalty shop and green Login button, all fully visible",
+      "ok": true,
+      "screenshot": "TC-071/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Can the page NOT be scrolled sideways (no horizontal scroll)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement.scrollWidth 1280 = window.innerWidth 1280, no horizontal scroll",
+      "ok": true,
+      "screenshot": "TC-071/step04.png"
+    }
+  ],
+  "replay_gif": "TC-071/TC-071_replay.gif",
+  "steps_pdf": "TC-071/TC-071_steps.pdf",
+  "evidence_folder": "TC-071/",
+  "run": "2026-10-30_0829"
+}

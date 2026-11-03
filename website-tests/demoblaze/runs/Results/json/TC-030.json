@@ -1,0 +1,37 @@
+{
+  "id": "TC-030",
+  "title": "[LOGGED OUT] Phone home has no large empty area at the top",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:18:26",
+  "ended": "2026-11-02T11:18:31",
+  "duration_sec": 5,
+  "failed_step": 2,
+  "reason": "About 200px of empty blue gradient between the menu links and the CATEGORIES box",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ with phone emulation (390x844) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-030/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is the \"CATEGORIES\" box shown directly below the header, without a large empty coloured area in between?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Header is 350px tall; menu links end near y=100, leaving a large empty blue gradient area (about 250px) above the CATEGORIES box",
+      "ok": false,
+      "screenshot": "TC-030/step02_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-030/TC-030_replay.gif",
+  "steps_pdf": "TC-030/TC-030_steps.pdf",
+  "evidence_folder": "TC-030/",
+  "run": "2026-11-02_1059"
+}

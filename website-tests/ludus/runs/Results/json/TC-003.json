@@ -1,0 +1,55 @@
+{
+  "id": "TC-003",
+  "title": "[LOGGED OUT] Cookie banner closes with its round close (x) icon",
+  "area": "Cookie banner",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:31:13+08:00",
+  "ended": "2026-10-30T08:31:31+08:00",
+  "duration_sec": 18,
+  "failed_step": null,
+  "reason": "All answers match the expected answers",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded",
+      "ok": true,
+      "screenshot": "TC-003/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner with the title \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner shown at the bottom with a round x icon at top right",
+      "ok": true,
+      "screenshot": "TC-003/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the round close (x) icon at the top right of the banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the close icon",
+      "ok": true,
+      "screenshot": "TC-003/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner no longer on the page",
+      "ok": true,
+      "screenshot": "TC-003/step04.png"
+    }
+  ],
+  "replay_gif": "TC-003/TC-003_replay.gif",
+  "steps_pdf": "TC-003/TC-003_steps.pdf",
+  "evidence_folder": "TC-003/",
+  "run": "2026-10-30_0829"
+}

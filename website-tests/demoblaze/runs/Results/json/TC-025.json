@@ -1,0 +1,82 @@
+{
+  "id": "TC-025",
+  "title": "[LOGGED OUT] Form fields in the popups have names for screen readers",
+  "area": "Popup",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:13:34+08:00",
+  "ended": "2026-11-02T11:14:05+08:00",
+  "duration_sec": 31,
+  "failed_step": 4,
+  "reason": "Log in fields are not linked to their labels (label for=log-name/log-pass, inputs have id loginusername/loginpassword); Contact Email input (id recipient-email) has no label (its label points to recipient-name). Step 4 has no own screenshot.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded.",
+      "ok": true,
+      "screenshot": "TC-025/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Log in\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Log in popup opened.",
+      "ok": true,
+      "screenshot": "TC-025/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the label of the \"Username:\" and \"Password:\" fields (label \"for\" or aria-label).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "label for=\"log-name\" (Username:), label for=\"log-pass\" (Password:); inputs have id=loginusername and id=loginpassword, no aria-label, no aria-labelledby, not wrapped in a label.",
+      "ok": true,
+      "screenshot": "TC-025/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are both Log in fields linked to their labels?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Neither field is linked: label for values (log-name, log-pass) do not match the input ids (loginusername, loginpassword).",
+      "ok": false,
+      "screenshot": null
+    },
+    {
+      "n": 5,
+      "text": "Click \"Close\". Then click \"Contact\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Log in popup closed, Contact popup 'New message' opened.",
+      "ok": true,
+      "screenshot": "TC-025/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"Contact Email:\" field linked to its label?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Input id=recipient-email has no label: both the Contact Email: and Contact Name: labels use for=recipient-name, so the email input is not linked and the name input gets two labels.",
+      "ok": false,
+      "screenshot": "TC-025/step06_FAIL.png"
+    },
+    {
+      "n": 7,
+      "text": "Click \"Close\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Contact popup closed.",
+      "ok": true,
+      "screenshot": "TC-025/step07.png"
+    }
+  ],
+  "replay_gif": "TC-025/TC-025_replay.gif",
+  "steps_pdf": "TC-025/TC-025_steps.pdf",
+  "evidence_folder": "TC-025/",
+  "run": "2026-11-02_1059"
+}

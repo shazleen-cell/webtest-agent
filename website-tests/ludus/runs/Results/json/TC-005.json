@@ -1,0 +1,73 @@
+{
+  "id": "TC-005",
+  "title": "[LOGGED OUT] The \"cookie policy\" link points to the Xsolla cookie policy in a new tab",
+  "area": "Cookie banner",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T08:32:21+08:00",
+  "ended": "2026-10-30T08:32:49+08:00",
+  "duration_sec": 28,
+  "failed_step": null,
+  "reason": "All answers match the expected answers",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded",
+      "ok": true,
+      "screenshot": "TC-005/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner with the title \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner shown at the bottom",
+      "ok": true,
+      "screenshot": "TC-005/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the link target of \"cookie policy\" without opening it.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "href=https://xsolla.com/cookie, target=_blank",
+      "ok": true,
+      "screenshot": "TC-005/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the \"cookie policy\" link point to https://xsolla.com/cookie?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href = https://xsolla.com/cookie",
+      "ok": true,
+      "screenshot": "TC-005/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"cookie policy\" link set to open in a new tab?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "target = _blank",
+      "ok": true,
+      "screenshot": "TC-005/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-005/step06.png"
+    }
+  ],
+  "replay_gif": "TC-005/TC-005_replay.gif",
+  "steps_pdf": "TC-005/TC-005_steps.pdf",
+  "evidence_folder": "TC-005/",
+  "run": "2026-10-30_0829"
+}

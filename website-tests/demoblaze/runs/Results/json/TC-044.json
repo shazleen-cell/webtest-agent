@@ -1,0 +1,91 @@
+{
+  "id": "TC-044",
+  "title": "[LOGGED OUT] Log in with a wrong password shows \"Wrong password.\"",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T12:50:40",
+  "ended": "2026-11-02T12:51:16",
+  "duration_sec": 36,
+  "failed_step": null,
+  "reason": "Alert \"Wrong password.\" shown and user stayed logged out",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, header shows Log in",
+      "ok": true,
+      "screenshot": "TC-044/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Log in\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Log in popup opened with Username and Password fields",
+      "ok": true,
+      "screenshot": "TC-044/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Turn on the alert recorder.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Recorder script ran",
+      "ok": true,
+      "screenshot": "TC-044/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Type \"{TEST_USERNAME}\" into the \"Username:\" field of the \"Log in\" popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Username field filled",
+      "ok": true,
+      "screenshot": "TC-044/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Type \"wrong-password\" into the \"Password:\" field of the \"Log in\" popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Password field filled (masked, 14 characters)",
+      "ok": true,
+      "screenshot": "TC-044/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the \"Log in\" button inside the popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Button clicked",
+      "ok": true,
+      "screenshot": "TC-044/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the alert message \"Wrong password.\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "window.__alerts = [\"Wrong password.\"]",
+      "ok": true,
+      "screenshot": "TC-044/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the user still logged out (the header still shows \"Log in\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows Log in; Log out link hidden (display none); nameofuser empty",
+      "ok": true,
+      "screenshot": "TC-044/step08.png"
+    }
+  ],
+  "replay_gif": "TC-044/TC-044_replay.gif",
+  "steps_pdf": "TC-044/TC-044_steps.pdf",
+  "evidence_folder": "TC-044/",
+  "run": "2026-11-02_1250"
+}

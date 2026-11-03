@@ -1,0 +1,73 @@
+{
+  "id": "TC-028",
+  "title": "[LOGGED OUT] Escape closes the \"Log in to make purchases\" popup",
+  "area": "Login",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T08:55:19",
+  "ended": "2026-10-30T08:55:47",
+  "duration_sec": 28,
+  "failed_step": null,
+  "reason": "Popup shown, then closed by Escape",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page with cookie banner",
+      "ok": true,
+      "screenshot": "TC-028/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-028/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click Login in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Popup opened",
+      "ok": true,
+      "screenshot": "TC-028/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the 'Log in to make purchases' popup shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'LOG IN TO MAKE PURCHASES' with QR code",
+      "ok": true,
+      "screenshot": "TC-028/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Press the Escape key",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Escape pressed; popup gone",
+      "ok": true,
+      "screenshot": "TC-028/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the popup closed?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup closed, Home page with Uruk Bundle shown",
+      "ok": true,
+      "screenshot": "TC-028/step06.png"
+    }
+  ],
+  "replay_gif": "TC-028/TC-028_replay.gif",
+  "steps_pdf": "TC-028/TC-028_steps.pdf",
+  "evidence_folder": "TC-028/",
+  "run": "2026-10-30_0829"
+}

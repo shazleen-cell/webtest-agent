@@ -1,0 +1,37 @@
+{
+  "id": "TC-027",
+  "title": "[LOGGED OUT] Phone burger button is visible",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T11:17:02",
+  "ended": "2026-11-02T11:17:22",
+  "duration_sec": 20,
+  "failed_step": 2,
+  "reason": "The Toggle navigation button exists at top right (x 318-374, y 8-48) but nothing is drawn: no three-line icon visible; menu items are shown open instead",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ with phone emulation (390x844) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE, width 390",
+      "ok": true,
+      "screenshot": "TC-027/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a burger (three-line) button visible at the top right of the header?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Header shows logo, PRODUCT STORE and the menu links Home, Contact, About us, Cart, Log in, Sign up; top right shows no burger icon (button 'Toggle navigation' is in the DOM but has no visible icon, transparent background)",
+      "ok": false,
+      "screenshot": "TC-027/step02_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-027/TC-027_replay.gif",
+  "steps_pdf": "TC-027/TC-027_steps.pdf",
+  "evidence_folder": "TC-027/",
+  "run": "2026-11-02_1059"
+}

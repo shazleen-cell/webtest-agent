@@ -1,0 +1,46 @@
+{
+  "id": "TC-006",
+  "title": "[LOGGED OUT] \"Phones\" shows only the 7 phones",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "7 phones shown in expected order",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-006/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Phones\" in the \"CATEGORIES\" box.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Phones clicked, list updated",
+      "ok": true,
+      "screenshot": "TC-006/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are exactly 7 products shown: Samsung galaxy s6, Nokia lumia 1520, Nexus 6, Samsung galaxy s7, Iphone 6 32gb, Sony xperia z5, HTC One M9?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "7 cards: Samsung galaxy s6, Nokia lumia 1520, Nexus 6, Samsung galaxy s7, Iphone 6 32gb, Sony xperia z5, HTC One M9",
+      "ok": true,
+      "screenshot": "TC-006/step03.png"
+    }
+  ],
+  "started": "2026-11-02T11:02:11+08:00",
+  "ended": "2026-11-02T11:02:27+08:00",
+  "duration_sec": 16,
+  "replay_gif": "TC-006/TC-006_replay.gif",
+  "steps_pdf": "TC-006/TC-006_steps.pdf",
+  "evidence_folder": "TC-006/",
+  "run": "2026-11-02_1059"
+}

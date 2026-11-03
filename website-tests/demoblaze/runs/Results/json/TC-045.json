@@ -1,0 +1,73 @@
+{
+  "id": "TC-045",
+  "title": "[LOGGED OUT] Sign up with empty fields shows \"Please fill out Username and Password.\"",
+  "area": "Login",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:27:49",
+  "ended": "2026-11-02T11:28:19",
+  "duration_sec": 30,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-045/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Sign up\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Sign up popup opened (screenshot caught the fade-in animation)",
+      "ok": true,
+      "screenshot": "TC-045/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the \"Sign up\" popup shown with empty \"Username:\" and \"Password:\" fields?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup titled Sign up shown, #sign-username and #sign-password values are both empty",
+      "ok": true,
+      "screenshot": "TC-045/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Turn on the alert recorder.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Recorder script run",
+      "ok": true,
+      "screenshot": "TC-045/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the \"Sign up\" button inside the popup without typing anything.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Sign up in the popup with empty fields",
+      "ok": true,
+      "screenshot": "TC-045/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the alert message \"Please fill out Username and Password.\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "window.__alerts = [\"Please fill out Username and Password.\"]",
+      "ok": true,
+      "screenshot": "TC-045/step06.png"
+    }
+  ],
+  "replay_gif": "TC-045/TC-045_replay.gif",
+  "steps_pdf": "TC-045/TC-045_steps.pdf",
+  "evidence_folder": "TC-045/",
+  "run": "2026-11-02_1059"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "TC-002",
+  "title": "[LOGGED OUT] Header shows the logo and all menu items in order",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T10:59:50",
+  "ended": "2026-11-02T11:00:12",
+  "duration_sec": 22,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-002/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Does the header show, from left to right: the logo with \"PRODUCT STORE\", then \"Home\", \"Contact\", \"About us\", \"Cart\", \"Log in\", \"Sign up\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Left-to-right x positions: PRODUCT STORE (logo) 16, Home 801, Contact 860, About us 932, Cart 1011, Log in 1057, Sign up 1115",
+      "ok": true,
+      "screenshot": "TC-002/step02.png"
+    }
+  ],
+  "replay_gif": "TC-002/TC-002_replay.gif",
+  "steps_pdf": "TC-002/TC-002_steps.pdf",
+  "evidence_folder": "TC-002/",
+  "run": "2026-11-02_1059"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "TC-073",
+  "title": "[LOGGED OUT] Phone burger menu close button has a name for screen readers",
+  "area": "Header",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T08:57:21",
+  "ended": "2026-10-30T08:58:22",
+  "duration_sec": 61,
+  "failed_step": 6,
+  "reason": "The red close (x) in the phone menu is an img with empty alt inside plain divs: no button role, no accessible name, not focusable",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser with phone emulation (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at 390x844 (iPhone user agent); cookie banner and Add It to Home Screen banner shown",
+      "ok": true,
+      "screenshot": "TC-073/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-073/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown at the bottom, close it with its X button (never click its \"Claim\").",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Closed with the X (Close pwa banner); Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-073/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the green burger button at the top left.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Menu opened with Home, Store, Reward chain, Clan reward, Loyalty shop, Login and a red close (x) top right",
+      "ok": true,
+      "screenshot": "TC-073/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Read the role and accessible name of the red close (x) button of the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Close (x) is IMG.burger-menu__close-button with alt=\"\", inside DIV > DIV.burger-menu__close-wrapper; no role, no aria-label, no title, no tabindex; it is absent from the accessibility snapshot (not a button, no name)",
+      "ok": true,
+      "screenshot": "TC-073/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the close (x) a button with an accessible name (for example \"Close menu\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No: it is a decorative image with empty alt, not a button, and has no accessible name",
+      "ok": false,
+      "screenshot": "TC-073/step06_FAIL.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the red close (x) button of the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the close (x) image; menu closed and the home page is shown again",
+      "ok": true,
+      "screenshot": "TC-073/step07.png"
+    }
+  ],
+  "replay_gif": "TC-073/TC-073_replay.gif",
+  "steps_pdf": "TC-073/TC-073_steps.pdf",
+  "evidence_folder": "TC-073/",
+  "run": "2026-10-30_0829"
+}

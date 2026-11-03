@@ -1,0 +1,64 @@
+{
+  "id": "TC-016",
+  "title": "[LOGGED OUT] \"Latest news\" section shows a news card with a title and a date",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "Latest news heading and one news card (picture, October 15, v1.38 is live!) shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-016/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-016/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the Latest news section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Latest news section in view",
+      "ok": true,
+      "screenshot": "TC-016/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a Latest news heading shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Pink banner heading 'Latest news'",
+      "ok": true,
+      "screenshot": "TC-016/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is at least one news card shown with a picture, a date and a title?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "1 card: picture (board with dice), date 'October 15', title 'v1.38 is live!'",
+      "ok": true,
+      "screenshot": "TC-016/step05.png"
+    }
+  ],
+  "started": "2026-10-30T08:43:18+08:00",
+  "ended": "2026-10-30T08:43:52+08:00",
+  "duration_sec": 34,
+  "replay_gif": "TC-016/TC-016_replay.gif",
+  "steps_pdf": "TC-016/TC-016_steps.pdf",
+  "evidence_folder": "TC-016/",
+  "run": "2026-10-30_0829"
+}

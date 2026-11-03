@@ -1,0 +1,91 @@
+{
+  "id": "TC-038",
+  "title": "[LOGGED OUT] Header \"Reward chain\" scrolls to the Rewards Market",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:03:38",
+  "ended": "2026-10-30T09:04:16",
+  "duration_sec": 38,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-038/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner dismissed",
+      "ok": true,
+      "screenshot": "TC-038/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click Reward chain in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to Rewards Market, Reward chain highlighted",
+      "ok": true,
+      "screenshot": "TC-038/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the Rewards Market section shown on the screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Rewards Market heading and banner on screen",
+      "ok": true,
+      "screenshot": "TC-038/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does it show the text \"Make purchases, earn Store points, and claim cool rewards!\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Text shown: 'Make purchases, earn Store points, and claim cool rewards! More purchases mean more Store points. Gotta claim them all!'",
+      "ok": true,
+      "screenshot": "TC-038/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does it show \"0/500 points\" and \"Step 1 of 10\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "'0/500 points' and 'Step 1 of 10' shown",
+      "ok": true,
+      "screenshot": "TC-038/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is a row of reward cards with point costs shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Cards 5000 (3), 15 (5), 1 (10), 50 (30), 2 (50), 25000 (70), 1 (100), 20 (200)",
+      "ok": true,
+      "screenshot": "TC-038/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Is a green \"Login to claim\" button shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green 'Login to claim' button below the cards",
+      "ok": true,
+      "screenshot": "TC-038/step08.png"
+    }
+  ],
+  "replay_gif": "TC-038/TC-038_replay.gif",
+  "steps_pdf": "TC-038/TC-038_steps.pdf",
+  "evidence_folder": "TC-038/",
+  "run": "2026-10-30_0829"
+}

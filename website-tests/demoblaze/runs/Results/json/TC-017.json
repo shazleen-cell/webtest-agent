@@ -1,0 +1,37 @@
+{
+  "id": "TC-017",
+  "title": "[LOGGED OUT] Tab title names the product on a product page",
+  "area": "Product",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:09:07+08:00",
+  "ended": "2026-11-02T11:09:14+08:00",
+  "duration_sec": 7,
+  "failed_step": 2,
+  "reason": "Tab title is only \"STORE\"; it does not contain \"Samsung galaxy s6\".",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/prod.html?idp_=1 and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Product page Samsung galaxy s6 $360 loaded.",
+      "ok": true,
+      "screenshot": "TC-017/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Does the tab title contain the product name \"Samsung galaxy s6\"?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "document.title = \"STORE\"; the product name is only in the page heading.",
+      "ok": false,
+      "screenshot": "TC-017/step02_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-017/TC-017_replay.gif",
+  "steps_pdf": "TC-017/TC-017_steps.pdf",
+  "evidence_folder": "TC-017/",
+  "run": "2026-11-02_1059"
+}

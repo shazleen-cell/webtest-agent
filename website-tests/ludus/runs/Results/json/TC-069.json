@@ -1,0 +1,64 @@
+{
+  "id": "TC-069",
+  "title": "[LOGGED OUT] Meta description is real text about LUDUS",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:33:50+08:00",
+  "ended": "2026-10-30T09:34:19+08:00",
+  "duration_sec": 29,
+  "failed_step": 4,
+  "reason": "description and og:description are the placeholder text; hidden H2 'Your game title' exists",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-069/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner closed",
+      "ok": true,
+      "screenshot": "TC-069/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the description and og:description meta tags",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Both = 'Your Game takes players on a grand adventure filled with detractors, monsters, gold hunters and grave danger.'",
+      "ok": true,
+      "screenshot": "TC-069/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Do they describe LUDUS (not the placeholder text)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Both are exactly the placeholder text 'Your Game takes players on a grand adventure ...'; no mention of LUDUS",
+      "ok": false,
+      "screenshot": "TC-069/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Is there no hidden placeholder heading 'Your game title' in the page?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "An H2 'Your game title' exists in the DOM (hidden, offsetParent null)",
+      "ok": false,
+      "screenshot": "TC-069/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-069/TC-069_replay.gif",
+  "steps_pdf": "TC-069/TC-069_steps.pdf",
+  "evidence_folder": "TC-069/",
+  "run": "2026-10-30_0829"
+}

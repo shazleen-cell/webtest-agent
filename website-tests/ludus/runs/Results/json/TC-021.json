@@ -1,0 +1,64 @@
+{
+  "id": "TC-021",
+  "title": "[LOGGED OUT] Language selector lists 15 languages",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T08:47:33",
+  "ended": "2026-10-30T08:48:13",
+  "duration_sec": 40,
+  "failed_step": null,
+  "reason": "All 15 language options present in the expected order",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title LUDUS - Merge Battle Arena PvP Web Shop",
+      "ok": true,
+      "screenshot": "TC-021/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-021/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer visible with EN selector at right",
+      "ok": true,
+      "screenshot": "TC-021/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Read the options of the \"EN\" language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Combobox options read via script: English, Français, Deutsch, Español, Português, Italiano, Türkçe, 한국어, 日本語, 繁體中文, 简体中文, Русский, Tiếng Việt, ไทย, Bahasa Indonesia",
+      "ok": true,
+      "screenshot": "TC-021/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are there 15 options: English, Français, Deutsch, Español, Português, Italiano, Türkçe, 한국어, 日本語, 繁體中文, 简体中文, Русский, Tiếng Việt, ไทย, Bahasa Indonesia?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Exactly 15 options, same names and order as listed",
+      "ok": true,
+      "screenshot": "TC-021/step05.png"
+    }
+  ],
+  "replay_gif": "TC-021/TC-021_replay.gif",
+  "steps_pdf": "TC-021/TC-021_steps.pdf",
+  "evidence_folder": "TC-021/",
+  "run": "2026-10-30_0829"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "TC-018",
+  "title": "[LOGGED OUT] \"Don't have the game?\" section shows the three download badges",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "Google Play, App Store and Web-Version badges shown; Web-Version href is https://ludus-game.com/",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-018/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-018/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the section Don't have the game? Download it today!",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Section heading in view",
+      "ok": true,
+      "screenshot": "TC-018/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are the Google Play, App Store and Web-Version badges shown in this section?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Three badges under the heading: Google Play, App Store, Web-Version",
+      "ok": true,
+      "screenshot": "TC-018/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Read the link target of the Web-Version badge without opening it.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Web-Version link href = https://ludus-game.com/ (target=_blank); read via script, not opened",
+      "ok": true,
+      "screenshot": "TC-018/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does it point to https://ludus-game.com/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "href is exactly https://ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-018/step06.png"
+    }
+  ],
+  "started": "2026-10-30T08:45:06+08:00",
+  "ended": "2026-10-30T08:45:31+08:00",
+  "duration_sec": 25,
+  "replay_gif": "TC-018/TC-018_replay.gif",
+  "steps_pdf": "TC-018/TC-018_steps.pdf",
+  "evidence_folder": "TC-018/",
+  "run": "2026-10-30_0829"
+}

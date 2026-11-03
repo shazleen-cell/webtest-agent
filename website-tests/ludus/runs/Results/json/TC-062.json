@@ -1,0 +1,55 @@
+{
+  "id": "TC-062",
+  "title": "[LOGGED OUT] http redirects to https and there is no mixed content",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:26:43+08:00",
+  "ended": "2026-10-30T09:27:25+08:00",
+  "duration_sec": 42,
+  "failed_step": null,
+  "reason": "Redirected to https, no http resources found",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open http://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-062/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-062/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the address now https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/ (navigation entry also https)",
+      "ok": true,
+      "screenshot": "TC-062/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are all resources of the page loaded over https (no http:// requests, no mixed content warning)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No http:// or ws:// URLs in DOM src/href/srcset or inline CSS; only https requests reported by the tool (some 404s on store.xsolla.com API, not mixed content); page is a secure context. Resource timing buffer held only 1 entry, so check relied on DOM and tool request log",
+      "ok": true,
+      "screenshot": "TC-062/step04.png"
+    }
+  ],
+  "replay_gif": "TC-062/TC-062_replay.gif",
+  "steps_pdf": "TC-062/TC-062_steps.pdf",
+  "evidence_folder": "TC-062/",
+  "run": "2026-10-30_0829"
+}

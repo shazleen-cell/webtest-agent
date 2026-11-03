@@ -1,0 +1,64 @@
+{
+  "id": "TC-008",
+  "title": "[LOGGED OUT] Header \"Clan reward\" on Home opens a clan reward section",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-10-30T08:35:03+08:00",
+  "ended": "2026-10-30T08:35:53+08:00",
+  "duration_sec": 50,
+  "failed_step": 5,
+  "reason": "Clan reward link goes to /store/ but the page stays at the top and has no heading containing 'Clan reward' (only 'Clan War ... Ticket' items)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait for load",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded; cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-008/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-008/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click Clan reward in the header",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Navigated to the Store page",
+      "ok": true,
+      "screenshot": "TC-008/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the address now https://site.ludus-game.com/store/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store/ (no hash)",
+      "ok": true,
+      "screenshot": "TC-008/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a section about a clan reward shown on the screen (heading containing Clan reward)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Page stays at top (scrollY 0) showing LUDUS Official Webshop and Uruk Bundle. No h1-h5 contains 'Clan reward'; only 'Clan War Diamond Ticket' and 'Clan War Golden Ticket' headings exist. Header on Store also has no Clan reward item.",
+      "ok": false,
+      "screenshot": "TC-008/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-008/TC-008_replay.gif",
+  "steps_pdf": "TC-008/TC-008_steps.pdf",
+  "evidence_folder": "TC-008/",
+  "run": "2026-10-30_0829"
+}

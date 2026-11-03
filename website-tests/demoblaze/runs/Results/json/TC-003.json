@@ -1,0 +1,55 @@
+{
+  "id": "TC-003",
+  "title": "[LOGGED OUT] \"PRODUCT STORE\" logo goes back to Home",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:00:18",
+  "ended": "2026-11-02T11:00:42",
+  "duration_sec": 24,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/cart.html in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cart page loaded with Products table and Total",
+      "ok": true,
+      "screenshot": "TC-003/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"PRODUCT STORE\" at the left of the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the logo link; navigated to the home page",
+      "ok": true,
+      "screenshot": "TC-003/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the address now https://www.demoblaze.com/index.html or https://www.demoblaze.com/?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://www.demoblaze.com/index.html",
+      "ok": true,
+      "screenshot": "TC-003/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the \"CATEGORIES\" box shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "CATEGORIES box with Phones, Laptops, Monitors is shown",
+      "ok": true,
+      "screenshot": "TC-003/step04.png"
+    }
+  ],
+  "replay_gif": "TC-003/TC-003_replay.gif",
+  "steps_pdf": "TC-003/TC-003_steps.pdf",
+  "evidence_folder": "TC-003/",
+  "run": "2026-11-02_1059"
+}

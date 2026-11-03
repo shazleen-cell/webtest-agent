@@ -1,0 +1,64 @@
+{
+  "id": "TC-018",
+  "title": "[LOGGED OUT] Empty cart shows the table, Total and Place Order",
+  "area": "Cart",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-02T11:09:26+08:00",
+  "ended": "2026-11-02T11:09:46+08:00",
+  "duration_sec": 20,
+  "failed_step": null,
+  "reason": "Cart page shows Products table, Total and green Place Order as expected.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded.",
+      "ok": true,
+      "screenshot": "TC-018/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Cart\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cart page opened.",
+      "ok": true,
+      "screenshot": "TC-018/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the address now https://www.demoblaze.com/cart.html?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://www.demoblaze.com/cart.html",
+      "ok": true,
+      "screenshot": "TC-018/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the heading \"Products\" shown with a table with the columns Pic, Title, Price and x?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading \"Products\"; table header columns Pic, Title, Price, x; no rows.",
+      "ok": true,
+      "screenshot": "TC-018/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the heading \"Total\" shown with a green \"Place Order\" button (look only)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading \"Total\" with Place Order button, background rgb(52,168,83) (green). Not clicked.",
+      "ok": true,
+      "screenshot": "TC-018/step05.png"
+    }
+  ],
+  "replay_gif": "TC-018/TC-018_replay.gif",
+  "steps_pdf": "TC-018/TC-018_steps.pdf",
+  "evidence_folder": "TC-018/",
+  "run": "2026-11-02_1059"
+}

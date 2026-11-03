@@ -1,0 +1,55 @@
+{
+  "id": "TC-039",
+  "title": "[LOGGED OUT] Home images and product links have text for screen readers",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-02T11:23:55+08:00",
+  "ended": "2026-11-02T11:24:16+08:00",
+  "duration_sec": 21,
+  "failed_step": 3,
+  "reason": "Header logo (2 imgs) has no alt attribute; the 9 product image links have an empty alt and no accessible name",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-039/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the alt text of all images and the accessible names of all links.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "14 images: 2 logo imgs (blazemeter-favicon-512x512.png) with no alt attribute; carousel imgs alt First/Second/Third slide; 9 product imgs alt=\"\". 9 product image links (prod.html?idp_=1..9) and one href=\"#\" link have no text",
+      "ok": true,
+      "screenshot": "TC-039/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does every image have an alt attribute (including the header logo)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "The header logo img (and a second logo img in the page) has no alt attribute",
+      "ok": false,
+      "screenshot": "TC-039/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Do the product image links have an accessible name (a non-empty alt on the image)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "All 9 product image links contain an img with alt=\"\" and no other text or aria-label",
+      "ok": false,
+      "screenshot": "TC-039/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-039/TC-039_replay.gif",
+  "steps_pdf": "TC-039/TC-039_steps.pdf",
+  "evidence_folder": "TC-039/",
+  "run": "2026-11-02_1059"
+}

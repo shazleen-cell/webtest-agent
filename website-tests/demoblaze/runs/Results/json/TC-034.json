@@ -1,0 +1,64 @@
+{
+  "id": "TC-034",
+  "title": "[LOGGED OUT] Home has no failed requests or broken images",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:20:50",
+  "ended": "2026-11-02T11:21:17",
+  "duration_sec": 27,
+  "failed_step": null,
+  "reason": "No failed requests (29 resources, none >=400); all 14 images loaded with size",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-034/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the failed network requests of the page.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Resource Timing: 29 entries, page status 200, none with status 400 or higher, none with status 0 (read via Performance API, no devtools network log available)",
+      "ok": true,
+      "screenshot": "TC-034/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are there no failed requests (no 404 or 500 errors)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No entry with status >= 400",
+      "ok": true,
+      "screenshot": "TC-034/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll slowly to the bottom of the page so that all images load.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled 500, 500, 1000, 3000 px to the footer",
+      "ok": true,
+      "screenshot": "TC-034/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Do all loaded images have a size (no broken image icons)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "14 images, all complete with naturalWidth > 0, 0 broken; no broken icons seen; requests at bottom still none >= 400",
+      "ok": true,
+      "screenshot": "TC-034/step05.png"
+    }
+  ],
+  "replay_gif": "TC-034/TC-034_replay.gif",
+  "steps_pdf": "TC-034/TC-034_steps.pdf",
+  "evidence_folder": "TC-034/",
+  "run": "2026-11-02_1059"
+}

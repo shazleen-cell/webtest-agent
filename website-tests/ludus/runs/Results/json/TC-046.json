@@ -1,0 +1,82 @@
+{
+  "id": "TC-046",
+  "title": "[LOGGED OUT] Store footer shows the app icon, social icons, logos and links",
+  "area": "Footer",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:10:48+08:00",
+  "ended": "2026-10-30T09:11:37+08:00",
+  "duration_sec": 49,
+  "failed_step": null,
+  "reason": "All footer elements shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-046/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-046/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the footer",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to bottom, footer visible",
+      "ok": true,
+      "screenshot": "TC-046/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the game app icon shown at the left?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Square app icon (blue monster character) at left of footer",
+      "ok": true,
+      "screenshot": "TC-046/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Are 6 social icon buttons shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "6 buttons: YouTube, X, TikTok, Discord, Instagram, Facebook",
+      "ok": true,
+      "screenshot": "TC-046/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Are the LUDUS and \"TOP APP GAMES\" logos shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "LUDUS logo and TOP APP GAMES logo shown",
+      "ok": true,
+      "screenshot": "TC-046/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Are Support, Powered by Xsolla Web Shop, Join Affiliate Program, Privacy settings and EN shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All five shown: Support, Powered by Xsolla Web Shop, Join Affiliate Program, Privacy settings, EN selector at right",
+      "ok": true,
+      "screenshot": "TC-046/step07.png"
+    }
+  ],
+  "replay_gif": "TC-046/TC-046_replay.gif",
+  "steps_pdf": "TC-046/TC-046_steps.pdf",
+  "evidence_folder": "TC-046/",
+  "run": "2026-10-30_0829"
+}

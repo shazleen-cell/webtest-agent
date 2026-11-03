@@ -1,0 +1,64 @@
+{
+  "id": "TC-033",
+  "title": "[LOGGED OUT] Home page loads fast enough",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:20:23",
+  "ended": "2026-11-02T11:20:38",
+  "duration_sec": 15,
+  "failed_step": null,
+  "reason": "FCP 1164 ms, load event 1497 ms (single load)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Start a new browser session with no cache, open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Fresh session, page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-033/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Read the page timing from the browser (Navigation Timing: first contentful paint and the load event).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "FCP 1164 ms, loadEventStart 1497 ms, DOMContentLoaded 1179 ms",
+      "ok": true,
+      "screenshot": "TC-033/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If FCP is 3 s or more, or load event 10 s or more, repeat in a new session.",
+      "expected": "",
+      "answer": "Skipped (condition not met)",
+      "saw": "FCP 1.16 s and load 1.50 s are under the limits, no second load needed",
+      "ok": true,
+      "screenshot": "TC-033/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "In the faster (only) load, is the first contentful paint under 3 seconds?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "FCP 1164 ms",
+      "ok": true,
+      "screenshot": "TC-033/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "In the faster (only) load, is the load event under 10 seconds?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Load event 1497 ms",
+      "ok": true,
+      "screenshot": "TC-033/step05.png"
+    }
+  ],
+  "replay_gif": "TC-033/TC-033_replay.gif",
+  "steps_pdf": "TC-033/TC-033_steps.pdf",
+  "evidence_folder": "TC-033/",
+  "run": "2026-11-02_1059"
+}

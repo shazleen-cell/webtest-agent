@@ -1,0 +1,55 @@
+{
+  "id": "TC-031",
+  "title": "[LOGGED OUT] Phone layout has one product per row and no sideways scroll",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-02T11:19:26",
+  "ended": "2026-11-02T11:19:43",
+  "duration_sec": 17,
+  "failed_step": null,
+  "reason": "Phone emulation 390x844: one product per row, no sideways scroll",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ with phone emulation (390x844) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-031/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Scroll down to the products.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled 900px, product cards visible",
+      "ok": true,
+      "screenshot": "TC-031/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is one product shown per row?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "9 product cards all at left=15px, tops 113, 524, 935, ... (one per row)",
+      "ok": true,
+      "screenshot": "TC-031/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Can the page NOT be moved sideways (page width equals window width 390 px)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement.scrollWidth 390 = innerWidth 390 (body.scrollWidth 405 but not scrollable)",
+      "ok": true,
+      "screenshot": "TC-031/step04.png"
+    }
+  ],
+  "replay_gif": "TC-031/TC-031_replay.gif",
+  "steps_pdf": "TC-031/TC-031_steps.pdf",
+  "evidence_folder": "TC-031/",
+  "run": "2026-11-02_1059"
+}

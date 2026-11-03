@@ -1,0 +1,37 @@
+{
+  "id": "TC-037",
+  "title": "[LOGGED OUT] Page language is set",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-02T11:23:06+08:00",
+  "ended": "2026-11-02T11:23:18+08:00",
+  "duration_sec": 12,
+  "failed_step": null,
+  "reason": "html lang attribute is \"en\"",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-037/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is the html lang attribute \"en\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement lang = \"en\"",
+      "ok": true,
+      "screenshot": "TC-037/step02.png"
+    }
+  ],
+  "replay_gif": "TC-037/TC-037_replay.gif",
+  "steps_pdf": "TC-037/TC-037_steps.pdf",
+  "evidence_folder": "TC-037/",
+  "run": "2026-11-02_1059"
+}

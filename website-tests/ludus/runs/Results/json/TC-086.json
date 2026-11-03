@@ -1,0 +1,91 @@
+{
+  "id": "TC-086",
+  "title": "[LOGGED IN] Phone header and burger menu show the player and the balances",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:51:08+08:00",
+  "ended": "2026-10-30T09:52:05+08:00",
+  "duration_sec": 57,
+  "failed_step": null,
+  "reason": "Phone header and burger menu showed player, balances and all menu items (390x844 Chrome mobile emulation via capabilities, per instructions)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open Store URL with login in phone emulation (390x844)",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded in phone layout; cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-086/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Dismiss cookie banner / close Login successful popup",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup",
+      "ok": true,
+      "screenshot": "TC-086/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: burger, logo, balances 40 and 0, green 'Play...' (shortened player) button; no Login button",
+      "ok": true,
+      "screenshot": "TC-086/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Close the Add It to Home Screen banner with its X (never Claim)",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner 'Add It to Home Screen' was shown; clicked its X (Close pwa banner); Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-086/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the header show the burger button, the logo, the two balances and the player button (Play...)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green burger at left, LUDUS logo, balances 40 and 0, green 'Play...' button",
+      "ok": true,
+      "screenshot": "TC-086/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the green burger button at the top left",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Burger menu opened",
+      "ok": true,
+      "screenshot": "TC-086/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the menu show the two balances, the Play... button, Home, Store, Reward chain, Loyalty shop and Logout?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu: balances 40 and 0, green 'Play...' button, Home, Store, Reward chain, Loyalty shop, Logout",
+      "ok": true,
+      "screenshot": "TC-086/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the red close (x) button of the menu",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the red X; menu closed, store page and header visible",
+      "ok": true,
+      "screenshot": "TC-086/step08.png"
+    }
+  ],
+  "replay_gif": "TC-086/TC-086_replay.gif",
+  "steps_pdf": "TC-086/TC-086_steps.pdf",
+  "evidence_folder": "TC-086/",
+  "run": "2026-10-30_0829"
+}

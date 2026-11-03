@@ -1,0 +1,64 @@
+{
+  "id": "TC-082",
+  "title": "[LOGGED IN] Logged-in Home has no Special offer card and shows the balances",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-10-30T09:44:40",
+  "ended": "2026-10-30T09:45:28",
+  "duration_sec": 48,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/?user-id={TEST_USER_ID} and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with a Login successful popup and a cookie banner",
+      "ok": true,
+      "screenshot": "TC-082/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If Login successful popup, click Ok",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss on the cookie banner and Ok on the Login successful popup; both closed",
+      "ok": true,
+      "screenshot": "TC-082/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green button Player{TEST_USER_ID} with balances 40 and 0; no Login button",
+      "ok": true,
+      "screenshot": "TC-082/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the header show Home, Store, Reward chain, Clan reward, Loyalty shop, the two balances and Player{TEST_USER_ID}?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home | Store | Reward chain | Clan reward | Loyalty shop | 40 | 0 | Player{TEST_USER_ID}",
+      "ok": true,
+      "screenshot": "TC-082/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"Special offer\" card NOT shown (the hero is followed by the \"Check out our Store and shop with profit\" banner)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Hero with logo and store badges is followed directly by the \"Check out our Store and shop with profit\" banner (Check Our Store button); no Special offer text on the page",
+      "ok": true,
+      "screenshot": "TC-082/step05.png"
+    }
+  ],
+  "replay_gif": "TC-082/TC-082_replay.gif",
+  "steps_pdf": "TC-082/TC-082_steps.pdf",
+  "evidence_folder": "TC-082/",
+  "run": "2026-10-30_0829"
+}

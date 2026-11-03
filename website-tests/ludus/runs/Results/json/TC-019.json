@@ -1,0 +1,82 @@
+{
+  "id": "TC-019",
+  "title": "[LOGGED OUT] \"Follow us in social media!\" shows 6 social links with the right targets",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "6 social icons; hrefs match the expected list; all target=_blank",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-019/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-019/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the Follow us in social media! section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Section heading and icons in view",
+      "ok": true,
+      "screenshot": "TC-019/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are 6 social icons shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "6 blue icon buttons: YouTube, X, TikTok, Discord, Instagram, Facebook",
+      "ok": true,
+      "screenshot": "TC-019/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Read the link targets of the 6 icons without opening them.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Read with script: youtube.com/@playludus, twitter.com/playludus, tiktok.com/@playludus, discord.gg/5qFQGUXQTD, instagram.com/play.ludus.game, facebook.com/play.ludus",
+      "ok": true,
+      "screenshot": "TC-019/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Do they point to the six expected URLs?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All 6 hrefs match exactly, in the same order",
+      "ok": true,
+      "screenshot": "TC-019/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Are all 6 links set to open in a new tab?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All 6 have target=_blank (rel=noreferrer)",
+      "ok": true,
+      "screenshot": "TC-019/step07.png"
+    }
+  ],
+  "started": "2026-10-30T08:45:44+08:00",
+  "ended": "2026-10-30T08:46:11+08:00",
+  "duration_sec": 27,
+  "replay_gif": "TC-019/TC-019_replay.gif",
+  "steps_pdf": "TC-019/TC-019_steps.pdf",
+  "evidence_folder": "TC-019/",
+  "run": "2026-10-30_0829"
+}

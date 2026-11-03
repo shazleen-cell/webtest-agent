@@ -1,0 +1,46 @@
+{
+  "id": "TC-032",
+  "title": "[LOGGED OUT] Phone footer sections are stacked and readable",
+  "area": "Footer",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-02T11:20:01",
+  "ended": "2026-11-02T11:20:13",
+  "duration_sec": 12,
+  "failed_step": null,
+  "reason": "Footer sections stacked vertically and readable",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ with phone emulation (390x844) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-032/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the bottom; footer visible",
+      "ok": true,
+      "screenshot": "TC-032/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are \"About Us\", \"Get in Touch\" and \"PRODUCT STORE\" shown one below the other, with all text readable?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "About Us heading y=392, Get in Touch y=532, PRODUCT STORE y=683, all at left 55px, stacked; text fully visible in white on blue",
+      "ok": true,
+      "screenshot": "TC-032/step03.png"
+    }
+  ],
+  "replay_gif": "TC-032/TC-032_replay.gif",
+  "steps_pdf": "TC-032/TC-032_steps.pdf",
+  "evidence_folder": "TC-032/",
+  "run": "2026-11-02_1059"
+}

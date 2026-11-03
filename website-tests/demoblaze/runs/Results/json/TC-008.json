@@ -1,0 +1,46 @@
+{
+  "id": "TC-008",
+  "title": "[LOGGED OUT] \"Monitors\" shows only the 2 monitors",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "2 monitors shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-008/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Monitors\" in the \"CATEGORIES\" box.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Monitors clicked, list updated",
+      "ok": true,
+      "screenshot": "TC-008/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Are exactly 2 products shown: Apple monitor 24 and ASUS Full HD?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "2 cards: Apple monitor 24 ($400), ASUS Full HD ($230)",
+      "ok": true,
+      "screenshot": "TC-008/step03.png"
+    }
+  ],
+  "started": "2026-11-02T11:03:07+08:00",
+  "ended": "2026-11-02T11:03:23+08:00",
+  "duration_sec": 16,
+  "replay_gif": "TC-008/TC-008_replay.gif",
+  "steps_pdf": "TC-008/TC-008_steps.pdf",
+  "evidence_folder": "TC-008/",
+  "run": "2026-11-02_1059"
+}

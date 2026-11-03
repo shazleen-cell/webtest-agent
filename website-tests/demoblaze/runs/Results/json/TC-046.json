@@ -1,0 +1,73 @@
+{
+  "id": "TC-046",
+  "title": "[LOGGED OUT] Contact form with empty fields asks to fill them in",
+  "area": "Popup",
+  "priority": "Medium",
+  "status": "UNSURE",
+  "started": "2026-11-02T11:28:52",
+  "ended": "2026-11-02T11:29:34",
+  "duration_sec": 42,
+  "failed_step": 6,
+  "reason": "Alert text could not be read: after clicking Send message the page reloaded (recorder cleared) and the modal closed; window.__alerts was gone. No 'Thanks for the message!!' seen, but the empty-fields alert could not be confirmed.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-046/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Click \"Contact\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "New message popup opened",
+      "ok": true,
+      "screenshot": "TC-046/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the \"New message\" popup shown with empty \"Contact Email:\", \"Contact Name:\" and \"Message:\" fields?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup 'New message' shown; recipient-email, recipient-name and message-text values all empty",
+      "ok": true,
+      "screenshot": "TC-046/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Turn on the alert recorder.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Recorder script ran",
+      "ok": true,
+      "screenshot": "TC-046/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Send message\" without typing anything.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked; modal closed and home page reloaded",
+      "ok": true,
+      "screenshot": "TC-046/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is an alert shown that asks to fill in the empty fields (and no \"Thanks for the message!!\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "window.__alerts undefined (page reloaded, recorder cleared); alert text not readable. No visible thanks message. Cannot confirm.",
+      "ok": false,
+      "screenshot": "TC-046/step06_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-046/TC-046_replay.gif",
+  "steps_pdf": "TC-046/TC-046_steps.pdf",
+  "evidence_folder": "TC-046/",
+  "run": "2026-11-02_1059"
+}

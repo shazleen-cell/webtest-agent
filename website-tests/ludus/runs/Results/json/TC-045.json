@@ -1,0 +1,82 @@
+{
+  "id": "TC-045",
+  "title": "[LOGGED OUT] An open FAQ answer closes when its question is clicked again",
+  "area": "Store",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-10-30T09:09:51+08:00",
+  "ended": "2026-10-30T09:10:20+08:00",
+  "duration_sec": 29,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner visible",
+      "ok": true,
+      "screenshot": "TC-045/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-045/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the FAQ section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "FAQ heading with 6 questions in view",
+      "ok": true,
+      "screenshot": "TC-045/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Who can help me with my purchase issue?\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Question clicked, answer expanded",
+      "ok": true,
+      "screenshot": "TC-045/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the answer \"If you need assistance with your purchase or wish to request a refund, contact Xsolla Customer Support.\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Answer shown: 'If you need assistance with your purchase or wish to request a refund, contact Xsolla Customer Support.'",
+      "ok": true,
+      "screenshot": "TC-045/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click \"Who can help me with my purchase issue?\" again",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the same question again",
+      "ok": true,
+      "screenshot": "TC-045/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the answer hidden again?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Answer text gone, chevron points down again, all 6 questions collapsed",
+      "ok": true,
+      "screenshot": "TC-045/step07.png"
+    }
+  ],
+  "replay_gif": "TC-045/TC-045_replay.gif",
+  "steps_pdf": "TC-045/TC-045_steps.pdf",
+  "evidence_folder": "TC-045/",
+  "run": "2026-10-30_0829"
+}

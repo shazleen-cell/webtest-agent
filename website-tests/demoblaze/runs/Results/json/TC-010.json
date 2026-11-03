@@ -1,0 +1,73 @@
+{
+  "id": "TC-010",
+  "title": "[LOGGED OUT] \"Previous\" goes back to the first page of products",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "FAILED",
+  "failed_step": 6,
+  "reason": "After Next then Previous, the list shows Nokia lumia 1520 ... Apple monitor 24 (9 items); Samsung galaxy s6 is missing and the list is not the original first page",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, first product Samsung galaxy s6",
+      "ok": true,
+      "screenshot": "TC-010/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Scroll down to the Previous and Next buttons below the products.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled; Previous and Next visible",
+      "ok": true,
+      "screenshot": "TC-010/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Next\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Next clicked; second page loaded",
+      "ok": true,
+      "screenshot": "TC-010/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is \"Apple monitor 24\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Page 2 shows Apple monitor 24, MacBook air, Dell i7 8gb, 2017 Dell 15.6 Inch, ASUS Full HD, MacBook Pro",
+      "ok": true,
+      "screenshot": "TC-010/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Previous\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Previous clicked; list reloaded",
+      "ok": true,
+      "screenshot": "TC-010/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is \"Samsung galaxy s6\" shown again as the first product?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Read after waiting: 9 cards, first is Nokia lumia 1520, then Nexus 6, Samsung galaxy s7, Iphone 6 32gb, Sony xperia z5, HTC One M9, Sony vaio i5, Sony vaio i7, Apple monitor 24. Samsung galaxy s6 not shown (list is the original page shifted by one).",
+      "ok": false,
+      "screenshot": "TC-010/step06_FAIL.png"
+    }
+  ],
+  "started": "2026-11-02T11:04:09+08:00",
+  "ended": "2026-11-02T11:04:47+08:00",
+  "duration_sec": 38,
+  "replay_gif": "TC-010/TC-010_replay.gif",
+  "steps_pdf": "TC-010/TC-010_steps.pdf",
+  "evidence_folder": "TC-010/",
+  "run": "2026-11-02_1059"
+}

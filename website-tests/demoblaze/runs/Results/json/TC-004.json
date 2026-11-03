@@ -1,0 +1,55 @@
+{
+  "id": "TC-004",
+  "title": "[LOGGED OUT] Carousel next arrow shows another slide",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-02T11:00:49",
+  "ended": "2026-11-02T11:01:16",
+  "duration_sec": 27,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded at https://www.demoblaze.com/",
+      "ok": true,
+      "screenshot": "TC-004/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a carousel with previous and next arrows shown at the top?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Carousel at the top with a previous (left) and a next (right) arrow, 3 slides",
+      "ok": true,
+      "screenshot": "TC-004/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Note which slide is shown, then click the next arrow (right) of the carousel.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Slide before the click: third slide (iphone1.jpg, two Samsung phones); clicked the right arrow",
+      "ok": true,
+      "screenshot": "TC-004/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a different slide shown now?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Active slide changed from iphone1.jpg to Samsung1.jpg (Samsung Note phones image)",
+      "ok": true,
+      "screenshot": "TC-004/step04.png"
+    }
+  ],
+  "replay_gif": "TC-004/TC-004_replay.gif",
+  "steps_pdf": "TC-004/TC-004_steps.pdf",
+  "evidence_folder": "TC-004/",
+  "run": "2026-11-02_1059"
+}

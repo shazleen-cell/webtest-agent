@@ -1,0 +1,64 @@
+{
+  "id": "TC-049",
+  "title": "[LOGGED OUT] Phone header shows the burger, logo and Login, with no side scroll",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-10-30T09:13:45+08:00",
+  "ended": "2026-10-30T09:14:08+08:00",
+  "duration_sec": 23,
+  "failed_step": null,
+  "reason": "Header correct and no horizontal scroll (emulation via Chrome mobileEmulation 390x844, DPR 3)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ with phone emulation (390x844) and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded in phone layout (390 wide); cookie banner and Add It to Home Screen banner visible",
+      "ok": true,
+      "screenshot": "TC-049/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown and dismissed",
+      "ok": true,
+      "screenshot": "TC-049/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown, close it with its X button (never Claim)",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; closed with X (Close pwa banner), Claim not clicked",
+      "ok": true,
+      "screenshot": "TC-049/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the header show a green burger button, the LUDUS logo and a green \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green burger button at left, LUDUS logo, green Login button at right",
+      "ok": true,
+      "screenshot": "TC-049/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Can the page NOT be scrolled sideways?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "scrollWidth 390 equals innerWidth 390; no horizontal scroll",
+      "ok": true,
+      "screenshot": "TC-049/step05.png"
+    }
+  ],
+  "replay_gif": "TC-049/TC-049_replay.gif",
+  "steps_pdf": "TC-049/TC-049_steps.pdf",
+  "evidence_folder": "TC-049/",
+  "run": "2026-10-30_0829"
+}

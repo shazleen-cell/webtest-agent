@@ -1,0 +1,55 @@
+{
+  "id": "TC-028",
+  "title": "[LOGGED OUT] Phone menu is closed until the burger is tapped",
+  "area": "Header",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-02T11:18:44",
+  "ended": "2026-11-02T11:18:52",
+  "duration_sec": 8,
+  "failed_step": 2,
+  "reason": "Menu items are already shown when the page opens (not hidden); after tapping the burger all six are still shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://www.demoblaze.com/ with phone emulation (390x844) and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, title STORE",
+      "ok": true,
+      "screenshot": "TC-028/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Are the menu items (\"Home\", \"Contact\", \"Cart\", ...) hidden when the page opens?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Home, Contact, About us, Cart, Log in, Sign up are all visible in the header on load; Toggle navigation button reported [collapsed] but menu is not collapsed",
+      "ok": false,
+      "screenshot": "TC-028/step02_FAIL.png"
+    },
+    {
+      "n": 3,
+      "text": "Tap the burger button (\"Toggle navigation\") at the top right once.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Button became [expanded] and shows a focus outline; no visible change in the menu",
+      "ok": true,
+      "screenshot": "TC-028/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are \"Home\", \"Contact\", \"About us\", \"Cart\", \"Log in\" and \"Sign up\" shown now?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "All six links are shown",
+      "ok": true,
+      "screenshot": "TC-028/step04.png"
+    }
+  ],
+  "replay_gif": "TC-028/TC-028_replay.gif",
+  "steps_pdf": "TC-028/TC-028_steps.pdf",
+  "evidence_folder": "TC-028/",
+  "run": "2026-11-02_1059"
+}

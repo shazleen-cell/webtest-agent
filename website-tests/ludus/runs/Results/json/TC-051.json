@@ -1,0 +1,64 @@
+{
+  "id": "TC-051",
+  "title": "[LOGGED OUT] Phone cookie \"Dismiss\" button is not covered by other elements",
+  "area": "Cookie banner",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-10-30T09:15:17+08:00",
+  "ended": "2026-10-30T09:15:40+08:00",
+  "duration_sec": 23,
+  "failed_step": 4,
+  "reason": "Dismiss button is partly covered by the Add It to Home Screen banner",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser with phone emulation (iPhone 14 size, 390x844) and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 390x844; cookie banner visible at bottom",
+      "ok": true,
+      "screenshot": "TC-051/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 3 s; banner still shown",
+      "ok": true,
+      "screenshot": "TC-051/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a banner with the title \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner \"How we use cookies\" shown with cookie policy link and Dismiss button",
+      "ok": true,
+      "screenshot": "TC-051/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the \"Dismiss\" button fully visible, not covered by the \"Add It to Home Screen\" banner or the round Referral button?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Dismiss button (y 754-794 of 844) has its lower part covered by the \"Add It to Home Screen\" banner; elementFromPoint at its bottom edge returned the banner text. Only the label is visible, the button is cut off at the bottom.",
+      "ok": false,
+      "screenshot": "TC-051/step04_FAIL.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; cookie banner closed",
+      "ok": true,
+      "screenshot": "TC-051/step05.png"
+    }
+  ],
+  "replay_gif": "TC-051/TC-051_replay.gif",
+  "steps_pdf": "TC-051/TC-051_steps.pdf",
+  "evidence_folder": "TC-051/",
+  "run": "2026-10-30_0829"
+}
