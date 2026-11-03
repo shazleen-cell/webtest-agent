@@ -20,18 +20,19 @@ The right answers are in `golden.json`. For the copied cases they come from the 
 ## How to run it
 
 1. Copy `website-tests/demoblaze/settings.local.md` to this folder (git ignores it). EV-009 needs `{TEST_USERNAME}` and EV-020 needs `{TEST_PASSWORD}`.
-2. In Claude Code: `/run-tests demoblaze-eval`
-3. Score the run:
-   ```
-   python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval
-   ```
-   It prints a scorecard and saves it in the run folder as **`eval_report.html`** (open this one: verdict, scores, results by kind and every case with links to its evidence), `eval_score.md` and `eval_score.json`.
+2. In Claude Code: `/evaluate-agent`
 
-To compare setups, change the setup (for example `model:` or `effort:` in `.claude/agents/website-tester.md`), run step 2 again, then score every run together:
-```
-python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval --all
-```
-This also writes `runs/eval_comparison.html`: a table with one row per run and a grid of every case in every run. It marks **flaky** cases: cases whose result changed between runs of the same tester model. Run each setup at least twice to see flakiness.
+It runs the 22 cases the same way as `/run-tests` (same batches, safety check and evidence), scores the run against `golden.json`, and tells you the verdict, the key numbers and every wrong case. It saves the scorecard in the run folder as **`eval_report.html`** (open this one: verdict, scores, results by kind and every case with links to its evidence), `eval_score.md` and `eval_score.json`.
+
+| Command | What it does |
+|---|---|
+| `/evaluate-agent` | Runs the eval set, scores the new run and compares it with earlier runs |
+| `/evaluate-agent score` | Scores the newest run again. Nothing runs in the browser. |
+| `/evaluate-agent compare` | Scores every run and builds the comparison. Nothing runs in the browser. |
+
+Without Claude Code commands, the same steps are `/run-tests demoblaze-eval`, then `python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval` (add `--all` to compare runs).
+
+To compare setups, change `model:` or `effort:` in `.claude/agents/website-tester.md`, run `/evaluate-agent` again, then set it back. Each scored set of runs also writes `runs/eval_comparison.html`: a table with one row per run and a grid of every case in every run. It marks **flaky** cases: cases whose result changed between runs of the same tester model. Run each setup at least twice to see flakiness.
 
 ## What the scorecard measures
 

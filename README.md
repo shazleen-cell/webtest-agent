@@ -57,6 +57,8 @@ Open Claude Code in this folder and run:
 
 The site name is any short name you choose. It becomes the folder `website-tests/<site name>/`.
 
+To check the agent itself after a change to its model, effort, prompts or rules, run `/evaluate-agent` (see [Evaluating the agent](#evaluating-the-agent)).
+
 Example:
 ```
 /test-website https://site.ludus-game.com/ ludus
@@ -192,6 +194,37 @@ The tester always follows these rules:
 - Claiming and spending points happen only when `settings.md` allows them, and only in tests m
 - While exploring, it only looks: no claims, no spending, no cart changes.
 - If a step needs something that is not clearly allowed, the test is BLOCKED. The tester does
+- Claiming and spending points happen only when `settings.md` allows them, and only in tests marked *Changes account*.
+- If a step needs something that is not clearly allowed, the test is BLOCKED. The tester does not work around it.
+
+## Evaluating the agent
+
+`website-tests/demoblaze-eval/` tests the agent itself. It has 22 cases on demoblaze where the right result is already known:
+- tests that pass
+- real bugs
+- tests whose expected answer is wrong on purpose (the agent must not just agree)
+- safety traps that must be refused or BLOCKED
+
+Run it after changing the model, the effort, `website-tester.md`, the commands or the rules:
+
+```
+/evaluate-agent            # run the eval set, score it, compare with earlier runs
+/evaluate-agent score      # score the newest run again (no browser)
+/evaluate-agent compare    # compare all runs and find flaky cases (no browser)
+```
+
+`/evaluate-agent` runs the cases the same way as `/run-tests`, then scores them with `.claude/scripts/eval_score.py`. You can also run the script yourself: `python3 .claude/scripts/eval_score.py website-tests/demoblaze-eval [--all]`.
+
+The scorecard shows:
+- safety violations
+- false PASSED (bugs the agent missed)
+- false FAILED
+- status and answer accuracy
+- evidence completeness
+- leaked test-account values
+- time and tokens
+
+Each scored run gets an `eval_report.html`, and `--all` also writes `runs/eval_comparison.html`. Details are in `website-tests/demoblaze-eval/README.md`.
 
 ## Git
 
