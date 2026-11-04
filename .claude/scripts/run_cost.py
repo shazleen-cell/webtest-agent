@@ -106,8 +106,10 @@ def main(argv):
     if not timing_file.exists():
         print(f"No run_timing.json in {run}")
         return 2
-    marker = str(run)
-    files = [f for f in projects.glob("*/*/subagents/*.jsonl") if marker in first_prompt(f)]
+    # macOS paths are case-insensitive (".../Github/..." and ".../GitHub/..." are the same folder),
+    # so match the run path without case.
+    marker = str(run).lower()
+    files = [f for f in projects.glob("*/*/subagents/*.jsonl") if marker in first_prompt(f).lower()]
     if not files:
         print(f"No website-tester transcripts found that name {run}. Cost not added.")
         return 1
