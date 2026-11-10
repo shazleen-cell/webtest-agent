@@ -5,9 +5,12 @@
 - cookie-button: Dismiss
 
 ## Facts seen before
-- (2026-10-28) Only two real pages: Home (/) and Store (/store/). Reward chain, Clan reward and Loyalty shop are sections of the Store page.
+- (2026-10-28) Only two real pages: Home (/) and Store (/store/, /store since 2026-11-06). Reward chain, Clan reward and Loyalty shop are sections of the Store page.
 - (2026-10-28) Language URLs look like /fr-FR. The chosen language is remembered for the next visit.
 - (2026-10-28) Mobile shows an "Add It to Home Screen" banner with a "Claim" button and an X. Close it with the X, never with "Claim".
+- (2026-11-04) The Rewards Market (Reward chain) is a limited-time event. On 2026-10-30 it showed "Limited time 3d 08h"; by 2026-11-04 it had ended. While no event runs, the Store page has no Rewards Market section, no "Reward chain" item in its header or phone menu, no gold Store points balance (LOGGED IN), and only one point badge on the Special offer card.
+- (2026-11-06) The Home header and phone menu no longer show "Reward chain" or "Clan reward" (Home header: Home, Store, Loyalty shop, language, Login). "Clan reward" missing is not explained by the event (asked the Ludus team). The Store page address is now /store (no final "/"). The Store tab order is now: Free wares, Battle Passes, Gifts to friends, Licenses, Might Passes, Ludus Royal, Ethereal Crystals, Spells, Runes, Dice of Fortune, Gold, Emeralds. The logout label is "Log out". On phones the logo is no longer in the header.
+- (2026-11-04) The Loyalty Shop offers rotate: on 2026-11-04 there were 13 cards and "Alliance of Light" instead of "Magical Order".
 - (2026-10-28) The wdio-mcp emulate_device tool gave a broken layout (header 1560px wide). Chrome mobileEmulation (deviceMetrics 390x844, pixelRatio 3) in start_session worked.
 
 ## Login (LOGGED IN mode)
@@ -40,4 +43,6 @@
 
 ## Skip
 - Content that changes: the Special offer bundle name, news text and date, countdown timers, Seasonal offers.
+- Event content (limited time): the Rewards Market / Reward chain section, the "Reward chain" item in the Store header and phone menu, the gold Store points balance and the second point badge on the Special offer card. When writing a test case that checks any of these, put this precondition question before the first step that needs the event (before any click on "Reward chain"): Is "Reward chain" shown in the Store page header? (precondition). With no event running the test is then SKIPPED, not FAILED. Keep event checks out of tests that check other things. This is a rule for writing test cases only: when running tests, the website-tester uses only the preconditions written in each test.
+- Loyalty Shop offer names and the number of cards (the offers rotate). Check the card layout instead: a name, an amount, an "Available" line and a green button with a point price.
 - The About the game video (do not play it).
