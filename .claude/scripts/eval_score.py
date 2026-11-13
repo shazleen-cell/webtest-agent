@@ -60,7 +60,10 @@ def evidence_missing(run, tc, result):
         shot = s.get("screenshot")
         if not shot or not (run / shot).exists():
             missing.append(f"step {s.get('n')} screenshot")
-    for name in (f"{tc}_replay.gif", f"{tc}_steps.pdf", f"{tc}_trace.zip"):
+    # The replay counts when either the MP4 (newer runs) or the GIF (older runs) exists.
+    if not any((run / tc / f"{tc}_replay.{ext}").exists() for ext in ("mp4", "gif")):
+        missing.append(f"{tc}_replay.mp4 or .gif")
+    for name in (f"{tc}_steps.pdf", f"{tc}_trace.zip"):
         if not (run / tc / name).exists():
             missing.append(name)
     return missing
@@ -74,7 +77,7 @@ def score_case(tc, g, result, refused):
     if result:
         c["why"] = result.get("reason") or ""
         c["failed_step_actual"] = result.get("failed_step")
-        c["gif"] = result.get("replay_gif")
+        c["gif"] = result.get("replay_mp4") or result.get("replay_gif")
         c["fail_shot"] = next((s.get("screenshot") for s in result.get("steps", []) if s.get("ok") is False), None)
 
     steps = {str(s.get("n")): s for s in (result or {}).get("steps", [])}

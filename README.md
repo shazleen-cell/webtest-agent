@@ -14,10 +14,11 @@ It was built for game web shops (first site: [LUDUS](https://site.ludus-game.com
 - [Claude Code](https://claude.com/claude-code)
 - Google Chrome
 - [Node.js](https://nodejs.org/) 18 or newer (for `npx`, which starts the browser tool)
-- Python 3 with `openpyxl` and `pillow`:
+- Python 3 with `openpyxl`, `pillow` and `imageio-ffmpeg` (which brings its own ffmpeg, used for the replay videos):
   ```
-  pip3 install --user openpyxl pillow
+  pip3 install --user openpyxl pillow imageio-ffmpeg
   ```
+  If ffmpeg is already installed (for example with `brew install ffmpeg`), `imageio-ffmpeg` is not needed. Without ffmpeg the tests still run, but each test gets only a replay GIF, not a video.
 
 The browser tool, the **wdio-mcp** MCP server (`@wdio/mcp`), is set up by `.mcp.json` in this repo. You don't install it yourself.
 
@@ -41,7 +42,7 @@ The browser tool, the **wdio-mcp** MCP server (`@wdio/mcp`), is set up by `.mcp.
 
    Without the value, LOGGED OUT tests still run, but LOGGED IN tests stop and ask for it.
 
-A fresh clone has the summary reports (`runs/Results/results.html` and `results.xlsx`) but no evidence: screenshots, replay GIFs and traces stay on the computer that ran the tests. To build new reports, do at least one run yourself.
+A fresh clone has the summary reports (`runs/Results/results.html` and `results.xlsx`) but no evidence: screenshots, replay videos and GIFs, and traces stay on the computer that ran the tests. To build new reports, do at least one run yourself.
 
 ## Quick start
 
@@ -88,13 +89,13 @@ LOGGED IN tests that claim a reward or spend points change the test account for 
 There are two roles:
 
 1. **The main Claude Code session (coordinator).** It follows the slash commands in `.claude/commands/`. It explores the site, writes the test cases, splits the approved tests into batches of 5 and builds the reports.
-2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. It runs on Sonnet (`model: sonnet` in that file), while the coordinator uses the model of your Claude Code session. One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a replay GIF, a steps PDF and a browser trace zip.
+2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. It runs on Sonnet (`model: sonnet` in that file), while the coordinator uses the model of your Claude Code session. One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a replay video (MP4) and GIF, a steps PDF and a browser trace zip.
 
 The opt-in rules are in `.claude/rules/opt-in.md`. The Python scripts in `.claude/scripts/` build the evidence and reports:
 
 | Script | Used by | What it does |
 |---|---|---|
-| `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay GIF and steps PDF |
+| `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay video (MP4), replay GIF and steps PDF |
 | `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
 | `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
 | `report_html.py` | both report scripts | The shared HTML report layout |
@@ -181,7 +182,7 @@ Only rows with *Approved* = Yes are run. You can edit, add or remove test cases 
 
 A FAILED test is not always a bug on the site. Sometimes the test's wording or expected answer is wrong, so check the screenshot of the failed step before reporting a bug.
 
-wdio-mcp cannot record video. Each test has a replay GIF of its step screenshots instead, plus a trace zip you can open at https://trace.playwright.dev.
+wdio-mcp cannot record the screen. Instead, each test has a replay video (MP4) of its step screenshots, 1.5 seconds per step, with the step number and PASSED or FAILED on each frame. You can pause it and jump to any step. The report shows it on each test's page. A replay GIF with the same frames is kept for older runs and for places that cannot play video, and a trace zip can be opened at https://trace.playwright.dev.
 
 ## Safety rules
 
@@ -236,7 +237,7 @@ Test evidence is large (about 1 GB per run), so `.gitignore` keeps it out of git
 
 | In git (summary reports) | Not in git (stays on this computer) |
 |---|---|
-| `runs/Results/results.html`, `results.xlsx`, `README.md`, `json/` | Screenshots, replay GIFs, steps PDFs and trace zips |
+| `runs/Results/results.html`, `results.xlsx`, `README.md`, `json/` | Screenshots, replay videos and GIFs, steps PDFs and trace zips |
 | `runs/<run>/eval_report.html`, `eval_score.md`, `eval_score.json` | The run folders themselves (`runs/<date_time>/report.html` and evidence) |
 | `runs/eval_comparison.html` | `explore/` screenshots, `.trace/`, `settings.local.md`, `.claude/settings.local.json` |
 

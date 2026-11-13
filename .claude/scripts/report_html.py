@@ -166,7 +166,7 @@ tbody tr[data-go]{cursor:pointer}tbody tr[data-go]:hover{background:var(--bg)}
 .acct h3{margin:0 0 6px;font-size:15px}
 .evid{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .btn{display:inline-block;font-size:14px;padding:5px 12px;border:1px solid var(--line);border-radius:6px;color:inherit;text-decoration:none;background:var(--card)}.btn:hover{border-color:var(--mut)}
-.replay{margin:0 0 8px}.replay summary{cursor:pointer;color:var(--mut);font-size:14px}.replay img{width:640px;max-width:100%;border:1px solid var(--line);border-radius:6px;margin-top:8px}
+.replay{margin:0 0 8px}.replay summary{cursor:pointer;color:var(--mut);font-size:14px}.replay img,.replay video{width:640px;max-width:100%;border:1px solid var(--line);border-radius:6px;margin-top:8px;display:block}.replay .alt{font-size:13px;color:var(--mut);margin:4px 0 0}
 .shead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:22px 0 6px}.shead h3{margin:0;font-size:16px}.tools{display:flex;gap:6px}.tools button{font-size:13px}
 .steps{border-top:1px solid var(--line)}
 .step{border-bottom:1px solid var(--line)}
@@ -200,7 +200,7 @@ JS = """
   var $ = function (s, r) { return (r || document).querySelector(s) }
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)) }
   var f = { verdict: 'ALL', mode: 'ALL', cat: 'ALL', prio: 'ALL' }, query = ''
-  function loadImgs(root) { $$('img[data-src]', root).forEach(function (i) { i.src = i.dataset.src; i.removeAttribute('data-src') }) }
+  function loadImgs(root) { $$('img[data-src],video[data-src]', root).forEach(function (i) { i.src = i.dataset.src; i.removeAttribute('data-src') }) }
   function visibleItems() { return $$('.item').filter(function (a) { return !a.hidden }) }
   function current() { return (location.hash || '#overview').slice(1) }
   function show() {
@@ -208,6 +208,7 @@ JS = """
     var target = document.getElementById(id)
     if (!target || !target.classList.contains('view')) { id = 'overview'; target = document.getElementById('overview') }
     $$('.view').forEach(function (v) { v.hidden = v !== target })
+    $$('video').forEach(function (v) { if (!target.contains(v)) v.pause() })
     $$('.item').forEach(function (a) { a.classList.toggle('cur', a.dataset.id === id) })
     $$('.links a').forEach(function (a) { a.classList.toggle('cur', a.getAttribute('href') === '#' + id) })
     $$('details[open]', target).forEach(loadImgs)
@@ -251,7 +252,7 @@ JS = """
   $('.reset').onclick = function () { for (var k in f) f[k] = 'ALL'; query = ''; $('.search').value = ''; apply() }
   $('.search').addEventListener('input', function (e) { query = e.target.value.trim().toLowerCase(); apply() })
   $('.menubtn').onclick = function () { document.body.classList.toggle('menu') }
-  $$('details').forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) loadImgs(d) }) })
+  $$('details').forEach(function (d) { d.addEventListener('toggle', function () { if (d.open && !d.closest('.view[hidden]')) loadImgs(d) }) })
   $$('.prev').forEach(function (b) { b.onclick = function () { step(-1) } })
   $$('.next').forEach(function (b) { b.onclick = function () { step(1) } })
   $$('.expand').forEach(function (b) { b.onclick = function () { $$('details.step', b.closest('.case')).forEach(function (d) { d.open = true }) } })
@@ -437,7 +438,7 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
                    f'<td><span class="b b-{e(st.lower())}">{e(st)}</span></td><td>{e(t.get("priority"))}</td>'
                    f'<td class="nw hide-s">{mode_label(t)}</td>{run_td}<td class="nw hide-s">{e(t.get("duration_sec"))} s</td></tr>')
     out.append(f"""  </tbody></table></div>
-  <div class="foot">{intro}<p>There is no real video: wdio-mcp cannot record the screen. Each test has a replay GIF of its step screenshots and a browser trace zip instead.</p></div>
+  <div class="foot">{intro}<p>There is no screen recording: wdio-mcp cannot record the screen. Each test has a replay video (MP4, or a GIF in older runs) made from its step screenshots, and a browser trace zip.</p></div>
 </section>""")
 
     for vid, label, html_ in views:
@@ -483,7 +484,13 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
         if exists(f"{tid}/{tid}_trace.zip"): files.append(f'<a class="btn" href="{e(tid)}/{e(tid)}_trace.zip">Trace zip</a>')
         out.append(f'  <div class="evid">{"".join(files)}</div>')
         gif = t.get("replay_gif") or f"{tid}/{tid}_replay.gif"
-        if exists(gif):
+        mp4 = t.get("replay_mp4") or f"{tid}/{tid}_replay.mp4"
+        if exists(mp4):
+            alt = f' · <a href="{e(gif)}" target="_blank">GIF</a>' if exists(gif) else ""
+            out.append(f'  <details class="replay" open><summary>Replay of all steps (video, 1.5 s per step)</summary>'
+                       f'<video data-src="{e(mp4)}" controls preload="metadata" playsinline></video>'
+                       f'<p class="alt"><a href="{e(mp4)}" target="_blank">Open the video</a>{alt}</p></details>')
+        elif exists(gif):
             out.append(f'  <details class="replay"><summary>Replay of all steps (GIF)</summary><a href="{e(gif)}" target="_blank"><img data-src="{e(gif)}" alt="{e(tid)} replay"></a></details>')
         out.append(f'  <div class="shead"><h3>Steps ({len(steps)})</h3><div class="tools"><button class="expand">Expand all</button>'
                    '<button class="collapse">Collapse all</button></div></div>\n  <div class="steps">')
