@@ -20,7 +20,7 @@ website-tests/*/explore/
 .trace/
 
 # Test runs and evidence stay on this computer only (about 1 GB per run):
-# screenshots, replay videos and GIFs, steps PDFs, trace zips (can contain typed passwords) and the run folders.
+# screenshots, screen recordings, replay videos and GIFs, steps PDFs, trace zips (can contain typed passwords) and the run folders.
 # Only the small summary reports go to git (about 1-2 MB per site), so QA can read the results in a clone.
 # The evidence links inside results.html only work on a computer that has the evidence.
 website-tests/*/runs/**

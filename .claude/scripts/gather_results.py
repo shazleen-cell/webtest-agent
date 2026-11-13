@@ -143,7 +143,7 @@ for r in [["Site", NAME], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v
          [["Full run time (sec)", timing["full"] if timing else ""], ["Coordinator time (sec)", timing["coordinator"] if timing else ""],
           ["website-tester agent time (sec)", timing["tester"] if timing else ""], ["Test step time (sec)", total_sec],
           ["Tokens (website-tester, latest full run)", timing["tokens"] if timing else ""], ["Token run", timing["token_run"] if timing else ""], ["Tool calls (same run)", timing["tool_calls"] if timing else ""]] + [["Runs used", ", ".join(runs_used)], ["Report", "results.html"],
-          ["Video", "Replay videos (MP4) made from the step screenshots; older runs have replay GIFs. No screen recording (wdio-mcp cannot record the screen); see the trace zips"]]:
+          ["Video", "Screen recordings of the browser (when available), replay videos of the step screenshots (GIFs in older runs) and trace zips"]]:
     ws.append(r)
 ws.column_dimensions["A"].width = 18; ws.column_dimensions["B"].width = 90
 wr = wb.create_sheet("Results"); wr.append(hdr)

@@ -237,12 +237,24 @@ def main(json_path):
             tc.pop("replay_mp4", None)
         else:
             tc["replay_mp4"] = f"{tc_id}/{tc_id}_replay.mp4"
+    # The screen recording is made by browser_recorder.py during the test, when it was available.
+    if os.path.exists(os.path.join(folder, f"{tc_id}_screen.mp4")):
+        tc["screen_mp4"] = f"{tc_id}/{tc_id}_screen.mp4"
+        # Where each step is in that video (seconds), written by browser_recorder.py.
+        sj = os.path.join(folder, f"{tc_id}_screen.json")
+        if os.path.exists(sj):
+            with open(sj, encoding="utf-8") as f:
+                tc["screen_steps"] = json.load(f).get("steps", {})
+    else:
+        tc.pop("screen_mp4", None)
+        tc.pop("screen_steps", None)
     tc["evidence_folder"] = f"{tc_id}/"
     tc["steps"] = steps
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(tc, f, ensure_ascii=False, indent=2)
     made = ("gif+mp4+pdf" if tc.get("replay_mp4") else "gif+pdf") + " written" if frames else "gif+pdf skipped"
     print(f"{tc_id}: {len(frames)} frames, {made}"
+          + (", screen recording found" if tc.get("screen_mp4") else ", no screen recording")
           + (f", mp4 skipped: {mp4_note}" if frames and mp4_note else "")
           + (f", missing screenshots for steps {missing}" if missing else ""))
 

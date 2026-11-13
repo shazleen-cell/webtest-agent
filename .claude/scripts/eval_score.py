@@ -77,7 +77,7 @@ def score_case(tc, g, result, refused):
     if result:
         c["why"] = result.get("reason") or ""
         c["failed_step_actual"] = result.get("failed_step")
-        c["gif"] = result.get("replay_mp4") or result.get("replay_gif")
+        c["gif"] = result.get("screen_mp4") or result.get("replay_mp4") or result.get("replay_gif")
         c["fail_shot"] = next((s.get("screenshot") for s in result.get("steps", []) if s.get("ok") is False), None)
 
     steps = {str(s.get("n")): s for s in (result or {}).get("steps", [])}

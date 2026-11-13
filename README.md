@@ -13,7 +13,7 @@ It was built for game web shops (first site: [LUDUS](https://site.ludus-game.com
 
 - [Claude Code](https://claude.com/claude-code)
 - Google Chrome
-- [Node.js](https://nodejs.org/) 18 or newer (for `npx`, which starts the browser tool)
+- [Node.js](https://nodejs.org/) 22 or newer (for `npx`, which starts the browser tool, and for the screen recorder). With Node 18 to 21 the tests still run, but without screen recordings.
 - Python 3 with `openpyxl`, `pillow` and `imageio-ffmpeg` (which brings its own ffmpeg, used for the replay videos):
   ```
   pip3 install --user openpyxl pillow imageio-ffmpeg
@@ -42,7 +42,7 @@ The browser tool, the **wdio-mcp** MCP server (`@wdio/mcp`), is set up by `.mcp.
 
    Without the value, LOGGED OUT tests still run, but LOGGED IN tests stop and ask for it.
 
-A fresh clone has the summary reports (`runs/Results/results.html` and `results.xlsx`) but no evidence: screenshots, replay videos and GIFs, and traces stay on the computer that ran the tests. To build new reports, do at least one run yourself.
+A fresh clone has the summary reports (`runs/Results/results.html` and `results.xlsx`) but no evidence: screenshots, screen recordings, replay videos and GIFs, and traces stay on the computer that ran the tests. To build new reports, do at least one run yourself.
 
 ## Quick start
 
@@ -89,13 +89,14 @@ LOGGED IN tests that claim a reward or spend points change the test account for 
 There are two roles:
 
 1. **The main Claude Code session (coordinator).** It follows the slash commands in `.claude/commands/`. It explores the site, writes the test cases, splits the approved tests into batches of 5 and builds the reports.
-2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. It runs on Sonnet (`model: sonnet` in that file), while the coordinator uses the model of your Claude Code session. One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a replay video (MP4) and GIF, a steps PDF and a browser trace zip.
+2. **The `website-tester` agent (worker),** defined in `.claude/agents/website-tester.md`. It runs on Sonnet (`model: sonnet` in that file), while the coordinator uses the model of your Claude Code session. One agent is started for each batch, and the batches run one after another. It follows each test's steps exactly, takes a screenshot after every step, and writes a result JSON plus evidence: a screen recording of the browser, a replay video (MP4) and GIF of the step screenshots, a steps PDF and a browser trace zip.
 
 The opt-in rules are in `.claude/rules/opt-in.md`. The Python scripts in `.claude/scripts/` build the evidence and reports:
 
 | Script | Used by | What it does |
 |---|---|---|
 | `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay video (MP4), replay GIF and steps PDF |
+| `browser_recorder.py` + `screen_recorder.mjs` | website-tester | Opens Chrome for one test with a screen recorder, and turns the recording into `<TC ID>_screen.mp4` |
 | `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
 | `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
 | `report_html.py` | both report scripts | The shared HTML report layout |
@@ -182,7 +183,11 @@ Only rows with *Approved* = Yes are run. You can edit, add or remove test cases 
 
 A FAILED test is not always a bug on the site. Sometimes the test's wording or expected answer is wrong, so check the screenshot of the failed step before reporting a bug.
 
-wdio-mcp cannot record the screen. Instead, each test has a replay video (MP4) of its step screenshots, 1.5 seconds per step, with the step number and PASSED or FAILED on each frame. You can pause it and jump to any step. The report shows it on each test's page. A replay GIF with the same frames is kept for older runs and for places that cannot play video, and a trace zip can be opened at https://trace.playwright.dev.
+Each test page in the report has up to three ways to watch the test:
+
+- **Screen recording** (`<TC ID>_screen.mp4`): the real browser while the test ran: pages loading, scrolling, popups opening. wdio-mcp cannot record the screen itself, so `browser_recorder.py` opens Chrome with Chrome's own screencast running, and wdio-mcp attaches to that Chrome. Pauses longer than 1 second (mostly the agent thinking between steps) are shortened to 1 second. It records one browser tab, so a popup that opens a new window is not in it. It shows everything on screen, including the player name and anything typed (password fields show only dots), so like the screenshots and traces it stays on the computer that ran the tests. If Chrome or Node 22 is missing, tests run without it. A failed step has a "Watch step N in the screen recording" button that starts the video where that step began (for a failed question, at the action before it), and every step has the same button in its details. The step times come from when each step screenshot was saved, and are kept in `<TC ID>_screen.json`.
+- **Replay video** (`<TC ID>_replay.mp4`): the step screenshots, 1.5 seconds per step, with the step number and PASSED or FAILED on each frame. A replay GIF with the same frames is kept for older runs and for places that cannot play video.
+- **Trace zip**: open it at https://trace.playwright.dev.
 
 ## Safety rules
 
@@ -237,7 +242,7 @@ Test evidence is large (about 1 GB per run), so `.gitignore` keeps it out of git
 
 | In git (summary reports) | Not in git (stays on this computer) |
 |---|---|
-| `runs/Results/results.html`, `results.xlsx`, `README.md`, `json/` | Screenshots, replay videos and GIFs, steps PDFs and trace zips |
+| `runs/Results/results.html`, `results.xlsx`, `README.md`, `json/` | Screenshots, screen recordings, replay videos and GIFs, steps PDFs and trace zips |
 | `runs/<run>/eval_report.html`, `eval_score.md`, `eval_score.json` | The run folders themselves (`runs/<date_time>/report.html` and evidence) |
 | `runs/eval_comparison.html` | `explore/` screenshots, `.trace/`, `settings.local.md`, `.claude/settings.local.json` |
 
