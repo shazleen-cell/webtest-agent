@@ -120,7 +120,10 @@ website-tests/<site>/
     <date_time>/       one folder per run: report.html, results.xlsx, results.csv, run_timing.json, evidence (not in git)
     Results/           newest result of every test from all runs: results.html, results.xlsx, README.md, json/ (in git); evidence folders (not in git)
     Results_<a>_to_<b>/ same, but only from the runs named in /gather-results
+  archive/<date>-<reason>/  the old site-map.md, testcases.xlsx and runs/ when a test suite is replaced
 ```
+
+When you replace a site's test suite and the TC IDs get new meanings, move the old `site-map.md`, `testcases.xlsx`, run folders and `Results/` into `archive/<date>-<reason>/`. Otherwise `/gather-results` without run names would mix old and new tests that share a TC ID. Archived runs follow the same git rules as `runs/`: only the `Results` summary files are in git.
 
 ## settings.md
 

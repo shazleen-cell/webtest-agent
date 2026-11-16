@@ -34,6 +34,13 @@ website-tests/*/runs/**
 !website-tests/*/runs/Results_*/results.html
 !website-tests/*/runs/Results_*/results.xlsx
 !website-tests/*/runs/Results_*/json/*.json
+# Archived runs (moved to archive/<date>-<reason>/runs/ when a test suite is replaced): same rules as runs/
+website-tests/*/archive/*/runs/**
+!website-tests/*/archive/*/runs/**/
+!website-tests/*/archive/*/runs/Results*/README.md
+!website-tests/*/archive/*/runs/Results*/results.html
+!website-tests/*/archive/*/runs/Results*/results.xlsx
+!website-tests/*/archive/*/runs/Results*/json/*.json
 # Agent evaluation scorecards (built by /evaluate-agent)
 !website-tests/*/runs/*/eval_report.html
 !website-tests/*/runs/*/eval_score.md
