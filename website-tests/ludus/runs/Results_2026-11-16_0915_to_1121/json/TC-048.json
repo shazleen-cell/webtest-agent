@@ -1,0 +1,65 @@
+{
+  "id": "TC-048",
+  "title": "[LOGGED OUT] Phone cookie banner is shown and \"Dismiss\" closes it",
+  "area": "Cookie banner",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T10:26:28",
+  "ended": "2026-11-16T10:27:04",
+  "duration_sec": 36,
+  "failed_step": null,
+  "reason": "All answers match. No screen recording (Chrome mobileEmulation session, not attached).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 390x844 emulation.",
+      "ok": true,
+      "screenshot": "TC-048/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Wait 3 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 3 seconds; banner still shown.",
+      "ok": true,
+      "screenshot": "TC-048/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a banner titled \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Bottom banner titled 'How we use cookies' with a Dismiss button.",
+      "ok": true,
+      "screenshot": "TC-048/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss.",
+      "ok": true,
+      "screenshot": "TC-048/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner gone; page text no longer contains 'How we use cookies'. The 'Add It to Home Screen' banner appeared at the bottom.",
+      "ok": true,
+      "screenshot": "TC-048/step05.png"
+    }
+  ],
+  "replay_gif": "TC-048/TC-048_replay.gif",
+  "steps_pdf": "TC-048/TC-048_steps.pdf",
+  "replay_mp4": "TC-048/TC-048_replay.mp4",
+  "evidence_folder": "TC-048/",
+  "run": "2026-11-16_0915"
+}

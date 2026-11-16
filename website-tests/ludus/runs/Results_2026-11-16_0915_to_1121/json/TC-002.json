@@ -1,0 +1,114 @@
+{
+  "id": "TC-002",
+  "title": "[LOGGED OUT] Cookie banner is shown on the first visit and \"Dismiss\" closes it for good",
+  "area": "Cookie banner",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:17:24",
+  "ended": "2026-11-16T09:18:21",
+  "duration_sec": 57,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-002/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner titled \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner with heading \"How we use cookies\" at the bottom of the page",
+      "ok": true,
+      "screenshot": "TC-002/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the banner say \"We only use essential cookies that allow us to run this service. Read our cookie policy to learn more.\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Text: \"We only use essential cookies that allow us to run this service. Read our cookie policy to learn more.\" (cookie policy is a link)",
+      "ok": true,
+      "screenshot": "TC-002/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-002/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner no longer on the page (page text has no \"How we use cookies\")",
+      "ok": true,
+      "screenshot": "TC-002/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Open https://site.ludus-game.com/store and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-002/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"How we use cookies\" banner still gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No banner on the Store page",
+      "ok": true,
+      "screenshot": "TC-002/step07.png"
+    }
+  ],
+  "replay_gif": "TC-002/TC-002_replay.gif",
+  "steps_pdf": "TC-002/TC-002_steps.pdf",
+  "replay_mp4": "TC-002/TC-002_replay.mp4",
+  "screen_mp4": "TC-002/TC-002_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 65.47
+    },
+    "2": {
+      "start": 65.47,
+      "end": 65.47
+    },
+    "3": {
+      "start": 65.47,
+      "end": 65.48
+    },
+    "4": {
+      "start": 65.48,
+      "end": 65.48
+    },
+    "5": {
+      "start": 65.48,
+      "end": 65.49
+    },
+    "6": {
+      "start": 65.49,
+      "end": 65.49
+    },
+    "7": {
+      "start": 65.49,
+      "end": 65.5
+    }
+  },
+  "evidence_folder": "TC-002/",
+  "run": "2026-11-16_0915"
+}

@@ -1,0 +1,75 @@
+{
+  "id": "TC-028",
+  "title": "[LOGGED OUT] Top of the \"Referral program\" panel is fully visible at 1440x900",
+  "area": "Referral",
+  "priority": "Low",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-028/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-028/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the white \"Referral program\" button at the bottom right.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Panel opened on the right",
+      "ok": true,
+      "screenshot": "TC-028/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the first line of the panel, \"Invite friends —\", fully visible inside the window (not cut off at the top)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Invite friends —\" is fully visible near the top of the panel, with a margin above it (panel top edge about 25px from the window top in the screenshot)",
+      "ok": true,
+      "screenshot": "TC-028/step04.png"
+    }
+  ],
+  "started": "2026-11-16T09:53:34+08:00",
+  "ended": "2026-11-16T09:54:19+08:00",
+  "duration_sec": 45,
+  "replay_gif": "TC-028/TC-028_replay.gif",
+  "steps_pdf": "TC-028/TC-028_steps.pdf",
+  "replay_mp4": "TC-028/TC-028_replay.mp4",
+  "screen_mp4": "TC-028/TC-028_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 21.96
+    },
+    "2": {
+      "start": 21.96,
+      "end": 32.67
+    },
+    "3": {
+      "start": 32.67,
+      "end": 41.9
+    },
+    "4": {
+      "start": 41.9,
+      "end": 47.11
+    }
+  },
+  "evidence_folder": "TC-028/",
+  "run": "2026-11-16_0915"
+}

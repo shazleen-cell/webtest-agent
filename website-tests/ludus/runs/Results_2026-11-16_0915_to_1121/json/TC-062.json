@@ -1,0 +1,75 @@
+{
+  "id": "TC-062",
+  "title": "[LOGGED OUT] Home links and buttons have names for screen readers",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-16T09:42:50",
+  "ended": "2026-11-16T09:43:42",
+  "duration_sec": 52,
+  "failed_step": 3,
+  "reason": "16 of 26 links have no accessible name (logo link, app store badges, 6 social icons, hidden duplicates)",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-062/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-062/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does every link on the page have an accessible name (text, aria-label, title or an image with alt text)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "26 links in the DOM, 16 have no name (no text, aria-label, title; images have alt=\"\"). Visible ones (10): header logo link (to the home page), App Store, Google Play and Web-Version badges, and 6 footer social links (YouTube, Twitter, TikTok, Discord, Instagram, Facebook). Others are hidden duplicates of the badges and 3 hidden gallery links in a modal.",
+      "ok": false,
+      "screenshot": "TC-062/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Does every button on the page have an accessible name?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "15 buttons in the DOM. All visible buttons have a name (text). 4 buttons have no name but are all hidden (not displayed): a hidden menu toggle and 3 close/password-toggle icon buttons inside modals. Counting hidden buttons the answer could be No (wording may be too strict, reviewer decides).",
+      "ok": true,
+      "screenshot": "TC-062/step04.png"
+    }
+  ],
+  "replay_gif": "TC-062/TC-062_replay.gif",
+  "steps_pdf": "TC-062/TC-062_steps.pdf",
+  "replay_mp4": "TC-062/TC-062_replay.mp4",
+  "screen_mp4": "TC-062/TC-062_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 20.4
+    },
+    "2": {
+      "start": 20.4,
+      "end": 41.61
+    },
+    "3": {
+      "start": 41.61,
+      "end": 46.8
+    },
+    "4": {
+      "start": 46.8,
+      "end": 52.36
+    }
+  },
+  "evidence_folder": "TC-062/",
+  "run": "2026-11-16_0915"
+}

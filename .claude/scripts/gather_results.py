@@ -1,22 +1,48 @@
 #!/usr/bin/env python3
 """Gather the newest result of every test into one self-contained Results/ folder.
-Usage: gather_results.py <runs dir> <site name>
-Sources: every run folder (runs/<run>/results/*.json) plus results already in Results/json/*.json.
+Usage: gather_results.py <runs dir> <site name> [run ...]
+Without run names: sources are every run folder (runs/<run>/results/*.json) plus results already in
+Results/json/*.json, and the output folder is runs/Results/.
+With run names (for example 2026-11-16_0915 2026-11-16_1121): sources are only those run folders, and the
+output folder is runs/Results_<first run>_to_<last run>/ (the date is left out of the last run when both runs
+are on the same day; one run gives runs/Results_<run>/). runs/Results/ is not touched.
 Copies only; never moves or deletes anything from the run folders.
-Writes Results/results.html, Results/results.xlsx, Results/json/<TC ID>.json and Results/<TC ID>/ evidence folders."""
+Writes <output>/results.html, results.xlsx, json/<TC ID>.json and <TC ID>/ evidence folders."""
 import glob, json, os, re, shutil, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill
 from report_html import COLORS, PRIOS, e, totals, render, load_categories, load_timing, run_time
 
+if len(sys.argv) < 3:
+    sys.exit(__doc__)
 RUNS, NAME = os.path.abspath(sys.argv[1]), sys.argv[2]
-OUT = os.path.join(RUNS, "Results")
+PICKED = sorted(dict.fromkeys(os.path.basename(a.rstrip("/")) for a in sys.argv[3:]))
+for r in PICKED:
+    if not glob.glob(os.path.join(RUNS, r, "results", "*.json")):
+        sys.exit(f"run folder {os.path.join(RUNS, r)} has no results/*.json")
+
+
+def out_name(picked):
+    if not picked:
+        return "Results"
+    first, last = picked[0], picked[-1]
+    if first == last:
+        return f"Results_{first}"
+    day = first.split("_")[0]
+    return f"Results_{first}_to_{last[len(day) + 1:] if last.startswith(day + '_') else last}"
+
+
+OUT = os.path.join(RUNS, out_name(PICKED))
 
 # Newest result per test: compare "ended", then run name.
 best = {}
-sources = [(p, os.path.dirname(os.path.dirname(p))) for p in glob.glob(os.path.join(RUNS, "*", "results", "*.json"))
-           if os.path.basename(os.path.dirname(os.path.dirname(p))) != "Results"]
-sources += [(p, OUT) for p in glob.glob(os.path.join(OUT, "json", "*.json"))]
+if PICKED:
+    # Only the named runs; earlier gathers of the same runs are rebuilt, not reused.
+    sources = [(p, os.path.join(RUNS, r)) for r in PICKED for p in glob.glob(os.path.join(RUNS, r, "results", "*.json"))]
+else:
+    sources = [(p, os.path.dirname(os.path.dirname(p))) for p in glob.glob(os.path.join(RUNS, "*", "results", "*.json"))
+               if not os.path.basename(os.path.dirname(os.path.dirname(p))).startswith("Results")]
+    sources += [(p, OUT) for p in glob.glob(os.path.join(OUT, "json", "*.json"))]
 for p, run_dir in sources:
     with open(p, encoding="utf-8") as f:
         t = json.load(f)
@@ -143,7 +169,7 @@ for r in [["Site", NAME], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v
          [["Full run time (sec)", timing["full"] if timing else ""], ["Coordinator time (sec)", timing["coordinator"] if timing else ""],
           ["website-tester agent time (sec)", timing["tester"] if timing else ""], ["Test step time (sec)", total_sec],
           ["Tokens (website-tester, latest full run)", timing["tokens"] if timing else ""], ["Token run", timing["token_run"] if timing else ""], ["Tool calls (same run)", timing["tool_calls"] if timing else ""]] + [["Runs used", ", ".join(runs_used)], ["Report", "results.html"],
-          ["Video", "Not available (wdio-mcp cannot record video); see replay GIFs and trace zips"]]:
+          ["Video", "Screen recordings of the browser (when available), replay videos of the step screenshots (GIFs in older runs) and trace zips"]]:
     ws.append(r)
 ws.column_dimensions["A"].width = 18; ws.column_dimensions["B"].width = 90
 wr = wb.create_sheet("Results"); wr.append(hdr)
@@ -173,3 +199,4 @@ for sh in (wr, wsS):
     sh.auto_filter.ref = sh.dimensions
 wb.save(os.path.join(OUT, "results.xlsx"))
 print(len(tests), tot, {p: sum(1 for t in tests if t.get("priority") == p) for p in PRIOS}, runs_used)
+print(f"output: {OUT}")

@@ -1,0 +1,114 @@
+{
+  "id": "TC-029",
+  "title": "[LOGGED OUT] \"Login\" opens the \"Log in to make purchases\" popup with a QR code",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-029/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-029/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the green \"Login\" button in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Login popup opened",
+      "ok": true,
+      "screenshot": "TC-029/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a popup titled \"LOG IN TO MAKE PURCHASES\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup titled \"LOG IN TO MAKE PURCHASES\" shown",
+      "ok": true,
+      "screenshot": "TC-029/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does it show \"Scan the QR code with your mobile device\" and a QR code?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "\"Scan the QR code with your mobile device\" and a QR code image shown",
+      "ok": true,
+      "screenshot": "TC-029/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the red close (x) button of the popup.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the Close button of the popup",
+      "ok": true,
+      "screenshot": "TC-029/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the popup gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup gone, home page visible again",
+      "ok": true,
+      "screenshot": "TC-029/step07.png"
+    }
+  ],
+  "started": "2026-11-16T09:54:31+08:00",
+  "ended": "2026-11-16T09:55:26+08:00",
+  "duration_sec": 55,
+  "replay_gif": "TC-029/TC-029_replay.gif",
+  "steps_pdf": "TC-029/TC-029_steps.pdf",
+  "replay_mp4": "TC-029/TC-029_replay.mp4",
+  "screen_mp4": "TC-029/TC-029_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 21.33
+    },
+    "2": {
+      "start": 21.33,
+      "end": 39.49
+    },
+    "3": {
+      "start": 39.49,
+      "end": 39.5
+    },
+    "4": {
+      "start": 39.5,
+      "end": 46.73
+    },
+    "5": {
+      "start": 46.73,
+      "end": 46.74
+    },
+    "6": {
+      "start": 46.74,
+      "end": 56.91
+    },
+    "7": {
+      "start": 56.91,
+      "end": 56.92
+    }
+  },
+  "evidence_folder": "TC-029/",
+  "run": "2026-11-16_0915"
+}

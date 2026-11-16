@@ -1,0 +1,88 @@
+{
+  "id": "TC-064",
+  "title": "[LOGGED OUT] Home and Store each have one h1 heading",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-16T09:44:59",
+  "ended": "2026-11-16T09:45:58",
+  "duration_sec": 59,
+  "failed_step": 3,
+  "reason": "Home has 0 h1 headings and Store has 0 h1 headings",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-064/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-064/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the Home page have exactly one h1 heading?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "querySelectorAll('h1,[role=heading][aria-level=1]') returned 0 elements on the Home page (headings present are h2/h3/h4, e.g. \"Latest news\" h2, \"You will get:\" h3).",
+      "ok": false,
+      "screenshot": "TC-064/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Open https://site.ludus-game.com/store and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded",
+      "ok": true,
+      "screenshot": "TC-064/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the Store page have exactly one h1 heading?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "querySelectorAll('h1,[role=heading][aria-level=1]') returned 0 elements on the Store page. The visible title \"LUDUS Official Webshop!\" is a paragraph with bold text, not a heading.",
+      "ok": false,
+      "screenshot": "TC-064/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-064/TC-064_replay.gif",
+  "steps_pdf": "TC-064/TC-064_steps.pdf",
+  "replay_mp4": "TC-064/TC-064_replay.mp4",
+  "screen_mp4": "TC-064/TC-064_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 25.88
+    },
+    "2": {
+      "start": 25.88,
+      "end": 36.93
+    },
+    "3": {
+      "start": 36.93,
+      "end": 42.21
+    },
+    "4": {
+      "start": 42.21,
+      "end": 60.96
+    },
+    "5": {
+      "start": 60.96,
+      "end": 66.14
+    }
+  },
+  "evidence_folder": "TC-064/",
+  "run": "2026-11-16_0915"
+}

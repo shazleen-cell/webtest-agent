@@ -1,0 +1,179 @@
+{
+  "id": "TC-079",
+  "title": "[LOGGED IN] Buying a Loyalty shop item without enough points shows a \"not enough points\" message",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:55:02",
+  "ended": "2026-11-16T09:57:06",
+  "duration_sec": 124,
+  "failed_step": null,
+  "reason": "All answers matched; message \"Not enough loyalty points. Earn more by making purchases.\" shown, balance unchanged at 40.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded.",
+      "ok": true,
+      "screenshot": "TC-079/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If a \"Login successful\" popup is shown, click \"Ok\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner dismissed; no Login successful popup.",
+      "ok": true,
+      "screenshot": "TC-079/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Player{TEST_USER_ID} button with balances 0 and 40, no Login button.",
+      "ok": true,
+      "screenshot": "TC-079/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the Loyalty shop section.",
+      "ok": true,
+      "screenshot": "TC-079/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Wait 2 seconds until the page stops scrolling.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 2 seconds; Loyalty shop cards visible.",
+      "ok": true,
+      "screenshot": "TC-079/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is at least one Loyalty shop price higher than the teal loyalty points balance in the header? (precondition)",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Balance 40. Prices: 1100, 550, 750, 550, 550, 300, 650, 180, 240, 350, 160, all higher than 40.",
+      "ok": true,
+      "screenshot": "TC-079/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the teal loyalty points balance shown in the header (note the number as the \"before\" value)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal balance 40 (before = 40); gold balance 0.",
+      "ok": true,
+      "screenshot": "TC-079/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the green point price button of the cheapest Loyalty shop card whose price is higher than the balance.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the 160 button on the Handful of dice card (cheapest price, 160 > 40).",
+      "ok": true,
+      "screenshot": "TC-079/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is a message shown that says there are not enough points (or the purchase is refused)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Toast: \"Not enough loyalty points. Earn more by making purchases.\"",
+      "ok": true,
+      "screenshot": "TC-079/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "If a popup is shown, close it with its close button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Closed the message with its X (Close) button.",
+      "ok": true,
+      "screenshot": "TC-079/step10.png"
+    },
+    {
+      "n": 11,
+      "text": "Is the teal loyalty points balance in the header the same as before?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Teal balance still 40.",
+      "ok": true,
+      "screenshot": "TC-079/step11.png"
+    },
+    {
+      "n": 12,
+      "text": "Was no payment window opened?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Only one tab open, no payment window.",
+      "ok": true,
+      "screenshot": "TC-079/step12.png"
+    }
+  ],
+  "replay_gif": "TC-079/TC-079_replay.gif",
+  "steps_pdf": "TC-079/TC-079_steps.pdf",
+  "replay_mp4": "TC-079/TC-079_replay.mp4",
+  "screen_mp4": "TC-079/TC-079_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 33.09
+    },
+    "2": {
+      "start": 33.09,
+      "end": 48.82
+    },
+    "3": {
+      "start": 48.82,
+      "end": 55.26
+    },
+    "4": {
+      "start": 55.26,
+      "end": 64.47
+    },
+    "5": {
+      "start": 64.47,
+      "end": 69.14
+    },
+    "6": {
+      "start": 69.14,
+      "end": 70.14
+    },
+    "7": {
+      "start": 70.14,
+      "end": 71.14
+    },
+    "8": {
+      "start": 71.14,
+      "end": 76.98
+    },
+    "9": {
+      "start": 76.98,
+      "end": 77.98
+    },
+    "10": {
+      "start": 77.98,
+      "end": 81.45
+    },
+    "11": {
+      "start": 81.45,
+      "end": 82.45
+    },
+    "12": {
+      "start": 82.45,
+      "end": 83.95
+    }
+  },
+  "evidence_folder": "TC-079/",
+  "run": "2026-11-16_0915"
+}

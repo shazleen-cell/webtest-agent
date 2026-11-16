@@ -1,0 +1,75 @@
+{
+  "id": "TC-046",
+  "title": "[LOGGED OUT] Unknown page shows a clear error message",
+  "area": "Error page",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-16T10:24:28",
+  "ended": "2026-11-16T10:25:08",
+  "duration_sec": 40,
+  "failed_step": 3,
+  "reason": "Unknown URL did not show a not-found message: the site redirected to the Home page (/) with no 'Page not found' or '404' text (only the network request returned 404).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/this-page-does-not-exist in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded; address became https://site.ludus-game.com/ and the Home page was shown. Network log: 404 GET /this-page-does-not-exist.",
+      "ok": true,
+      "screenshot": "TC-046/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown; clicked Dismiss, banner closed.",
+      "ok": true,
+      "screenshot": "TC-046/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is a message shown that says the page was not found (for example \"Page not found\" or \"404\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "No not-found message. The page is the normal Home page (URL /); page text has no 'not found' or '404'.",
+      "ok": false,
+      "screenshot": "TC-046/step03_FAIL.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a link or button back to the Home page or the Store shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows Home and Store links (and a 'Check our store' button), but this is the normal Home page, not an error page.",
+      "ok": true,
+      "screenshot": "TC-046/step04.png"
+    }
+  ],
+  "replay_gif": "TC-046/TC-046_replay.gif",
+  "steps_pdf": "TC-046/TC-046_steps.pdf",
+  "replay_mp4": "TC-046/TC-046_replay.mp4",
+  "screen_mp4": "TC-046/TC-046_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 29.49
+    },
+    "2": {
+      "start": 29.49,
+      "end": 41.69
+    },
+    "3": {
+      "start": 41.69,
+      "end": 47.72
+    },
+    "4": {
+      "start": 47.72,
+      "end": 47.73
+    }
+  },
+  "evidence_folder": "TC-046/",
+  "run": "2026-11-16_0915"
+}

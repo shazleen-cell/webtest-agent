@@ -1,0 +1,62 @@
+{
+  "id": "TC-061",
+  "title": "[LOGGED OUT] Page language attribute is \"en\" on the English page",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-16T09:42:00",
+  "ended": "2026-11-16T09:42:35",
+  "duration_sec": 35,
+  "failed_step": null,
+  "reason": "html lang is en",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-061/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-061/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the html lang attribute \"en\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.documentElement lang = \"en\"",
+      "ok": true,
+      "screenshot": "TC-061/step03.png"
+    }
+  ],
+  "replay_gif": "TC-061/TC-061_replay.gif",
+  "steps_pdf": "TC-061/TC-061_steps.pdf",
+  "replay_mp4": "TC-061/TC-061_replay.mp4",
+  "screen_mp4": "TC-061/TC-061_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 19.82
+    },
+    "2": {
+      "start": 19.82,
+      "end": 30.41
+    },
+    "3": {
+      "start": 30.41,
+      "end": 35.91
+    }
+  },
+  "evidence_folder": "TC-061/",
+  "run": "2026-11-16_0915"
+}

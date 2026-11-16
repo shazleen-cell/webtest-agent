@@ -1,0 +1,74 @@
+{
+  "id": "TC-047",
+  "title": "[LOGGED OUT] Phone header shows the burger and Login, with no side scroll",
+  "area": "Header",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T10:25:29",
+  "ended": "2026-11-16T10:26:12",
+  "duration_sec": 43,
+  "failed_step": null,
+  "reason": "All answers match. No screen recording (Chrome mobileEmulation session, not attached).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded at 390x844 emulation (iPhone UA).",
+      "ok": true,
+      "screenshot": "TC-047/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss, it closed.",
+      "ok": true,
+      "screenshot": "TC-047/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an \"Add It to Home Screen\" banner is shown, close it with its X (never its \"Claim\" button).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown; clicked its X (Close pwa banner); banner closed.",
+      "ok": true,
+      "screenshot": "TC-047/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a green burger button shown at the left of the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green burger button at the top left of the header.",
+      "ok": true,
+      "screenshot": "TC-047/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a green \"Login\" button shown at the right of the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Login button at the top right.",
+      "ok": true,
+      "screenshot": "TC-047/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the page fit the screen width, with no horizontal scroll?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "innerWidth 390, documentElement.scrollWidth 390, body.scrollWidth 390.",
+      "ok": true,
+      "screenshot": "TC-047/step06.png"
+    }
+  ],
+  "replay_gif": "TC-047/TC-047_replay.gif",
+  "steps_pdf": "TC-047/TC-047_steps.pdf",
+  "replay_mp4": "TC-047/TC-047_replay.mp4",
+  "evidence_folder": "TC-047/",
+  "run": "2026-11-16_0915"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "TC-057",
+  "title": "[LOGGED OUT] Store page loads with no failed requests",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "FAILED",
+  "started": "2026-11-16T11:25:45+08:00",
+  "ended": "2026-11-16T11:26:41+08:00",
+  "duration_sec": 56,
+  "failed_step": 5,
+  "reason": "Failed requests reported: 3 x 404 GET store.xsolla.com offer_chain 1511, 1512, 1310",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store opened; the tool reported 'Requests failed' after the load",
+      "ok": true,
+      "screenshot": "TC-057/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss",
+      "ok": true,
+      "screenshot": "TC-057/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Wait 5 seconds.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 5 seconds",
+      "ok": true,
+      "screenshot": "TC-057/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Read the \"Requests failed\" list that the browser tool reports after the page load.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "List: 404 GET store.xsolla.com/api/v2/project/253824/user/offer_chain/1511; 404 .../offer_chain/1512; 404 .../offer_chain/1310 (no reload needed; the same 3 appeared on every load of /store in this session)",
+      "ok": true,
+      "screenshot": "TC-057/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Were there no failed requests (no 4xx or 5xx answers) in that list?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "3 failed requests with 404 answers (offer_chain 1511, 1512, 1310 on store.xsolla.com). They may belong to the Reward chain event, which is not logged in.",
+      "ok": false,
+      "screenshot": "TC-057/step05_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-057/TC-057_replay.gif",
+  "steps_pdf": "TC-057/TC-057_steps.pdf",
+  "replay_mp4": "TC-057/TC-057_replay.mp4",
+  "screen_mp4": "TC-057/TC-057_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 21.91
+    },
+    "2": {
+      "start": 21.91,
+      "end": 36.81
+    },
+    "3": {
+      "start": 36.81,
+      "end": 47.2
+    },
+    "4": {
+      "start": 47.2,
+      "end": 52.05
+    },
+    "5": {
+      "start": 52.05,
+      "end": 57.11
+    }
+  },
+  "evidence_folder": "TC-057/",
+  "run": "2026-11-16_1121"
+}

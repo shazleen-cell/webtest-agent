@@ -1,0 +1,114 @@
+{
+  "id": "TC-078",
+  "title": "[LOGGED IN] Logged-in Loyalty shop shows the offers with loyalty point prices",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T10:59:24+08:00",
+  "ended": "2026-11-16T11:00:36+08:00",
+  "duration_sec": 72,
+  "failed_step": null,
+  "reason": "All answers match; page jumped back to top by the last screenshot (noted).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded at /store, logged-in header visible.",
+      "ok": true,
+      "screenshot": "TC-078/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If a \"Login successful\" popup is shown, click \"Ok\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner was present (offscreen), clicked Dismiss. No Login successful popup seen.",
+      "ok": true,
+      "screenshot": "TC-078/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Home, Store, Reward chain, Loyalty shop, balances 0 and 40, green \"Player{TEST_USER_ID}\" button; no Login button.",
+      "ok": true,
+      "screenshot": "TC-078/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Loyalty shop; page scrolled to the Loyalty shop section.",
+      "ok": true,
+      "screenshot": "TC-078/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Wait 2 seconds until the page stops scrolling.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited 2 seconds; Loyalty shop section still in view.",
+      "ok": true,
+      "screenshot": "TC-078/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"Loyalty shop\" heading visible on the screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading \"Loyalty shop\" on a red ribbon visible near the top (screenshots of steps 5 and 6).",
+      "ok": true,
+      "screenshot": "TC-078/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does each card show a name, an amount, a line starting with \"Available\" and a green button with a teal loyalty point price (do not click it)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Read from page structure and earlier screenshot: 6 cards (Astral hero 2 / 1100, Astral Hero 1 / 550, Astral Echo 1 / 750, Legion of Darkness 1 / 550, Unique Emote 1 / 550, Unique Avatar 1 / 300), each with a name, amount, an \"Available...\" line and a green button with a teal point price. Note: the screenshot for this step shows the page back at the top (Special offers, Store highlighted, scrollY 0), so the page jumped to the top on its own after the earlier screenshots.",
+      "ok": true,
+      "screenshot": "TC-078/step07.png"
+    }
+  ],
+  "replay_gif": "TC-078/TC-078_replay.gif",
+  "steps_pdf": "TC-078/TC-078_steps.pdf",
+  "replay_mp4": "TC-078/TC-078_replay.mp4",
+  "screen_mp4": "TC-078/TC-078_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 34.9
+    },
+    "2": {
+      "start": 34.9,
+      "end": 38.17
+    },
+    "3": {
+      "start": 38.17,
+      "end": 39.17
+    },
+    "4": {
+      "start": 39.17,
+      "end": 47.71
+    },
+    "5": {
+      "start": 47.71,
+      "end": 48.71
+    },
+    "6": {
+      "start": 48.71,
+      "end": 51.07
+    },
+    "7": {
+      "start": 51.07,
+      "end": 52.57
+    }
+  },
+  "evidence_folder": "TC-078/",
+  "run": "2026-11-16_0915"
+}

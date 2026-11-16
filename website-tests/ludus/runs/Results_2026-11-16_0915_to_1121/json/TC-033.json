@@ -1,0 +1,88 @@
+{
+  "id": "TC-033",
+  "title": "[LOGGED OUT] Store tab bar shows the 12 categories in order",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:20:10",
+  "ended": "2026-11-16T09:21:30",
+  "duration_sec": 80,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Opened /store; first screenshot showed loading placeholders, waited ~5s, page loaded (screenshot taken after load)",
+      "ok": true,
+      "screenshot": "TC-033/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss; banner gone",
+      "ok": true,
+      "screenshot": "TC-033/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Store\" heading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled down in three steps (650px, 500px); Store heading and tab bar visible",
+      "ok": true,
+      "screenshot": "TC-033/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the tab bar list \"Free wares\", \"Battle Passes\", \"Gifts to friends\", \"Licenses\", \"Might Passes\", \"Ludus Royal\", \"Ethereal Crystals\", \"Spells\", \"Runes\", \"Dice of Fortune\", \"Gold\" and \"Emeralds\", in this order?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab texts read from the page (accessibility tree): Free wares, Battle Passes, Gifts to friends, Licenses, Might Passes, Ludus Royal, Ethereal Crystals, Spells, Runes, Dice of Fortune, Gold, Emeralds (Gold and Emeralds hidden behind right arrow). Same order, 12 tabs.",
+      "ok": true,
+      "screenshot": "TC-033/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is \"Free wares\" highlighted in yellow?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Free wares tab has a yellow pill background; the other tabs are blue",
+      "ok": true,
+      "screenshot": "TC-033/step05.png"
+    }
+  ],
+  "replay_gif": "TC-033/TC-033_replay.gif",
+  "steps_pdf": "TC-033/TC-033_steps.pdf",
+  "replay_mp4": "TC-033/TC-033_replay.mp4",
+  "screen_mp4": "TC-033/TC-033_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 61.85
+    },
+    "2": {
+      "start": 61.85,
+      "end": 61.85
+    },
+    "3": {
+      "start": 61.85,
+      "end": 61.85
+    },
+    "4": {
+      "start": 61.85,
+      "end": 61.85
+    },
+    "5": {
+      "start": 61.85,
+      "end": 61.85
+    }
+  },
+  "evidence_folder": "TC-033/",
+  "run": "2026-11-16_0915"
+}

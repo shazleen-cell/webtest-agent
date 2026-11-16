@@ -1,0 +1,75 @@
+{
+  "id": "TC-066",
+  "title": "[LOGGED OUT] Meta description is real text about LUDUS",
+  "area": "Home",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-16T09:27:32",
+  "ended": "2026-11-16T09:28:19",
+  "duration_sec": 47,
+  "failed_step": 4,
+  "reason": "Meta description is the placeholder text 'Your Game takes players on a grand adventure ...'",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded, title 'LUDUS - Merge Battle Arena PvP Web Shop', cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-066/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown, clicked Dismiss, banner closed.",
+      "ok": true,
+      "screenshot": "TC-066/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Read the meta description.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "meta name=description content: 'Your Game takes players on a grand adventure filled with detractors, monsters, gold hunters and grave danger.' (og:description identical)",
+      "ok": true,
+      "screenshot": "TC-066/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the meta description describe LUDUS (and not the placeholder \"Your Game takes players on a grand adventure ...\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "The meta description is exactly the placeholder 'Your Game takes players on a grand adventure filled with detractors, monsters, gold hunters and grave danger.' It does not mention LUDUS.",
+      "ok": false,
+      "screenshot": "TC-066/step04_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-066/TC-066_replay.gif",
+  "steps_pdf": "TC-066/TC-066_steps.pdf",
+  "replay_mp4": "TC-066/TC-066_replay.mp4",
+  "screen_mp4": "TC-066/TC-066_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 26.04
+    },
+    "2": {
+      "start": 26.04,
+      "end": 37.58
+    },
+    "3": {
+      "start": 37.58,
+      "end": 42.97
+    },
+    "4": {
+      "start": 42.97,
+      "end": 49.24
+    }
+  },
+  "evidence_folder": "TC-066/",
+  "run": "2026-11-16_0915"
+}

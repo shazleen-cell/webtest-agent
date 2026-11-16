@@ -1,0 +1,88 @@
+{
+  "id": "TC-074",
+  "title": "[LOGGED IN] Logged-in Store tab bar shows only the player's categories",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T09:37:33",
+  "ended": "2026-11-16T09:38:10",
+  "duration_sec": 37,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-074/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If a Login successful popup is shown, click Ok.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss. No Login successful popup.",
+      "ok": true,
+      "screenshot": "TC-074/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Player{TEST_USER_ID} button, balances 0 and 40, no Login",
+      "ok": true,
+      "screenshot": "TC-074/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the \"Store\" heading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled 350px; Store heading and tab bar visible",
+      "ok": true,
+      "screenshot": "TC-074/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the tab bar show only \"Free wares\" and \"Gold\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Tab bar shows only Free wares (selected) and Gold",
+      "ok": true,
+      "screenshot": "TC-074/step05.png"
+    }
+  ],
+  "replay_gif": "TC-074/TC-074_replay.gif",
+  "steps_pdf": "TC-074/TC-074_steps.pdf",
+  "replay_mp4": "TC-074/TC-074_replay.mp4",
+  "screen_mp4": "TC-074/TC-074_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 25.5
+    },
+    "2": {
+      "start": 25.5,
+      "end": 25.5
+    },
+    "3": {
+      "start": 25.5,
+      "end": 25.51
+    },
+    "4": {
+      "start": 25.51,
+      "end": 25.52
+    },
+    "5": {
+      "start": 25.52,
+      "end": 25.52
+    }
+  },
+  "evidence_folder": "TC-074/",
+  "run": "2026-11-16_0915"
+}

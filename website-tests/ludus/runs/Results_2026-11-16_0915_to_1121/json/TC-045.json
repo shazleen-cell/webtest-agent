@@ -1,0 +1,101 @@
+{
+  "id": "TC-045",
+  "title": "[LOGGED OUT] Sticky Store tab bar does not cover the \"Loyalty shop\" heading or highlight a wrong category",
+  "area": "Store",
+  "priority": "Low",
+  "status": "FAILED",
+  "failed_step": 6,
+  "reason": "The \"Emeralds\" tab is highlighted yellow while the Loyalty shop is shown; the ribbon top also sits slightly under the tab bar.",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded.",
+      "ok": true,
+      "screenshot": "TC-045/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown at the bottom; clicked Dismiss.",
+      "ok": true,
+      "screenshot": "TC-045/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click \"Loyalty shop\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the Loyalty shop section.",
+      "ok": true,
+      "screenshot": "TC-045/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Wait 2 seconds until the page stops scrolling.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Waited; page stable (scrollY 14530). One scripted 2 s wait call hung for about 3 minutes, so the wait was longer than 2 s.",
+      "ok": true,
+      "screenshot": "TC-045/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the \"Loyalty shop\" heading ribbon fully visible (not covered by the Store tab bar)?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "The heading text \"Loyalty shop\" is fully readable, but the ribbon's top edge touches/sits under the sticky tab bar: the ribbon block spans y=119 to 183 px while the tab bar ends at y=125 px (about 6 px overlap), and the ribbon top looks flat/clipped compared with the FAQ ribbon. May be a wording/strictness issue because only a few pixels are hidden; reviewer decides.",
+      "ok": false,
+      "screenshot": "TC-045/step05_FAIL.png"
+    },
+    {
+      "n": 6,
+      "text": "Is no Store category tab (for example \"Emeralds\") highlighted in yellow while the Loyalty shop is shown?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "The \"Emeralds\" tab at the right end of the tab bar is highlighted with a yellow pill while the Loyalty shop is shown.",
+      "ok": false,
+      "screenshot": "TC-045/step06_FAIL.png"
+    }
+  ],
+  "started": "2026-11-16T10:19:27+08:00",
+  "ended": "2026-11-16T10:23:47+08:00",
+  "duration_sec": 260,
+  "replay_gif": "TC-045/TC-045_replay.gif",
+  "steps_pdf": "TC-045/TC-045_steps.pdf",
+  "replay_mp4": "TC-045/TC-045_replay.mp4",
+  "screen_mp4": "TC-045/TC-045_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 54.55
+    },
+    "2": {
+      "start": 54.55,
+      "end": 54.55
+    },
+    "3": {
+      "start": 54.55,
+      "end": 54.55
+    },
+    "4": {
+      "start": 54.55,
+      "end": 54.55
+    },
+    "5": {
+      "start": 54.55,
+      "end": 54.55
+    },
+    "6": {
+      "start": 54.55,
+      "end": 54.55
+    }
+  },
+  "evidence_folder": "TC-045/",
+  "run": "2026-11-16_0915"
+}
