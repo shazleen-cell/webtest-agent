@@ -1,0 +1,75 @@
+{
+  "id": "TC-059",
+  "title": "[LOGGED OUT] http redirects to https and there is no mixed content",
+  "area": "Store",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:39:18",
+  "ended": "2026-11-16T09:40:06",
+  "duration_sec": 48,
+  "failed_step": null,
+  "reason": "http redirected to https://site.ludus-game.com/store; 452 resource URLs checked, none over http",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open http://site.ludus-game.com/store in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded. The tool also reported 3 failed requests: 404 on store.xsolla.com/api/v2/project/253824/user/offer_chain/1310, 1511, 1512 (not part of this test's questions)",
+      "ok": true,
+      "screenshot": "TC-059/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is the address now https://site.ludus-game.com/store (https)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-059/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown, clicked Dismiss, banner gone",
+      "ok": true,
+      "screenshot": "TC-059/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Are all images, scripts and stylesheets loaded over https (no http resources)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "452 resource URLs (resource timing plus img/script/link/iframe/source elements): 0 start with http://",
+      "ok": true,
+      "screenshot": "TC-059/step04.png"
+    }
+  ],
+  "replay_gif": "TC-059/TC-059_replay.gif",
+  "steps_pdf": "TC-059/TC-059_steps.pdf",
+  "replay_mp4": "TC-059/TC-059_replay.mp4",
+  "screen_mp4": "TC-059/TC-059_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 25.86
+    },
+    "2": {
+      "start": 25.86,
+      "end": 32.2
+    },
+    "3": {
+      "start": 32.2,
+      "end": 38.51
+    },
+    "4": {
+      "start": 38.51,
+      "end": 43.51
+    }
+  },
+  "evidence_folder": "TC-059/",
+  "run": "2026-11-16_0915"
+}

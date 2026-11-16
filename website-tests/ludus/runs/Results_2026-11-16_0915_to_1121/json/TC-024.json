@@ -1,0 +1,166 @@
+{
+  "id": "TC-024",
+  "title": "[LOGGED OUT] Choosing \"Français\" shows Home in French",
+  "area": "Language",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:46:59",
+  "ended": "2026-11-16T09:49:33",
+  "duration_sec": 153,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded (still finishing loading when the tool returned; cookie banner showed up shortly after).",
+      "ok": true,
+      "screenshot": "TC-024/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner shown; clicked Dismiss and it closed.",
+      "ok": true,
+      "screenshot": "TC-024/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer with EN language selector visible.",
+      "ok": true,
+      "screenshot": "TC-024/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Choose \"Français\" in the \"EN\" language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Français in the Locale select; page switched to French (select option used because the selector is a native select).",
+      "ok": true,
+      "screenshot": "TC-024/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is the address now https://site.ludus-game.com/fr-FR?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/fr-FR",
+      "ok": true,
+      "screenshot": "TC-024/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the header show \"Accueil\", \"Boutique\", \"Boutique de Fidélité\" and the button \"Se connecter\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows: Accueil, Boutique, Chaîne de Récompense, Boutique de Fidélité, and green button \"Se connecter\".",
+      "ok": true,
+      "screenshot": "TC-024/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the news heading \"Dernières infos\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "H2 \"Dernières infos\" present on the page (read from the page; it was below the visible part of the screenshot).",
+      "ok": true,
+      "screenshot": "TC-024/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Footer visible, language button now \"FR\", French footer texts.",
+      "ok": true,
+      "screenshot": "TC-024/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Choose \"English\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected English in the Locale select; page switched back to English.",
+      "ok": true,
+      "screenshot": "TC-024/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is the address now https://site.ludus-game.com/ (with or without a final \"/\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/",
+      "ok": true,
+      "screenshot": "TC-024/step10.png"
+    },
+    {
+      "n": 11,
+      "text": "Does the header show \"Home\" and \"Login\" again?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows Home, Store, Reward chain, Loyalty shop and green \"Login\" button.",
+      "ok": true,
+      "screenshot": "TC-024/step11.png"
+    }
+  ],
+  "replay_gif": "TC-024/TC-024_replay.gif",
+  "steps_pdf": "TC-024/TC-024_steps.pdf",
+  "replay_mp4": "TC-024/TC-024_replay.mp4",
+  "screen_mp4": "TC-024/TC-024_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 48.99
+    },
+    "2": {
+      "start": 48.99,
+      "end": 67.95
+    },
+    "3": {
+      "start": 67.95,
+      "end": 79.69
+    },
+    "4": {
+      "start": 79.69,
+      "end": 94.75
+    },
+    "5": {
+      "start": 94.75,
+      "end": 102.08
+    },
+    "6": {
+      "start": 102.08,
+      "end": 107.54
+    },
+    "7": {
+      "start": 107.54,
+      "end": 113.43
+    },
+    "8": {
+      "start": 113.43,
+      "end": 117.02
+    },
+    "9": {
+      "start": 117.02,
+      "end": 127.43
+    },
+    "10": {
+      "start": 127.43,
+      "end": 135.16
+    },
+    "11": {
+      "start": 135.16,
+      "end": 153.22
+    }
+  },
+  "evidence_folder": "TC-024/",
+  "run": "2026-11-16_0915"
+}

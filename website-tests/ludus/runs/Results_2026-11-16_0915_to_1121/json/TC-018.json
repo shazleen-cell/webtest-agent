@@ -1,0 +1,114 @@
+{
+  "id": "TC-018",
+  "title": "[LOGGED OUT] Escape closes the \"News\" popup",
+  "area": "Home",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-16T09:38:06+08:00",
+  "ended": "2026-11-16T09:39:03+08:00",
+  "duration_sec": 57,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-018/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner appeared at the bottom; clicked Dismiss",
+      "ok": true,
+      "screenshot": "TC-018/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Latest news\" section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Latest news cards visible",
+      "ok": true,
+      "screenshot": "TC-018/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the first news card",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Clan Competition card",
+      "ok": true,
+      "screenshot": "TC-018/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is a popup titled \"News\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Dialog named 'News' open (accessibility tree: dialog 'News', heading 'News') showing the Clan Competition news. Visible heading 'News' not clearly seen in screenshot; may be a wording issue",
+      "ok": true,
+      "screenshot": "TC-018/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Press the Escape key",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Pressed Escape",
+      "ok": true,
+      "screenshot": "TC-018/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Is the \"News\" popup gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup closed, Latest news section visible",
+      "ok": true,
+      "screenshot": "TC-018/step07.png"
+    }
+  ],
+  "replay_gif": "TC-018/TC-018_replay.gif",
+  "steps_pdf": "TC-018/TC-018_steps.pdf",
+  "replay_mp4": "TC-018/TC-018_replay.mp4",
+  "screen_mp4": "TC-018/TC-018_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 22.44
+    },
+    "2": {
+      "start": 22.44,
+      "end": 32.53
+    },
+    "3": {
+      "start": 32.53,
+      "end": 35.17
+    },
+    "4": {
+      "start": 35.17,
+      "end": 36.73
+    },
+    "5": {
+      "start": 36.73,
+      "end": 37.73
+    },
+    "6": {
+      "start": 37.73,
+      "end": 38.93
+    },
+    "7": {
+      "start": 38.93,
+      "end": 40.43
+    }
+  },
+  "evidence_folder": "TC-018/",
+  "run": "2026-11-16_0915"
+}

@@ -1,0 +1,140 @@
+{
+  "id": "TC-077",
+  "title": "[LOGGED IN] During the event, the Reward Chain shows the player's progress and no \"Log in to claim\" button",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T09:38:10",
+  "ended": "2026-11-16T09:39:00",
+  "duration_sec": 50,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-077/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If a Login successful popup is shown, click Ok.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss. No Login successful popup.",
+      "ok": true,
+      "screenshot": "TC-077/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Player{TEST_USER_ID} button, balances 0 and 40, no Login",
+      "ok": true,
+      "screenshot": "TC-077/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is \"Reward chain\" shown in the Store page header? (precondition)",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows Home, Store, Reward chain, Loyalty shop",
+      "ok": true,
+      "screenshot": "TC-077/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click \"Reward chain\" in the header.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page scrolled to the Reward Chain section",
+      "ok": true,
+      "screenshot": "TC-077/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"Reward Chain\" heading visible on the screen?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Heading 'Reward Chain' is on screen at the top, but its upper half is partly covered by the sticky Free wares / Gold tab bar (may be a layout issue).",
+      "ok": true,
+      "screenshot": "TC-077/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the section show a points counter ending in \"points\" and a line starting with \"Step 1 of\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Counter '0/1 points' and 'Step 1 of 8'",
+      "ok": true,
+      "screenshot": "TC-077/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Does the first reward card show the player's progress (for example \"0/1\") instead of only a point cost?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "First card (100 emeralds) shows '0/1'; other cards show point costs 3, 5, 10, 30, 50, 70, 100",
+      "ok": true,
+      "screenshot": "TC-077/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is there no \"Log in to claim\" button in the section?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "No 'Log in to claim' text or button on the page",
+      "ok": true,
+      "screenshot": "TC-077/step09.png"
+    }
+  ],
+  "replay_gif": "TC-077/TC-077_replay.gif",
+  "steps_pdf": "TC-077/TC-077_steps.pdf",
+  "replay_mp4": "TC-077/TC-077_replay.mp4",
+  "screen_mp4": "TC-077/TC-077_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 27.85
+    },
+    "2": {
+      "start": 27.85,
+      "end": 27.85
+    },
+    "3": {
+      "start": 27.85,
+      "end": 27.86
+    },
+    "4": {
+      "start": 27.86,
+      "end": 27.86
+    },
+    "5": {
+      "start": 27.86,
+      "end": 27.87
+    },
+    "6": {
+      "start": 27.87,
+      "end": 27.88
+    },
+    "7": {
+      "start": 27.88,
+      "end": 27.88
+    },
+    "8": {
+      "start": 27.88,
+      "end": 27.89
+    },
+    "9": {
+      "start": 27.89,
+      "end": 27.89
+    }
+  },
+  "evidence_folder": "TC-077/",
+  "run": "2026-11-16_0915"
+}

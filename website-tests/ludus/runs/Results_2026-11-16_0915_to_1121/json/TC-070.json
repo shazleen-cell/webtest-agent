@@ -1,0 +1,101 @@
+{
+  "id": "TC-070",
+  "title": "[LOGGED IN] Login with the user-id link shows the player and both balances",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:32:47",
+  "ended": "2026-11-16T09:33:48",
+  "duration_sec": 61,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded and logged in (offers skeleton first, then content).",
+      "ok": true,
+      "screenshot": "TC-070/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\". If a \"Login successful\" popup is shown, click \"Ok\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Cookie banner was shown, clicked Dismiss. No visible 'Login successful' popup in the screenshot, so Ok was not clicked.",
+      "ok": true,
+      "screenshot": "TC-070/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green 'Player{TEST_USER_ID}' button at the top right; no visible Login button (0 found).",
+      "ok": true,
+      "screenshot": "TC-070/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the address now https://site.ludus-game.com/store (without \"?user-id=\")?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "location.href = https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-070/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the header show a gold store points balance and a teal loyalty points balance next to the \"Player{TEST_USER_ID}\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows a gold-icon balance '0' and a teal-icon balance '40' just left of the Player{TEST_USER_ID} button.",
+      "ok": true,
+      "screenshot": "TC-070/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does the header show \"Home\", \"Store\", \"Loyalty shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows Home, Store, Reward chain, Loyalty shop.",
+      "ok": true,
+      "screenshot": "TC-070/step06.png"
+    }
+  ],
+  "replay_gif": "TC-070/TC-070_replay.gif",
+  "steps_pdf": "TC-070/TC-070_steps.pdf",
+  "replay_mp4": "TC-070/TC-070_replay.mp4",
+  "screen_mp4": "TC-070/TC-070_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 20.83
+    },
+    "2": {
+      "start": 20.83,
+      "end": 24.5
+    },
+    "3": {
+      "start": 24.5,
+      "end": 25.5
+    },
+    "4": {
+      "start": 25.5,
+      "end": 26.5
+    },
+    "5": {
+      "start": 26.5,
+      "end": 27.5
+    },
+    "6": {
+      "start": 27.5,
+      "end": 29.0
+    }
+  },
+  "evidence_folder": "TC-070/",
+  "run": "2026-11-16_0915"
+}

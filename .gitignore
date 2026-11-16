@@ -30,6 +30,10 @@ website-tests/*/runs/**
 !website-tests/*/runs/Results/results.html
 !website-tests/*/runs/Results/results.xlsx
 !website-tests/*/runs/Results/json/*.json
+!website-tests/*/runs/Results_*/README.md
+!website-tests/*/runs/Results_*/results.html
+!website-tests/*/runs/Results_*/results.xlsx
+!website-tests/*/runs/Results_*/json/*.json
 # Agent evaluation scorecards (built by /evaluate-agent)
 !website-tests/*/runs/*/eval_report.html
 !website-tests/*/runs/*/eval_score.md

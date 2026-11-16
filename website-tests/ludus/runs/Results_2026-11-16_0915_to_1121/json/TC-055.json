@@ -1,0 +1,92 @@
+{
+  "id": "TC-055",
+  "title": "[LOGGED OUT] Phone \"Referral program\" button shows its icon and opens the panel",
+  "area": "Referral",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-16T10:33:24",
+  "ended": "2026-11-16T10:34:38",
+  "duration_sec": 74,
+  "failed_step": 7,
+  "reason": "Panel opened, but the round X button at the bottom right is not there (the panel covers the whole screen and the referral button is hidden under it), so the panel could not be closed. Phone emulation via Chrome mobileEmulation 390x844 (no screen recording).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Page loaded, cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-055/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss.",
+      "ok": true,
+      "screenshot": "TC-055/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If an Add It to Home Screen banner is shown, close it with its X",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Closed with Close pwa banner X.",
+      "ok": true,
+      "screenshot": "TC-055/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is a round white button with the referral icon shown at the bottom right?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Round white button with an icon (accessible name 'Referral program') at the bottom right, about x 308-390, y 738-824.",
+      "ok": true,
+      "screenshot": "TC-055/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the referral icon button",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the Referral program button.",
+      "ok": true,
+      "screenshot": "TC-055/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Does a panel with get bonuses together! open?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Full-screen panel opened: 'Invite friends — get bonuses together!', with Back, Invite friends and Log in to view rewards.",
+      "ok": true,
+      "screenshot": "TC-055/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Click the round X button at the bottom right",
+      "expected": "",
+      "answer": "Not done",
+      "saw": "No round X button is shown at the bottom right. The panel iframe (z-index 999, 390x844) covers the referral button iframe (z-index 998). One normal click on the referral button at that spot changed nothing.",
+      "ok": false,
+      "screenshot": "TC-055/step07_FAIL.png"
+    },
+    {
+      "n": 8,
+      "text": "Is the panel gone?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "Panel still open after the click.",
+      "ok": false,
+      "screenshot": "TC-055/step08_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-055/TC-055_replay.gif",
+  "steps_pdf": "TC-055/TC-055_steps.pdf",
+  "replay_mp4": "TC-055/TC-055_replay.mp4",
+  "evidence_folder": "TC-055/",
+  "run": "2026-11-16_0915"
+}

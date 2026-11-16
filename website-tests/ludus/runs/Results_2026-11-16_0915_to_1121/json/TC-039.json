@@ -1,0 +1,270 @@
+{
+  "id": "TC-039",
+  "title": "[LOGGED OUT] Every other Store category shows offers with prices",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T10:09:40+08:00",
+  "ended": "2026-11-16T10:12:12+08:00",
+  "duration_sec": 152,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded, cookie banner shown",
+      "ok": true,
+      "screenshot": "TC-039/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dismiss clicked, banner gone",
+      "ok": true,
+      "screenshot": "TC-039/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Store\" heading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store heading and tabs visible",
+      "ok": true,
+      "screenshot": "TC-039/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Click the \"Battle Passes\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Battle Passes tab active, Battle Passes heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does \"Battle Passes\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Clan Competition Diamond Crown USD 21.60, Golden Crown USD 7.65, Diamond Fang USD 32.40, Golden Fang USD 10.80",
+      "ok": true,
+      "screenshot": "TC-039/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the \"Licenses\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Licenses tab active, Licenses heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does \"Licenses\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Diamond Map USD 27.00, Golden Map USD 21.60, Paper Map USD 10.80, Divisions License x4 USD 21.60",
+      "ok": true,
+      "screenshot": "TC-039/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the \"Might Passes\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Might Passes tab active, Might Passes heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Does \"Might Passes\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Might Pass 1000% USD 21.60, 500% USD 16.20, 250% USD 10.80, 120% USD 5.40",
+      "ok": true,
+      "screenshot": "TC-039/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Click the \"Ludus Royal\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Ludus Royal tab active, Ludus Royal heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step10.png"
+    },
+    {
+      "n": 11,
+      "text": "Does \"Ludus Royal\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Ludus Royal for 30 days USD 10.80, for 10 days USD 5.40",
+      "ok": true,
+      "screenshot": "TC-039/step11.png"
+    },
+    {
+      "n": 12,
+      "text": "Click the \"Ethereal Crystals\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Ethereal Crystals tab active, Ethereal Crystals heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step12.png"
+    },
+    {
+      "n": 13,
+      "text": "Does \"Ethereal Crystals\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "A Casket of Crystals USD 15.05, A Tub of Crystals USD 41.92",
+      "ok": true,
+      "screenshot": "TC-039/step13.png"
+    },
+    {
+      "n": 14,
+      "text": "Click the \"Spells\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Spells tab active, Spells heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step14.png"
+    },
+    {
+      "n": 15,
+      "text": "Does \"Spells\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Earth, Water, Fire Essence each USD 6.43",
+      "ok": true,
+      "screenshot": "TC-039/step15.png"
+    },
+    {
+      "n": 16,
+      "text": "Click the \"Runes\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Runes tab active, Runes heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step16.png"
+    },
+    {
+      "n": 17,
+      "text": "Does \"Runes\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Horn of Runes USD 4.12, Barrel USD 9.99, Chest USD 18.07, Wagon USD 32.89",
+      "ok": true,
+      "screenshot": "TC-039/step17.png"
+    },
+    {
+      "n": 18,
+      "text": "Click the \"Dice of Fortune\" tab.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Dice of Fortune tab active, Dice of Fortune heading shown",
+      "ok": true,
+      "screenshot": "TC-039/step18.png"
+    },
+    {
+      "n": 19,
+      "text": "Does \"Dice of Fortune\" show at least one card with a name and a USD price button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Handful of dice USD 5.40, Bowl of dice USD 13.39, Heap of dice USD 38.70",
+      "ok": true,
+      "screenshot": "TC-039/step19.png"
+    }
+  ],
+  "replay_gif": "TC-039/TC-039_replay.gif",
+  "steps_pdf": "TC-039/TC-039_steps.pdf",
+  "replay_mp4": "TC-039/TC-039_replay.mp4",
+  "screen_mp4": "TC-039/TC-039_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 18.82
+    },
+    "2": {
+      "start": 18.82,
+      "end": 27.23
+    },
+    "3": {
+      "start": 27.23,
+      "end": 32.07
+    },
+    "4": {
+      "start": 32.07,
+      "end": 37.98
+    },
+    "5": {
+      "start": 37.98,
+      "end": 38.98
+    },
+    "6": {
+      "start": 38.98,
+      "end": 48.01
+    },
+    "7": {
+      "start": 48.01,
+      "end": 49.01
+    },
+    "8": {
+      "start": 49.01,
+      "end": 55.52
+    },
+    "9": {
+      "start": 55.52,
+      "end": 56.52
+    },
+    "10": {
+      "start": 56.52,
+      "end": 63.96
+    },
+    "11": {
+      "start": 63.96,
+      "end": 64.96
+    },
+    "12": {
+      "start": 64.96,
+      "end": 70.77
+    },
+    "13": {
+      "start": 70.77,
+      "end": 71.77
+    },
+    "14": {
+      "start": 71.77,
+      "end": 77.61
+    },
+    "15": {
+      "start": 77.61,
+      "end": 78.61
+    },
+    "16": {
+      "start": 78.61,
+      "end": 84.45
+    },
+    "17": {
+      "start": 84.45,
+      "end": 85.45
+    },
+    "18": {
+      "start": 85.45,
+      "end": 92.05
+    },
+    "19": {
+      "start": 92.05,
+      "end": 93.55
+    }
+  },
+  "evidence_folder": "TC-039/",
+  "run": "2026-11-16_0915"
+}

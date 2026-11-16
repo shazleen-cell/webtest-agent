@@ -1,0 +1,74 @@
+{
+  "id": "TC-069",
+  "title": "[LOGGED OUT] Layout works on a tablet (768x1024)",
+  "area": "Store",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T09:31:34",
+  "ended": "2026-11-16T09:32:34",
+  "duration_sec": 60,
+  "failed_step": null,
+  "reason": "All answers match. Normal session with Chrome mobileEmulation 768x1024 (no screen recording).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Use a tablet screen of 768x1024 (iPad).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Normal headed session with Chrome mobileEmulation (768x1024, DPR 2, iPad user agent); innerWidth 768, innerHeight 1024. No screen recording for this test (capabilities can only be set at session start).",
+      "ok": true,
+      "screenshot": "TC-069/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Open https://site.ludus-game.com/store in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner 'How we use cookies' shown at the bottom.",
+      "ok": true,
+      "screenshot": "TC-069/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; banner closed (an 'Add It to Home Screen' bar appeared at the bottom).",
+      "ok": true,
+      "screenshot": "TC-069/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the header show a burger button and a \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows a green burger button on the left and a green 'Login' button on the right.",
+      "ok": true,
+      "screenshot": "TC-069/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Is there no horizontal scroll?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "documentElement.scrollWidth 768 = innerWidth 768; no horizontal scroll.",
+      "ok": true,
+      "screenshot": "TC-069/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is \"Special offers\" shown as a carousel with arrows or dots?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Under the 'Special offers' heading, 'Small welcome bundle' card has left and right arrows and three dots (first active).",
+      "ok": true,
+      "screenshot": "TC-069/step06.png"
+    }
+  ],
+  "replay_gif": "TC-069/TC-069_replay.gif",
+  "steps_pdf": "TC-069/TC-069_steps.pdf",
+  "replay_mp4": "TC-069/TC-069_replay.mp4",
+  "evidence_folder": "TC-069/",
+  "run": "2026-11-16_0915"
+}

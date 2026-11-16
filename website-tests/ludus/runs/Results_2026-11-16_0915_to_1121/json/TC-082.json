@@ -1,0 +1,101 @@
+{
+  "id": "TC-082",
+  "title": "[LOGGED IN] Phone header and burger menu show the player and the balances",
+  "area": "Login",
+  "priority": "High",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "All answers match. Ran with Chrome mobileEmulation 390x844; no screen recording (emulation needs a normal session).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded in phone layout; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-082/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If a Login successful popup is shown, click Ok.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup.",
+      "ok": true,
+      "screenshot": "TC-082/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows burger, balances 0 and 40, and green \"Player...\" button (cut on phone); no Login button.",
+      "ok": true,
+      "screenshot": "TC-082/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "If an \"Add It to Home Screen\" banner is shown, close it with its X (never its \"Claim\" button).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner appeared at the bottom; closed it with its X (Close pwa banner). Claim not touched.",
+      "ok": true,
+      "screenshot": "TC-082/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Does the header show the burger button, two balances and a green player button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green burger button, balances 0 and 40, green \"Player...\" button.",
+      "ok": true,
+      "screenshot": "TC-082/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Click the green burger button.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Burger menu opened.",
+      "ok": true,
+      "screenshot": "TC-082/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the menu show the two balances, the player button, \"Home\", \"Store\" (in yellow), \"Loyalty shop\" and \"Log out\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu shows balances 0 and 40, green Player... button, Home, Store (yellow), Reward chain, Loyalty shop, Log out. Log out not clicked.",
+      "ok": true,
+      "screenshot": "TC-082/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the red \"Close\" button of the menu.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the red Close button.",
+      "ok": true,
+      "screenshot": "TC-082/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is the menu gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Menu closed; store page with header (burger, balances, Player...) visible again.",
+      "ok": true,
+      "screenshot": "TC-082/step09.png"
+    }
+  ],
+  "started": "2026-11-16T11:04:40+08:00",
+  "ended": "2026-11-16T11:05:58+08:00",
+  "duration_sec": 78,
+  "replay_gif": "TC-082/TC-082_replay.gif",
+  "steps_pdf": "TC-082/TC-082_steps.pdf",
+  "replay_mp4": "TC-082/TC-082_replay.mp4",
+  "evidence_folder": "TC-082/",
+  "run": "2026-11-16_0915"
+}

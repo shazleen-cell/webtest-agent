@@ -1,0 +1,62 @@
+{
+  "id": "TC-025",
+  "title": "[LOGGED OUT] The French cookie banner button means the same as \"Dismiss\"",
+  "area": "Language",
+  "priority": "Low",
+  "status": "FAILED",
+  "started": "2026-11-16T09:49:53",
+  "ended": "2026-11-16T09:50:27",
+  "duration_sec": 34,
+  "failed_step": 3,
+  "reason": "French cookie banner button is labelled \"Rejeter\" (Reject), not a close/OK word",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/fr-FR in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "French Home page loaded.",
+      "ok": true,
+      "screenshot": "TC-025/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner titled \"Comment nous utilisons les cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner titled \"Comment nous utilisons les cookies\" shown at the bottom of the page.",
+      "ok": true,
+      "screenshot": "TC-025/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the banner button labelled with a word that means \"close\" or \"OK\" (for example \"Fermer\" or \"OK\"), and not \"Rejeter\" (which means \"Reject\")?",
+      "expected": "Yes",
+      "answer": "No",
+      "saw": "The banner button is labelled \"Rejeter\" (French for Reject), not \"Fermer\" or \"OK\". The English banner uses \"Dismiss\", so the French label has a different meaning.",
+      "ok": false,
+      "screenshot": "TC-025/step03_FAIL.png"
+    }
+  ],
+  "replay_gif": "TC-025/TC-025_replay.gif",
+  "steps_pdf": "TC-025/TC-025_steps.pdf",
+  "replay_mp4": "TC-025/TC-025_replay.mp4",
+  "screen_mp4": "TC-025/TC-025_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 23.21
+    },
+    "2": {
+      "start": 23.21,
+      "end": 28.23
+    },
+    "3": {
+      "start": 28.23,
+      "end": 33.87
+    }
+  },
+  "evidence_folder": "TC-025/",
+  "run": "2026-11-16_0915"
+}

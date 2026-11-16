@@ -1,0 +1,166 @@
+{
+  "id": "TC-081",
+  "title": "[LOGGED IN] Player stays logged in after switching the language",
+  "area": "Language",
+  "priority": "Medium",
+  "status": "PASSED",
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/store?user-id={TEST_USER_ID} and wait until loaded.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Store page loaded; cookie banner shown.",
+      "ok": true,
+      "screenshot": "TC-081/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a cookie banner is shown, click Dismiss. If a Login successful popup is shown, click Ok.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Dismiss; no Login successful popup.",
+      "ok": true,
+      "screenshot": "TC-081/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Green Player{TEST_USER_ID} button with balances 0 and 40; no Login button.",
+      "ok": true,
+      "screenshot": "TC-081/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the footer; EN language selector visible. (The page jumped back to the top by itself once before a second scroll; the screenshot shows the footer.)",
+      "ok": true,
+      "screenshot": "TC-081/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Choose \"Deutsch\" in the \"EN\" language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected Deutsch; page switched to German.",
+      "ok": true,
+      "screenshot": "TC-081/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the address now https://site.ludus-game.com/de-DE/store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Address was https://site.ludus-game.com/de-DE/store.",
+      "ok": true,
+      "screenshot": "TC-081/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the header show \"Hauptseite\", \"Shop\", \"Treue-Laden\", both balances and \"Player{TEST_USER_ID}\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header: Hauptseite, Shop, Belohnungskette, Treue-Laden, balances 0 and 40, green Player{TEST_USER_ID} button.",
+      "ok": true,
+      "screenshot": "TC-081/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Scroll down to the footer.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Scrolled to the footer; DE selector visible.",
+      "ok": true,
+      "screenshot": "TC-081/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Choose \"English\" in the language selector.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Selected English; page switched back to English.",
+      "ok": true,
+      "screenshot": "TC-081/step09.png"
+    },
+    {
+      "n": 10,
+      "text": "Is the address now https://site.ludus-game.com/store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Address was https://site.ludus-game.com/store.",
+      "ok": true,
+      "screenshot": "TC-081/step10.png"
+    },
+    {
+      "n": 11,
+      "text": "Does the header show the green \"Player{TEST_USER_ID}\" button, and no \"Login\" button?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Header shows green Player{TEST_USER_ID} button and balances; no Login button.",
+      "ok": true,
+      "screenshot": "TC-081/step11.png"
+    }
+  ],
+  "started": "2026-11-16T11:02:26+08:00",
+  "ended": "2026-11-16T11:04:21+08:00",
+  "duration_sec": 115,
+  "replay_gif": "TC-081/TC-081_replay.gif",
+  "steps_pdf": "TC-081/TC-081_steps.pdf",
+  "replay_mp4": "TC-081/TC-081_replay.mp4",
+  "screen_mp4": "TC-081/TC-081_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 24.81
+    },
+    "2": {
+      "start": 24.81,
+      "end": 27.89
+    },
+    "3": {
+      "start": 27.89,
+      "end": 30.55
+    },
+    "4": {
+      "start": 30.55,
+      "end": 32.84
+    },
+    "5": {
+      "start": 32.84,
+      "end": 44.93
+    },
+    "6": {
+      "start": 44.93,
+      "end": 45.93
+    },
+    "7": {
+      "start": 45.93,
+      "end": 46.93
+    },
+    "8": {
+      "start": 46.93,
+      "end": 50.21
+    },
+    "9": {
+      "start": 50.21,
+      "end": 58.55
+    },
+    "10": {
+      "start": 58.55,
+      "end": 59.55
+    },
+    "11": {
+      "start": 59.55,
+      "end": 61.27
+    }
+  },
+  "evidence_folder": "TC-081/",
+  "run": "2026-11-16_0915"
+}

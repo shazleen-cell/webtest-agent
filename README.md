@@ -54,7 +54,7 @@ Open Claude Code in this folder and run:
 | 2 | `/test-website <url> <site name> [userid=<test user ID>]` | Explores the site, creates `settings.md` and `site-map.md`, and writes test cases to `website-tests/<site>/testcases.xlsx`. Then it stops so you can review them. With `userid=` it also sets up the login for LOGGED IN tests and writes those tests too. |
 | 3 | Type `proceed`, or mark *Approved* = Yes in the Excel file | Approves the test cases. `proceed` approves all new test cases and runs them straight away. |
 | 4 | `/run-tests <site name>` | Runs the approved tests and makes `report.html`, `results.xlsx` and `results.csv` for that run. |
-| 5 | `/gather-results <site name>` | Combines all runs into one `Results/` folder with the newest result of every test. |
+| 5 | `/gather-results <site name> [run ...]` | Combines all runs into one `Results/` folder with the newest result of every test. With run folder names (for example `2026-11-16_0915 2026-11-16_1121`) it combines only those runs into `Results_<first>_to_<last>/` and leaves `Results/` as it is. |
 
 The site name is any short name you choose. It becomes the folder `website-tests/<site name>/`.
 
@@ -98,7 +98,7 @@ The opt-in rules are in `.claude/rules/opt-in.md`. The Python scripts in `.claud
 | `test_evidence.py` | website-tester | Marks failed screenshots, and makes the replay video (MP4), replay GIF and steps PDF |
 | `browser_recorder.py` + `screen_recorder.mjs` | website-tester | Opens Chrome for one test with a screen recorder, and turns the recording into `<TC ID>_screen.mp4` |
 | `build_run_report.py` | `/run-tests` | Makes the report for one run and writes the latest results back to `testcases.xlsx` |
-| `gather_results.py` | `/gather-results` | Combines all runs into `Results/` |
+| `gather_results.py` | `/gather-results` | Combines all runs into `Results/`, or only the named runs into `Results_<first>_to_<last>/` |
 | `report_html.py` | both report scripts | The shared HTML report layout |
 | `scrub_secrets.py` | all three commands | Replaces real test-account values with their placeholders |
 | `eval_score.py` | `/evaluate-agent` | Scores a run against known results (`golden.json`), writes `eval_report.html`, and compares runs |
@@ -119,6 +119,7 @@ website-tests/<site>/
   runs/                evidence not in git; summary reports are
     <date_time>/       one folder per run: report.html, results.xlsx, results.csv, run_timing.json, evidence (not in git)
     Results/           newest result of every test from all runs: results.html, results.xlsx, README.md, json/ (in git); evidence folders (not in git)
+    Results_<a>_to_<b>/ same, but only from the runs named in /gather-results
 ```
 
 ## settings.md

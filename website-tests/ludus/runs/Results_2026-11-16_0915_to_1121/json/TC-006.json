@@ -1,0 +1,101 @@
+{
+  "id": "TC-006",
+  "title": "[LOGGED OUT] The cookie banner can be closed with the keyboard",
+  "area": "Cookie banner",
+  "priority": "Low",
+  "status": "PASSED",
+  "started": "2026-11-16T09:21:25+08:00",
+  "ended": "2026-11-16T09:22:27+08:00",
+  "duration_sec": 62,
+  "failed_step": null,
+  "reason": "All answers match. Dismiss was reached with 3 Tab presses (close X, cookie policy link, Dismiss).",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with cookie banner at the bottom.",
+      "ok": true,
+      "screenshot": "TC-006/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner titled \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner titled \"How we use cookies\" with a Dismiss button is shown at the bottom.",
+      "ok": true,
+      "screenshot": "TC-006/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Press the Tab key until the \"Dismiss\" button has the keyboard focus (at most 5 times).",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Pressed Tab 3 times: 1 close X button, 2 cookie policy link, 3 Dismiss.",
+      "ok": true,
+      "screenshot": "TC-006/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the \"Dismiss\" button have the keyboard focus?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.activeElement is the BUTTON \"Dismiss\"; it appears lighter blue.",
+      "ok": true,
+      "screenshot": "TC-006/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Press the Enter key.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Enter pressed; Dismiss button showed a loading spinner and was disabled.",
+      "ok": true,
+      "screenshot": "TC-006/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "After about 2 seconds the banner was gone (no banner text in the page); the page shows the Special offer card and Referral program button.",
+      "ok": true,
+      "screenshot": "TC-006/step06.png"
+    }
+  ],
+  "replay_gif": "TC-006/TC-006_replay.gif",
+  "steps_pdf": "TC-006/TC-006_steps.pdf",
+  "replay_mp4": "TC-006/TC-006_replay.mp4",
+  "screen_mp4": "TC-006/TC-006_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 25.74
+    },
+    "2": {
+      "start": 25.74,
+      "end": 44.82
+    },
+    "3": {
+      "start": 44.82,
+      "end": 44.83
+    },
+    "4": {
+      "start": 44.83,
+      "end": 65.09
+    },
+    "5": {
+      "start": 65.09,
+      "end": 65.09
+    },
+    "6": {
+      "start": 65.09,
+      "end": 65.1
+    }
+  },
+  "evidence_folder": "TC-006/",
+  "run": "2026-11-16_0915"
+}

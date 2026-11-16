@@ -1,0 +1,75 @@
+{
+  "id": "TC-003",
+  "title": "[LOGGED OUT] Cookie banner closes with its round close (x) icon",
+  "area": "Cookie banner",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T09:18:34",
+  "ended": "2026-11-16T09:19:08",
+  "duration_sec": 34,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-003/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "Is a banner titled \"How we use cookies\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner with heading \"How we use cookies\" shown at the bottom",
+      "ok": true,
+      "screenshot": "TC-003/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Click the round close (x) icon at the top right of the banner.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the round x icon (gdpr-compact-close); banner closed",
+      "ok": true,
+      "screenshot": "TC-003/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the \"How we use cookies\" banner gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Banner no longer on the page (page text has no \"How we use cookies\")",
+      "ok": true,
+      "screenshot": "TC-003/step04.png"
+    }
+  ],
+  "replay_gif": "TC-003/TC-003_replay.gif",
+  "steps_pdf": "TC-003/TC-003_steps.pdf",
+  "replay_mp4": "TC-003/TC-003_replay.mp4",
+  "screen_mp4": "TC-003/TC-003_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 33.42
+    },
+    "2": {
+      "start": 33.42,
+      "end": 33.43
+    },
+    "3": {
+      "start": 33.43,
+      "end": 33.43
+    },
+    "4": {
+      "start": 33.43,
+      "end": 33.44
+    }
+  },
+  "evidence_folder": "TC-003/",
+  "run": "2026-11-16_0915"
+}

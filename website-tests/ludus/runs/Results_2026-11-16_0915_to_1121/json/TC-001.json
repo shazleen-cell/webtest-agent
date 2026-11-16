@@ -1,0 +1,75 @@
+{
+  "id": "TC-001",
+  "title": "[LOGGED OUT] Home page loads with the correct tab title",
+  "area": "Home",
+  "priority": "High",
+  "status": "PASSED",
+  "started": "2026-11-16T09:16:22",
+  "ended": "2026-11-16T09:17:08",
+  "duration_sec": 46,
+  "failed_step": null,
+  "reason": "Tab title correct and logo shown",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ in the browser and wait until the page has finished loading.",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded with cookie banner",
+      "ok": true,
+      "screenshot": "TC-001/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\".",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was shown; clicked Dismiss; banner closed",
+      "ok": true,
+      "screenshot": "TC-001/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Is the tab title \"LUDUS - Merge Battle Arena PvP Web Shop\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "document.title = LUDUS - Merge Battle Arena PvP Web Shop",
+      "ok": true,
+      "screenshot": "TC-001/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is the LUDUS logo shown in the header?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "LUDUS logo image shown at top left of header",
+      "ok": true,
+      "screenshot": "TC-001/step04.png"
+    }
+  ],
+  "replay_gif": "TC-001/TC-001_replay.gif",
+  "steps_pdf": "TC-001/TC-001_steps.pdf",
+  "replay_mp4": "TC-001/TC-001_replay.mp4",
+  "screen_mp4": "TC-001/TC-001_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 28.94
+    },
+    "2": {
+      "start": 28.94,
+      "end": 40.26
+    },
+    "3": {
+      "start": 40.26,
+      "end": 46.46
+    },
+    "4": {
+      "start": 46.46,
+      "end": 46.46
+    }
+  },
+  "evidence_folder": "TC-001/",
+  "run": "2026-11-16_0915"
+}

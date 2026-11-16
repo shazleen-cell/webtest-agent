@@ -1,0 +1,114 @@
+{
+  "id": "TC-016",
+  "title": "[LOGGED OUT] \"To the store\" in the \"Check out our Store\" banner opens the Store in the same tab",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T09:35:16+08:00",
+  "ended": "2026-11-16T09:36:25+08:00",
+  "duration_sec": 69,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-016/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner was in the page (shown at the bottom after load); clicked Dismiss",
+      "ok": true,
+      "screenshot": "TC-016/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the banner \"Check out our Store and shop with profit\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner visible",
+      "ok": true,
+      "screenshot": "TC-016/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Does the banner say \"Buy game resources and Passes at lower prices and make savings with each purchase!\"?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Text shown exactly as written",
+      "ok": true,
+      "screenshot": "TC-016/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the green \"To the store\" button",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked, page navigated",
+      "ok": true,
+      "screenshot": "TC-016/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is the address now https://site.ludus-game.com/store?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "URL is https://site.ludus-game.com/store",
+      "ok": true,
+      "screenshot": "TC-016/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Was the Store opened in the same browser tab (no new tab)?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "get_tabs shows one tab only, now on /store",
+      "ok": true,
+      "screenshot": "TC-016/step07.png"
+    }
+  ],
+  "replay_gif": "TC-016/TC-016_replay.gif",
+  "steps_pdf": "TC-016/TC-016_steps.pdf",
+  "replay_mp4": "TC-016/TC-016_replay.mp4",
+  "screen_mp4": "TC-016/TC-016_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 18.52
+    },
+    "2": {
+      "start": 18.52,
+      "end": 30.34
+    },
+    "3": {
+      "start": 30.34,
+      "end": 38.66
+    },
+    "4": {
+      "start": 38.66,
+      "end": 39.66
+    },
+    "5": {
+      "start": 39.66,
+      "end": 52.12
+    },
+    "6": {
+      "start": 52.12,
+      "end": 57.29
+    },
+    "7": {
+      "start": 57.29,
+      "end": 61.88
+    }
+  },
+  "evidence_folder": "TC-016/",
+  "run": "2026-11-16_0915"
+}

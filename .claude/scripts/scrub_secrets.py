@@ -7,7 +7,7 @@ Tracked files use the placeholder {TEST_USER_ID} instead of the real value.
 Usage:
     python3 scrub_secrets.py <SITE> [--check] [path ...]
 Without paths it scrubs the tracked files of the site: settings.md, site-map.md,
-testcases.xlsx, runs/Results/README.md, runs/Results/results.xlsx and runs/Results/json/.
+testcases.xlsx, and README.md, results.xlsx and json/ of runs/Results/ and every runs/Results_*/ folder.
 A path may be a file or a folder (.md, .json, .csv, .html, .txt and .xlsx files inside it).
 --check only reports where a real value is found and exits with 1 if any is found.
 """
@@ -74,9 +74,10 @@ def main():
     check = "--check" in args
     paths = [Path(a) for a in args if a != "--check"]
     if not paths:
-        res = site / "runs" / "Results"
-        paths = [site / "settings.md", site / "site-map.md", site / "testcases.xlsx",
-                 res / "README.md", res / "results.xlsx", res / "json"]
+        paths = [site / "settings.md", site / "site-map.md", site / "testcases.xlsx"]
+        for res in sorted((site / "runs").glob("Results*")):
+            if res.is_dir():
+                paths += [res / "README.md", res / "results.xlsx", res / "json"]
     secrets = load_secrets(site)
     if not secrets:
         print(f"no values in {site / 'settings.local.md'}; nothing to do")

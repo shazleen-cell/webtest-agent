@@ -1,0 +1,140 @@
+{
+  "id": "TC-017",
+  "title": "[LOGGED OUT] A \"Latest news\" card opens the \"News\" popup and \"Close\" closes it",
+  "area": "Home",
+  "priority": "Medium",
+  "status": "PASSED",
+  "started": "2026-11-16T09:36:47+08:00",
+  "ended": "2026-11-16T09:37:53+08:00",
+  "duration_sec": 66,
+  "failed_step": null,
+  "reason": "All answers match",
+  "account_changes": [],
+  "steps": [
+    {
+      "n": 1,
+      "text": "Open https://site.ludus-game.com/ and wait until loaded",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Home page loaded",
+      "ok": true,
+      "screenshot": "TC-017/step01.png"
+    },
+    {
+      "n": 2,
+      "text": "If a \"How we use cookies\" banner is shown, click \"Dismiss\"",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Banner appeared at the bottom; clicked Dismiss",
+      "ok": true,
+      "screenshot": "TC-017/step02.png"
+    },
+    {
+      "n": 3,
+      "text": "Scroll down to the \"Latest news\" section",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Latest news cards visible",
+      "ok": true,
+      "screenshot": "TC-017/step03.png"
+    },
+    {
+      "n": 4,
+      "text": "Is at least one news card with a picture, a date and a title shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Two cards: picture, 'November 10' + 'The Clan Competition is about to start!' and 'November 3' + 'They way down to Atlantis is about to open!'",
+      "ok": true,
+      "screenshot": "TC-017/step04.png"
+    },
+    {
+      "n": 5,
+      "text": "Click the first news card",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked the Clan Competition card; screenshot was taken mid-animation (dimmed page, popup not yet drawn)",
+      "ok": true,
+      "screenshot": "TC-017/step05.png"
+    },
+    {
+      "n": 6,
+      "text": "Is a popup titled \"News\" shown?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Dialog named 'News' opened (accessibility tree: dialog 'News', heading 'News'). The heading 'News' is not clearly visible in the screenshot, only the news title; may be a wording issue",
+      "ok": true,
+      "screenshot": "TC-017/step06.png"
+    },
+    {
+      "n": 7,
+      "text": "Does the popup show a picture, a news title, a date and some news text?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Picture, title 'The Clan Competition is about to start!', date 'November 10', text 'Welcome the new spell in the Clan Competition: Tornado!...'",
+      "ok": true,
+      "screenshot": "TC-017/step07.png"
+    },
+    {
+      "n": 8,
+      "text": "Click the close (X) button of the \"News\" popup",
+      "expected": "",
+      "answer": "Done",
+      "saw": "Clicked Close",
+      "ok": true,
+      "screenshot": "TC-017/step08.png"
+    },
+    {
+      "n": 9,
+      "text": "Is the \"News\" popup gone?",
+      "expected": "Yes",
+      "answer": "Yes",
+      "saw": "Popup gone, Latest news section visible again",
+      "ok": true,
+      "screenshot": "TC-017/step09.png"
+    }
+  ],
+  "replay_gif": "TC-017/TC-017_replay.gif",
+  "steps_pdf": "TC-017/TC-017_steps.pdf",
+  "replay_mp4": "TC-017/TC-017_replay.mp4",
+  "screen_mp4": "TC-017/TC-017_screen.mp4",
+  "screen_steps": {
+    "1": {
+      "start": 0.0,
+      "end": 18.68
+    },
+    "2": {
+      "start": 18.68,
+      "end": 28.44
+    },
+    "3": {
+      "start": 28.44,
+      "end": 31.08
+    },
+    "4": {
+      "start": 31.08,
+      "end": 32.08
+    },
+    "5": {
+      "start": 32.08,
+      "end": 33.79
+    },
+    "6": {
+      "start": 33.79,
+      "end": 34.79
+    },
+    "7": {
+      "start": 34.79,
+      "end": 35.79
+    },
+    "8": {
+      "start": 35.79,
+      "end": 37.35
+    },
+    "9": {
+      "start": 37.35,
+      "end": 38.85
+    }
+  },
+  "evidence_folder": "TC-017/",
+  "run": "2026-11-16_0915"
+}
