@@ -1,14 +1,24 @@
 // Records the page of a Chrome started with --remote-debugging-port, through the DevTools screencast.
 // Started and stopped by browser_recorder.py; not meant to be run by hand.
-// Usage: node screen_recorder.mjs <port> <out-dir>
+// Usage: node screen_recorder.mjs <port> <out-dir> [--phone | --tablet]
+// --phone: also turns on iPhone 14 emulation (390x844, DPR 3, mobile, touch, iPhone user agent) through
+// DevTools; --tablet: iPad emulation (768x1024, DPR 2, mobile, touch, iPad user agent). The emulation lasts
+// as long as this connection, so it stays on for the whole test and ends with the recording.
 // Writes <out-dir>/frames/NNNNN.jpg while recording, <out-dir>/READY once the screencast runs, and
 // <out-dir>/frames.json ([{file, t}], t in seconds) when it stops. It stops when <out-dir>/STOP appears,
 // on SIGTERM/SIGINT, or when Chrome closes. Needs Node 22 or newer (built-in WebSocket).
 import fs from "node:fs";
 import path from "node:path";
 
-const [port, out] = process.argv.slice(2);
-if (!port || !out) { console.error("usage: node screen_recorder.mjs <port> <out-dir>"); process.exit(2); }
+const [port, out, ...flags] = process.argv.slice(2);
+if (!port || !out) { console.error("usage: node screen_recorder.mjs <port> <out-dir> [--phone | --tablet]"); process.exit(2); }
+const DEVICES = {
+  "--phone": { width: 390, height: 844, dpr: 3, platform: "iPhone",
+    ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
+  "--tablet": { width: 768, height: 1024, dpr: 2, platform: "iPad",
+    ua: "Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
+};
+const DEVICE = DEVICES[flags.find((f) => DEVICES[f])];
 if (typeof WebSocket !== "function") { console.error("Node 22 or newer is needed (no built-in WebSocket)"); process.exit(2); }
 fs.mkdirSync(path.join(out, "frames"), { recursive: true });
 
@@ -42,6 +52,14 @@ const target = await pageTarget();
 ws = new WebSocket(target.webSocketDebuggerUrl);
 ws.onopen = () => {
   send("Page.enable");
+  if (DEVICE) {
+    // No setEmitTouchEventsForMouse: it turns WebDriver's mouse clicks into touches and the clicks then hang.
+    const { width, height, dpr, ua, platform } = DEVICE;
+    send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: dpr, mobile: true,
+      screenWidth: width, screenHeight: height, screenOrientation: { type: "portraitPrimary", angle: 0 } });
+    send("Emulation.setUserAgentOverride", { userAgent: ua, platform });
+    send("Emulation.setTouchEmulationEnabled", { enabled: true, maxTouchPoints: 5 });
+  }
   send("Page.startScreencast", { format: "jpeg", quality: 80, maxWidth: 1440, maxHeight: 900, everyNthFrame: 1 });
   fs.writeFileSync(path.join(out, "READY"), "");
 };

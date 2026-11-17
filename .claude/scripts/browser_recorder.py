@@ -2,9 +2,15 @@
 """Start Chrome with a screen recorder for one test, and stop it again.
 
 Usage:
-  browser_recorder.py start <RUN> <TC ID>   opens Chrome (1440x900, new empty profile) with a debugging port and
+  browser_recorder.py start <RUN> <TC ID> [--phone | --tablet]
+                                           opens Chrome (1440x900, new empty profile) with a debugging port and
                                            starts the recorder; prints "port: <N>". The website-tester then
                                            attaches wdio-mcp to that port (start_session with attach: true).
+                                           With --phone the recorder also turns on iPhone 14 emulation (390x844,
+                                           DPR 3, mobile, touch, iPhone user agent) through DevTools, for Mobile
+                                           tests; --tablet turns on iPad emulation (768x1024, DPR 2).
+                                           Use these instead of wdio-mcp's emulate_device, which places fixed
+                                           elements (cookie banners, bottom bars) in a 1560x2656 window.
   browser_recorder.py stop <RUN> <TC ID>    stops the recorder, writes <RUN>/<TC ID>/<TC ID>_screen.mp4 and
                                            closes Chrome. Run it after close_session.
 
@@ -121,7 +127,7 @@ def unavailable(reason):
     sys.exit(2)
 
 
-def start(run, tc):
+def start(run, tc, device=None):
     work, state_path, _ = paths(run, tc)
     if os.path.exists(state_path):
         stop(run, tc, build=False)  # a leftover from an earlier attempt
@@ -145,13 +151,13 @@ def start(run, tc):
         stop(run, tc, build=False)
         unavailable("Chrome did not open its debugging port")
     rlog = open(os.path.join(work, "recorder.log"), "w")
-    rp = subprocess.Popen([node, RECORDER, str(port), work], stdout=rlog, stderr=rlog, start_new_session=True)
+    rp = subprocess.Popen([node, RECORDER, str(port), work] + ([device] if device else []), stdout=rlog, stderr=rlog, start_new_session=True)
     state["recorder_pid"] = rp.pid
     json.dump(state, open(state_path, "w"))
     if not wait_for(lambda: os.path.exists(os.path.join(work, "READY")), 15):
         stop(run, tc, build=False)
         unavailable("the recorder did not start (see .recorder/recorder.log)")
-    print(f"port: {port}")
+    print(f"port: {port}" + {"--phone": " (iPhone 14 emulation on)", "--tablet": " (iPad emulation on)"}.get(device, ""))
 
 
 def step_times(folder):
@@ -265,7 +271,9 @@ def stop(run, tc, build=True):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4 or sys.argv[1] not in ("start", "stop"):
+    devices = [a for a in sys.argv[1:] if a in ("--phone", "--tablet")]
+    args = [a for a in sys.argv[1:] if a not in ("--phone", "--tablet")]
+    if len(args) != 3 or args[0] not in ("start", "stop") or len(devices) > 1:
         sys.exit(__doc__)
-    cmd, run_dir, tc_id = sys.argv[1], os.path.abspath(sys.argv[2]), sys.argv[3]
-    start(run_dir, tc_id) if cmd == "start" else stop(run_dir, tc_id)
+    cmd, run_dir, tc_id = args[0], os.path.abspath(args[1]), args[2]
+    start(run_dir, tc_id, devices[0] if devices else None) if cmd == "start" else stop(run_dir, tc_id)
