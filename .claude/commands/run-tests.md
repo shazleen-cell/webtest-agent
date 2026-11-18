@@ -9,8 +9,8 @@ The optional second argument is a filter: a priority (High, Medium, Low), a mode
 PROJECT = the project folder (absolute path). EVIDENCE SCRIPT = PROJECT/.claude/scripts/test_evidence.py.
 
 ## Step 1: Load the approved tests
-Use python3 with openpyxl to read SITE/testcases.xlsx and take only rows where Approved is Yes, then apply the filter.
-If there are none, stop and tell me.
+Use python3 with openpyxl to read SITE/testcases.xlsx and take only rows where Approved is Yes, then apply the filter. **Payment cases are never run:** leave out every row whose Approved is Skip and every row whose Sub-type starts with "Payment" (even when Approved is Yes). Step 2 writes a "Skipped (payment)" result for them and nothing else; no browser is opened for them.
+If there are none to run, stop and tell me.
 Read SITE/settings.md: the "Login (LOGGED IN mode)" section, "Allowed when LOGGED IN", "Allowed when LOGGED OUT", "Never", and the opt-in sections "Allowed to type", "Allowed cart actions" and "Allowed demo checkout" if present (see .claude/rules/opt-in.md). The website-tester agent needs these.
 Also read SITE/settings.local.md (ignored by git). It holds the real test-account values, for example `- TEST_USER_ID: <id>`, for the placeholders such as {TEST_USER_ID} in settings.md and in the Start URLs and Steps. If an approved [LOGGED IN] case uses a placeholder whose value is missing, stop and ask me for it.
 Check that Pillow is installed (python3 -c "import PIL"). If it is missing, run: pip3 install --user pillow
@@ -19,6 +19,7 @@ Safety check before running (never skipped by /run-tests, whatever the arguments
 ## Step 2: Make the run folder
 RUN = SITE/runs/<YYYY-MM-DD_HHMM>/ (absolute path) with a subfolder results/ and one evidence folder per test: RUN/<TC ID>/ (for example RUN/TC-001/).
 Write RUN/run_timing.json: {"started": "<now, ISO 8601 local time, from `date +%Y-%m-%dT%H:%M:%S`>", "coordinator_model": "<your model>", "tester_model": "<the website-tester model and effort>", "batches": [], "refused": [<one {"tc": "<TC ID>", "step": <step number>, "reason": "<why>"} for every case the safety check in Step 1 did not run>]}. The reports use it to show the full run time split into coordinator and website-tester time; the eval script uses "refused".
+Then write the skipped payment results: python3 "<PROJECT>/.claude/scripts/skip_payment_cases.py" "<RUN>" "<SITE absolute path>" [the filter argument, if one was given]. It writes RUN/results/<TC ID>.json (status SKIPPED, skip_kind "payment") for every payment case, opens no browser and clicks nothing. If it prints a WARNING (a payment case with Approved = Yes), show it to me in Step 5. These cases are not "refused" in run_timing.json.
 
 ## Step 3: Run the tests
 Order the tests: first [LOGGED OUT], then [LOGGED IN] with Changes account = No, then [LOGGED IN] with Changes account = Yes. This way a claim or a spend does not change what the look-only tests see.
@@ -44,5 +45,6 @@ It also fills "Last result" and "Last run" in SITE/testcases.xlsx. Then run pyth
 ## Step 5: Tell me the results
 Show: totals, and the same totals split into LOGGED OUT and LOGGED IN, total time, the failed tests with reasons (and the path to each failed test's stepNN_FAIL.png), and which failures look like real bugs versus test-wording problems.
 List the SKIPPED tests with when they can run again (if the page showed it), and everything the run changed on the test account (from each result's account_changes).
+List the payment cases separately as "Skipped (payment): not executed, no money spent" (TC ID and title). They are not counted in the pass rate and are not failures. Repeat any script WARNING about a payment case that had Approved = Yes.
 End with the command to open the report: open "RUN/report.html" (with the real path).
 Tell me I can combine all runs into one report with /gather-results <site name>.

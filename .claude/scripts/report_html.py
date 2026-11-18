@@ -15,6 +15,10 @@ e = lambda s: html.escape(str(s if s is not None else ""))
 
 
 def totals(tests): return {k: sum(1 for t in tests if t.get("status") == k) for k in COLORS}
+def is_pay_skip(t):
+    """A payment case that /run-tests did not run on purpose (Approved = Skip): no money was spent. Its result JSON has skip_kind "payment"."""
+    return t.get("skip_kind") == "payment"
+def status_label(t): return "SKIPPED (payment)" if is_pay_skip(t) else str(t.get("status", ""))
 def fmt(sec): return f"{sec // 3600} h {sec % 3600 // 60} min" if sec >= 3600 else f"{sec // 60} min {sec % 60} s"
 def mode(t): return "LOGGED IN" if str(t.get("title", "")).startswith(("[LOGGED IN]", "[PLAYER]")) else "LOGGED OUT"
 def mode_label(t): return mode(t).capitalize()
@@ -332,6 +336,10 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
 
     tot = totals(tests)
     n = len(tests)
+    pay = [t for t in tests if is_pay_skip(t)]  # payment cases skipped on purpose: not counted in the pass rate or "needs attention"
+    ran_tests = [t for t in tests if not is_pay_skip(t)]
+    ran = len(ran_tests)
+    tot_ran = totals(ran_tests)
     total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
     statuses = [k for k in SHOWN + ["UNSURE"] if tot[k]]
     cats = sorted({x(t, "category") for t in tests} - {""})
@@ -360,7 +368,7 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
   <button class="menubtn" aria-label="Show tests">☰ Tests</button>
   <h1>{e(name)} <span>test results</span></h1>
   <span class="sum">{e(summary)}</span>
-  <span class="rate{" bad" if bad else ""}">{pct(tot["PASSED"], n)}% passed · {tot["FAILED"]} failed</span>
+  <span class="rate{" bad" if bad else ""}">{pct(tot["PASSED"], ran)}% passed · {tot["FAILED"]} failed</span>
 </header>
 <div class="wrap">
 <aside>
@@ -398,19 +406,22 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
                f' · test step time {fmt(total_sec)}</p>\n' + time_cards(timing, total_sec) + '  <div class="cards">\n'
                f'    <div class="card"><span class="k">Tests</span><span class="v">{n}</span></div>')
     for k in ["PASSED", "FAILED", "BLOCKED", "SKIPPED", "UNSURE"]:
-        if tot[k] or k in ("PASSED", "FAILED"):
-            out.append(f'    <div class="card c-{k.lower()}"><span class="k">{k.capitalize()}</span><span class="v">{tot[k]}</span>'
-                       f'<span class="s">{pct(tot[k], n)}%</span></div>')
-    out.append(f'  </div>\n  {bar(tests, big=True)}\n  <div class="legend">' +
-               "".join(f'<span><i class="s-{k.lower()}"></i>{k.capitalize()} {tot[k]}</span>' for k in ["PASSED", "FAILED", "BLOCKED", "SKIPPED", "UNSURE"] if tot[k]) + "</div>")
+        if tot_ran[k] or k in ("PASSED", "FAILED"):
+            out.append(f'    <div class="card c-{k.lower()}"><span class="k">{k.capitalize()}</span><span class="v">{tot_ran[k]}</span>'
+                       f'<span class="s">{pct(tot_ran[k], ran)}%</span></div>')
+    if pay:
+        out.append(f'    <div class="card c-skipped"><span class="k">Skipped (payment)</span><span class="v">{len(pay)}</span>'
+                   f'<span class="s">not run, no money spent</span></div>')
+    out.append(f'  </div>\n  {bar(ran_tests, big=True)}\n  <div class="legend">' +
+               "".join(f'<span><i class="s-{k.lower()}"></i>{k.capitalize()} {tot_ran[k]}</span>' for k in ["PASSED", "FAILED", "BLOCKED", "SKIPPED", "UNSURE"] if tot_ran[k]) + "</div>")
     out.append('  <div class="panels">')
     if cats:
-        out.append("    " + panel("By category", "cat", [(c, [t for t in tests if x(t, "category") == c]) for c in cats]))
-    out.append("    " + panel("By mode", "mode", [(m, [t for t in tests if mode(t) == m]) for m in ("LOGGED OUT", "LOGGED IN")], str.capitalize))
-    out.append("    " + panel("By priority", "prio", [(p, [t for t in tests if t.get("priority") == p]) for p in PRIOS]))
+        out.append("    " + panel("By category", "cat", [(c, [t for t in ran_tests if x(t, "category") == c]) for c in cats]))
+    out.append("    " + panel("By mode", "mode", [(m, [t for t in ran_tests if mode(t) == m]) for m in ("LOGGED OUT", "LOGGED IN")], str.capitalize))
+    out.append("    " + panel("By priority", "prio", [(p, [t for t in ran_tests if t.get("priority") == p]) for p in PRIOS]))
     out.append("  </div>")
 
-    attention = sorted([t for t in tests if t.get("status") != "PASSED"],
+    attention = sorted([t for t in ran_tests if t.get("status") != "PASSED"],
                        key=lambda t: (prio_rank.get(t.get("priority"), 9), st_rank.get(t.get("status"), 9), t["id"]))
     if attention:
         kind_th = '<th>Bug or test wording?</th>' if any(x(t, "finding") for t in attention) else ""
@@ -422,6 +433,15 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
             out.append(f'  <tr {attrs(t)} data-go="{e(t["id"])}"><td><a href="#{e(t["id"])}">{e(t["id"])}</a> {e(short(t))}<span class="sub">{e(sub)}</span></td>'
                        f'<td><span class="b b-{e(st.lower())}">{e(st)}</span></td><td>{e(t.get("priority"))}</td>'
                        f'<td class="why">{e(t.get("reason"))}</td>{f"<td>{kind(t)}</td>" if kind_th else ""}</tr>')
+        out.append("  </tbody></table></div>")
+
+    if pay:
+        out.append(f'  <h3 class="sec" id="payskip">Skipped (payment) <span class="cnt">({len(pay)} tests)</span></h3>\n'
+                   '  <p class="lead">Payment cases that were written but not run on purpose (Approved = Skip). The agent never clicked Buy or typed a card, so no money was spent.</p>\n'
+                   '  <div class="tw"><table><thead><tr><th style="width:40%">Test</th><th>Priority</th><th>Steps</th></tr></thead><tbody>')
+        for t in sorted(pay, key=lambda t: t["id"]):
+            out.append(f'  <tr data-go="{e(t["id"])}"><td><a href="#{e(t["id"])}">{e(t["id"])}</a> {e(short(t))}</td>'
+                       f'<td>{e(t.get("priority"))}</td><td>{len(t.get("steps", []))}</td></tr>')
         out.append("  </tbody></table></div>")
 
     changed = [t for t in tests if changes(t)]
@@ -442,7 +462,7 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
         sub = " · ".join(p for p in (str(t.get("area") or ""), cat_line(t)) if p)
         run_td = f'<td class="nw hide-s">{e(run_label(t.get("run")))}</td>' if show_run else ""
         out.append(f'  <tr {attrs(t)} data-go="{e(t["id"])}"><td><a href="#{e(t["id"])}">{e(t["id"])}</a> {e(short(t))}<span class="sub">{e(sub)}</span></td>'
-                   f'<td><span class="b b-{e(st.lower())}">{e(st)}</span></td><td>{e(t.get("priority"))}</td>'
+                   f'<td><span class="b b-{e(st.lower())}">{e(status_label(t))}</span></td><td>{e(t.get("priority"))}</td>'
                    f'<td class="nw hide-s">{mode_label(t)}</td>{run_td}<td class="nw hide-s">{e(t.get("duration_sec"))} s</td></tr>')
     out.append(f"""  </tbody></table></div>
   <div class="foot">{intro}<p>Each test has a screen recording of the browser when recording was available (pauses over 1 s shortened), a replay video of its step screenshots (a GIF in older runs) and a browser trace zip.</p></div>
@@ -460,7 +480,7 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
                  f'Run {run_label(t.get("run"))}' if show_run and t.get("run") else ""]
         out.append(f"""<section class="view case v-{e(st.lower())}" id="{e(tid)}" data-label="{e(tid)}" hidden>
   <p class="crumb"><a href="#overview">Overview</a> / {e(tid)}</p>
-  <div class="ctitle"><h2><span class="b b-{e(st.lower())}">{e(st)}</span> {e(short(t))}</h2>
+  <div class="ctitle"><h2><span class="b b-{e(st.lower())}">{e(status_label(t))}</span> {e(short(t))}</h2>
   <div class="nav"><button class="prev" title="Previous test (k)">◀ Prev</button><button class="next" title="Next test (j)">Next ▶</button></div></div>
   <div class="chips"><span class="m">{e(tid)}</span>{"".join(f'<span class="m">{e(c)}</span>' for c in chips if c)}{kind(t)}</div>""")
 

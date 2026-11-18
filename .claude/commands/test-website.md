@@ -17,6 +17,7 @@ Use the wdio-mcp browser tools for everything in the browser. If you cannot find
 ## Safety rules (always)
 The site's own rules are in SITE/settings.md: sections "Allowed when LOGGED IN", "Allowed when LOGGED OUT" and "Never". Follow them. On top of that, for every site:
 - **No payment, no purchase, ever.** Never click a button that shows a real-money price, or Buy, Purchase, Pay, Checkout, Add to cart, a paid Subscribe, or the final button of a flow that leads to payment. Never open or touch a payment window. If one opens, close it, screenshot it and tell me. If a click that a test is allowed to make (for example a Claim button or a button with an in-game price) leads to a payment window or asks for real money, the test run stops there and the test is marked FAILED. Nothing in a payment window is ever clicked.
+- **Exception: payment cases (Step 3).** A payment case may name Buy, the payment window, the card fields and Pay as written steps, because it is marked Skip and is never run: nothing is clicked or typed. This never applies to exploration or to any other test case.
 - Spending in-game points or currency only if settings.md allows it.
 - Never type into any field. Never enter credentials, personal data or payment details. Logging in through the login link in settings.md is allowed, and is not typing credentials.
 - Only open pages on the same website. Do not open external links or download files.
@@ -62,7 +63,15 @@ Write as many test cases as needed to cover every fact in site-map.md (F- facts 
   3. The action, for example: Click "Claim" on the "Free emeralds" card.
   4. Checks of the result: the success popup and its text, the new balance or "Available 0/1", the cooldown timer.
   One action per test. Only test the cases that are possible: do not plan two tests that claim the same reward.
-- Gift flow cases stop at the confirmation screen: the last step closes the flow with its close or back button. The final button that opens payment is never clicked, and no step may name it as an action.
+- Gift flow cases stop at the confirmation screen: the last step closes the flow with its close or back button. The final button that opens payment is never clicked, and no step may name it as an action (the payment cases below are the only exception, because they are never run).
+- **Payment cases (written, never run).** Only if LOGGED IN mode is ON and exploration (Step 2.9) showed a button for a real-money item (a real-money price, or Buy). Write 1 to 3 payment cases for each kind of real-money item, 5 in all at most, using only item names and button labels you really saw in site-map.md. Each case holds every step of the purchase, as written text:
+  1. The usual start: open the Start URL with the login-url-suffix placeholder, close the cookie banner and the after-login popup, then the logged-in-check as a question (expected Yes).
+  2. Click the item's Buy button (its exact label).
+  3. A question: Does a payment window open? (for Xsolla: Pay Station), and one for the item name and price shown in it.
+  4. Type the card into its fields. Write only placeholders: `{CARD_NUMBER}`, `{CARD_EXPIRY}`, `{CARD_CVC}`. Never write a real card number, and never a test card number either.
+  5. Click "Pay".
+  6. Checks of the result: the success message, and the balance or item after the purchase.
+  Exploration never opens a payment window, so you cannot know its field names: write them in general words ("the card number field") and say in the review (Step 5) that they are not confirmed. A payment case has Title `[LOGGED IN] Payment (skip): <what it buys>`, Area "Payment", Changes account = Yes (No for a case that only opens the payment window and closes it without paying), Test category = Functional, Sub-type = "Payment (skip)" and **Approved = Skip** (never empty, never Yes). `/run-tests` never runs these cases: it only reports them as "Skipped (payment)". No money is spent.
 - Logout cases are allowed (they do not change the account, "Changes account" = No).
 - Each test case has: TC ID, Title, Area (for example Home, Store, Header, Footer, Error page), Priority (High, Medium, Low), Type (Positive or Negative), Platform (Desktop or Mobile), Start URL, Steps, Expected answers, Evidence (the F-, P- or R- numbers it is based on), Changes account (Yes or No), Test category (Functional or Non-functional) and Sub-type (for example Navigation, Claim reward, Performance, Security, Accessibility, SEO, Usability / layout). Functional = does a feature work (links, menus, popups, login, claiming). Non-functional = how well it works (speed, failed requests, security headers, accessibility, SEO, layout on other screen sizes, spelling and content quality).
 - Priority: High = page loads, main menu, key buttons visible, prices shown, login and logout, claiming. Medium = sections and links. Low = small text and cosmetic items.
@@ -71,7 +80,7 @@ Write as many test cases as needed to cover every fact in site-map.md (F- facts 
 - Expected answers list the checks by number, for example: #3 Yes, #5 Yes. Write questions so the correct answer is Yes where possible.
 - Browser alert boxes (for example form validation messages) are closed automatically by the browser tools. To check an alert message, add the action step "Turn on the alert recorder." after the page has loaded and before the click, then ask: Is the alert message "<exact text>"? (Turn it on again after any page load.)
 - Typing, cart and checkout steps are allowed only when the matching opt-in section is ON, and only for exactly the fields, values and buttons it lists. Write typing steps like: Type "{TEST_USERNAME}" into the "Username:" field of the "Log in" popup. Use the placeholder, never the real value. A cart or checkout test has "Changes account" = Yes and should remove what it added.
-- Never write a step that pays or purchases (except a demo checkout that "Allowed demo checkout" allows), or anything in the "Never" list of settings.md. Skip anything in the skip list. Do not check rotating content or the current year.
+- Never write a step that pays or purchases (except a demo checkout that "Allowed demo checkout" allows, and the payment cases above, which are marked Skip and never run), or anything in the "Never" list of settings.md. Skip anything in the skip list. Do not check rotating content or the current year.
 - A LOGGED IN test must fit in the session-length from settings.md.
 - Do not repeat test cases that already exist in SITE/testcases.xlsx.
 
@@ -79,16 +88,17 @@ Write as many test cases as needed to cover every fact in site-map.md (F- facts 
 Use python3 with openpyxl to save SITE/testcases.xlsx, sheet "Test cases", with columns:
 Approved, TC ID, Title, Area, Priority, Type, Platform, Start URL, Steps, Expected answers, Evidence, Last result, Last run, Changes account, Test category, Sub-type.
 - If the file already exists, keep all existing rows and their Approved values. Add new rows with the next free TC IDs. If the "Changes account" column is missing, add it at the end and fill it with No for existing rows. If the "Test category" or "Sub-type" column is missing, add it at the end and fill it in for existing rows too. The reports use these columns for the Functional / Non-functional breakdown.
-- New rows have Approved empty. Add a Yes/No dropdown to the Approved and Changes account columns, and a Functional/Non-functional dropdown to the Test category column. Wrap text, freeze the header row, add filters.
+- New rows have Approved empty, except the payment cases (Step 3), which have Approved = Skip. Add a Yes/No/Skip dropdown to the Approved column, a Yes/No dropdown to the Changes account column, and a Functional/Non-functional dropdown to the Test category column. Wrap text, freeze the header row, add filters.
 - If the file is open in Excel and cannot be saved, ask me to close it.
 - Then run `python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE>"` and `python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE>" --check` (PROJECT = the project folder). The check must say "found 0 in total": no real test-account value may be left in settings.md, site-map.md or testcases.xlsx.
 
 ## Step 5: STOP for review
 Show me: the number of test cases per mode (LOGGED OUT / LOGGED IN), how many change the account, per Area and Priority, a short list (TC ID, title, priority, changes account), and anything you were unsure about. If you set up the login automatically, say what you added to settings.md (the Login section and what "Allowed when LOGGED IN" lets a test do) and whether the login check worked.
 List every step that clicks something not in the "Allowed" lists of settings.md, so I can remove it. List separately every step that types, changes the cart or checks out, with the opt-in section that allows it. List what each "Changes account" test will change on the test account.
+List the payment cases separately, under the heading "Payment cases (Skip: not executed, no money spent)": TC ID, title, and which field or button names are not confirmed because exploration never opens a payment window. They are already Approved = Skip and are not part of "proceed".
 Then tell me I can either:
 - type "proceed" to approve all new test cases and run them now, or
 - open SITE/testcases.xlsx, mark Approved Yes or No, save, close Excel, then type /run-tests <site name>.
 Then STOP and wait.
 
-If I type "proceed": set Approved = Yes on every empty row, then read .claude/commands/run-tests.md and follow it for this site.
+If I type "proceed": set Approved = Yes on every empty row (never on a Skip row, and never on a row whose Sub-type starts with "Payment"), then read .claude/commands/run-tests.md and follow it for this site.
