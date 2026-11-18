@@ -2,7 +2,7 @@
 """Start Chrome with a screen recorder for one test, and stop it again.
 
 Usage:
-  browser_recorder.py start <RUN> <TC ID> [--phone | --tablet]
+  browser_recorder.py start <RUN> <TC ID> [--phone | --tablet | --size WxH]
                                            opens Chrome (1440x900, new empty profile) with a debugging port and
                                            starts the recorder; prints "port: <N>". The website-tester then
                                            attaches wdio-mcp to that port (start_session with attach: true).
@@ -11,6 +11,9 @@ Usage:
                                            tests; --tablet turns on iPad emulation (768x1024, DPR 2).
                                            Use these instead of wdio-mcp's emulate_device, which places fixed
                                            elements (cookie banners, bottom bars) in a 1560x2656 window.
+                                           --size WxH (for example --size 1280x800) sets a desktop page area of
+                                           W x H pixels for the whole test, for tests that set a window size: the
+                                           window cannot be resized once wdio-mcp is attached.
   browser_recorder.py stop <RUN> <TC ID>    stops the recorder, writes <RUN>/<TC ID>/<TC ID>_screen.mp4 and
                                            closes Chrome. Run it after close_session.
 
@@ -157,7 +160,10 @@ def start(run, tc, device=None):
     if not wait_for(lambda: os.path.exists(os.path.join(work, "READY")), 15):
         stop(run, tc, build=False)
         unavailable("the recorder did not start (see .recorder/recorder.log)")
-    print(f"port: {port}" + {"--phone": " (iPhone 14 emulation on)", "--tablet": " (iPad emulation on)"}.get(device, ""))
+    note = {"--phone": " (iPhone 14 emulation on)", "--tablet": " (iPad emulation on)"}.get(device, "")
+    if device and device.startswith("--size="):
+        note = f" (page area {device.split('=', 1)[1]})"
+    print(f"port: {port}{note}")
 
 
 def step_times(folder):
@@ -270,9 +276,30 @@ def stop(run, tc, build=True):
         print(f"screen video: {out} ({note})" if os.path.exists(out) else f"screen video skipped: {note}")
 
 
+def size_flag(argv):
+    """Turn "--size 1280x800" or "--size=1280x800" into "--size=1280x800" and remove it from argv."""
+    for i, a in enumerate(argv):
+        if a == "--size":
+            val = argv[i + 1] if i + 1 < len(argv) else ""
+            del argv[i:i + 2]
+            break
+        if a.startswith("--size="):
+            val = a.split("=", 1)[1]
+            del argv[i]
+            break
+    else:
+        return None
+    m = re.fullmatch(r"(\d{3,4})x(\d{3,4})", val)
+    if not m:
+        sys.exit(f"bad --size {val!r}: use WIDTHxHEIGHT, for example --size 1280x800")
+    return f"--size={m.group(1)}x{m.group(2)}"
+
+
 if __name__ == "__main__":
-    devices = [a for a in sys.argv[1:] if a in ("--phone", "--tablet")]
-    args = [a for a in sys.argv[1:] if a not in ("--phone", "--tablet")]
+    argv = sys.argv[1:]
+    size = size_flag(argv)
+    devices = [a for a in argv if a in ("--phone", "--tablet")] + ([size] if size else [])
+    args = [a for a in argv if a not in ("--phone", "--tablet")]
     if len(args) != 3 or args[0] not in ("start", "stop") or len(devices) > 1:
         sys.exit(__doc__)
     cmd, run_dir, tc_id = args[0], os.path.abspath(args[1]), args[2]
