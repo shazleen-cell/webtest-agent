@@ -11,7 +11,7 @@ Writes <output>/results.html, results.xlsx, json/<TC ID>.json and <TC ID>/ evide
 import glob, json, os, re, shutil, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill
-from report_html import COLORS, PRIOS, e, totals, render, load_categories, load_timing, run_time
+from report_html import COLORS, PRIOS, e, is_pay_skip, totals, render, load_categories, load_timing, run_time
 
 if len(sys.argv) < 3:
     sys.exit(__doc__)
@@ -164,7 +164,7 @@ with open(os.path.join(OUT, "results.html"), "w", encoding="utf-8") as f:
 hdr = ["TC ID", "Title", "Area", "Priority", "Status", "Run", "Duration (sec)", "Failed step", "What I saw (if failed)", "Evidence folder"]
 wb = openpyxl.Workbook()
 ws = wb.active; ws.title = "Summary"
-for r in [["Site", NAME], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v in tot.items()] + \
+for r in [["Site", NAME], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v in tot.items()] + [["Skipped (payment)", sum(1 for t in tests if is_pay_skip(t))]] + \
          [[f"{p} tests", sum(1 for t in tests if t.get("priority") == p)] for p in PRIOS] + \
          [["Full run time (sec)", timing["full"] if timing else ""], ["Coordinator time (sec)", timing["coordinator"] if timing else ""],
           ["website-tester agent time (sec)", timing["tester"] if timing else ""], ["Test step time (sec)", total_sec],
