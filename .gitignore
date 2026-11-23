@@ -46,3 +46,6 @@ website-tests/*/archive/*/runs/**
 !website-tests/*/runs/*/eval_score.md
 !website-tests/*/runs/*/eval_score.json
 !website-tests/*/runs/eval_comparison.html
+
+# Slack webhook URL for slack_summary.py (a secret, never commit)
+.claude/slack.local.md

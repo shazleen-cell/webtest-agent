@@ -31,4 +31,5 @@ If OUT/README.md does not exist, write one that explains, in plain English for s
 ## Step 4: Tell me
 Show the number of tests in the report, the totals, how many are "Skipped (payment)" (shown in their own group, not in the pass rate), which runs were used and the OUT folder.
 Check that every link in results.html points to a file inside OUT and say if any is broken.
+Only if I asked for it (for example "and post it to Slack"): python3 "<PROJECT>/.claude/scripts/slack_summary.py" "<OUT>" "<SITE>" "<site name>" --send, and say whether it was sent. Do not read, print or pass the webhook URL yourself.
 End with: open "<OUT>/results.html" (with the real path).

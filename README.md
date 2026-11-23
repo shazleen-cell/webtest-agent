@@ -193,6 +193,23 @@ Each test page in the report has up to three ways to watch the test:
 - **Replay video** (`<TC ID>_replay.mp4`): the step screenshots, 1.5 seconds per step, with the step number and PASSED or FAILED on each frame. A replay GIF with the same frames is kept for older runs and for places that cannot play video.
 - **Trace zip**: open it at https://trace.playwright.dev.
 
+## Slack summary
+
+At the end of `/run-tests`, `.claude/scripts/slack_summary.py` posts a short summary of the run to a Slack channel through an incoming webhook. It includes the totals, the pass rate by mode and category, the tests that need attention with one-line reasons (the first 10), the changes to the test account, the number of skipped payment cases, the run time and the website-tester cost. The script builds the message from the result files, so it costs no AI tokens. `/gather-results` posts its combined report only when you ask.
+
+The message never contains screenshots, videos, traces or links to them. Before sending, the script checks the message against the real test-account values in `settings.local.md`. If it finds one, it sends nothing.
+
+Setup (once per computer):
+1. Get the webhook URL from api.slack.com/apps > your app > Incoming Webhooks.
+2. Create `.claude/slack.local.md` with the line `- SLACK_WEBHOOK_URL: https://hooks.slack.com/services/...`, or set the `SLACK_WEBHOOK_URL` environment variable. Git ignores the file. The URL is a secret: never paste it into chat, Jira, Slack or any other file.
+
+Without a webhook, the script only prints the message. To try it by hand:
+
+```
+python3 .claude/scripts/slack_summary.py website-tests/ludus/runs/<RUN> website-tests/ludus ludus          # dry run, prints the message
+python3 .claude/scripts/slack_summary.py website-tests/ludus/runs/<RUN> website-tests/ludus ludus --send   # posts it
+```
+
 ## Safety rules
 
 The tester always follows these rules:

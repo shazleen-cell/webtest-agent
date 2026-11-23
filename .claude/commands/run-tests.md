@@ -41,10 +41,13 @@ It creates from RUN/results/*.json:
 2. RUN/results.xlsx: sheets "Summary", "Results" and "Steps".
 3. RUN/results.csv: the Results sheet as UTF-8 with BOM.
 It also fills "Last result" and "Last run" in SITE/testcases.xlsx. Then run python3 "<PROJECT>/.claude/scripts/scrub_secrets.py" "<SITE absolute path>" --check; it must say "found 0 in total". If it prints TESTCASES_OPEN, the file is open in Excel: ask me to close it, then run the script again.
+Then post the summary to Slack: python3 "<PROJECT>/.claude/scripts/slack_summary.py" "<RUN>" "<SITE absolute path>" "<site name>" --send
+It builds the message from the result files (no AI, no tokens) and posts it with the webhook in .claude/slack.local.md. Do not read, print or pass the webhook URL yourself. If it says "dry run" (no webhook set) or "NOT SENT", carry on: the run and its reports are not affected.
 
 ## Step 5: Tell me the results
 Show: totals, and the same totals split into LOGGED OUT and LOGGED IN, total time, the failed tests with reasons (and the path to each failed test's stepNN_FAIL.png), and which failures look like real bugs versus test-wording problems.
 List the SKIPPED tests with when they can run again (if the page showed it), and everything the run changed on the test account (from each result's account_changes).
 List the payment cases separately as "Skipped (payment): not executed, no money spent" (TC ID and title). They are not counted in the pass rate and are not failures. Repeat any script WARNING about a payment case that had Approved = Yes.
+Say whether the Slack summary was sent, and if not, the reason the script gave.
 End with the command to open the report: open "RUN/report.html" (with the real path).
 Tell me I can combine all runs into one report with /gather-results <site name>.
