@@ -14,8 +14,15 @@ Usage:
                                            --size WxH (for example --size 1280x800) sets a desktop page area of
                                            W x H pixels for the whole test, for tests that set a window size: the
                                            window cannot be resized once wdio-mcp is attached.
+  browser_recorder.py start <RUN> <TC ID> --no-record
+                                           opens Chrome (1440x900, new empty profile) with a debugging port and NO
+                                           recorder, and prints "port: <N>". For /run-tests <site> payment-human: a
+                                           screen recording would film the card form a person types. Cannot be
+                                           combined with --phone, --tablet or --size. Chrome stays open after the
+                                           agent detaches, so the person can type in it.
   browser_recorder.py stop <RUN> <TC ID>    stops the recorder, writes <RUN>/<TC ID>/<TC ID>_screen.mp4 and
-                                           closes Chrome. Run it after close_session.
+                                           closes Chrome. Run it after close_session. For a --no-record start it
+                                           only closes Chrome and deletes its temporary profile.
 
 Exit code 2 from start means recording is not available here (no Chrome, Node older than 22, or Chrome did not
 start); the reason is printed, nothing is left running, and the test runs with a normal wdio-mcp session instead.
@@ -130,15 +137,15 @@ def unavailable(reason):
     sys.exit(2)
 
 
-def start(run, tc, device=None):
+def start(run, tc, device=None, record=True):
     work, state_path, _ = paths(run, tc)
     if os.path.exists(state_path):
         stop(run, tc, build=False)  # a leftover from an earlier attempt
     chrome = find_chrome()
     if not chrome:
         unavailable("Google Chrome not found (set CHROME_PATH)")
-    node = node_ok()
-    if not node:
+    node = node_ok() if record else None
+    if record and not node:
         unavailable("Node 22 or newer not found (the recorder needs its built-in WebSocket)")
     os.makedirs(work, exist_ok=True)
     profile = tempfile.mkdtemp(prefix="webtest-chrome-")
@@ -148,11 +155,14 @@ def start(run, tc, device=None):
                            "--no-first-run", "--no-default-browser-check", "--disable-search-engine-choice-screen",
                            "--window-size=1440,900", "about:blank"],
                           stdout=log, stderr=log, start_new_session=True)
-    state = {"port": port, "chrome_pid": cp.pid, "profile": profile, "recorder_pid": None}
+    state = {"port": port, "chrome_pid": cp.pid, "profile": profile, "recorder_pid": None, "record": record}
     json.dump(state, open(state_path, "w"))
     if not wait_for(lambda: chrome_up(port), 20):
         stop(run, tc, build=False)
         unavailable("Chrome did not open its debugging port")
+    if not record:
+        print(f"port: {port} (no recording)")
+        return
     rlog = open(os.path.join(work, "recorder.log"), "w")
     rp = subprocess.Popen([node, RECORDER, str(port), work] + ([device] if device else []), stdout=rlog, stderr=rlog, start_new_session=True)
     state["recorder_pid"] = rp.pid
@@ -262,6 +272,9 @@ def stop(run, tc, build=True):
         print("no recording to stop")
         return
     state = json.load(open(state_path))
+    if not state.get("record", True):
+        build = False  # started with --no-record: there is nothing to build
+        print("browser closed (no recording was made)")
     rpid = state.get("recorder_pid")
     if rpid:
         open(os.path.join(work, "STOP"), "w").close()
@@ -299,8 +312,11 @@ if __name__ == "__main__":
     argv = sys.argv[1:]
     size = size_flag(argv)
     devices = [a for a in argv if a in ("--phone", "--tablet")] + ([size] if size else [])
-    args = [a for a in argv if a not in ("--phone", "--tablet")]
+    no_record = "--no-record" in argv
+    args = [a for a in argv if a not in ("--phone", "--tablet", "--no-record")]
     if len(args) != 3 or args[0] not in ("start", "stop") or len(devices) > 1:
         sys.exit(__doc__)
+    if no_record and devices:
+        sys.exit("--no-record cannot be combined with --phone, --tablet or --size")
     cmd, run_dir, tc_id = args[0], os.path.abspath(args[1]), args[2]
-    start(run_dir, tc_id, devices[0] if devices else None) if cmd == "start" else stop(run_dir, tc_id)
+    start(run_dir, tc_id, devices[0] if devices else None, record=not no_record) if cmd == "start" else stop(run_dir, tc_id)

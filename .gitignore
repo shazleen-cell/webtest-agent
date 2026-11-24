@@ -13,6 +13,10 @@ __pycache__/
 
 # Test-account values (test user ID). Tracked files use placeholders like {TEST_USER_ID}.
 website-tests/*/settings.local.md
+# INVALID card values used by /run-tests <site> payment-invalid (never tracked)
+website-tests/*/settings.card.local.md
+# "card step on" flag written by card_guard.py while a person types a card (payment-human)
+.claude/card_step.flag
 # Exploration screenshots stay on this computer only (the LOGGED IN ones also show the player name)
 website-tests/*/explore/
 

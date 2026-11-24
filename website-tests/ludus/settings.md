@@ -7,17 +7,19 @@ Site: https://site.ludus-game.com/
 - cookie-button: Dismiss
 
 ## Facts seen before
-- The shop is one page app: pages are `/` and `/store` (languages: `/de-DE`, `/de-DE/store`, ...). Any other path ends on the Home page.
+- The shop is one page app: pages are `/` and `/store` (languages: `/de-DE`, `/de-DE/store`, ...). Any other path answers 404 and then shows the Home page.
 - Payment goes through Xsolla Pay Station: every button with a USD price leads to payment.
-- Prices, countdowns, offers and the news change; do not test their exact values.
+- Prices, countdowns, offers, news and the Seasonal cards change; do not test their exact values.
 - On a phone a bottom bar "Add It to Home Screen" has a green "Claim" button. It is an install prompt, not a reward: do not click it.
-- The green "Player{TEST_USER_ID}" button in the header is the Logout button (one click logs out, no confirmation).
+- The green button with a door icon and the player name in the header is the Logout button (on a phone, "Log out" is in the burger menu).
+- After opening a page with the login suffix the header can still show "Login" for about 3 seconds: wait before checking the login.
+- For the current test account the Loyalty shop is hidden (no cards), so spending loyalty points cannot be tested.
 
 ## Login (LOGGED IN mode)
 - login method: login-url-suffix
 - login-url-suffix: ?user-id={TEST_USER_ID}
-- logged-in-check: the header shows a loyalty points badge (a number) and a green button "Player{TEST_USER_ID}" with a door icon (cut to "Player…" on phones), and no "Login" button
-- after-login-popup: none seen during exploration (a "Login successful" popup may appear; close it with "Ok"). The cookie banner is still shown on a new session.
+- logged-in-check: the header shows a loyalty points badge (a number) and a green button with a door icon and the player name (cut off on phones), and no "Login" button (wait about 3 seconds after the page loads)
+- after-login-popup: none seen during exploration (a "Login successful" popup may appear; close it with "Ok"). The cookie banner is shown again on every new session.
 - session-length: (not measured)
 
 ## Allowed when LOGGED OUT
@@ -71,3 +73,47 @@ Site: https://site.ludus-game.com/
   - Order form, "Country:" = Testland
   - Order form, "City:" = Test City
   - Order form, "Credit card:" = <a value the team confirmed is fake for this demo site>
+
+## Allowed invalid-card check
+- status: OFF
+- approved-by: <name of the person who approved it, and the date>
+- payment-window: Xsolla Pay Station
+- values: INVALID made-up values in `settings.card.local.md` (git-ignored), never in a tracked file
+- fields:
+  - card number field = {CARD_NUMBER}
+  - expiry date field = {CARD_EXPIRY}
+  - security code field = {CARD_CVC}
+  - email field = {CARD_EMAIL}
+- buttons:
+  - "Pay" (once)
+  - the control that closes the payment window
+- evidence: nothing is captured while the card form is filled
+
+## Allowed person-typed card check
+- status: ON
+- approved-by: shazleen-cell, 2026-11-23 (approved in the chat; invalid card only); items extended to every logged-in paid item at shazleen-cell's request, 2026-11-24
+- payment-window: Xsolla Pay Station
+- who-types: a person, in the open Chrome window (the agent types nothing and never clicks "Pay")
+- items:
+  - "Small pile of gold", at most USD 3.00
+  - "Small welcome bundle", at most USD 5.50
+  - "Medium welcome bundle", at most USD 59.40
+  - "Big welcome bundle", at most USD 118.80
+  - "Piggy bank of gold", at most USD 11.79
+  - "Carpetbag of gold", at most USD 22.08
+  - "Goblet of gold", at most USD 42.57
+  - "Strongbox of gold", at most USD 80.74
+- card-kinds:
+  - invalid: ALLOWED
+  - real: NOT ALLOWED
+- agent-buttons:
+  - the control that closes the payment window (for Pay Station: the back arrow "Ludus", top left)
+- evidence: nothing is captured from the moment the person starts typing until the payment window is closed
+
+## Allowed logged-out price click
+- status: OFF
+- approved-by: <name of the person who approved it, and the date>
+- mode: LOGGED OUT only (fresh session, no login link)
+- buttons:
+  - the real-money price button named in the case (once)
+  - the control that closes the login prompt
