@@ -4,7 +4,7 @@ Usage: build_run_report.py <RUN> <SITE> <site name>"""
 import csv, glob, json, os, sys
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
-from report_html import COLORS, is_pay_skip, totals, changes, render, load_categories, load_timing, run_time
+from report_html import COLORS, is_card_check, is_pay_skip, totals, changes, render, load_categories, load_timing, run_time
 
 RUN, SITE, NAME = sys.argv[1], sys.argv[2], sys.argv[3]
 run_date = os.path.basename(RUN.rstrip("/"))
@@ -35,7 +35,7 @@ for t in tests:
 
 wb = openpyxl.Workbook()
 ws = wb.active; ws.title = "Summary"
-for r in [["Site", NAME], ["Run date", run_date], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v in tot.items()] + [["Skipped (payment)", sum(1 for t in tests if is_pay_skip(t))]] + \
+for r in [["Site", NAME], ["Run date", run_date], ["Tests", len(tests)]] + [[k.capitalize(), v] for k, v in tot.items()] + [["Skipped (payment)", sum(1 for t in tests if is_pay_skip(t))]] + [["Card check", sum(1 for t in tests if is_card_check(t))]] + \
          ([["Full run time (sec)", timing["full"] if timing else ""], ["Coordinator time (sec)", timing["coordinator"] if timing else ""],
           ["website-tester agent time (sec)", timing["tester"] if timing else ""], ["Test step time (sec)", total_sec],
           ["Tokens (website-tester, latest full run)", timing["tokens"] if timing else ""], ["Token run", timing["token_run"] if timing else ""], ["Tool calls (same run)", timing["tool_calls"] if timing else ""]] + [["Report", os.path.join(RUN, "report.html")],

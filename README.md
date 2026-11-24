@@ -193,6 +193,25 @@ Each test page in the report has up to three ways to watch the test:
 - **Replay video** (`<TC ID>_replay.mp4`): the step screenshots, 1.5 seconds per step, with the step number and PASSED or FAILED on each frame. A replay GIF with the same frames is kept for older runs and for places that cannot play video.
 - **Trace zip**: open it at https://trace.playwright.dev.
 
+## Payment checks
+
+A new user only types `/test-website <link> <site> userid=...` and then "proceed". The normal run comes first and reports the payment cases as "Skipped (payment)". When it ends, **the payment check starts by itself**. The person's "proceed" is recorded as the approval in `settings.md` (with the git user name), together with the items and price limits taken from the payment cases. A real card stays off.
+
+`/test-website` writes payment cases for every paid part of the shop:
+
+| Kind | One case for | Who acts |
+|---|---|---|
+| Window-only (`Payment (skip)`) | **every** real-money item the logged-in test user can see: the agent opens the payment window, checks the item and price, closes it | The agent alone |
+| Invalid card (`Payment (skip)`, has "A person" steps) | each kind of item (one shop section), cheapest item | A person types an INVALID card when told |
+| Login prompt (`Payment login prompt (skip)`) | **every** shop section with prices, logged out: the price button must ask to log in and open no payment window | The agent alone (needs opt-in section 6) |
+
+Sections that show prices logged out but are hidden for the logged-in test user cannot be bought by that user: the review lists them, and covering them needs a test account that sees them.
+
+- The payment check runs the window-only and login-prompt cases first, in batches (nobody touches Chrome). Then, for each invalid-card case, **a person types the card** in the open Chrome window, only after the message "Type the card details…", and clicks "Pay" once if the window lets them. An invalid card is often refused while it is typed and "Pay" stays disabled: the person answers "Pay stayed disabled (error shown)", and the result is `rejected`, the expected result. If the window closes by itself right after "Pay", the person answers "Clicked Pay, then the window closed by itself" and says what message they saw, if any (`rejected` with that message, or `window_closed` without one). Other answers: "Clicked Pay, the window is still open", "Skip", "The window expired". Only the coordinator switches the card guard on and off.
+- The person types the card in the open Chrome window and clicks "Pay" once (or answers "Skip"). The agent opens the window, checks the item and price, then waits. It never types, never clicks "Pay" and never sees the values. The first try uses a made-up INVALID card (nothing can be paid). A real card also needs `real: ALLOWED` in the site's "Allowed person-typed card check" section and a second confirmation before the window opens. Nothing is captured while the card is typed: a Claude Code hook (`.claude/scripts/card_guard.py`, registered in `.claude/settings.json`) blocks screenshots, snapshots and typing until the window is closed, and `/run-tests` tests the hook before it opens any window. **Start Claude Code in the project folder** so the hook loads (`/hooks` shows it). You have to be at the computer: the agent waits for you.
+- `/run-tests <site> payment-invalid`: the older mode where the agent types made-up INVALID values from `settings.card.local.md` (git ignores that file).
+Both write `card_check` (rejected, accepted, paid, window_only, window_closed, skipped, timeout or unclear; login_prompt or window_opened for the logged-out price checks) and `card_error` (the window's exact message) to the result. These cases are not counted in the pass rate. Rules: `.claude/rules/opt-in.md`, sections 4, 5 and 6.
+
 ## Safety rules
 
 The tester always follows these rules:

@@ -14,11 +14,32 @@ WHY = {"FAILED": "What went wrong", "BLOCKED": "Why it was blocked", "SKIPPED": 
 e = lambda s: html.escape(str(s if s is not None else ""))
 
 
-def totals(tests): return {k: sum(1 for t in tests if t.get("status") == k) for k in COLORS}
+def totals(tests): return {k: sum(1 for t in tests if t.get("status") == k and not t.get("card_check")) for k in COLORS}
 def is_pay_skip(t):
     """A payment case that /run-tests did not run on purpose (Approved = Skip): no money was spent. Its result JSON has skip_kind "payment"."""
     return t.get("skip_kind") == "payment"
-def status_label(t): return "SKIPPED (payment)" if is_pay_skip(t) else str(t.get("status", ""))
+CARD_LABELS = {"rejected": "CARD REJECTED (as expected)", "accepted": "CARD ACCEPTED (bug?)",
+               "window_only": "WINDOW CHECKED", "unclear": "CARD CHECK UNCLEAR",
+               "paid": "PAID (real card)", "skipped": "CARD STEP SKIPPED", "timeout": "WINDOW EXPIRED",
+               "login_prompt": "LOGIN PROMPT CHECKED", "window_opened": "PAYMENT WINDOW OPENED (logged out)",
+               "window_closed": "WINDOW CLOSED AFTER PAY (no message)"}
+CARD_BADGE = {"rejected": "passed", "window_only": "passed", "accepted": "failed", "unclear": "unsure",
+              "paid": "passed", "skipped": "unsure", "timeout": "unsure", "login_prompt": "passed", "window_opened": "failed", "window_closed": "unsure"}
+STATUS_LED = {"window_only", "login_prompt"}  # these checks pass only when the test's own answers matched
+def is_card_check(t):
+    """A payment case run by /run-tests <site> payment-invalid (the agent typed an INVALID card) or payment-human (a person typed
+    the card). Its result JSON has card_check = rejected | accepted | paid | window_only | skipped | timeout | unclear
+    | login_prompt | window_opened (logged-out price button) | window_closed (closed by itself after Pay).
+    Not counted in the pass rate."""
+    return bool(t.get("card_check"))
+def status_label(t):
+    if is_card_check(t): return CARD_LABELS.get(str(t.get("card_check")), "CARD CHECK")
+    return "SKIPPED (payment)" if is_pay_skip(t) else str(t.get("status", ""))
+def badge_cls(t, st):
+    if not is_card_check(t): return str(st).lower()
+    cc = str(t.get("card_check"))
+    if cc in STATUS_LED and str(st).upper() != "PASSED": return "failed" if str(st).upper() == "FAILED" else "unsure"
+    return CARD_BADGE.get(cc, "unsure")
 def fmt(sec): return f"{sec // 3600} h {sec % 3600 // 60} min" if sec >= 3600 else f"{sec // 60} min {sec % 60} s"
 def mode(t): return "LOGGED IN" if str(t.get("title", "")).startswith(("[LOGGED IN]", "[PLAYER]")) else "LOGGED OUT"
 def mode_label(t): return mode(t).capitalize()
@@ -337,7 +358,8 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
     tot = totals(tests)
     n = len(tests)
     pay = [t for t in tests if is_pay_skip(t)]  # payment cases skipped on purpose: not counted in the pass rate or "needs attention"
-    ran_tests = [t for t in tests if not is_pay_skip(t)]
+    cc = [t for t in tests if is_card_check(t)]  # payment cases run with an invalid card: own group, not counted in the pass rate
+    ran_tests = [t for t in tests if not is_pay_skip(t) and not is_card_check(t)]
     ran = len(ran_tests)
     tot_ran = totals(ran_tests)
     total_sec = sum(int(t.get("duration_sec") or 0) for t in tests)
@@ -412,6 +434,11 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
     if pay:
         out.append(f'    <div class="card c-skipped"><span class="k">Skipped (payment)</span><span class="v">{len(pay)}</span>'
                    f'<span class="s">not run, no money spent</span></div>')
+    if cc:
+        paid = sum(1 for t in cc if t.get("card_check") == "paid")
+        out.append(f'    <div class="card c-skipped"><span class="k">Card check</span><span class="v">{len(cc)}</span>'
+                   f'<span class="s">{sum(1 for t in cc if t.get("card_check") == "rejected")} rejected as expected'
+                   f'{f", {paid} paid with a real card" if paid else ", no payment"}</span></div>')
     out.append(f'  </div>\n  {bar(ran_tests, big=True)}\n  <div class="legend">' +
                "".join(f'<span><i class="s-{k.lower()}"></i>{k.capitalize()} {tot_ran[k]}</span>' for k in ["PASSED", "FAILED", "BLOCKED", "SKIPPED", "UNSURE"] if tot_ran[k]) + "</div>")
     out.append('  <div class="panels">')
@@ -444,6 +471,17 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
                        f'<td>{e(t.get("priority"))}</td><td>{len(t.get("steps", []))}</td></tr>')
         out.append("  </tbody></table></div>")
 
+    if cc:
+        out.append(f'  <h3 class="sec" id="cardcheck">Invalid-card check <span class="cnt">({len(cc)} tests)</span></h3>\n'
+                   '  <p class="lead">Payment cases run with a made-up INVALID card (never a real or valid one), one attempt each, to see what the payment window does. '
+                   '"Rejected as expected" means the window refused the card and nothing was paid. These cases are not counted in the pass rate.</p>\n'
+                   '  <div class="tw"><table><thead><tr><th style="width:34%">Test</th><th>Result</th><th>Window answer (exact text)</th></tr></thead><tbody>')
+        for t in sorted(cc, key=lambda t: t["id"]):
+            out.append(f'  <tr data-go="{e(t["id"])}"><td><a href="#{e(t["id"])}">{e(t["id"])}</a> {e(short(t))}</td>'
+                       f'<td><span class="b b-{e(badge_cls(t, t.get("status")))}">{e(status_label(t))}</span></td>'
+                       f'<td class="why">{e(t.get("card_error") or t.get("reason"))}</td></tr>')
+        out.append("  </tbody></table></div>")
+
     changed = [t for t in tests if changes(t)]
     if changed:
         out.append(f'  <h3 class="sec">Changes to the test account <span class="cnt">({len(changed)} tests)</span></h3>\n'
@@ -462,7 +500,7 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
         sub = " · ".join(p for p in (str(t.get("area") or ""), cat_line(t)) if p)
         run_td = f'<td class="nw hide-s">{e(run_label(t.get("run")))}</td>' if show_run else ""
         out.append(f'  <tr {attrs(t)} data-go="{e(t["id"])}"><td><a href="#{e(t["id"])}">{e(t["id"])}</a> {e(short(t))}<span class="sub">{e(sub)}</span></td>'
-                   f'<td><span class="b b-{e(st.lower())}">{e(status_label(t))}</span></td><td>{e(t.get("priority"))}</td>'
+                   f'<td><span class="b b-{e(badge_cls(t, st))}">{e(status_label(t))}</span></td><td>{e(t.get("priority"))}</td>'
                    f'<td class="nw hide-s">{mode_label(t)}</td>{run_td}<td class="nw hide-s">{e(t.get("duration_sec"))} s</td></tr>')
     out.append(f"""  </tbody></table></div>
   <div class="foot">{intro}<p>Each test has a screen recording of the browser when recording was available (pauses over 1 s shortened), a replay video of its step screenshots (a GIF in older runs) and a browser trace zip.</p></div>
@@ -480,7 +518,7 @@ def render(tests, name, root, summary, show_run=False, intro="", views=(), info=
                  f'Run {run_label(t.get("run"))}' if show_run and t.get("run") else ""]
         out.append(f"""<section class="view case v-{e(st.lower())}" id="{e(tid)}" data-label="{e(tid)}" hidden>
   <p class="crumb"><a href="#overview">Overview</a> / {e(tid)}</p>
-  <div class="ctitle"><h2><span class="b b-{e(st.lower())}">{e(status_label(t))}</span> {e(short(t))}</h2>
+  <div class="ctitle"><h2><span class="b b-{e(badge_cls(t, st))}">{e(status_label(t))}</span> {e(short(t))}</h2>
   <div class="nav"><button class="prev" title="Previous test (k)">◀ Prev</button><button class="next" title="Next test (j)">Next ▶</button></div></div>
   <div class="chips"><span class="m">{e(tid)}</span>{"".join(f'<span class="m">{e(c)}</span>' for c in chips if c)}{kind(t)}</div>""")
 
