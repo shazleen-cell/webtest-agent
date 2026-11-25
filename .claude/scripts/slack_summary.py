@@ -21,7 +21,7 @@ import glob, json, os, re, sys, urllib.error, urllib.request
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from report_html import PRIOS, SHOWN, totals, is_pay_skip, mode, short, changes, pct, fmt, load_categories, load_timing, run_time  # noqa: E402
+from report_html import PRIOS, SHOWN, CARD_LABELS, totals, is_pay_skip, is_card_check, mode, short, changes, pct, fmt, load_categories, load_timing, run_time  # noqa: E402
 from scrub_secrets import load_secrets  # noqa: E402
 
 PROJECT = Path(__file__).resolve().parents[2]
@@ -70,7 +70,8 @@ def build(folder, site, name):
 
     tot = totals(tests)
     pay = [t for t in tests if is_pay_skip(t)]
-    ran_tests = [t for t in tests if not is_pay_skip(t)]
+    cards = [t for t in tests if is_card_check(t)]  # invalid-card, window-only and login-prompt checks: not in the pass rate
+    ran_tests = [t for t in tests if not is_pay_skip(t) and not is_card_check(t)]
     ran = len(ran_tests)
     tot_ran = totals(ran_tests)
     rate = pct(tot["PASSED"], ran)
@@ -86,6 +87,12 @@ def build(folder, site, name):
                              if tot_ran[k] or k in ("PASSED", "FAILED"))
     if pay:
         status_line += f" · Skipped (payment) {len(pay)}, not run, no money spent"
+    if cards:
+        counts = {}
+        for t in cards:
+            k = str(t.get("card_check"))
+            counts[k] = counts.get(k, 0) + 1
+        status_line += f" · Card check {len(cards)} (not in the pass rate)"
     lines = [f"*{len(tests)} test{'s' if len(tests) != 1 else ''}:* {status_line}"]
     for m in ("LOGGED OUT", "LOGGED IN"):
         group = [t for t in ran_tests if mode(t) == m]
@@ -94,6 +101,16 @@ def build(folder, site, name):
     cats = sorted({(info.get(t["id"]) or {}).get("category") or "" for t in ran_tests} - {""})
     for c in cats:
         lines.append(f"*{esc(c)}:* {passed_of([t for t in ran_tests if (info.get(t['id']) or {}).get('category') == c])}")
+    real = [t for t in ran_tests if t.get("card_check")]  # real-card payments: normal tests, counted in the pass rate
+    if real:
+        paid = sum(1 for t in real if t.get("card_check") == "paid")
+        lines.append(f"*Real-card payments:* {paid} of {len(real)} paid (counted in the pass rate; see the spend ledger for refunds)")
+    if cards:
+        lines.append("*Card check:* " + ", ".join(f"{n} {CARD_LABELS.get(k, k).lower()}" for k, n in sorted(counts.items())))
+        alarm = [t for t in cards if t.get("card_check") in ("accepted", "window_opened")]
+        if alarm:
+            lines.append(":warning: *Check at once:* " + ", ".join(
+                f"{esc(t['id'])} {esc(CARD_LABELS.get(str(t.get('card_check'))))}" for t in alarm))
     summary = "\n".join(lines)
 
     prio_rank = {p: i for i, p in enumerate(PRIOS)}

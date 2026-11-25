@@ -221,7 +221,7 @@ Both write `card_check` (rejected, accepted, paid, window_only, window_closed, s
 
 ## Slack summary
 
-At the end of `/run-tests`, `.claude/scripts/slack_summary.py` posts a short summary of the run to a Slack channel through an incoming webhook. It includes the totals, the pass rate by mode and category, the tests that need attention with one-line reasons (the first 10), the changes to the test account, the number of skipped payment cases, the run time and the website-tester cost. The script builds the message from the result files, so it costs no AI tokens. `/gather-results` posts its combined report only when you ask.
+At the end of `/run-tests`, `.claude/scripts/slack_summary.py` posts a short summary of the run to a Slack channel through an incoming webhook. It includes the totals, the pass rate by mode and category, the tests that need attention with one-line reasons (the first 10), the changes to the test account, the number of skipped payment cases, the payment check results (real-card payments count in the pass rate, like in the report; invalid-card, window-only and login-prompt checks are only counted, and a card accepted or a payment window opened while logged out is flagged "Check at once"), the run time and the website-tester cost. It never shows card details or amounts. The script builds the message from the result files, so it costs no AI tokens. `/gather-results` posts its combined report only when you ask.
 
 The message never contains screenshots, videos, traces or links to them. Before sending, the script checks the message against the real test-account values in `settings.local.md`. If it finds one, it sends nothing.
 
