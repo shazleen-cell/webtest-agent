@@ -15,6 +15,8 @@ __pycache__/
 website-tests/*/settings.local.md
 # INVALID card values used by /run-tests <site> payment-invalid (never tracked)
 website-tests/*/settings.card.local.md
+# Spend ledger and budget of real-card payments (per tester, written by spend_ledger.py and by a person)
+spend/
 # "card step on" flag written by card_guard.py while a person types a card (payment-human)
 .claude/card_step.flag
 # Exploration screenshots stay on this computer only (the LOGGED IN ones also show the player name)
