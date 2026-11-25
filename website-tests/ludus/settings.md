@@ -7,25 +7,26 @@ Site: https://site.ludus-game.com/
 - cookie-button: Dismiss
 
 ## Facts seen before
-- The shop is one page app: pages are `/` and `/store` (languages: `/de-DE`, `/de-DE/store`, ...). Any other path answers 404 and then shows the Home page.
-- Payment goes through Xsolla Pay Station: every button with a USD price leads to payment.
+- The shop is a one-page app: the pages are `/` (Home) and `/store` (Store). Languages use a prefix, for example `/de-DE` and `/de-DE/store`. An unknown path answers 404 and then shows the Home page at `/`.
+- The chosen language is remembered: after choosing Deutsch, opening `/` goes to `/de-DE` again.
+- Every button with a USD price leads to payment (Xsolla Pay Station). The whole shop card is also clickable: only click named buttons, never a card.
 - Prices, countdowns, offers, news and the Seasonal cards change; do not test their exact values.
 - On a phone a bottom bar "Add It to Home Screen" has a green "Claim" button. It is an install prompt, not a reward: do not click it.
-- The green button with a door icon and the player name in the header is the Logout button (on a phone, "Log out" is in the burger menu).
-- After opening a page with the login suffix the header can still show "Login" for about 3 seconds: wait before checking the login.
-- For the current test account the Loyalty shop is hidden (no cards), so spending loyalty points cannot be tested.
+- The site sometimes answers "504 Gateway Time-out" once; opening the page again works.
+- LOGGED IN, the current test account sees far fewer shop sections: only Special offers (a carousel) and Gold have price buttons; Free wares has no "Atlantis Tokens"; Gifts to friends is hidden, so the gift flow cannot be tested with this account. The Loyalty shop shows 7 cards and the account has fewer points than the cheapest one.
 
 ## Login (LOGGED IN mode)
 - login method: login-url-suffix
 - login-url-suffix: ?user-id={TEST_USER_ID}
-- logged-in-check: the header shows a loyalty points badge (a number) and a green button with a door icon and the player name (cut off on phones), and no "Login" button (wait about 3 seconds after the page loads)
-- after-login-popup: none seen during exploration (a "Login successful" popup may appear; close it with "Ok"). The cookie banner is shown again on every new session.
-- session-length: (not measured)
+- logged-in-check: the header shows a loyalty points badge (a number) and a green button with a door icon and the player name "Player{TEST_USER_ID}" (cut off as "Player..." in the phone burger menu), and no "Login" button. Wait about 3 seconds after the page loads.
+- after-login-popup: none seen (2026-11-24). The login suffix disappears from the address bar after login. The cookie banner is shown again in every new session.
+- session-length: not measured; still logged in after a reload without the suffix, after going Store -> Home and after switching to Français (about 10 minutes observed).
+- logout: the green player-name button in the header (desktop), "Log out" in the burger menu (phone).
 
 ## Allowed when LOGGED OUT
-- Looking at pages and normal navigation clicks (header, footer, menus, tabs, carousel arrows, language selector).
+- Looking at pages and normal navigation clicks (header, footer, menus, store category tabs, carousel arrows and dots, language selector).
 - Closing the cookie banner.
-- Opening and closing popups and FAQ answers.
+- Opening and closing popups (Login prompt, News, Referral program panel, burger menu) and FAQ answers.
 
 ## Allowed when LOGGED IN
 - Everything in "Allowed when LOGGED OUT".
@@ -39,10 +40,12 @@ Site: https://site.ludus-game.com/
 ## Never
 - No payment and no purchase, ever: never click a button that shows a real-money price, or Buy, Purchase, Pay, Checkout, Add to cart, a paid Subscribe, or the final button of a flow that leads to payment. Never open or touch a payment window (Pay Station).
 - Never type into any field, never enter credentials, personal data or payment details.
-- Never open external links or download files.
+- Never open external links (App Store, Google Play, Web-Version, social media, Support, Xsolla, Affiliate Program) or download files.
+- Never click "Invite friends" in the Referral program panel.
+- Never click the "Claim" button of the phone "Add It to Home Screen" bar.
 
 ## Skip
-- Rotating content (countdowns, limited-time offers) and the current year.
+- Rotating content (countdowns, limited-time offers, news) and the current year.
 
 ## Allowed to type
 - status: OFF
@@ -91,28 +94,30 @@ Site: https://site.ludus-game.com/
 
 ## Allowed person-typed card check
 - status: ON
-- approved-by: shazleen-cell, 2026-11-23 (approved in the chat; invalid card only); items extended to every logged-in paid item at shazleen-cell's request, 2026-11-24
+- approved-by: shazleen-cell (by typing "proceed"), 2026-11-24
 - payment-window: Xsolla Pay Station
 - who-types: a person, in the open Chrome window (the agent types nothing and never clicks "Pay")
 - items:
-  - "Small pile of gold", at most USD 3.00
-  - "Small welcome bundle", at most USD 5.50
+  - "Small welcome bundle", at most USD 5.94
   - "Medium welcome bundle", at most USD 59.40
   - "Big welcome bundle", at most USD 118.80
+  - "Small pile of gold", at most USD 3.17
   - "Piggy bank of gold", at most USD 11.79
   - "Carpetbag of gold", at most USD 22.08
   - "Goblet of gold", at most USD 42.57
   - "Strongbox of gold", at most USD 80.74
 - card-kinds:
   - invalid: ALLOWED
-  - real: NOT ALLOWED
+  - real: ALLOWED
+- auto-pay: ALLOWED
+- max-total-per-run: USD 50
 - agent-buttons:
-  - the control that closes the payment window (for Pay Station: the back arrow "Ludus", top left)
+  - the control that closes the payment window (for Pay Station: the back arrow "Ludus", top left, `[data-testid=return-button]` inside `iframe.paystation-modal__iframe`)
 - evidence: nothing is captured from the moment the person starts typing until the payment window is closed
 
 ## Allowed logged-out price click
-- status: OFF
-- approved-by: <name of the person who approved it, and the date>
+- status: ON
+- approved-by: shazleen-cell (by typing "proceed"), 2026-11-24
 - mode: LOGGED OUT only (fresh session, no login link)
 - buttons:
   - the real-money price button named in the case (once)

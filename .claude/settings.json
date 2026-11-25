@@ -9,6 +9,26 @@
             "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/scripts/card_guard.py\" hook"
           }
         ]
+      },
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "(python3 \"$CLAUDE_PROJECT_DIR/.claude/scripts/notify_person.py\" \"Claude Code has a question for you\" >/dev/null 2>&1 &) ; true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "(python3 \"$CLAUDE_PROJECT_DIR/.claude/scripts/notify_person.py\" \"Claude Code needs your answer\" >/dev/null 2>&1 &) ; true"
+          }
+        ],
+        "matcher": "permission_prompt|elicitation_dialog"
       }
     ]
   }

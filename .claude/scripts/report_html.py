@@ -14,7 +14,7 @@ WHY = {"FAILED": "What went wrong", "BLOCKED": "Why it was blocked", "SKIPPED": 
 e = lambda s: html.escape(str(s if s is not None else ""))
 
 
-def totals(tests): return {k: sum(1 for t in tests if t.get("status") == k and not t.get("card_check")) for k in COLORS}
+def totals(tests): return {k: sum(1 for t in tests if t.get("status") == k and not is_card_check(t)) for k in COLORS}
 def is_pay_skip(t):
     """A payment case that /run-tests did not run on purpose (Approved = Skip): no money was spent. Its result JSON has skip_kind "payment"."""
     return t.get("skip_kind") == "payment"
@@ -30,8 +30,9 @@ def is_card_check(t):
     """A payment case run by /run-tests <site> payment-invalid (the agent typed an INVALID card) or payment-human (a person typed
     the card). Its result JSON has card_check = rejected | accepted | paid | window_only | skipped | timeout | unclear
     | login_prompt | window_opened (logged-out price button) | window_closed (closed by itself after Pay).
-    Not counted in the pass rate."""
-    return bool(t.get("card_check"))
+    Not counted in the pass rate. A REAL-card payment (card_kind "real") is a normal test instead: PASSED only when the
+    payment succeeded, FAILED when it was declined or anything else happened, and counted in the pass rate."""
+    return bool(t.get("card_check")) and str(t.get("card_kind")) != "real"
 def status_label(t):
     if is_card_check(t): return CARD_LABELS.get(str(t.get("card_check")), "CARD CHECK")
     return "SKIPPED (payment)" if is_pay_skip(t) else str(t.get("status", ""))

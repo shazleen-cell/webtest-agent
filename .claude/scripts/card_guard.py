@@ -3,6 +3,10 @@
 
 Usage:
   card_guard.py on <RUN> <TC ID>   starts the card step: writes .claude/card_step.flag
+  card_guard.py on <RUN> <TC ID> --autopay
+                                   the same guard for an AUTO-PAY case (the agent pays with the card the payment
+                                   window saved earlier): everything stays blocked, except ONE kind of click, the
+                                   "Pay" button. The agent still cannot screenshot, snapshot, type or read a field.
   card_guard.py off                ends it: removes the flag
   card_guard.py status             says whether the guard is on
   card_guard.py hook               the Claude Code PreToolUse hook (the tool call arrives as JSON on stdin)
@@ -31,6 +35,7 @@ PROJECT = Path(__file__).resolve().parents[2]
 FLAG = PROJECT / ".claude" / "card_step.flag"
 MAX_AGE = 90 * 60  # seconds
 PAY_WORDS = re.compile(r"\b(pay|buy|purchase|checkout|submit|confirm|subscribe)\b", re.I)
+PAY_ONLY = re.compile(r"\bpay\b", re.I)
 UNSAFE_SCRIPT = re.compile(
     r"\.value\b|\bvalue\s*[:=]|innerHTML|outerHTML|document\.body|documentElement|FormData|\binput\b|\btextarea\b"
     r"|\.click\s*\(|\.focus\s*\(|\.submit\s*\(|dispatchEvent|scroll|location\s*=|\.select\s*\(|execCommand", re.I)
@@ -50,13 +55,21 @@ def active():
         return False
 
 
+def autopay():
+    """True when the guard was switched on with --autopay."""
+    try:
+        return json.loads(FLAG.read_text()).get("mode") == "autopay"
+    except (OSError, ValueError):
+        return False
+
+
 def safe_read(script):
     """True for a read-only script that returns only visible status or error messages."""
     return bool(re.search(r"role\s*=\s*['\"]?alert", script or "", re.I)) and not UNSAFE_SCRIPT.search(script or "")
 
 
-def decide(tool_name, tool_input):
-    """None = allowed. Otherwise the reason it is refused."""
+def decide(tool_name, tool_input, auto=False):
+    """None = allowed. Otherwise the reason it is refused. auto=True: the AUTO-PAY guard (one Pay click allowed)."""
     if "wdio" not in tool_name:
         return None
     short = tool_name.split("__")[-1]
@@ -65,7 +78,10 @@ def decide(tool_name, tool_input):
         return BLOCKED[short]
     if short == "execute_script" and not safe_read(str(tool_input.get("script", ""))):
         return "only the read-only status/error script is allowed (it must contain role=alert and read no values)"
-    if short == "click_element" and PAY_WORDS.search(str(tool_input.get("selector", ""))):
+    sel = str(tool_input.get("selector", ""))
+    if short == "click_element" and auto and PAY_ONLY.search(sel) and not re.search(r"\b(buy|purchase|checkout|subscribe)\b", sel, re.I):
+        return None  # AUTO-PAY: the agent clicks "Pay" on the saved card; nothing else that pays
+    if short == "click_element" and PAY_WORDS.search(sel):
         return "never click Pay, Buy, Purchase, Checkout, Submit, Confirm or Subscribe: the person clicks Pay"
     if short == "start_session" and tool_input.get("trace"):
         return "no trace while the card step is on (a trace records typed values)"
@@ -79,7 +95,7 @@ def hook():
         call = json.load(sys.stdin)
     except ValueError:
         return 0
-    reason = decide(str(call.get("tool_name", "")), call.get("tool_input"))
+    reason = decide(str(call.get("tool_name", "")), call.get("tool_input"), autopay())
     if reason:
         print(json.dumps({"hookSpecificOutput": {
             "hookEventName": "PreToolUse", "permissionDecision": "deny",
@@ -88,14 +104,16 @@ def hook():
     return 0
 
 
-def on(run, tc):
-    FLAG.write_text(json.dumps({"run": run, "tc": tc, "since": time.strftime("%Y-%m-%dT%H:%M:%S")}))
+def on(run, tc, auto=False):
+    FLAG.write_text(json.dumps({"run": run, "tc": tc, "since": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                                "mode": "autopay" if auto else "person"}))
     registered = False
     try:
         registered = "card_guard.py" in (PROJECT / ".claude" / "settings.json").read_text()
     except OSError:
         pass
-    print(f"card guard ON for {tc}: screenshots, snapshots and typing are blocked until `card_guard.py off`")
+    extra = " (AUTO-PAY: only the Pay click is allowed)" if auto else ""
+    print(f"card guard ON for {tc}{extra}: screenshots, snapshots and typing are blocked until `card_guard.py off`")
     if not registered:
         print("WARNING: .claude/settings.json does not register the hook, so nothing is blocked. Do not open a payment window.")
 
@@ -137,6 +155,13 @@ def selftest():
     check("switch_frame allowed", decide(wd + "switch_frame", {}), True)
     check("scroll allowed", decide(wd + "scroll", {"direction": "down"}), True)
     check("other tools untouched", decide("Bash", {"command": "ls"}), True)
+    check("autopay: Pay click allowed", decide(wd + "click_element", {"selector": "button*=Pay"}, True), True)
+    check("autopay: Buy click refused", decide(wd + "click_element", {"selector": "button=Buy now"}, True), False)
+    check("autopay: screenshot refused", decide(wd + "get_screenshot", {}, True), False)
+    check("autopay: snapshot refused", decide(wd + "snapshot", {}, True), False)
+    check("autopay: typing refused", decide(wd + "set_value", {"selector": "e1", "value": "x"}, True), False)
+    check("autopay: reading a field refused", decide(wd + "execute_script", {"script": "return document.querySelector('input').value // role=alert"}, True), False)
+    check("autopay: message read allowed", decide(wd + "execute_script", {"script": approved}, True), True)
     return 0 if ok else 1
 
 
@@ -144,12 +169,12 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "hook":
         sys.exit(hook())
-    if cmd == "on" and len(sys.argv) == 4:
-        on(sys.argv[2], sys.argv[3])
+    if cmd == "on" and len(sys.argv) in (4, 5) and (len(sys.argv) == 4 or sys.argv[4] == "--autopay"):
+        on(sys.argv[2], sys.argv[3], auto=len(sys.argv) == 5)
     elif cmd == "off":
         off()
     elif cmd == "status":
-        print("card guard ON" if active() else "card guard OFF")
+        print(("card guard ON (AUTO-PAY)" if autopay() else "card guard ON") if active() else "card guard OFF")
     elif cmd == "selftest":
         sys.exit(selftest())
     else:

@@ -24,6 +24,10 @@ Usage:
                                            closes Chrome. Run it after close_session. For a --no-record start it
                                            only closes Chrome and deletes its temporary profile.
 
+Chrome runs HIDDEN (headless) by default, so no window pops up and takes the focus while tests run; the screen
+recording still works (it uses the DevTools screencast). Add --show to open a visible window: only for a payment
+case where a person must type in the window (PAYMENT-HUMAN MODE PHASE A), never otherwise.
+
 Exit code 2 from start means recording is not available here (no Chrome, Node older than 22, or Chrome did not
 start); the reason is printed, nothing is left running, and the test runs with a normal wdio-mcp session instead.
 The video shows the page as it changed, with pauses longer than MAX_PAUSE seconds shortened to MAX_PAUSE, so the
@@ -137,7 +141,22 @@ def unavailable(reason):
     sys.exit(2)
 
 
-def start(run, tc, device=None, record=True):
+def headless_args(chrome):
+    """Hidden Chrome that still presents itself as normal desktop Chrome (a "HeadlessChrome" user agent can make
+    a shop behave differently)."""
+    major = "131"
+    try:
+        out = subprocess.run([chrome, "--version"], capture_output=True, text=True, timeout=10).stdout
+        m = re.search(r"(\d+)\.\d+", out)
+        major = m.group(1) if m else major
+    except Exception:
+        pass
+    ua = (f"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) "
+          f"Chrome/{major}.0.0.0 Safari/537.36")
+    return ["--headless=new", f"--user-agent={ua}"]
+
+
+def start(run, tc, device=None, record=True, show=False):
     work, state_path, _ = paths(run, tc)
     if os.path.exists(state_path):
         stop(run, tc, build=False)  # a leftover from an earlier attempt
@@ -153,9 +172,9 @@ def start(run, tc, device=None, record=True):
     log = open(os.path.join(work, "chrome.log"), "w")
     cp = subprocess.Popen([chrome, f"--remote-debugging-port={port}", f"--user-data-dir={profile}",
                            "--no-first-run", "--no-default-browser-check", "--disable-search-engine-choice-screen",
-                           "--window-size=1440,900", "about:blank"],
+                           "--window-size=1440,900"] + ([] if show else headless_args(chrome)) + ["about:blank"],
                           stdout=log, stderr=log, start_new_session=True)
-    state = {"port": port, "chrome_pid": cp.pid, "profile": profile, "recorder_pid": None, "record": record}
+    state = {"port": port, "chrome_pid": cp.pid, "profile": profile, "recorder_pid": None, "record": record, "show": show}
     json.dump(state, open(state_path, "w"))
     if not wait_for(lambda: chrome_up(port), 20):
         stop(run, tc, build=False)
@@ -313,10 +332,11 @@ if __name__ == "__main__":
     size = size_flag(argv)
     devices = [a for a in argv if a in ("--phone", "--tablet")] + ([size] if size else [])
     no_record = "--no-record" in argv
-    args = [a for a in argv if a not in ("--phone", "--tablet", "--no-record")]
+    show = "--show" in argv
+    args = [a for a in argv if a not in ("--phone", "--tablet", "--no-record", "--show")]
     if len(args) != 3 or args[0] not in ("start", "stop") or len(devices) > 1:
         sys.exit(__doc__)
     if no_record and devices:
         sys.exit("--no-record cannot be combined with --phone, --tablet or --size")
     cmd, run_dir, tc_id = args[0], os.path.abspath(args[1]), args[2]
-    start(run_dir, tc_id, devices[0] if devices else None, record=not no_record) if cmd == "start" else stop(run_dir, tc_id)
+    start(run_dir, tc_id, devices[0] if devices else None, record=not no_record, show=show) if cmd == "start" else stop(run_dir, tc_id)
