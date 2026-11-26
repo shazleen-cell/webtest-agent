@@ -1,0 +1,7 @@
+# Slack webhook (local only, git-ignored)
+
+Copy this file to .claude/slack.local.md (same folder, without ".example") and paste the webhook URL
+after the colon below. Ask the team for the URL in a private message.
+Never paste it into chat, Jira, Slack or any other file. git ignores .claude/slack.local.md, never this example.
+
+- SLACK_WEBHOOK_URL: PASTE_WEBHOOK_URL_HERE

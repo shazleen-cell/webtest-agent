@@ -227,7 +227,7 @@ The message never contains screenshots, videos, traces or links to them. Before 
 
 Setup (once per computer):
 1. Get the webhook URL from api.slack.com/apps > your app > Incoming Webhooks.
-2. Create `.claude/slack.local.md` with the line `- SLACK_WEBHOOK_URL: https://hooks.slack.com/services/...`, or set the `SLACK_WEBHOOK_URL` environment variable. Git ignores the file. The URL is a secret: never paste it into chat, Jira, Slack or any other file.
+2. Copy `.claude/slack.local.md.example` to `.claude/slack.local.md` and replace `PASTE_WEBHOOK_URL_HERE` with the webhook URL (`cp .claude/slack.local.md.example .claude/slack.local.md`), or set the `SLACK_WEBHOOK_URL` environment variable. Git ignores the file. The URL is a secret: never paste it into chat, Jira, Slack or any other file.
 
 Without a webhook, the script only prints the message. To try it by hand:
 
