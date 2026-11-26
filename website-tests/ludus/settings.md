@@ -94,7 +94,7 @@ Site: https://site.ludus-game.com/
 
 ## Allowed person-typed card check
 - status: ON
-- approved-by: shazleen-cell (by typing "proceed"), 2026-11-24
+- approved-by: irfanzain-2102 (by typing "proceed"), 2026-11-25
 - payment-window: Xsolla Pay Station
 - who-types: a person, in the open Chrome window (the agent types nothing and never clicks "Pay")
 - items:
@@ -109,7 +109,7 @@ Site: https://site.ludus-game.com/
 - card-kinds:
   - invalid: ALLOWED
   - real: ALLOWED
-- auto-pay: ALLOWED
+- auto-pay: NOT ALLOWED
 - max-total-per-run: USD 50
 - agent-buttons:
   - the control that closes the payment window (for Pay Station: the back arrow "Ludus", top left, `[data-testid=return-button]` inside `iframe.paystation-modal__iframe`)
@@ -117,7 +117,7 @@ Site: https://site.ludus-game.com/
 
 ## Allowed logged-out price click
 - status: ON
-- approved-by: shazleen-cell (by typing "proceed"), 2026-11-24
+- approved-by: irfanzain-2102 (by typing "proceed"), 2026-11-25
 - mode: LOGGED OUT only (fresh session, no login link)
 - buttons:
   - the real-money price button named in the case (once)
